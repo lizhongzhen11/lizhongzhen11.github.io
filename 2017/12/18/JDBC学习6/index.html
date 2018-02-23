@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>JDBC学习6--DBUtils | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="练习代码地址: https://github.com/lizhongzhen11/jdbcStudy-2
+
+Apache—DBUtils简介
+commons-dbutils 是 Apache 组织提供的一个开源 JDBC 工具类库，它是对JDBC的简单封装，学习成本极低，并且使用dbutils能极大简化jdbc编码的工作量，同时也不会影响程序的性能。
+
+API介绍：
+
+org.apache.co">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="JDBC学习6--DBUtils | Ronaldo">
+    <meta name="twitter:description" content="练习代码地址: https://github.com/lizhongzhen11/jdbcStudy-2
+
+Apache—DBUtils简介
+commons-dbutils 是 Apache 组织提供的一个开源 JDBC 工具类库，它是对JDBC的简单封装，学习成本极低，并且使用dbutils能极大简化jdbc编码的工作量，同时也不会影响程序的性能。
+
+API介绍：
+
+org.apache.co">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="JDBC学习6--DBUtils | Ronaldo">
+    <meta property="og:description" content="练习代码地址: https://github.com/lizhongzhen11/jdbcStudy-2
+
+Apache—DBUtils简介
+commons-dbutils 是 Apache 组织提供的一个开源 JDBC 工具类库，它是对JDBC的简单封装，学习成本极低，并且使用dbutils能极大简化jdbc编码的工作量，同时也不会影响程序的性能。
+
+API介绍：
+
+org.apache.co">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2017/12/18/JDBC学习6/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-12-18T02:29:31.495Z" class="post-list__meta--date date">2017-12-18</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">JDBC学习6--DBUtils</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+<p>练习代码地址: <a href="https://github.com/lizhongzhen11/jdbcStudy-2" target="_blank" rel="external">https://github.com/lizhongzhen11/jdbcStudy-2</a></p>
+</blockquote>
+<h3 id="Apache—DBUtils简介"><a href="#Apache—DBUtils简介" class="headerlink" title="Apache—DBUtils简介"></a>Apache—DBUtils简介</h3><blockquote>
+<p>commons-dbutils 是 Apache 组织提供的一个开源 JDBC 工具类库，它是对JDBC的简单封装，学习成本极低，并且使用dbutils能极大简化jdbc编码的工作量，同时也不会影响程序的性能。</p>
+</blockquote>
+<p>API介绍：</p>
+<ul>
+<li>org.apache.commons.dbutils.QueryRunner</li>
+<li>org.apache.commons.dbutils.ResultSetHandler</li>
+</ul>
+<p>工具类</p>
+<ul>
+<li>org.apache.commons.dbutils.DbUtils、。</li>
+</ul>
+<h3 id="DbUtils类"><a href="#DbUtils类" class="headerlink" title="DbUtils类"></a>DbUtils类</h3><blockquote>
+<p>DbUtils ：提供如关闭连接、装载JDBC驱动程序等常规工作的工具类，里面的所有方法都是静态的。主要方法如下：</p>
+</blockquote>
+<ul>
+<li>public static void close(…) throws java.sql.SQLException：　DbUtils类提供了三个重载的关闭方法。这些方法检查所提供的参数是不是NULL，如果不是的话，它们就关闭Connection、Statement和ResultSet。</li>
+<li>public static void closeQuietly(…): 这一类方法不仅能在Connection、Statement和ResultSet为NULL情况下避免关闭，还能隐藏一些在程序中抛出的SQLEeception。</li>
+<li>public static void commitAndCloseQuietly(Connection conn)： 用来提交连接，然后关闭连接，并且在关闭连接时不抛出SQL异常。 </li>
+<li>public static boolean loadDriver(java.lang.String driverClassName)：这一方法装载并注册JDBC驱动程序，如果成功就返回true。使用该方法，你不需要捕捉这个异常ClassNotFoundException。</li>
+</ul>
+<h3 id="QueryRunner类"><a href="#QueryRunner类" class="headerlink" title="QueryRunner类"></a>QueryRunner类</h3><blockquote>
+<p>该类简单化了SQL查询，它与ResultSetHandler组合在一起使用可以完成大部分的数据库操作，能够大大减少编码量。</p>
+</blockquote>
+<p>QueryRunner类提供了两个构造方法：</p>
+<ul>
+<li>默认的构造方法</li>
+<li>需要一个 javax.sql.DataSource 来作参数的构造方法。</li>
+</ul>
+<h3 id="QueryRunner类的主要方法"><a href="#QueryRunner类的主要方法" class="headerlink" title="QueryRunner类的主要方法"></a>QueryRunner类的主要方法</h3><ol>
+<li>public Object query(Connection conn, String sql, Object[] params, ResultSetHandler rsh) throws SQLException：执行一个查询操作，在这个查询中，对象数组中的每个元素值被用来作为查询语句的置换参数。该方法会自行处理 PreparedStatement 和 ResultSet 的创建和关闭。</li>
+<li>public Object query(String sql, Object[] params, ResultSetHandler rsh) throws SQLException:　几乎与第一种方法一样；唯一的不同在于它不将数据库连接提供给方法，并且它是从提供给构造方法的数据源(DataSource) 或使用的setDataSource 方法中重新获得 Connection。</li>
+<li>public Object query(Connection conn, String sql, ResultSetHandler rsh) throws SQLException : 执行一个不需要置换参数的查询操作。</li>
+<li>public int update(Connection conn, String sql, Object[] params) throws SQLException:用来执行一个更新（插入、更新或删除）操作。</li>
+<li>public int update(Connection conn, String sql) throws SQLException：用来执行一个不需要置换参数的更新操作。</li>
+</ol>
+<h3 id="ResultSetHandler接口"><a href="#ResultSetHandler接口" class="headerlink" title="ResultSetHandler接口"></a>ResultSetHandler接口</h3><blockquote>
+<p>该接口用于处理 java.sql.ResultSet，将数据按要求转换为另一种形式。<br>ResultSetHandler 接口提供了一个单独的方法：Object handle (java.sql.ResultSet .rs)。</p>
+</blockquote>
+<h3 id="ResultSetHandler-接口的实现类"><a href="#ResultSetHandler-接口的实现类" class="headerlink" title="ResultSetHandler 接口的实现类"></a>ResultSetHandler 接口的实现类</h3><ul>
+<li>ArrayHandler：把结果集中的第一行数据转成对象数组。</li>
+<li>ArrayListHandler：把结果集中的每一行数据都转成一个数组，再存放到List中。</li>
+<li>BeanHandler：将结果集中的第一行数据封装到一个对应的JavaBean实例中。</li>
+<li>BeanListHandler：将结果集中的每一行数据都封装到一个对应的JavaBean实例中，存放到List里。</li>
+<li>ColumnListHandler：将结果集中某一列的数据存放到List中。</li>
+<li>KeyedHandler(name)：将结果集中的每一行数据都封装到一个Map里，再把这些map再存到一个map里，其key为指定的key。</li>
+<li>MapHandler：将结果集中的第一行数据封装到一个Map里，key是列名，value就是对应的值。</li>
+<li>MapListHandler：将结果集中的每一行数据都封装到一个Map里，然后再存放到List</li>
+</ul>
+<p><img src="../../../../images/jdbcstudy11.png" alt=""></p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/12/25/Array.prototype.sort()/" title="Array.prototype.sort()">Array.prototype.sort()</a></h2>
+                <p class="excerpt">
+                
+                
+参考:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sorthttps://yq.aliyun.com/articles/64376
+
+问题前两天,一小伙伴在吹牛群发了一
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-12-25T01:35:04.111Z" class="post-list__meta--date date">2017-12-25</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/12/25/Array.prototype.sort()/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/12/15/JDBC学习5/" title="JDBC学习5--批量处理和JDBC数据库连接池(DBCP和c3p0)">JDBC学习5--批量处理和JDBC数据库连接池(DBCP和c3p0)</a></h2>
+                <p class="excerpt">
+                
+                
+练习代码地址: https://github.com/lizhongzhen11/jdbcStudy-2
+
+批量处理当需要成批插入或者更新记录时。可以采用Java的批量更新机制，这一机制允许多条语句一次性提交给数据库批量处理。通常情况下比单独提交处理更有效率
+
+JDBC的批量处理语句包括下面两个方
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-12-15T03:06:02.562Z" class="post-list__meta--date date">2017-12-15</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/12/15/JDBC学习5/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>JDBC学习5--批量处理和JDBC数据库连接池(DBCP和c3p0) | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="练习代码地址: https://github.com/lizhongzhen11/jdbcStudy-2
+
+批量处理当需要成批插入或者更新记录时。可以采用Java的批量更新机制，这一机制允许多条语句一次性提交给数据库批量处理。通常情况下比单独提交处理更有效率
+
+JDBC的批量处理语句包括下面两个方法：
+
+addBatch(String)：添加需要批量处理的SQL语句或是参数；
+executeBa">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="JDBC学习5--批量处理和JDBC数据库连接池(DBCP和c3p0) | Ronaldo">
+    <meta name="twitter:description" content="练习代码地址: https://github.com/lizhongzhen11/jdbcStudy-2
+
+批量处理当需要成批插入或者更新记录时。可以采用Java的批量更新机制，这一机制允许多条语句一次性提交给数据库批量处理。通常情况下比单独提交处理更有效率
+
+JDBC的批量处理语句包括下面两个方法：
+
+addBatch(String)：添加需要批量处理的SQL语句或是参数；
+executeBa">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="JDBC学习5--批量处理和JDBC数据库连接池(DBCP和c3p0) | Ronaldo">
+    <meta property="og:description" content="练习代码地址: https://github.com/lizhongzhen11/jdbcStudy-2
+
+批量处理当需要成批插入或者更新记录时。可以采用Java的批量更新机制，这一机制允许多条语句一次性提交给数据库批量处理。通常情况下比单独提交处理更有效率
+
+JDBC的批量处理语句包括下面两个方法：
+
+addBatch(String)：添加需要批量处理的SQL语句或是参数；
+executeBa">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2017/12/15/JDBC学习5/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-12-15T03:06:02.562Z" class="post-list__meta--date date">2017-12-15</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">JDBC学习5--批量处理和JDBC数据库连接池(DBCP和c3p0)</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+<p>练习代码地址: <a href="https://github.com/lizhongzhen11/jdbcStudy-2" target="_blank" rel="external">https://github.com/lizhongzhen11/jdbcStudy-2</a></p>
+</blockquote>
+<h3 id="批量处理"><a href="#批量处理" class="headerlink" title="批量处理"></a>批量处理</h3><p>当需要成批插入或者更新记录时。可以采用Java的批量更新机制，这一机制允许多条语句一次性提交给数据库批量处理。通常情况下比单独提交处理更有效率</p>
+<blockquote>
+<p>JDBC的批量处理语句包括下面两个方法：</p>
+<ul>
+<li>addBatch(String)：添加需要批量处理的SQL语句或是参数；</li>
+<li>executeBatch()；执行批量处理语句；</li>
+</ul>
+</blockquote>
+<p>通常我们会遇到两种批量执行SQL语句的情况：</p>
+<ul>
+<li>多条SQL语句的批量处理；</li>
+<li>一个SQL语句的批量传参；</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line"> * 批量处理 </div><div class="line"> */</div><div class="line">@Test</div><div class="line">public void batch() &#123;</div><div class="line">	Connection connection = null;</div><div class="line">	PreparedStatement preparedStatement = null;</div><div class="line">	String sql = null;</div><div class="line">	try &#123;</div><div class="line">		connection = tools.getConnection();</div><div class="line">		tools.cancelAutoCommit(connection);</div><div class="line">		sql = &quot;insert into jdbctransaction values(?,?,?)&quot;;</div><div class="line">		preparedStatement = connection.prepareStatement(sql);</div><div class="line">		for(int i = 0; i &lt; 1000; i++) &#123;</div><div class="line">			preparedStatement.setInt(1, i + 1);</div><div class="line">			preparedStatement.setString(2, &quot;name_&quot; + i + 1);</div><div class="line">			preparedStatement.setString(3, &quot;money_&quot; + i + 1);</div><div class="line">			// 积攒sql</div><div class="line">			preparedStatement.addBatch();</div><div class="line">			// 当积攒到一定程度,就统一的执行一次,并且清空先前&quot;积攒&quot;的sql</div><div class="line">			if(i % 50 == 0) &#123;</div><div class="line">				preparedStatement.executeBatch();</div><div class="line">				preparedStatement.clearBatch();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		// 若总条数不是批量数值的整数倍,则还需要再额外的执行一次</div><div class="line">		if(1000 % 50 != 0) &#123;</div><div class="line">			preparedStatement.executeBatch();</div><div class="line">			preparedStatement.clearBatch();</div><div class="line">		&#125;</div><div class="line">		connection.commit();	</div><div class="line">	&#125; catch (Exception e) &#123;</div><div class="line">		e.printStackTrace();</div><div class="line">	&#125; finally &#123;</div><div class="line">		tools.release(null, preparedStatement, connection);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="JDBC数据库连接池的必要性"><a href="#JDBC数据库连接池的必要性" class="headerlink" title="JDBC数据库连接池的必要性"></a>JDBC数据库连接池的必要性</h3><p>在使用开发基于数据库的web程序时，传统的模式基本是按以下步骤：　　<br>1.在主程序（如servlet、beans）中建立数据库连接。<br>2.进行sql操作<br>3.断开数据库连接。<br>这种模式开发，存在的问题:</p>
+<blockquote>
+<p>1.普通的JDBC数据库连接使用 DriverManager 来获取，每次向数据库建立连接的时候都要将 Connection 加载到内存中，再验证用户名和密码(得花费0.05s～1s的时间)。需要数据库连接的时候，就向数据库要求一个，执行完成后再断开连接。这样的方式将会消耗大量的资源和时间。<strong>数据库的连接资源并没有得到很好的重复利用</strong>.若同时有几百人甚至几千人在线，频繁的进行数据库连接操作将占用很多的系统资源，严重的甚至会造成服务器的崩溃。<br>2.<em>对于每一次数据库连接，使用完后都得断开。否则，如果程序出现异常而未能关闭，将会导致数据库系统中的内存泄漏，最终将导致重启数据库</em>。<br>3.这种开发不能控制被创建的连接对象数，系统资源会被毫无顾及的分配出去，如连接过多，也可能导致内存泄漏，服务器崩溃。</p>
+</blockquote>
+<h3 id="数据库连接池（connection-pool）"><a href="#数据库连接池（connection-pool）" class="headerlink" title="数据库连接池（connection pool）"></a>数据库连接池（connection pool）</h3><p>为解决传统开发中的数据库连接问题，可以采用<strong>数据库连接池技术</strong>。</p>
+<blockquote>
+<p>数据库连接池的基本思想就是为数据库连接建立一个<strong>“缓冲池”</strong>。预先在缓冲池中放入一定数量的连接，当需要建立数据库连接时，只需从“缓冲池”中取出一个，使用完毕之后再放回去。</p>
+<hr>
+<p>数据库连接池负责分配、管理和释放数据库连接，它允许应用程序<strong>重复使用一个现有的数据库连接</strong>，而不是重新建立一个。<br>数据库连接池在初始化时将创建一定数量的数据库连接放到连接池中，<strong>这些数据库连接的数量是由最小数据库连接数来设定的</strong>。无论这些数据库连接是否被使用，连接池都将一直保证至少拥有这么多的连接数量。连接池的最大数据库连接数量限定了这个连接池能占有的最大连接数，当应用程序向连接池请求的连接数超过最大连接数量时，这些请求将被加入到等待队列中。</p>
+</blockquote>
+<p><img src="../../../../images/jdbcstudy10.png" alt=""></p>
+<h3 id="数据库连接池技术的优点"><a href="#数据库连接池技术的优点" class="headerlink" title="数据库连接池技术的优点"></a>数据库连接池技术的优点</h3><ol>
+<li>资源重用：<br>由于数据库连接得以重用，避免了频繁创建，释放连接引起的大量性能开销。在减少系统消耗的基础上，另一方面也增加了系统运行环境的平稳性。</li>
+<li>更快的系统反应速度<br>数据库连接池在初始化过程中，往往已经创建了若干数据库连接置于连接池中备用。此时连接的初始化工作均已完成。对于业务请求处理而言，直接利用现有3可用连接，避免了数据库连接初始化和释放过程的时间开销，从而减少了系统的响应时间</li>
+<li>新的资源分配手段<br>对于多应用共享同一数据库的系统而言，可在应用层通过数据库连接池的配置，实现某一应用最大可用数据库连接数的限制，避免某一应用独占所有的数据库资源</li>
+<li>统一的连接管理，避免数据库连接泄露<br>在较为完善的数据库连接池实现中，可根据预先的占用超时设定，强制回收被占用连接，从而避免了常规数据库连接操作中可能出现的资源泄露</li>
+</ol>
+<h3 id="两种开源的数据库连接池"><a href="#两种开源的数据库连接池" class="headerlink" title="两种开源的数据库连接池"></a>两种开源的数据库连接池</h3><p>JDBC 的数据库连接池使用 javax.sql.DataSource 来表示，DataSource 只是一个接口，该接口通常由服务器(Weblogic, WebSphere, Tomcat)提供实现，也有一些开源组织提供实现：</p>
+<ul>
+<li>DBCP 数据库连接池</li>
+<li>C3P0 数据库连接池</li>
+</ul>
+<blockquote>
+<p>DataSource 通常被称为数据源，它包含连接池和连接池管理两个部分，习惯上也经常把 DataSource 称为连接池</p>
+</blockquote>
+<h3 id="DBCP-数据源"><a href="#DBCP-数据源" class="headerlink" title="DBCP 数据源"></a>DBCP 数据源</h3><p>DBCP 是 Apache 软件基金组织下的开源连接池实现，该连接池依赖该组织下的另一个开源系统：Common-pool. 如需使用该连接池实现，应在系统中增加如下两个 jar 文件：</p>
+<ul>
+<li>Commons-dbcp.jar：连接池的实现</li>
+<li>Commons-pool.jar：连接池实现的依赖库<br>Tomcat 的连接池正是采用该连接池来实现的。该数据库连接池既可以与应用服务器整合使用，也可由应用程序独立使用。</li>
+</ul>
+<h3 id="DBCP-数据源使用范例"><a href="#DBCP-数据源使用范例" class="headerlink" title="DBCP 数据源使用范例"></a>DBCP 数据源使用范例</h3><blockquote>
+<p>数据源和数据库连接不同，数据源无需创建多个，它是产生数据库连接的工厂，因此整个应用只需要一个数据源即可。<br>当数据库访问结束后，程序还是像以前一样关闭数据库连接：conn.close(); <strong>但上面的代码并没有关闭数据库的物理连接，它仅仅把数据库连接释放，归还给了数据库连接池</strong>。</p>
+</blockquote>
+<p>初步使用dbcp连接数据库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line"> * 使用 DBCP 数据库连接池 </div><div class="line"> * 1.加入 jar 包.依赖于commons-dbcp和commons-pool</div><div class="line"> * 2.创建数据库连接池</div><div class="line"> * 3.设置了常用的属性</div><div class="line"> * 4.获取连接</div><div class="line"> */</div><div class="line">@Test</div><div class="line">public void testDBCP() throws SQLException &#123;</div><div class="line">	BasicDataSource dataSource = null;</div><div class="line">	// 1.创建 DBCP 数据源实例</div><div class="line">	dataSource = new BasicDataSource();</div><div class="line">	// 2.为数据源实例指定必须的属性</div><div class="line">	dataSource.setUsername(&quot;root&quot;);</div><div class="line">	dataSource.setPassword(&quot;123456&quot;);</div><div class="line">	dataSource.setUrl(&quot;jdbc:mysql://localhost:3306/springstudy?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&quot;);</div><div class="line">	dataSource.setDriverClassName(&quot;com.mysql.jdbc.Driver&quot;);</div><div class="line">	// 3.指定数据源的一些可选的属性</div><div class="line">	// 1).指定数据库连接池中初始化连接的个数</div><div class="line">	dataSource.setInitialSize(10);</div><div class="line">	// 2).指定最大连接数:同一时刻可以同时向数据库申请的连接数</div><div class="line">	dataSource.setMaxActive(10);</div><div class="line">	// 3).指定最小连接数:在数据库连接池中保存的最少的空闲连接的数量</div><div class="line">	dataSource.setMinIdle(5);</div><div class="line">	// 4).等待数据库连接池分配连接的最长时间,单位为毫秒,超过该时间将抛出异常</div><div class="line">	dataSource.setMaxWait(1000 * 5);</div><div class="line">	// 4.从数据源获取数据库连接</div><div class="line">	Connection connection = dataSource.getConnection();</div><div class="line">	System.out.println(connection);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>引入外部配置文件的方式:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">* 1.加载配置文件.配置文件中的键需要来自 BasicDataSource 里面的属性,不能自己瞎写</div><div class="line">* 2.调用 BasicDataSourceFactory 的 createDataSource() 方法创建 DataSource 实例</div><div class="line">* 3.从 DataSource 实例中获取数据库连接</div><div class="line">*/</div><div class="line">@Test</div><div class="line">public void testDBCPDataSourceFactory() throws Exception &#123;</div><div class="line">	Properties properties = new Properties();</div><div class="line">	InputStream stream = JDBCTest.class.getClassLoader().getResourceAsStream(&quot;dbcp.properties&quot;);</div><div class="line">	properties.load(stream);</div><div class="line">	DataSource dataSource = BasicDataSourceFactory.createDataSource(properties);</div><div class="line">	System.out.println(dataSource.getConnection());</div><div class="line">	BasicDataSource basicDataSource = (BasicDataSource) dataSource;</div><div class="line">	System.out.println(basicDataSource.getMaxWait());</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="c3p0"><a href="#c3p0" class="headerlink" title="c3p0"></a>c3p0</h3><p>初步使用c3p0连接方式:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@Test</div><div class="line">public void testCp() throws Exception &#123;</div><div class="line">	ComboPooledDataSource cp = new ComboPooledDataSource();</div><div class="line">	cp.setUser(&quot;root&quot;);</div><div class="line">	cp.setPassword(&quot;123456&quot;);</div><div class="line">	cp.setJdbcUrl(&quot;jdbc:mysql://localhost:3306/springstudy?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&quot;);</div><div class="line">	cp.setDriverClass(&quot;com.mysql.jdbc.Driver&quot;);</div><div class="line">	System.out.println(cp.getConnection());</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>引入外部配置文件:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">* 1. 创建 c3p0-config.xml 文件,参考帮助文档中 Appendix B: Configuation Files内容</div><div class="line">* 2. 创建 ComboPooledDataSource 实例:</div><div class="line">* DataSource dataSource = new ComboPooledDataSource(&quot;c3p0&quot;);</div><div class="line">* 3. 从 DataSource 实例中获取数据库连接</div><div class="line">*/</div><div class="line">@Test</div><div class="line">public void testCpConfig() throws Exception &#123;</div><div class="line">	ComboPooledDataSource cp = new ComboPooledDataSource(&quot;c3p0&quot;);</div><div class="line">	System.out.println(cp.getConnection());</div><div class="line">	System.out.println(cp.getMaxStatements());</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>外部配置文件c3p0-config.xml:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;c3p0-config&gt;</div><div class="line">	&lt;named-config name=&quot;c3p0&quot;&gt;</div><div class="line">		&lt;!-- 指定连接数据源的基本属性 --&gt;</div><div class="line">		&lt;property name=&quot;user&quot;&gt;root&lt;/property&gt;</div><div class="line">		&lt;property name=&quot;jdbcUrl&quot;&gt;jdbc:mysql://localhost:3306/springstudy?useSSL=false&lt;/property&gt;</div><div class="line">		&lt;property name=&quot;driverClass&quot;&gt;com.mysql.jdbc.Driver&lt;/property&gt;</div><div class="line">		&lt;property name=&quot;password&quot;&gt;123456&lt;/property&gt;</div><div class="line">		&lt;property name=&quot;&quot;&gt;&lt;/property&gt;</div><div class="line">		&lt;!-- 若数据库中连接数不足时,一次向数据库服务器申请多少个连接 --&gt;</div><div class="line">		&lt;property name=&quot;acquireIncrement&quot;&gt;5&lt;/property&gt;</div><div class="line">		&lt;!-- 初始化数据库连接池时连接的数量 --&gt;</div><div class="line">		&lt;property name=&quot;initialPoolSize&quot;&gt;5&lt;/property&gt;</div><div class="line">		&lt;!-- 数据库连接池中最小的数据库连接数 --&gt;</div><div class="line">		&lt;property name=&quot;minPoolSize&quot;&gt;5&lt;/property&gt;</div><div class="line">		&lt;!-- 数据库连接池中最大的数据库连接数 --&gt;</div><div class="line">		&lt;property name=&quot;maxPoolSize&quot;&gt;10&lt;/property&gt;</div><div class="line">		&lt;!-- C3P0数据库连接池可以维护的 Statement 个数 --&gt;</div><div class="line">		&lt;property name=&quot;maxStatements&quot;&gt;20&lt;/property&gt;</div><div class="line">		&lt;!-- 每个连接同时可以使用的 Statement 对象的个数 --&gt;</div><div class="line">		&lt;property name=&quot;maxStatementsPerConnection&quot;&gt;5&lt;/property&gt;</div><div class="line">	&lt;/named-config&gt;</div><div class="line">&lt;/c3p0-config&gt;</div></pre></td></tr></table></figure></p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/12/18/JDBC学习6/" title="JDBC学习6--DBUtils">JDBC学习6--DBUtils</a></h2>
+                <p class="excerpt">
+                
+                
+练习代码地址: https://github.com/lizhongzhen11/jdbcStudy-2
+
+Apache—DBUtils简介
+commons-dbutils 是 Apache 组织提供的一个开源 JDBC 工具类库，它是对JDBC的简单封装，学习成本极低，并且使用dbutils能极
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-12-18T02:29:31.495Z" class="post-list__meta--date date">2017-12-18</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/12/18/JDBC学习6/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/12/14/JDBC学习4/" title="JDBC学习4--数据库事务">JDBC学习4--数据库事务</a></h2>
+                <p class="excerpt">
+                
+                
+示例地址:https://github.com/lizhongzhen11/jdbcStudy-1
+
+数据库事务
+在数据库中,所谓事务是指一组逻辑操作单元,使数据从一种状态变换到另一种状态。
+
+为确保数据库中数据的一致性,数据的操纵应当是离散的成组的逻辑单元:当它全部完成时,数据的一致性可以保持,
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-12-14T06:45:12.369Z" class="post-list__meta--date date">2017-12-14</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/12/14/JDBC学习4/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>

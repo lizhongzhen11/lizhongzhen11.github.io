@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>JS 事件冒泡和事件捕获 事件委托 | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="发现之前学的一些知识，不怎么用的时候容易忘记，这样不好，所以记录下来
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;他们是描述事件触发时序问题的术语。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;事件捕获指的是从document到触发事件的那个节点，即自上而下的去触发事件。事件从最上一级标签开始往下查找，直到捕获到事件目标(target)。&amp;nb">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="JS 事件冒泡和事件捕获 事件委托 | Ronaldo">
+    <meta name="twitter:description" content="发现之前学的一些知识，不怎么用的时候容易忘记，这样不好，所以记录下来
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;他们是描述事件触发时序问题的术语。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;事件捕获指的是从document到触发事件的那个节点，即自上而下的去触发事件。事件从最上一级标签开始往下查找，直到捕获到事件目标(target)。&amp;nb">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="JS 事件冒泡和事件捕获 事件委托 | Ronaldo">
+    <meta property="og:description" content="发现之前学的一些知识，不怎么用的时候容易忘记，这样不好，所以记录下来
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;他们是描述事件触发时序问题的术语。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;事件捕获指的是从document到触发事件的那个节点，即自上而下的去触发事件。事件从最上一级标签开始往下查找，直到捕获到事件目标(target)。&amp;nb">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2017/10/12/事件冒泡和事件捕获/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-10-12T05:33:40.524Z" class="post-list__meta--date date">2017-10-12</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">JS 事件冒泡和事件捕获 事件委托</h1>
+  </header>
+
+  <section class="post">
+    <p><strong>发现之前学的一些知识，不怎么用的时候容易忘记，这样不好，所以记录下来</strong></p>
+<p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;他们是描述事件触发时序问题的术语。</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;事件捕获指的是从document到触发事件的那个节点，即<em>自上而下</em>的去触发事件。事件从最上一级标签开始往下查找，直到捕获到事件目标(target)。</strong><br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;相反的，事件冒泡是<em>自下而上</em>的去触发事件。事件从事件目标(target)开始，往上冒泡直到页面的最上一级标签。</strong></p>
+<blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;支持W3C标准的浏览器在添加事件时用 <em>addEventListener(event,fn,useCapture)</em> 方法，基中第3个参数 <em>useCapture</em> 是一个Boolean值，用来设置事件是在事件捕获时执行，还是事件冒泡时执行。而不兼容W3C的浏览器(IE)用 <em>attachEvent()</em> 方法，此方法没有相关设置，不过IE的事件模型默认是在事件冒泡时执行的，也就是在 <em>useCapture</em> 等于false的时候执行，所以把在处理事件时把 <em>useCapture</em> 设置为false是比较安全，也实现兼容浏览器的效果。PS：true–捕获，false–冒泡，IE9及以上支持addEventListener</p>
+<p>举个例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;</div><div class="line">    &lt;p&gt;Hello World!&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>如果给上面 <em>div</em> 和 <em>p</em> 标签都绑定了 <em>click</em> 事件，那么哪一个先触发呢？<br>如果 <em>div</em> 绑定的 <em>click</em> 事件先触发，就是事件捕获，如果 <em>p</em> 绑定的事件先触发，就是事件冒泡。</p>
+<p>例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;parent&quot;&gt;</div><div class="line">    &lt;p id=&quot;child&quot;&gt;Hello World!&lt;/p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">var parent = document.getElementById(&apos;parent&apos;);</div><div class="line">var child = document.getElementById(&apos;child&apos;);</div><div class="line">parent.addEventListener(&apos;click&apos;, function()&#123;console.log(&apos;parent&apos;)&#125;, true)</div><div class="line">child.addEventListener(&apos;click&apos;, function()&#123;console.log(&apos;child&apos;)&#125;, true)</div><div class="line">// parent</div><div class="line">// child</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p><strong>DOM事件流</strong></p>
+<blockquote>
+<p>将事件分为三个阶段：捕获阶段、目标阶段、冒泡阶段。先调用捕获阶段的处理函数，其次调用目标阶段的处理函数，最后调用冒泡阶段的处理函数。document –&gt; target –&gt; document,先自上而下到目标，在从目标自下而上。</p>
+</blockquote>
+<p><strong>阻止事件冒泡和捕获</strong></p>
+<blockquote>
+<p>IE8以及以前可以通过 <em>window.event.cancelBubble=true</em> 阻止事件的继续传播。IE9+/FF/Chrome通过event.stopPropagation()阻止事件的继续传播。</p>
+<p>一段有意思的代码（来自 <em><a href="http://blog.csdn.net/aitangyong/article/details/43231111" target="_blank" rel="external">http://blog.csdn.net/aitangyong/article/details/43231111</a></em>）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;  </div><div class="line">  </div><div class="line">    window.onload = function()&#123;  </div><div class="line">        var outA = document.getElementById(&quot;outA&quot;);    </div><div class="line">        var outB = document.getElementById(&quot;outB&quot;);    </div><div class="line">        var outC = document.getElementById(&quot;outC&quot;);    </div><div class="line">          </div><div class="line">        // 目标  </div><div class="line">        outC.addEventListener(&apos;click&apos;,function(event)&#123;alert(&quot;target&quot;);&#125;,false);  </div><div class="line">  </div><div class="line">        // 事件冒泡  </div><div class="line">        outA.addEventListener(&apos;click&apos;,function()&#123;alert(&quot;bubble&quot;);&#125;,false);  </div><div class="line">  </div><div class="line">        // 事件捕获  </div><div class="line">        outA.addEventListener(&apos;click&apos;,function()&#123;alert(&quot;capture&quot;);event.stopPropagation();&#125;,true);        </div><div class="line">          </div><div class="line">    &#125;;  </div><div class="line">   </div><div class="line">&lt;/script&gt;  </div><div class="line">  </div><div class="line">&lt;body&gt;  </div><div class="line">    &lt;div id=&quot;outA&quot; style=&quot;width:400px; height:400px; background:#CDC9C9;position:relative;&quot;&gt;  </div><div class="line">        &lt;div id=&quot;outB&quot; style=&quot;height:200; background:#0000ff;top:100px;position:relative;&quot;&gt;  </div><div class="line">            &lt;div id=&quot;outC&quot; style=&quot;height:100px; background:#FFB90F;top:50px;position:relative;&quot;&gt;&lt;/div&gt;   </div><div class="line">        &lt;/div&gt;  </div><div class="line">    &lt;/div&gt;  </div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure></p>
+<p>最终只打印了 <em>capture</em>，这是因为 DOM事件流先发生事件捕获，也就是先执行 <em>outA.addEventListener(‘click’,function(){alert(“capture”);event.stopPropagation();},true);</em> ，但是该代码内通过 <em>event.stopPropagation()</em> 阻止了事件的传播，所以接下来的事件冒泡并没有出现。</p>
+</blockquote>
+<h3 id="事件委托请查看：http-www-cnblogs-com-liugang-vip-p-5616484-html"><a href="#事件委托请查看：http-www-cnblogs-com-liugang-vip-p-5616484-html" class="headerlink" title="事件委托请查看：http://www.cnblogs.com/liugang-vip/p/5616484.html"></a>事件委托请查看：<a href="http://www.cnblogs.com/liugang-vip/p/5616484.html" target="_blank" rel="external">http://www.cnblogs.com/liugang-vip/p/5616484.html</a></h3>
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/10/12/test/" title=""></a></h2>
+                <p class="excerpt">
+                
+                
+
+
+    test
+    
+        .flexStudy {
+            display: flex;
+        }
+        .flexStudy_child {
+            width: 200px;
+            height: 20
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-10-12T06:08:03.228Z" class="post-list__meta--date date">2017-10-12</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/10/12/test/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/09/27/Vue学习/" title="vue学习">vue学习</a></h2>
+                <p class="excerpt">
+                
+                
+VueJS 开发常见问题集锦 请看 https://segmentfault.com/a/1190000010230843#articleHeader11
+新手向：Vue 2.0 的建议学习顺序–尤雨溪 请看 https://zhuanlan.zhihu.com/p/23134551
+vue-cl
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-09-27T05:08:59.690Z" class="post-list__meta--date date">2017-09-27</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/09/27/Vue学习/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>

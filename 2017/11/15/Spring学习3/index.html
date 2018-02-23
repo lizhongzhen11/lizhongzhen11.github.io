@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>Spring4.0学习3--集合属性 | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="接Spring4.0学习2
+集合属性List属性值在 Spring中可以通过一组内置的 xml 标签(例如: &amp;lt;list&amp;gt;, &amp;lt;set&amp;gt; 或 &amp;lt;map&amp;gt;) 来配置集合属性.配置 java.util.List 类型的属性, 需要指定 &amp;lt;list&amp;gt;  标签, 在标签里包含一些元素. 这些标签可以通过 &amp;lt;value&amp;gt; 指定简单的常量值, 通过">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Spring4.0学习3--集合属性 | Ronaldo">
+    <meta name="twitter:description" content="接Spring4.0学习2
+集合属性List属性值在 Spring中可以通过一组内置的 xml 标签(例如: &amp;lt;list&amp;gt;, &amp;lt;set&amp;gt; 或 &amp;lt;map&amp;gt;) 来配置集合属性.配置 java.util.List 类型的属性, 需要指定 &amp;lt;list&amp;gt;  标签, 在标签里包含一些元素. 这些标签可以通过 &amp;lt;value&amp;gt; 指定简单的常量值, 通过">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Spring4.0学习3--集合属性 | Ronaldo">
+    <meta property="og:description" content="接Spring4.0学习2
+集合属性List属性值在 Spring中可以通过一组内置的 xml 标签(例如: &amp;lt;list&amp;gt;, &amp;lt;set&amp;gt; 或 &amp;lt;map&amp;gt;) 来配置集合属性.配置 java.util.List 类型的属性, 需要指定 &amp;lt;list&amp;gt;  标签, 在标签里包含一些元素. 这些标签可以通过 &amp;lt;value&amp;gt; 指定简单的常量值, 通过">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2017/11/15/Spring学习3/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-11-15T12:24:50.428Z" class="post-list__meta--date date">2017-11-15</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">Spring4.0学习3--集合属性</h1>
+  </header>
+
+  <section class="post">
+    <p>接Spring4.0学习2</p>
+<h2 id="集合属性"><a href="#集合属性" class="headerlink" title="集合属性"></a>集合属性</h2><h3 id="List属性值"><a href="#List属性值" class="headerlink" title="List属性值"></a>List属性值</h3><p>在 Spring中可以通过一组内置的 xml 标签(例如: <code>&lt;list&gt;</code>, <code>&lt;set&gt;</code> 或 <code>&lt;map&gt;</code>) 来配置集合属性.<br>配置 java.util.List 类型的属性, 需要指定 <code>&lt;list&gt;</code>  标签, 在标签里包含一些元素. 这些标签可以通过 <code>&lt;value&gt;</code> 指定简单的常量值, 通过 <code>&lt;ref&gt;</code> 指定对其他 Bean 的引用. 通过<code>&lt;bean&gt;</code> 指定内置 Bean 定义. 通过 <code>&lt;null/&gt;</code> 指定空元素. 甚至可以内嵌其他集合.<br>数组的定义和 List 一样, 都使用 <code>&lt;list&gt;</code><br>配置 java.util.Set 需要使用 <code>&lt;set&gt;</code> 标签, 定义元素的方法与 List 一样.</p>
+<blockquote>
+<p>新建了一个包<strong>com.wuyanzu</strong>,在该包下新建一个<strong>Person</strong>类和<strong>Main</strong>类。该包和com.lizz包属于并列关系。</p>
+</blockquote>
+<p>applicationContext.xml新增代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 集合属性 --&gt;</div><div class="line">&lt;bean id=&quot;person3&quot; class=&quot;com.wuyanzu.Person&quot;&gt;</div><div class="line">	&lt;property name=&quot;name&quot; value=&quot;wuyanzu&quot;&gt;&lt;/property&gt;</div><div class="line">	&lt;property name=&quot;age&quot; value=&quot;44&quot;&gt;&lt;/property&gt;</div><div class="line">	&lt;property name=&quot;cars&quot;&gt;</div><div class="line">    &lt;!-- 使用list节点为list类型的属性赋值 --&gt;</div><div class="line">		&lt;list&gt;</div><div class="line">			&lt;ref bean=&quot;car&quot; /&gt;</div><div class="line">			&lt;ref bean=&quot;car2&quot; /&gt;</div><div class="line">		&lt;/list&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure></p>
+<p>Person.java:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">package com.wuyanzu;</div><div class="line">import java.util.List;</div><div class="line">import com.lizz.Car;</div><div class="line">public class Person &#123;</div><div class="line">	private String name;</div><div class="line">	private int age;</div><div class="line">	private List&lt;Car&gt; cars; // 因为是集合属性，所以这里的cars是集合</div><div class="line">	public String getName() &#123;</div><div class="line">		return name;</div><div class="line">	&#125;</div><div class="line">	public void setName(String name) &#123;</div><div class="line">		this.name = name;</div><div class="line">	&#125;</div><div class="line">	public int getAge() &#123;</div><div class="line">		return age;</div><div class="line">	&#125;</div><div class="line">	public void setAge(int age) &#123;</div><div class="line">		this.age = age;</div><div class="line">	&#125;</div><div class="line">	public List&lt;Car&gt; getCars() &#123;</div><div class="line">		return cars;</div><div class="line">	&#125;</div><div class="line">	public void setCars(List&lt;Car&gt; cars) &#123;</div><div class="line">		this.cars = cars;</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	public String toString() &#123;</div><div class="line">		return &quot;Person3 [name=&quot; + name + &quot;, age=&quot; + age + &quot;, cars=&quot; + cars + &quot;]&quot;;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Main.java:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">package com.wuyanzu;</div><div class="line">import org.springframework.context.ApplicationContext;</div><div class="line">import org.springframework.context.support.ClassPathXmlApplicationContext;</div><div class="line">public class Main &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		ApplicationContext ctx = new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);</div><div class="line">		Person person3 = (Person) ctx.getBean(&quot;person3&quot;);</div><div class="line">		System.out.println(person3);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="Map属性值"><a href="#Map属性值" class="headerlink" title="Map属性值"></a>Map属性值</h3><p>Java.util.Map 通过 <code>&lt;map&gt;</code> 标签定义, <code>&lt;map&gt;</code> 标签里可以使用多个 <code>&lt;entry&gt;</code> 作为子标签. 每个条目包含一个键和一个值.<br>必须在 <code>&lt;key&gt;</code> 标签里定义键<br>因为键和值的类型没有限制, 所以可以自由地为它们指定 <code>&lt;value&gt;</code>, <code>&lt;ref&gt;</code>, <code>&lt;bean&gt;</code> 或 <code>&lt;null&gt;</code> 元素.<br>可以将 Map 的键和值作为 <code>&lt;entry&gt;</code> 的属性定义: 简单常量使用 key 和 value 来定义; Bean 引用通过 key-ref 和 value-ref 属性定义<br>使用 <code>&lt;props&gt;</code> 定义 java.util.Properties, 该标签使用多个 <code>&lt;prop&gt;</code> 作为子标签. 每个 <code>&lt;prop&gt;</code> 标签必须定义 key 属性.<br>applicationContext.xml增加的代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;!-- Map属性 --&gt;</div><div class="line">  &lt;bean id=&quot;jay&quot; class=&quot;com.wuyanzu.Jay&quot;&gt;</div><div class="line">  	&lt;property name=&quot;name&quot; value=&quot;jay&quot;&gt;&lt;/property&gt;</div><div class="line">  	&lt;property name=&quot;age&quot; value=&quot;39&quot;&gt;&lt;/property&gt;</div><div class="line">  	&lt;property name=&quot;cars&quot;&gt;</div><div class="line">  	&lt;!-- 使用map节点及map的entry子节点配置Map类型的成员变量 --&gt;</div><div class="line">  		&lt;map&gt;</div><div class="line">  			&lt;entry key=&quot;A&quot; value-ref=&quot;car&quot; /&gt;</div><div class="line">  			&lt;entry key=&quot;B&quot; value-ref=&quot;car2&quot; /&gt;</div><div class="line">  		&lt;/map&gt;</div><div class="line">  	&lt;/property&gt;</div><div class="line">  &lt;/bean&gt;</div></pre></td></tr></table></figure></p>
+<p>Main.java增加的代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Jay jay = (Jay) ctx.getBean(&quot;jay&quot;);</div><div class="line">System.out.println(jay);</div></pre></td></tr></table></figure></p>
+<p>Jay.java:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">package com.wuyanzu;</div><div class="line">import java.util.Map;</div><div class="line">import com.lizz.Car;</div><div class="line">public class Jay &#123;</div><div class="line">	private String name;</div><div class="line">	private int age;</div><div class="line">	private Map&lt;String, Car&gt; cars;</div><div class="line">	public String getName() &#123;</div><div class="line">		return name;</div><div class="line">	&#125;</div><div class="line">	public void setName(String name) &#123;</div><div class="line">		this.name = name;</div><div class="line">	&#125;</div><div class="line">	public int getAge() &#123;</div><div class="line">		return age;</div><div class="line">	&#125;</div><div class="line">	public void setAge(int age) &#123;</div><div class="line">		this.age = age;</div><div class="line">	&#125;</div><div class="line">	public Map&lt;String, Car&gt; getCars() &#123;</div><div class="line">		return cars;</div><div class="line">	&#125;</div><div class="line">	public void setCars(Map&lt;String, Car&gt; cars) &#123;</div><div class="line">		this.cars = cars;</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	public String toString() &#123;</div><div class="line">		return &quot;Jay [name=&quot; + name + &quot;, age=&quot; + age + &quot;, cars=&quot; + cars + &quot;]&quot;;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong><code>&lt;props&gt;</code>配置法</strong><br>新建Chenglong.java：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">package com.wuyanzu;</div><div class="line">import java.util.Properties;</div><div class="line">public class Chenglong &#123;</div><div class="line">	private Properties properties;</div><div class="line">	public Properties getProperties() &#123;</div><div class="line">		return properties;</div><div class="line">	&#125;</div><div class="line">	public void setProperties(Properties properties) &#123;</div><div class="line">		this.properties = properties;</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	public String toString() &#123;</div><div class="line">		return &quot;Chenglong [properties=&quot; + properties + &quot;]&quot;;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>applicationContext.xml新增代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 配置Properties属性值 --&gt;</div><div class="line">&lt;bean id=&quot;chenglong&quot; class=&quot;com.wuyanzu.Chenglong&quot;&gt;</div><div class="line">	&lt;property name=&quot;properties&quot;&gt;</div><div class="line">	&lt;!-- 使用props和prop子节点来为Properties属性赋值 --&gt;</div><div class="line">		&lt;props&gt;</div><div class="line">			&lt;prop key=&quot;username&quot;&gt;root&lt;/prop&gt;</div><div class="line">			&lt;prop key=&quot;password&quot;&gt;123456&lt;/prop&gt;</div><div class="line">			&lt;prop key=&quot;jdbcUrl&quot;&gt;jdbc:mysql:///test&lt;/prop&gt;</div><div class="line">			&lt;prop key=&quot;driverClass&quot;&gt;com.mysql.jdbc.Driver&lt;/prop&gt;</div><div class="line">		&lt;/props&gt;</div><div class="line">	&lt;/property&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure></p>
+<p>Main.java:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Chenglong chenglong = ctx.getBean(Chenglong.class);</div><div class="line">System.out.println(chenglong.getProperties());</div></pre></td></tr></table></figure></p>
+<h3 id="使用-utility-scheme-定义集合"><a href="#使用-utility-scheme-定义集合" class="headerlink" title="使用 utility scheme 定义集合"></a>使用 utility scheme 定义集合</h3><blockquote>
+<p>使用基本的集合标签定义集合时, <strong>不能将集合作为独立的 Bean 定义, 导致其他 Bean 无法引用该集合, 所以无法在不同 Bean 之间共享集合</strong>.<br>可以使用 util schema 里的集合标签定义独立的集合 Bean. 需要注意的是, 必须在 <code>&lt;beans&gt;</code> 根元素里添加 util schema 定义</p>
+</blockquote>
+<p>示例：<br>applicationContext.xml:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 配置单例的集合bean,以供多个bean进行引用，需要导入 util 命名空间 --&gt;</div><div class="line">&lt;util:list id=&quot;cars&quot;&gt;</div><div class="line">	&lt;ref bean=&quot;car&quot;/&gt;</div><div class="line">	&lt;ref bean=&quot;car2&quot;/&gt;</div><div class="line">&lt;/util:list&gt;</div><div class="line">&lt;bean id=&quot;person4&quot; class=&quot;com.wuyanzu.Person&quot;&gt;</div><div class="line">	&lt;property name=&quot;name&quot; value=&quot;周星驰&quot;&gt;&lt;/property&gt;</div><div class="line">	&lt;property name=&quot;age&quot; value=&quot;55&quot;&gt;&lt;/property&gt;</div><div class="line">	&lt;property name=&quot;cars&quot; ref=&quot;cars&quot;&gt;&lt;/property&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure></p>
+<p>Main.java:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Person person4 = (Person) ctx.getBean(&quot;person4&quot;);</div><div class="line">System.out.println(person4);</div></pre></td></tr></table></figure></p>
+<h3 id="通过-p-命名空间为-bean-赋值"><a href="#通过-p-命名空间为-bean-赋值" class="headerlink" title="通过 p 命名空间为 bean 赋值"></a>通过 p 命名空间为 bean 赋值</h3><p>applicationContext.xml:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 通过 p 命名空间对 bean 的属性赋值，需要先导入  p 命名空间,相对于传统的配置更加简洁 --&gt;</div><div class="line"> &lt;bean id=&quot;person5&quot; class=&quot;com.wuyanzu.Person&quot; p:name=&quot;lizz&quot; p:age=&quot;25&quot; p:cars-ref=&quot;cars&quot;&gt;</div><div class="line"> &lt;/bean&gt;</div></pre></td></tr></table></figure></p>
+<p>Main.java:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Person person5 = (Person) ctx.getBean(&quot;person5&quot;);</div><div class="line">System.out.println(&quot;person5:&quot; + person5);</div></pre></td></tr></table></figure></p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/11/16/Spring学习4/" title="Spring4.0学习4--自动装配">Spring4.0学习4--自动装配</a></h2>
+                <p class="excerpt">
+                
+                XML 配置里的 Bean 自动装配
+Spring IOC 容器可以自动装配 Bean. 需要做的仅仅是在 &amp;lt;bean&amp;gt; 的 autowire 属性里指定自动装配的模式byType(根据类型自动装配): 若 IOC 容器中有多个与目标 Bean 类型一致的 Bean. 在这种情况下, S
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-11-16T05:52:07.024Z" class="post-list__meta--date date">2017-11-16</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/11/16/Spring学习4/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/11/14/银联退款问题/" title="开发银联退款的经历">开发银联退款的经历</a></h2>
+                <p class="excerpt">
+                
+                可以参考：http://blog.csdn.net/haozhuxuan/article/details/53637243https://open.unionpay.com/upload/download/%E5%B9%B3%E5%8F%B0%E6%8E%A5%E5%85%A5%E6%8E%A5%E
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-11-14T09:29:22.267Z" class="post-list__meta--date date">2017-11-14</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/11/14/银联退款问题/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>

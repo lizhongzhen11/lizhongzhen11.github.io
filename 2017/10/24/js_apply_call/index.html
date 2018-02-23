@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>js apply和call | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="先看定义call方法
+
+语法：fun.call(thisArg, arg1, arg2, …)
+定义：call() 方法调用一个函数, 其具有一个指定的this值和分别地提供的参数(参数的列表)。
+参数
+
+thisArg
+在fun函数运行时指定的this值。需要注意的是，指定的this值并不一定是该函数执行时真正的this值，如果这个函数处于非严格模式下，则指定为null和undefined的th">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="js apply和call | Ronaldo">
+    <meta name="twitter:description" content="先看定义call方法
+
+语法：fun.call(thisArg, arg1, arg2, …)
+定义：call() 方法调用一个函数, 其具有一个指定的this值和分别地提供的参数(参数的列表)。
+参数
+
+thisArg
+在fun函数运行时指定的this值。需要注意的是，指定的this值并不一定是该函数执行时真正的this值，如果这个函数处于非严格模式下，则指定为null和undefined的th">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="js apply和call | Ronaldo">
+    <meta property="og:description" content="先看定义call方法
+
+语法：fun.call(thisArg, arg1, arg2, …)
+定义：call() 方法调用一个函数, 其具有一个指定的this值和分别地提供的参数(参数的列表)。
+参数
+
+thisArg
+在fun函数运行时指定的this值。需要注意的是，指定的this值并不一定是该函数执行时真正的this值，如果这个函数处于非严格模式下，则指定为null和undefined的th">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2017/10/24/js_apply_call/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-10-24T01:31:27.221Z" class="post-list__meta--date date">2017-10-24</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">js apply和call</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="先看定义"><a href="#先看定义" class="headerlink" title="先看定义"></a>先看定义</h3><p><strong>call方法</strong></p>
+<ul>
+<li>语法：fun.call(thisArg, arg1, arg2, …)</li>
+<li>定义：call() 方法调用一个函数, 其具有一个指定的this值和分别地提供的参数(参数的列表)。<blockquote>
+<p>参数</p>
+<ul>
+<li>thisArg<ul>
+<li>在fun函数运行时指定的this值。需要注意的是，指定的this值并不一定是该函数执行时真正的this值，如果这个函数处于非严格模式下，则指定为null和undefined的this值会自动指向全局对象(浏览器中就是window对象)，同时值为原始值(数字，字符串，布尔值)的this会指向该原始值的自动包装对象。</li>
+</ul>
+</li>
+<li>arg1, arg2, …<ul>
+<li>指定的参数列表。  </li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<p><strong>apply方法</strong></p>
+<ul>
+<li>可以看MDN：<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/apply</a></li>
+<li>语法：fun.apply(thisArg, [argsArray])</li>
+<li>定义：apply() 方法调用一个函数, 其具有一个指定的this值，以及作为一个数组（或类似数组的对象）提供的参数。<blockquote>
+<p>参数</p>
+<ul>
+<li>thisArg<ul>
+<li>在 fun 函数运行时指定的 this 值。需要注意的是，指定的 this 值并不一定是该函数执行时真正的 this 值，如果这个函数处于非严格模式下，则指定为 null 或 undefined 时会自动指向全局对象（浏览器中就是window对象），同时值为原始值（数字，字符串，布尔值）的 this 会指向该原始值的自动包装对象。</li>
+</ul>
+</li>
+<li>argsArray<ul>
+<li>一个数组或者类数组对象，其中的数组元素将作为单独的参数传给 fun 函数。如果该参数的值为null 或 undefined，则表示不需要传入任何参数。从ECMAScript 5 开始可以使用类数组对象。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><blockquote>
+<p>call()方法的作用和apply()方法类似，只有一个区别，就是call()方法接受的是<em>若干个参数的列表</em>，而apply()方法接受的是一个<em>包含多个参数的数组</em>。</p>
+<p>参考<a href="http://www.360doc.com/content/13/0807/19/13328522_305431575.shtml" target="_blank" rel="external">http://www.360doc.com/content/13/0807/19/13328522_305431575.shtml</a></p>
+</blockquote>
+<p><strong>MDN的解释有点官方，新手看容易懵，所以从网上找了其它的解释。</strong></p>
+<blockquote>
+<p>call和apply:方法能劫持另外一个对象的方法，继承另外一个对象的属性。（只是参数列表不一样）</p>
+<p>apply示例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function Person (name, age) &#123;</div><div class="line">    this.name = name;</div><div class="line">    this.age = age; // 这里的 this 指的是 Person 函数</div><div class="line">&#125;</div><div class="line">function Student (name, age, grade) &#123;</div><div class="line">    Person.apply(this, arguments);</div><div class="line">    this.grade = grade; // 这里的 this 指的是 Student 函数</div><div class="line">&#125;</div><div class="line">var student = new Student(&apos;qian&apos;, 21, &apos;一年级&apos;);</div><div class="line">console.log(&quot;name:&quot;+student.name+&apos;\n&apos;+&quot;age:&quot;+student.age+&apos;\n&apos;+&quot;grade:&quot;+student.grade);</div></pre></td></tr></table></figure></p>
+<p>分析：Person.apply(this, arguments);</p>
+<ul>
+<li>this:在下面创建对象的时候代表student对象</li>
+<li>arguments:是一个数组，也就是[‘qian’, ‘21’, ‘一年级’]</li>
+<li>也就是通俗一点讲就是：用 student 去执行 Person 这个类里面的内容，在 Person 这个类里面存在 this.name 等之类的语句，这样就将属性创建到了 student 对象里面</li>
+</ul>
+<p>call示例，只需要在 Student 函数里面将 apply 修改如下：Person.call(this, name, age);</p>
+</blockquote>
+<p><strong>apply的一些其他巧妙用法</strong></p>
+<blockquote>
+<p>定义 Person 函数时，它的参数并不是数组，可是 apply 方法传递的却是数组，并且 Person 函数能够正确解析，这是为什么呢？</p>
+<p>这个就是 apply 的一个巧妙用处，可以将一个数组默认的转换为一个参数列表，如 [param1, param2, param3] 转换为 (param1, param2, param3)。</p>
+<p>和 Math.max 联合使用得到数组中最大的元素。因为 Math.max 参数里面不支持数组，所以可以这样来使用 var max = Math.max.apply(null, array).</p>
+<p>同样，Math.min 也可以。</p>
+<p>Array.prototype.push 与 apply 联合使用。</p>
+<p>由于 push 方法没有提供 push 一个数组，但是它提供了 push(param1, param2,…paramN)，所以同样可以通过 apply 来转换一下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var arr1 = new Array(&quot;1&quot;, &quot;2&quot;, &quot;3&quot;);</div><div class="line">var arr2 = new Array(&quot;4&quot;, &quot;5&quot;, &quot;6&quot;);</div><div class="line">Array.prototype.push.apply(arr1,arr2);</div><div class="line">arr1 // [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;]</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p><strong>总结：该文章主要摘抄自网上大神，末尾的一些应用方法真的很巧妙，不是初学者能想到的，但是一定要知道，学无止境！</strong></p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/10/24/js遍历方法/" title="js map、forEach、filter、reduce、some、every">js map、forEach、filter、reduce、some、every</a></h2>
+                <p class="excerpt">
+                
+                请参考 MDN1.map方法
+概述：map() 方法创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。
+语法：123let array = arr.map(function callback(currentValue, index, array) &amp;#123;     //
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-10-24T03:36:53.957Z" class="post-list__meta--date date">2017-10-24</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/10/24/js遍历方法/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/10/23/js_return/" title="js return">js return</a></h2>
+                <p class="excerpt">
+                
+                今天看囧克斯关于 vue 源码解读发现一段代码通过 return 巧妙地避免了不必要的深度遍历(在有广播事件到来时，如果当前 vm 的 _eventsCount 为 0，则不必向其子 vm 继续传播该事件)，当时看到return都有点忘了，基础不牢固
+
+源码123456789101112export
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-10-23T02:29:19.325Z" class="post-list__meta--date date">2017-10-23</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/10/23/js_return/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>

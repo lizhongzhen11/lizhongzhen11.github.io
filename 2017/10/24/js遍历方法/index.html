@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>js map、forEach、filter、reduce、some、every | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="请参考 MDN1.map方法
+概述：map() 方法创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。
+语法：123let array = arr.map(function callback(currentValue, index, array) &amp;#123;     // Return element for new_array &amp;#125;[, thisArg])
+参">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="js map、forEach、filter、reduce、some、every | Ronaldo">
+    <meta name="twitter:description" content="请参考 MDN1.map方法
+概述：map() 方法创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。
+语法：123let array = arr.map(function callback(currentValue, index, array) &amp;#123;     // Return element for new_array &amp;#125;[, thisArg])
+参">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="js map、forEach、filter、reduce、some、every | Ronaldo">
+    <meta property="og:description" content="请参考 MDN1.map方法
+概述：map() 方法创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。
+语法：123let array = arr.map(function callback(currentValue, index, array) &amp;#123;     // Return element for new_array &amp;#125;[, thisArg])
+参">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2017/10/24/js遍历方法/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-10-24T03:36:53.957Z" class="post-list__meta--date date">2017-10-24</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">js map、forEach、filter、reduce、some、every</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="请参考-MDN"><a href="#请参考-MDN" class="headerlink" title="请参考 MDN"></a>请参考 MDN</h3><h3 id="1-map方法"><a href="#1-map方法" class="headerlink" title="1.map方法"></a>1.map方法</h3><blockquote>
+<p>概述：map() 方法创建一个新数组，其结果是该数组中的每个元素都调用一个提供的函数后返回的结果。</p>
+<p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">let array = arr.map(function callback(currentValue, index, array) &#123; </div><div class="line">    // Return element for new_array </div><div class="line">&#125;[, thisArg])</div></pre></td></tr></table></figure></p>
+<p>参数</p>
+<ul>
+<li>callback:生成新数组元素的函数，使用三个参数：<ul>
+<li>currentValue:callback 的第一个参数，数组中正在处理的当前元素。</li>
+<li>index:callback 的第二个参数，数组中正在处理的当前元素的索引。</li>
+<li>array:callback 的第三个参数，map 方法被调用的数组。</li>
+</ul>
+</li>
+<li>thisArg:可选的。执行 callback 函数时 使用的this 值。</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>返回值：一个<em>新数组</em>，每个元素都是回调函数的结果。</p>
+</li>
+<li><p>描述：map 方法会给原数组中的每个元素都按顺序调用一次  callback 函数。callback 每次执行后的返回值（包括 undefined）组合起来形成一个新数组。 callback 函数只会在有值的索引上被调用；那些从来没被赋过值或者使用 delete 删除的索引则不会被调用。</p>
+</li>
+<li><p>callback 函数会被自动传入三个参数：数组元素，元素索引，原数组本身。</p>
+</li>
+<li><p>如果 thisArg 参数有值，则每次 callback 函数被调用的时候，this 都会指向 thisArg 参数上的这个对象。如果省略了 thisArg 参数,或者赋值为 null 或 undefined，则 this 指向全局对象 。</p>
+</li>
+<li><p>map 不修改调用它的原数组本身（当然可以在 callback 执行时改变原数组）。</p>
+</li>
+<li><p>使用 map 方法处理数组时，数组元素的范围是在 callback 方法第一次调用之前就已经确定了。在 map 方法执行的过程中：原数组中新增加的元素将不会被 callback 访问到；若已经存在的元素被改变或删除了，则它们的传递到 callback 的值是 map 方法遍历到它们的那一时刻的值；而被删除的元素将不会被访问到。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var kvArray = [&#123;key: 1, value: 10&#125;, &#123;key: 2, value: 20&#125;, &#123;key: 3, value: 30&#125;];</div><div class="line">var reformattedArray = kvArray.map(function(obj)&#123;</div><div class="line">    var rObj = &#123;&#125;;</div><div class="line">    rObj[obj.key] = obj.value; // 这步一开始感到奇怪，对象居然也可以用数组下标的方式取到，自己试了下果然可以</div><div class="line">    return rObj;</div><div class="line">&#125;)</div><div class="line">reformattedArray; // [&#123;1: 10&#125;, &#123;2: 20&#125;, &#123;3: 30&#125;]</div><div class="line">kvArray; // [&#123;key: 1, value: 10&#125;, &#123;key: 2, value: 20&#125;]</div><div class="line">// 对象用类似数组下标的方式取值 []</div><div class="line">var test = &#123;a: 1&#125;;</div><div class="line">test[&apos;a&apos;]; // 1</div></pre></td></tr></table></figure>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">[&quot;1&quot;, &quot;2&quot;, &quot;3&quot;].map(parseInt); // [1, NaN, NaN]而不是[1,2,3],why?</div><div class="line">// parseInt其实是有两个参数的，只是平常我们将它第二个参数省略了</div><div class="line">// parseInt的第二个参数其实是 进制数，而我们用 map 时会传递三个参数</div><div class="line">// 第三个参数会被 parseInt 忽略，但是第二个传的是 index（下标），</div><div class="line">// parseInt 会将传过来的 index 当作进制数，所以结果是 [1, NaN, NaN]</div><div class="line">// </div><div class="line">//</div><div class="line">//</div><div class="line">function returnInt(element) &#123;</div><div class="line">  return parseInt(element, 10);</div><div class="line">&#125;</div><div class="line">[&apos;1&apos;, &apos;2&apos;, &apos;3&apos;].map(returnInt); // [1, 2, 3]</div></pre></td></tr></table></figure>
+<h3 id="2-forEach方法"><a href="#2-forEach方法" class="headerlink" title="2.forEach方法"></a>2.forEach方法</h3><blockquote>
+<p>概述：forEach() 方法对数组的每个元素执行一次提供的函数。</p>
+<p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">array.forEach(callback(currentValue, index, array)&#123;</div><div class="line">    //do something</div><div class="line">&#125;, this)</div><div class="line">array.forEach(callback[, thisArg])</div></pre></td></tr></table></figure></p>
+<p>参数：</p>
+<ul>
+<li>callback:为数组中每个元素执行的函数，该函数接收三个参数：<ul>
+<li>currentValue(当前值):数组中正在处理的当前元素。</li>
+<li>index(索引):数组中正在处理的当前元素的索引。</li>
+<li>array:forEach()方法正在操作的数组。</li>
+</ul>
+</li>
+<li>thisArg:可选参数。当执行回调 函数时用作this的值(参考对象)。</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>返回值：undefined</p>
+</li>
+<li><p>描述：forEach 方法按升序为数组中含有效值的每一项执行一次callback 函数，那些已删除（使用delete方法等情况）或者未初始化的项将被跳过（但不包括那些值为 undefined 的项）（例如在稀疏数组上）。</p>
+</li>
+<li><p>callback 函数会被依次传入三个参数：数组当前项的值、数组当前项的索引、数组对象本身</p>
+</li>
+<li><p>如果给forEach传递了thisArg参数，当调用时，它将被传给callback 函数，作为它的this值。否则，将会传入 undefined 作为它的this值。callback函数最终可观察到this值，这取决于 函数观察到this的常用规则。</p>
+</li>
+<li><p>forEach 遍历的范围在第一次调用 callback 前就会确定。调用forEach 后添加到数组中的项不会被 callback 访问到。如果已经存在的值被改变，则传递给 callback 的值是 forEach 遍历到他们那一刻的值。已删除的项不会被遍历到。如果已访问的元素在迭代时被删除了(例如使用 shift()) ，之后的元素将被跳过 - 参见下面的示例。</p>
+</li>
+<li><p>forEach() 为每个数组元素执行callback函数；不像map() 或者reduce() ，它总是返回 undefined值，并且不可链式调用。典型用例是在一个链的最后执行副作用。</p>
+</li>
+</ul>
+<p><strong>如果数组在迭代时被修改了，则其他元素会被跳过。</strong></p>
+<blockquote>
+<p>下面的例子输出”one”, “two”, “four”。当到达包含值”two”的项时，整个数组的第一个项被移除了，这导致所有剩下的项上移一个位置。因为元素 “four”现在在数组更前的位置，”three”会被跳过。 forEach()不会在迭代之前创建数组的副本。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var words = [&quot;one&quot;, &quot;two&quot;, &quot;three&quot;, &quot;four&quot;];</div><div class="line">words.forEach(function(word) &#123;</div><div class="line">  console.log(word);</div><div class="line">  if (word === &quot;two&quot;) &#123;</div><div class="line">    words.shift();</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line">// one</div><div class="line">// two</div><div class="line">// four</div></pre></td></tr></table></figure>
+<h3 id="3-reduce方法"><a href="#3-reduce方法" class="headerlink" title="3.reduce方法"></a>3.reduce方法</h3><blockquote>
+<p>概述：reduce() 方法接收一个函数作为累加器（accumulator），数组中的每个值（从左到右）开始缩减，最终为一个值。<br>语法：arr.reduce([callback, initialValue])<br>参数</p>
+<ul>
+<li>callback:执行数组中每个值的函数，包含四个参数：<ul>
+<li>previousValue:上一次调用回调函数返回的值，或者是提供的初始值（initialValue）</li>
+<li>currentValue:数组中当前被处理的元素</li>
+<li>currentIndex:当前被处理元素在数组中的索引, 即currentValue的索引.如果有initialValue初始值, 从0开始.如果没有从1开始.</li>
+<li>array:调用 reduce 的数组</li>
+</ul>
+</li>
+<li>initialValue: 可选参数, 作为第一次调用 callback 的第一个参数。</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>返回值：最后一次调用回调函数返回的结果</p>
+</li>
+<li><p>描述：回调函数第一次执行时，previousValue 和 currentValue可能是两个不同值其中的一个，如果reduce有initialValue参数，那么 previousValue 等于 initialValue ，并且currentValue 等于数组中的第一个值；如果reduce没有 initialValue 参数，那么previousValue 等于数组中的第一个值，currentValue等于数组中的第二个值。</p>
+</li>
+<li><p>注意: 如果没有 initialValue 参数, reduce 从 index 为1开始执行回调函数, 跳过第一个index. 如果有initialValue参数, reduce 将从index为 0 开始执行回调。</p>
+</li>
+<li><p>如果数组是空的并且没有initialValue参数, 将会抛出TypeError错误. 如果数组只有一个元素并且没有初始值initialValue, 或者有initialValue但数组是空的, 这个唯一的值直接被返回而不会调用回调函数.</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[0, 1, 2, 3, 4].reduce(function(previousValue, currentValue, index, array)&#123;</div><div class="line">  return previousValue + currentValue;</div><div class="line">&#125;, 0); // 10</div></pre></td></tr></table></figure>
+<h3 id="4-filter方法"><a href="#4-filter方法" class="headerlink" title="4.filter方法"></a>4.filter方法</h3><blockquote>
+<p>概述：filter() 方法创建一个新数组, 其包含通过所提供函数实现的测试的所有元素。</p>
+<p>语法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var new_array = arr.filter(callback[, thisArg])</div></pre></td></tr></table></figure></p>
+<p>参数：</p>
+<ul>
+<li>callback:用来测试数组的每个元素的函数。调用时使用参数 (element, index, array)。返回true表示保留该元素（通过测试），false则不保留。</li>
+<li>thisArg:可选。执行 callback 时的用于 this 的值。</li>
+</ul>
+<p>返回值： 一个新的通过测试的元素的集合的数组</p>
+</blockquote>
+<ul>
+<li><p>描述：filter 为数组中的每个元素调用一次 callback 函数，并利用所有使得 callback 返回 true 或 等价于 true 的值 的元素创建一个新数组。callback 只会在已经赋值的索引上被调用，对于那些已经被删除或者从未被赋值的索引不会被调用。那些没有通过 callback 测试的元素会被跳过，不会被包含在新数组中。</p>
+</li>
+<li><p>callback 被调用时传入三个参数：元素的值、元素的索引、被遍历的数组</p>
+</li>
+<li><p>如果为 filter 提供一个 thisArg 参数，则它会被作为 callback 被调用时的 this 值。否则，callback 的 this 值在非严格模式下将是全局对象，严格模式下为 undefined。</p>
+</li>
+<li><p>filter 不会改变原数组。</p>
+</li>
+<li><p>filter 遍历的元素范围在第一次调用 callback 之前就已经确定了。在调用 filter 之后被添加到数组中的元素不会被 filter 遍历到。如果已经存在的元素被改变了，则他们传入 callback 的值是 filter 遍历到它们那一刻的值。被删除或从来未被赋值的元素不会被遍历到。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function isBigEnough(element) &#123;</div><div class="line">  return element &gt;= 10;</div><div class="line">&#125;</div><div class="line">var filtered = [12, 5, 8, 130, 44].filter(isBigEnough);</div><div class="line">// filtered is [12, 130, 44]</div></pre></td></tr></table></figure>
+<h3 id="5-every方法"><a href="#5-every方法" class="headerlink" title="5.every方法"></a>5.every方法</h3><blockquote>
+<p>概述：every() 方法测试数组的所有元素是否都通过了指定函数的测试。</p>
+<p>语法：arr.every(callback[, thisArg])</p>
+<p>参数</p>
+<ul>
+<li>callback:用来测试每个元素的函数。</li>
+<li>thisArg:执行 callback 时使用的 this 值。</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>描述：every 方法为数组中的每个元素执行一次 callback 函数，直到它找到一个使 callback 返回 false（表示可转换为布尔值 false 的值）的元素。如果发现了一个这样的元素，every 方法将会立即返回 false。否则，callback 为每一个元素返回 true，every 就会返回 true。callback 只会为那些已经被赋值的索引调用。不会为那些被删除或从来没被赋值的索引调用。</p>
+</li>
+<li><p>callback 被调用时传入三个参数：元素值，元素的索引，原数组。</p>
+</li>
+<li><p>如果为 every 提供一个 thisArg 参数，则该参数为调用 callback 时的 this 值。如果省略该参数，则 callback 被调用时的 this 值，在非严格模式下为全局对象，在严格模式下传入 undefined。</p>
+</li>
+<li><p>every 不会改变原数组。</p>
+</li>
+<li><p>every 遍历的元素范围在第一次调用 callback 之前就已确定了。在调用 every 之后添加到数组中的元素不会被 callback 访问到。如果数组中存在的元素被更改，则他们传入 callback 的值是 every 访问到他们那一刻的值。那些被删除的元素或从来未被赋值的元素将不会被访问到。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function isBigEnough(element, index, array) &#123;</div><div class="line">  return (element &gt;= 10);</div><div class="line">&#125;</div><div class="line">var passed = [12, 5, 8, 130, 44].every(isBigEnough);</div><div class="line">// passed is false</div><div class="line">passed = [12, 54, 18, 130, 44].every(isBigEnough);</div><div class="line">// passed is true</div></pre></td></tr></table></figure>
+<h3 id="6-some方法"><a href="#6-some方法" class="headerlink" title="6.some方法"></a>6.some方法</h3><blockquote>
+<p>概述：some() 方法测试数组中的某些元素是否通过由提供的函数实现的测试。</p>
+<p>语法：arr.some(callback[, thisArg])</p>
+<p>参数</p>
+<ul>
+<li>callback:用来测试每个元素的函数。</li>
+<li>thisArg:执行 callback 时使用的 this 值。</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>描述：some 为数组中的每一个元素执行一次 callback 函数，直到找到一个使得 callback 返回一个“真值”（即可转换为布尔值 true 的值）。如果找到了这样一个值，some 将会立即返回 true。否则，some 返回 false。callback 只会在那些”有值“的索引上被调用，不会在那些被删除或从来未被赋值的索引上调用。</p>
+</li>
+<li><p>callback 被调用时传入三个参数：元素的值，元素的索引，被遍历的数组。</p>
+</li>
+<li><p>如果为 some 提供了一个 thisArg 参数，将会把它传给被调用的 callback，作为 this 值。否则，在非严格模式下将会是全局对象，严格模式下是 undefined。</p>
+</li>
+<li><p>some 被调用时不会改变数组。</p>
+</li>
+<li><p>some 遍历的元素的范围在第一次调用 callback. 时就已经确定了。在调用 some 后被添加到数组中的值不会被 callback 访问到。如果数组中存在且还未被访问到的元素被 callback 改变了，则其传递给 callback 的值是 some 访问到它那一刻的值。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function isBigEnough(element, index, array) &#123;</div><div class="line">  return (element &gt;= 10);</div><div class="line">&#125;</div><div class="line">var passed = [2, 5, 8, 1, 4].some(isBigEnough);</div><div class="line">// passed is false</div><div class="line">passed = [12, 5, 8, 1, 4].some(isBigEnough);</div><div class="line">// passed is true</div></pre></td></tr></table></figure>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/10/24/js原型/" title="js原型对象">js原型对象</a></h2>
+                <p class="excerpt">
+                
+                摘抄自 https://segmentfault.com/a/1190000010842024拓展理解：https://github.com/mqyqingfeng/Blog/issues/2概念理解什么是原型对象呢？有以下几点1.构造函数有一个 prototype 属性，指向构造函数的原型对象。而
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-10-24T07:37:13.530Z" class="post-list__meta--date date">2017-10-24</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/10/24/js原型/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/10/24/js_apply_call/" title="js apply和call">js apply和call</a></h2>
+                <p class="excerpt">
+                
+                先看定义call方法
+
+语法：fun.call(thisArg, arg1, arg2, …)
+定义：call() 方法调用一个函数, 其具有一个指定的this值和分别地提供的参数(参数的列表)。
+参数
+
+thisArg
+在fun函数运行时指定的this值。需要注意的是，指定的this值并不一定是该
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-10-24T01:31:27.221Z" class="post-list__meta--date date">2017-10-24</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/10/24/js_apply_call/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>

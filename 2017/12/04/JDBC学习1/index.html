@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>JDBC学习1 | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="示例地址:https://github.com/lizhongzhen11/jdbcStudy-1
+
+数据持久化持久化(persistence)：把数据保存到可掉电式存储设备中以供之后使用。大多数情况下，特别是企业级应用，数据持久化意味着将内存中的数据保存到硬盘上加以”固化”，而持久化的实现过程大多通过各种 关系数据库 来完成。持久化的主要应用是将内存中的数据存储在关系型数据库中，当然也可以存储">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="JDBC学习1 | Ronaldo">
+    <meta name="twitter:description" content="示例地址:https://github.com/lizhongzhen11/jdbcStudy-1
+
+数据持久化持久化(persistence)：把数据保存到可掉电式存储设备中以供之后使用。大多数情况下，特别是企业级应用，数据持久化意味着将内存中的数据保存到硬盘上加以”固化”，而持久化的实现过程大多通过各种 关系数据库 来完成。持久化的主要应用是将内存中的数据存储在关系型数据库中，当然也可以存储">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="JDBC学习1 | Ronaldo">
+    <meta property="og:description" content="示例地址:https://github.com/lizhongzhen11/jdbcStudy-1
+
+数据持久化持久化(persistence)：把数据保存到可掉电式存储设备中以供之后使用。大多数情况下，特别是企业级应用，数据持久化意味着将内存中的数据保存到硬盘上加以”固化”，而持久化的实现过程大多通过各种 关系数据库 来完成。持久化的主要应用是将内存中的数据存储在关系型数据库中，当然也可以存储">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2017/12/04/JDBC学习1/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-12-04T01:32:16.455Z" class="post-list__meta--date date">2017-12-04</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">JDBC学习1</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+<p>示例地址:<a href="https://github.com/lizhongzhen11/jdbcStudy-1" target="_blank" rel="external">https://github.com/lizhongzhen11/jdbcStudy-1</a></p>
+</blockquote>
+<h3 id="数据持久化"><a href="#数据持久化" class="headerlink" title="数据持久化"></a>数据持久化</h3><p>持久化(persistence)：<strong>把数据保存到可掉电式存储设备中以供之后使用</strong>。大多数情况下，特别是企业级应用，<strong>数据持久化意味着将内存中的数据保存到硬盘上加以”固化”</strong>，而持久化的实现过程大多通过各种 <em>关系数据库</em> 来完成。<br>持久化的主要应用是将内存中的数据存储在关系型数据库中，当然也可以存储在磁盘文件、XML数据文件中。</p>
+<h3 id="Java-中的数据存储技术"><a href="#Java-中的数据存储技术" class="headerlink" title="Java 中的数据存储技术"></a>Java 中的数据存储技术</h3><p>在Java中，数据库存取技术可分为如下几类：</p>
+<ul>
+<li>JDBC直接访问数据库</li>
+<li>JDO技术</li>
+<li>第三方O/R工具，如Hibernate, ibatis 等<blockquote>
+<p>JDBC是java访问数据库的基石，JDO, Hibernate等只是更好的封装了JDBC。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="JDBC基础"><a href="#JDBC基础" class="headerlink" title="JDBC基础"></a>JDBC基础</h3><p>JDBC(Java Database Connectivity)是一个<strong>独立于特定数据库管理系统、通用的SQL数据库存取和操作的公共接口（一组API）</strong>，定义了用来访问数据库的标准Java类库，使用这个类库可以以一种标准的方法、方便地访问数据库资源<br>JDBC为访问不同的数据库提供了一种统一的途径，为开发者屏蔽了一些细节问题。<br>JDBC的目标是使Java程序员使用JDBC可以连接<strong>任何提供了JDBC驱动程序</strong>的数据库系统，这样就使得程序员无需对特定的数据库系统的特点有过多的了解，从而大大简化和加快了开发过程。<br><img src="../../../../images/jdbcstudy1.png" alt=""></p>
+<h3 id="JDBC体系结构"><a href="#JDBC体系结构" class="headerlink" title="JDBC体系结构"></a>JDBC体系结构</h3><p>JDBC接口（API）包括两个层次：<br> 面向应用的API：Java API，抽象接口，供应用程序开发人员使用（连接数据库，执行SQL语句，获得结果）。<br> 面向数据库的API：Java Driver API，供开发商开发数据库驱动程序用。</p>
+<h3 id="JDBC驱动程序分类"><a href="#JDBC驱动程序分类" class="headerlink" title="JDBC驱动程序分类"></a>JDBC驱动程序分类</h3><p>JDBC驱动程序：各个数据库厂商根据JDBC的规范制作的 JDBC 实现类的类库<br>JDBC驱动程序总共有四种类型：</p>
+<ul>
+<li>第一类：JDBC-ODBC桥。 </li>
+<li>第二类：部分本地API部分Java的驱动程序。 </li>
+<li>第三类：JDBC网络纯Java驱动程序。 </li>
+<li>第四类：<strong>本地协议的纯 Java 驱动程序</strong>。 <blockquote>
+<p>第三、四两类都是纯Java的驱动程序，因此，对于Java开发者来说，它们在性能、可移植性、功能等方面都有优势。</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="ODBC"><a href="#ODBC" class="headerlink" title="ODBC"></a>ODBC</h3><p>早期对数据库的访问，都是调用数据库厂商提供的专有的 API。为了在 <strong>Windows 平台</strong>下提供统一的访问方式，微软推出了 ODBC(Open Database Connectivity，开放式数据库连接)，并提供了 ODBC API，使用者在程序中只需要调用 ODBC API，由 ODBC 驱动程序将调用转换成为对特定的数据库的调用请求<br>一个基于ODBC的应用程序对数据库的操作不依赖任何DBMS(database manager system)，不直接与DBMS打交道，所有的数据库操作由对应的DBMS的<strong>ODBC驱动程序</strong>完成。也就是说，不论是FoxPro、Access , MYSQL还是Oracle数据库，均可用ODBC API进行访问。由此可见，ODBC的最大优点是能以统一的方式处理所有的数据库。</p>
+<h3 id="JDBC-ODBC桥"><a href="#JDBC-ODBC桥" class="headerlink" title="JDBC-ODBC桥"></a>JDBC-ODBC桥</h3><p>JDBC-ODBC 桥本身也是一个驱动，利用这个驱动，可以使用 JDBC-API 通过ODBC 去访问数据库。这种机制实际上是把标准的 JDBC 调用转换成相应的 ODBC 调用，并通过 ODBC 访问数据库</p>
+<blockquote>
+<p><strong>因为需要通过多层调用，所以利用 JDBC-ODBC 桥访问数据库的效率较低</strong></p>
+</blockquote>
+<p>在 JDK 中，提供了 JDBC-ODBC 桥的实现类(sun.jdbc.odbc.JdbcOdbcDriver)<br><img src="../../../../images/jdbcstudy2.png" alt=""></p>
+<h3 id="部分本地API部分Java的驱动程序"><a href="#部分本地API部分Java的驱动程序" class="headerlink" title="部分本地API部分Java的驱动程序"></a>部分本地API部分Java的驱动程序</h3><blockquote>
+<p>这种类型的 JDBC 驱动程序使用 Java 编写，它调用数据库厂商提供的本地 API</p>
+</blockquote>
+<p>通过这种类型的 JDBC 驱动程序访问数据库减少了 ODBC 的调用环节，提高了数据库访问的效率<br>在这种方式下需要在客户的机器上安装本地 JDBC 驱动程序和特定厂商的本地 API<br><img src="../../../../images/jdbcstudy3.png" alt=""></p>
+<h3 id="JDBC网络纯Java驱动程序"><a href="#JDBC网络纯Java驱动程序" class="headerlink" title="JDBC网络纯Java驱动程序"></a>JDBC网络纯Java驱动程序</h3><blockquote>
+<p>这种驱动利用中间件的应用服务器来访问数据库。应用服务器作为一个到多个数据库的网关，客户端通过它可以连接到不同的数据库服务器。<br>应用服务器通常有自己的网络协议，Java 用户程序通过 JDBC 驱动程序将 JDBC 调用发送给应用服务器，应用服务器使用本地程序驱动访问数据库，从而完成请求。</p>
+</blockquote>
+<p><img src="../../../../images/jdbcstudy4.png" alt=""></p>
+<h3 id="本地协议的纯-Java-驱动程序"><a href="#本地协议的纯-Java-驱动程序" class="headerlink" title="本地协议的纯 Java 驱动程序"></a>本地协议的纯 Java 驱动程序</h3><blockquote>
+<p>多数数据库厂商已经支持允许客户程序通过网络直接与数据库通信的网络协议。<br>这种类型的驱动程序完全使用 Java 编写，通过与数据库建立的 Socket 连接，采用具体与厂商的网络协议把 JDBC 调用转换为直接连接的网络调用</p>
+</blockquote>
+<p><img src="../../../../images/jdbcstudy5.png" alt=""></p>
+<h3 id="JDBC-API"><a href="#JDBC-API" class="headerlink" title="JDBC API"></a>JDBC API</h3><blockquote>
+<p>JDBC API 是一系列的接口，它使得应用程序能够进行数据库联接，执行SQL语句，并且得到返回结果。</p>
+</blockquote>
+<p><img src="../../../../images/jdbcstudy6.png" alt=""></p>
+<h3 id="Driver-接口"><a href="#Driver-接口" class="headerlink" title="Driver 接口"></a>Driver 接口</h3><blockquote>
+<p><strong>Java.sql.Driver 接口是所有 JDBC 驱动程序需要实现的接口</strong>。<br>这个接口是提供给数据库厂商使用的，不同数据库厂商提供不同的实现。<br>在程序中不需要直接去访问实现了 Driver 接口的类，而是由驱动程序管理器类(java.sql.DriverManager)去调用这些Driver实现</p>
+</blockquote>
+<h3 id="加载与注册-JDBC-驱动"><a href="#加载与注册-JDBC-驱动" class="headerlink" title="加载与注册 JDBC 驱动"></a>加载与注册 JDBC 驱动</h3><p>加载 JDBC 驱动需调用 Class 类的静态方法 <code>forName()</code>,向其传递要加载的 JDBC 驱动的类名<br>DriverManager 类是驱动程序管理器类，负责管理驱动程序<br>通常不用显式调用 DriverManager 类的 registerDriver() 方法来注册驱动程序类的实例,因为 Driver 接口的驱动程序类都包含了静态代码块,在这个静态代码块中,会调用 DriverManager.registerDriver() 方法来注册自身的一个实例</p>
+<h3 id="建立连接"><a href="#建立连接" class="headerlink" title="建立连接"></a>建立连接</h3><blockquote>
+<p>可以调用 DriverManager 类的 getConnection() 方法建立到数据库的连接。</p>
+</blockquote>
+<p>JDBC URL 用于标识一个被注册的驱动程序，驱动程序管理器通过这个 URL 选择正确的驱动程序，从而建立到数据库的连接。<br>JDBC URL的标准由三部分组成，各部分间用冒号分隔。 </p>
+<ul>
+<li>jdbc:&lt;子协议&gt;:&lt;子名称&gt;</li>
+<li>协议：JDBC URL中的协议总是jdbc </li>
+<li>子协议：子协议用于标识一个数据库驱动程序</li>
+<li>子名称：一种标识数据库的方法。子名称可以依不同的子协议而变化，用子名称的目的是为了定位数据库提供足够的信息 </li>
+</ul>
+<h3 id="几种常用数据库的JDBC-URL"><a href="#几种常用数据库的JDBC-URL" class="headerlink" title="几种常用数据库的JDBC URL"></a>几种常用数据库的JDBC URL</h3><p><img src="../../../../images/jdbcstudy7.png" alt=""></p>
+<ul>
+<li>对于 Oracle 数据库连接，采用如下形式：<br>jdbc:oracle:thin:@localhost:1521:sid</li>
+<li>对于 SQLServer 数据库连接，采用如下形式：<br>jdbc:microsoft:sqlserver//localhost:1433; DatabaseName=sid</li>
+<li>对于 MYSQL 数据库连接，采用如下形式：<br>jdbc:mysql://localhost:3306/sid</li>
+</ul>
+<h3 id="访问数据库"><a href="#访问数据库" class="headerlink" title="访问数据库"></a>访问数据库</h3><p>数据库连接被用于向数据库服务器发送命令和 SQL 语句，在连接建立后，需要对数据库进行访问，执行 sql 语句<br>在 java.sql 包中有 3 个接口分别定义了对数据库的调用的不同方式：<br><code>Statement</code>,<code>PrepatedStatemen</code>,<code>CallableStatement</code></p>
+<h3 id="Statement"><a href="#Statement" class="headerlink" title="Statement"></a>Statement</h3><p>通过调用 Connection 对象的 createStatement 方法创建该对象<br>该对象用于执行静态的 SQL 语句，并且返回执行结果<br>Statement 接口中定义了下列方法用于执行 SQL 语句：</p>
+<ul>
+<li>ResultSet excuteQuery(String sql)</li>
+<li>int excuteUpdate(String sql)</li>
+</ul>
+<p>连接数据库示例:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">package com.jdbctest;</div><div class="line">import java.sql.Connection;</div><div class="line">import java.sql.Driver;</div><div class="line">import java.sql.SQLException;</div><div class="line">import java.util.Properties;</div><div class="line">import org.junit.Test;</div><div class="line">public class JDBCTest &#123;</div><div class="line">	@Test</div><div class="line">	public void test() throws SQLException &#123;</div><div class="line">        // 1.创建一个 Driver 实现类的对象</div><div class="line">		Driver driver = new com.mysql.jdbc.Driver();</div><div class="line">        // 2.准备连接数据库的基本信息</div><div class="line">		String url = &quot;jdbc:mysql://localhost:3306/springstudy&quot;;</div><div class="line">		Properties info = new Properties();</div><div class="line">		info.put(&quot;user&quot;, &quot;root&quot;);</div><div class="line">		info.put(&quot;password&quot;, &quot;123456&quot;);</div><div class="line">        // 3.调用 Driver 接口的 connect(url,info) 获取数据库连接</div><div class="line">		Connection connection = driver.connect(url, info);</div><div class="line">		System.out.println(connection);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意！<br>1.上述代码导入的Driver,Connection是java.sql里面的,不能导错了。<br>2.<code>info.put()</code>里面是键值对的形式,我一开始忘了给<strong>123456</strong>加双引号,一直报空指针,后来仔细对照视频,发现视频里的老师加双引号,然后我加上去一试,果然连接成功了。。。</p>
+</blockquote>
+<p>后来,跟着视频敲一个适用于mysql,oracle,sqlserver的方法,又踩坑了,很简单、很基础的坑,我想我要靠自己,然后摸索了两小时,仔细对着视频,眼睛都发算了,才发现db.properties配置文件里面不一样！！！<br>原来的:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">jdbc.user=root</div><div class="line">jdbc.password=123456</div><div class="line">jdbc.driverClass=com.mysql.jdbc.Driver</div><div class="line">jdbc.jdbcUrl=jdbc:mysql://localhost:3306/springstudy?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false</div></pre></td></tr></table></figure></p>
+<p>视频上的:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">user=root</div><div class="line">password=123456</div><div class="line">driverClass=com.mysql.jdbc.Driver</div><div class="line">jdbcUrl=jdbc:mysql://localhost:3306/springstudy?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>我想着直接把之前学习spring项目的db.properties文件拿过来,结果没注意配置文件里面的内容不同,后来junit测试时一直报空指针,数据库连接失败,说什么找不到资源,把我弄得团团转！<strong>最终经过仔细对比才发现配置文件前面没有<code>jdbc.</code>,心很痛,求抱抱,要美女来抱</strong>！</p>
+</blockquote>
+<p>适用各个数据库的方法(记得不同的数据库要导对应的连接包):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">public Connection getConnection() throws Exception &#123;</div><div class="line">		String jdbcUrl = null;</div><div class="line">		String driverClass = null;</div><div class="line">		String user = null;</div><div class="line">		String password = null;</div><div class="line">		// 读取类路径下的 db.propertis</div><div class="line">		InputStream in =</div><div class="line">		getClass().getClassLoader().getResourceAsStream(&quot;db.properties&quot;);</div><div class="line">		Properties properties = new Properties();</div><div class="line">		properties.load(in);</div><div class="line">		driverClass = properties.getProperty(&quot;driverClass&quot;);</div><div class="line">		jdbcUrl = properties.getProperty(&quot;jdbcUrl&quot;);</div><div class="line">		user = properties.getProperty(&quot;user&quot;);</div><div class="line">		password = properties.getProperty(&quot;password&quot;);</div><div class="line">		// 通过反射创建 Driver 对象</div><div class="line">		Driver driver = (Driver) Class.forName(driverClass).newInstance();</div><div class="line">		Properties info = new Properties();</div><div class="line">		info.put(&quot;user&quot;, user);</div><div class="line">		info.put(&quot;password&quot;, password);</div><div class="line">		// 通过Driver 的connect方法获取数据库连接</div><div class="line">		Connection connection = driver.connect(jdbcUrl, info);</div><div class="line">		return connection;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>使用DriverManager来写getConnection2()方法:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public Connection getConnection2() throws Exception &#123;</div><div class="line">		// 1.准备连接数据库</div><div class="line">		String driverClass = null;</div><div class="line">		String jdbcUrl = null;</div><div class="line">		String user = null;</div><div class="line">		String password = null;</div><div class="line">		// 2.读取类路径下的配置文件,获取 db.properties 对应的输入流</div><div class="line">		InputStream in = getClass().getClassLoader().getResourceAsStream(&quot;db.properties&quot;);</div><div class="line">		// 3.得到配置文件里的各个属性值</div><div class="line">		Properties properties = new Properties();</div><div class="line">		// 加载对应的输入流</div><div class="line">		properties.load(in);</div><div class="line">		driverClass = properties.getProperty(&quot;driverClass&quot;);</div><div class="line">		jdbcUrl = properties.getProperty(&quot;jdbcUrl&quot;);</div><div class="line">		user = properties.getProperty(&quot;user&quot;);</div><div class="line">		password = properties.getProperty(&quot;password&quot;);</div><div class="line">		// 4.加载数据库驱动程序</div><div class="line">		Class.forName(driverClass);</div><div class="line">		// 5.通过 DriverManager 的 getConnection() 方法获取数据库连接</div><div class="line">		return DriverManager.getConnection(jdbcUrl, user, password);	</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="通过Statement执行更新操作"><a href="#通过Statement执行更新操作" class="headerlink" title="通过Statement执行更新操作"></a>通过Statement执行更新操作</h3><p><strong>Statement</strong></p>
+<blockquote>
+<p>通过调用 Connection 对象的 createStatement 方法创建该对象<br>该对象用于执行静态的 SQL 语句，并且返回执行结果<br>Statement 接口中定义了下列方法用于执行 SQL 语句：</p>
+<ul>
+<li>ResultSet excuteQuery(String sql)</li>
+<li>int excuteUpdate(String sql)</li>
+</ul>
+</blockquote>
+<p><strong>ResultSet</strong></p>
+<blockquote>
+<p>通过调用 Statement 对象的 excuteQuery() 方法创建该对象<br>ResultSet 对象以逻辑表格的形式封装了执行数据库操作的结果集，ResultSet 接口由数据库厂商实现<br>ResultSet 对象维护了一个指向当前数据行的游标，初始的时候，游标在第一行之前，可以通过 ResultSet 对象的 next() 方法移动到下一行</p>
+</blockquote>
+<p>ResultSet 接口的常用方法：</p>
+<ul>
+<li>boolean next()</li>
+<li>getString()<br>…</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">	 * 通过 jdbc 向指定数据库插入一条记录</div><div class="line">	 * 1.Statement:用于执行 SQL 语句的对象</div><div class="line">	 * 1).通过 Connection 的 createStatement() 方法来获取</div><div class="line">	 * 2).通过 executeUpdate(sql) 可以执行 SQL 语句</div><div class="line">	 * 3). 传入的 SQL 可以是 insert,update或者delete。但不能是 select</div><div class="line">	 * </div><div class="line">	 * 2.Connection,Statement 都是应用程序和数据库服务器的连接资源。使用后一定要关闭,需要在 finally 中关闭 Connection 和 Statement 对象</div><div class="line">	 * </div><div class="line">	 * 3.关闭顺序是:先关闭Statement后关闭Connection</div><div class="line">	 */</div><div class="line">	@Test</div><div class="line">	public void testStatement() throws Exception &#123;</div><div class="line">		// 1.获取数据库连接</div><div class="line">		Connection connection = null;</div><div class="line">		Statement statement = null;</div><div class="line">		try &#123;</div><div class="line">			connection = getConnection2();</div><div class="line">			// 2.准备插入的 SQL 语句</div><div class="line">			String sql = &quot;insert into jdbc1 (id, name, date, email) values(1, &apos;李中贞&apos;, &apos;1993-06-02&apos;, &apos;295630519@qq.com&apos;)&quot;;</div><div class="line">			// 3.执行插入</div><div class="line">			// 1).获取操作 SQL 语句的 Statement 对象</div><div class="line">			// 调用 Connection 的 createStatement() 方法来获取</div><div class="line">			statement = connection.createStatement();</div><div class="line">			// 2).调用 Statement 对象的 executeUpdate(sql) 执行 SQL 语句进行插入 </div><div class="line">			statement.executeUpdate(sql);</div><div class="line">		&#125; catch (Exception e) &#123;</div><div class="line">			// TODO Auto-generated catch block</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125; finally &#123;</div><div class="line">			try &#123;</div><div class="line">				if(statement != null) &#123;</div><div class="line">					// 4.关闭Statement</div><div class="line">					statement.close();</div><div class="line">				&#125;</div><div class="line">			&#125; catch (Exception e) &#123;</div><div class="line">				// TODO Auto-generated catch block</div><div class="line">				e.printStackTrace();</div><div class="line">			&#125; finally &#123;</div><div class="line">				if(connection != null) &#123;</div><div class="line">					// 5.关闭数据库连接</div><div class="line">					connection.close();</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>通用的关闭数据库连接以及关闭  ResultSet 和 Statement方法</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public void release(ResultSet resultSet, Statement statement, Connection connection) &#123;</div><div class="line">		if(resultSet != null) &#123;</div><div class="line">			try &#123;</div><div class="line">				resultSet.close();</div><div class="line">			&#125; catch (Exception e) &#123;</div><div class="line">				// TODO: handle exception</div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		if(statement != null) &#123;</div><div class="line">			try &#123;</div><div class="line">				statement.close();</div><div class="line">			&#125; catch (Exception e) &#123;</div><div class="line">				// TODO: handle exception</div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		if(connection != null) &#123;</div><div class="line">			try &#123;</div><div class="line">				connection.close();</div><div class="line">			&#125; catch (Exception e) &#123;</div><div class="line">				// TODO: handle exception</div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>优化后的方法</strong></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">@Test</div><div class="line">public void testOptimize() throws Exception &#123;</div><div class="line">	// 1.初始化</div><div class="line">	Connection connection = null;</div><div class="line">	Statement statement = null;</div><div class="line">	ResultSet resultSet = null;</div><div class="line">	try &#123;</div><div class="line">		// 2.获取数据库连接</div><div class="line">		connection = getConnection2();</div><div class="line">		statement = connection.createStatement();</div><div class="line">		// 3.写sql</div><div class="line">		String sql = &quot;select * from jdbc1&quot;;</div><div class="line">		// 4.发送 sql 语句:调用 Statement 对象的 executeQuery(sql) 方法</div><div class="line">		// 得到结果集对象 ResultSet</div><div class="line">		resultSet = statement.executeQuery(sql);</div><div class="line">		// 5.处理结果集:</div><div class="line">		// 5.1 调用 ResultSet 的 next() 方法: 查看结果集的下一条记录是否有效</div><div class="line">		while(resultSet.next()) &#123;</div><div class="line">			int id = resultSet.getInt(1);</div><div class="line">			System.out.println(id);</div><div class="line">		&#125;</div><div class="line">	&#125; catch (Exception e) &#123;</div><div class="line">		// TODO Auto-generated catch block</div><div class="line">		e.printStackTrace();</div><div class="line">	&#125; finally &#123;</div><div class="line">		release(resultSet, statement, connection);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="JDBC-API-小结1"><a href="#JDBC-API-小结1" class="headerlink" title="JDBC API 小结1"></a>JDBC API 小结1</h3><blockquote>
+<p>java.sql.DriverManager用来装载驱动程序，获取数据库连接。<br>java.sql.Connection完成对某一指定数据库的联接<br>java.sql.Statement在一个给定的连接中作为SQL执行声明的容器，他包含了两个重要的子类型。</p>
+<ul>
+<li>Java.sql.PreparedSatement 用于执行预编译的sql声明</li>
+<li>Java.sql.CallableStatement用于执行数据库中存储过程的调用<br>java.sql.ResultSet对于给定声明取得结果的途径</li>
+</ul>
+</blockquote>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/12/07/sqlserver安装/" title="win10系统安装sql server爬坑之旅">win10系统安装sql server爬坑之旅</a></h2>
+                <p class="excerpt">
+                
+                经历。。。
+一开始电脑上有 Navicat,可以直接连接数据库,本来也够用了,前段时间学习 spring 和 jdbc 就下载了 mysql,心想也差不多够了吧,虽然祥哥早就把 sql server 安装包给我了,之前在公司另一台破旧的win7电脑上也安装成功了,所以也没太在意。直到昨天,组长分配任
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-12-07T02:23:26.328Z" class="post-list__meta--date date">2017-12-07</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/12/07/sqlserver安装/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/12/01/Spring学习17/" title="Spring4.0学习17--整合Hibernate">Spring4.0学习17--整合Hibernate</a></h2>
+                <p class="excerpt">
+                
+                Spring 整合 Hibernate
+Spring 支持大多数流行的 ORM 框架, 包括 Hibernate JDO, TopLink, Ibatis 和 JPA。
+Spring 对这些 ORM 框架的支持是一致的, 因此可以把和 Hibernate 整合技术应用到其他 ORM 框架上.
+Spr
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-12-01T09:52:36.309Z" class="post-list__meta--date date">2017-12-01</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/12/01/Spring学习17/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>Servlet | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="Servlet简介
+Java Servlet是和平台无关的服务器端组件，它运行在Servlet容器中。Servlet容器负责Servlet和客户的通信以及调用Servlet的方法，Servlet和客户的通信采用“请求/响应”的模式。
+Servlet可完成如下功能：
+创建并返回基于客户请求的动态HTML页面。
+创建可嵌入到现有HTML页面中的部分HTML页面（HTML片段）。
+与其它服务器资源（如数">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Servlet | Ronaldo">
+    <meta name="twitter:description" content="Servlet简介
+Java Servlet是和平台无关的服务器端组件，它运行在Servlet容器中。Servlet容器负责Servlet和客户的通信以及调用Servlet的方法，Servlet和客户的通信采用“请求/响应”的模式。
+Servlet可完成如下功能：
+创建并返回基于客户请求的动态HTML页面。
+创建可嵌入到现有HTML页面中的部分HTML页面（HTML片段）。
+与其它服务器资源（如数">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Servlet | Ronaldo">
+    <meta property="og:description" content="Servlet简介
+Java Servlet是和平台无关的服务器端组件，它运行在Servlet容器中。Servlet容器负责Servlet和客户的通信以及调用Servlet的方法，Servlet和客户的通信采用“请求/响应”的模式。
+Servlet可完成如下功能：
+创建并返回基于客户请求的动态HTML页面。
+创建可嵌入到现有HTML页面中的部分HTML页面（HTML片段）。
+与其它服务器资源（如数">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2017/09/19/Servlet/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-09-19T07:52:36.000Z" class="post-list__meta--date date">2017-09-19</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">Servlet</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="Servlet简介"><a href="#Servlet简介" class="headerlink" title="Servlet简介"></a>Servlet简介</h3><ol>
+<li>Java Servlet是和平台无关的服务器端组件，它运行在<em>Servlet</em>容器中。<strong>Servlet容器负责Servlet和客户的通信以及调用Servlet的方法</strong>，Servlet和客户的通信采用“请求/响应”的模式。</li>
+<li>Servlet可完成如下功能：<ul>
+<li>创建并返回基于客户请求的<strong>动态HTML页面</strong>。</li>
+<li>创建可嵌入到现有HTML页面中的部分HTML页面（HTML片段）。</li>
+<li>与其它服务器资源（如数据库或基于Java的应用程序）进行通信。</li>
+</ul>
+</li>
+</ol>
+<h3 id="Servlet容器响应客户请求的过程"><a href="#Servlet容器响应客户请求的过程" class="headerlink" title="Servlet容器响应客户请求的过程"></a>Servlet容器响应客户请求的过程</h3><p> <img src="../../../../images/servlet.png" alt=""></p>
+<h3 id="初学Servlet"><a href="#初学Servlet" class="headerlink" title="初学Servlet"></a>初学Servlet</h3><blockquote>
+<p>首先<em>Eclipse</em>建一个动态网页项目（直接点击 <em>file</em> 然后 <em>new</em> 里面的 <em>Dynamic Web Project</em>）。</p>
+<p>创建一个<em>Servlet</em>接口的实现类（在<em>src</em>文件夹下创建<em>com</em>文件夹，然后再<em>com</em>文件夹下创建<em>servlet</em>文件夹，类可以直接写在该文件夹下）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public class HelloServlet implements Servlet</div></pre></td></tr></table></figure></p>
+<p>在<em>web.xml</em>中配置和映射这个<em>Servlet</em></p>
+<p>在<em>WebContent</em>目录下的<em>WEB-INF</em>目录下新建<em>web.xml</em>文件（可以从<em>tomcat</em>安装目录下的<em>conf</em>文件夹下找到<em>tomcat</em>的<em>web.xml</em>文件，复制骨架过来）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;servlet&gt;</div><div class="line">    &lt;!--Servlet注册的名字--&gt;</div><div class="line">	&lt;servlet-name&gt;helloServlet&lt;/servlet-name&gt;</div><div class="line">    &lt;!--Servlet的全类名--&gt;</div><div class="line">	&lt;servlet-class&gt;com.servlet.controller.HelloServlet&lt;/servlet-class&gt;</div><div class="line">&lt;/servlet&gt;</div><div class="line">	</div><div class="line">&lt;servlet-mapping&gt;</div><div class="line">    &lt;!--需要和某一个servlet节点的servlet-name子节点的文本一致--&gt;</div><div class="line">	&lt;servlet-name&gt;helloServlet&lt;/servlet-name&gt;</div><div class="line">    &lt;!--映射具体的访问路径：&quot;/&quot;代表当前WEB应用的根目录--&gt;</div><div class="line">	&lt;url-pattern&gt;/hello&lt;/url-pattern&gt;</div><div class="line">&lt;/servlet-mapping&gt;</div></pre></td></tr></table></figure></p>
+<p>两处的<code>&lt;servlet-name&gt;</code>必须一样</p>
+<p>这里的<em>com.servlet.controller.HelloServlet</em>是<em>Servlet</em>的实现类的路径。</p>
+<p>打开<em>localhost:8080/day19/hello</em>(注意：如果没有修改端口号的话，默认一般就是<em>8080</em>，<em>day19</em>换成自己的项目名，<em>hello</em>是<em>web.xml</em>里面配置的<em>url-pattern</em>根目录)。</p>
+</blockquote>
+<h3 id="Servlet容器：运行Servlet、JSP、Filter等的软件环境"><a href="#Servlet容器：运行Servlet、JSP、Filter等的软件环境" class="headerlink" title="Servlet容器：运行Servlet、JSP、Filter等的软件环境"></a>Servlet容器：运行Servlet、JSP、Filter等的软件环境</h3><ul>
+<li>可以来创建Servlet，并调用Servlet的相关生命周期方法</li>
+<li>JSP，Filter，Listener，Tag…</li>
+</ul>
+<h3 id="Servlet-生命周期方法：以下方法都是由Servlet容器负责调用"><a href="#Servlet-生命周期方法：以下方法都是由Servlet容器负责调用" class="headerlink" title="Servlet 生命周期方法：以下方法都是由Servlet容器负责调用"></a>Servlet 生命周期方法：以下方法都是由Servlet容器负责调用</h3><ul>
+<li>构造器: 只被调用一次。只有第一次请求 Servlet 时，创建 Servlet 实例，调用构造器（说明 Servlet 是单实例的）。</li>
+<li>init 方法：只被调用一次。在创建好实例后立即调用，用于初始化 Servlet。</li>
+<li>service：多次调用。每次请求都会调用，实际用于响应请求的。</li>
+<li>destroy：只被调用一次。在当前 Servlet 所在的 WEB 应用被卸载前调用。用于释放当前 Servlet 所占用的资源。</li>
+</ul>
+<h3 id="load-on-startup-参数："><a href="#load-on-startup-参数：" class="headerlink" title="load-on-startup 参数："></a>load-on-startup 参数：</h3><ul>
+<li><p>配置在 servlet 节点中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;servlet&gt;</div><div class="line">	&lt;servlet-name&gt;helloServlet&lt;/servlet-name&gt;</div><div class="line">	&lt;servlet-class&gt;com.servlet.controller.HelloServlet&lt;/servlet-class&gt;</div><div class="line">    &lt;!--可以指定Servlet被创建的时机--&gt;</div><div class="line">    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;</div><div class="line">&lt;/servlet&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>load-on-startup: 可以指定 Servlet 被创建的时机。若为负数，则在第一次请求时被创建，若为 0 或正数，则在当前 WEB 应用被 Servlet 容器加载时创建实例，且数值越小越早被创建。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;servlet&gt;</div><div class="line">	&lt;servlet-name&gt;helloServlet&lt;/servlet-name&gt;</div><div class="line">	&lt;servlet-class&gt;com.servlet.controller.HelloServlet&lt;/servlet-class&gt;</div><div class="line">	&lt;load-on-startup&gt;3&lt;/load-on-startup&gt;</div><div class="line">&lt;/servlet&gt;</div><div class="line">&lt;servlet&gt;</div><div class="line">	&lt;servlet-name&gt;secondServlet&lt;/servlet-name&gt;</div><div class="line">	&lt;servlet-class&gt;com.servlet.controller.SecondServlet&lt;/servlet-class&gt;</div><div class="line">	&lt;load-on-startup&gt;1&lt;/load-on-startup&gt;</div><div class="line">&lt;/servlet&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>例如上面代码的配置，先执行 <em>secondServlet</em> 后执行  <em>helloServlet</em></p>
+</blockquote>
+<h3 id="Servlet的注册与运行"><a href="#Servlet的注册与运行" class="headerlink" title="Servlet的注册与运行"></a>Servlet的注册与运行</h3><blockquote>
+<p>Servlet程序必须在WEB应用程序的web.xml文件中进行注册和映射其访问路径，才可以被Servlet引擎加载和被外界访问。</p>
+<p>一个<code>&lt;servlet&gt;</code>元素用于注册一个Servlet，它包含有两个主要的子元素：<code>&lt;servlet-name&gt;</code>和<code>&lt;servlet-class&gt;</code>，分别用于设置Servlet的注册名称和Servlet的完整类名。</p>
+<p>一个<code>&lt;servlet-mapping&gt;</code>元素用于映射一个已注册的Servlet的一个对外访问路径，它包含有两个子元素：<code>&lt;servlet-name&gt;</code>和<code>&lt;url-pattern&gt;</code>，分别用于指定Servlet的注册名称和Servlet的对外访问路径。</p>
+<p>同一个Servlet可以被映射到多个URL上，即多个<code>&lt;servlet-mapping&gt;</code>元素的<code>&lt;servlet-name&gt;</code>子元素的设置值可以是同一个Servlet的注册名。（如下）</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;servlet-mapping&gt;</div><div class="line">	&lt;servlet-name&gt;helloServlet&lt;/servlet-name&gt;</div><div class="line">	&lt;url-pattern&gt;/hello&lt;/url-pattern&gt;</div><div class="line">&lt;/servlet-mapping&gt;</div><div class="line">&lt;servlet-mapping&gt;</div><div class="line">	&lt;servlet-name&gt;helloServlet&lt;/servlet-name&gt;</div><div class="line">	&lt;url-pattern&gt;/hello2&lt;/url-pattern&gt;</div><div class="line">&lt;/servlet-mapping&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>在Servlet映射到的URL中也可以使用 <em> 通配符，但是只能有两种固定的格式：一种格式是“ </em>.扩展名”，另一种格式是以正斜杠（/）开头并以“/*”结尾。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;servlet-mapping&gt;</div><div class="line">	&lt;servlet-name&gt;AnyName&lt;/servlet-name&gt;</div><div class="line">	&lt;url-pattern&gt;*.do&lt;/url-pattern&gt;</div><div class="line">&lt;/servlet-mapping&gt;</div><div class="line"></div><div class="line">&lt;servlet-mapping&gt;</div><div class="line">	&lt;servlet-name&gt;AnyName&lt;/servlet-name&gt;</div><div class="line">	&lt;url-pattern&gt;/action/*&lt;/url-pattern&gt;</div><div class="line">&lt;/servlet-mapping&gt;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="ServletConfig接口：封装了-Servlet-的配置信息，并且可以获取-ServletContext-对象"><a href="#ServletConfig接口：封装了-Servlet-的配置信息，并且可以获取-ServletContext-对象" class="headerlink" title="ServletConfig接口：封装了 Servlet 的配置信息，并且可以获取 ServletContext 对象"></a>ServletConfig接口：封装了 Servlet 的配置信息，并且可以获取 ServletContext 对象</h3><blockquote>
+<p>配置 Servlet 的初始化参数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;servlet&gt;</div><div class="line">	&lt;servlet-name&gt;secondServlet&lt;/servlet-name&gt;</div><div class="line">	&lt;servlet-class&gt;com.servlet.controller.SecondServlet&lt;/servlet-class&gt;</div><div class="line">		</div><div class="line">	&lt;!-- 配置Servlet初始化参数.且该节点必须在 load-on-startup 前面 --&gt;</div><div class="line">	&lt;init-param&gt;</div><div class="line">		&lt;!-- 初始化参数名 --&gt;</div><div class="line">		&lt;param-name&gt;user&lt;/param-name&gt;</div><div class="line">		&lt;!-- 初始化参数值 --&gt;</div><div class="line">		&lt;param-value&gt;root&lt;/param-value&gt;</div><div class="line">	&lt;/init-param&gt;</div><div class="line">		</div><div class="line">	&lt;load-on-startup&gt;1&lt;/load-on-startup&gt;</div><div class="line">&lt;/servlet&gt;</div></pre></td></tr></table></figure></p>
+<p>获取初始化参数: </p>
+<p>getInitParameter(String name):获取指定参数名的初始化参数</p>
+<p>getInitParameterNames():获取参数名组成的 Enumeration 对象</p>
+<p>获取 Servlet 配置名称（了解）</p>
+</blockquote>
+<h3 id="ServletContext接口"><a href="#ServletContext接口" class="headerlink" title="ServletContext接口"></a>ServletContext接口</h3><ul>
+<li>Servlet引擎为每个WEB应用程序都创建一个对应的ServletContext对象，ServletContext对象被包含在ServletConfig对象中，调用ServletConfig.getServletContext方法可以返回ServletContext对象的引用。</li>
+<li><strong>由于一个WEB应用程序中的所有Servlet都共享同一个ServletContext对象</strong>，所以，ServletContext对象被称之为 application 对象（Web应用程序对象）。<em>Eclipse中修改java代码要记得clean一下</em>。</li>
+<li>方法： getInitParameter,getInitParameterNames,getRealPath(String path),getContextPath()<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 配置当前WEB应用的初始化参数 --&gt;</div><div class="line">	&lt;context-param&gt;</div><div class="line">		&lt;param-name&gt;driver&lt;/param-name&gt;</div><div class="line">		&lt;param-value&gt;com.mysql.jdbc.Driver&lt;/param-value&gt;</div><div class="line">	&lt;/context-param&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">	public void init(ServletConfig arg0) throws ServletException &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		System.out.println(&quot;second init...&quot;);</div><div class="line">		</div><div class="line">		String user = arg0.getInitParameter(&quot;user&quot;);</div><div class="line">		System.out.println(&quot;user: &quot; + user);</div><div class="line">		</div><div class="line">		ServletContext servletContext = arg0.getServletContext();</div><div class="line">		String driver = servletContext.getInitParameter(&quot;driver&quot;);</div><div class="line">		System.out.println(&quot;driver: &quot; + driver);</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p><em>context-param</em> 设置的初始化参数可以被所有的 <em>Servlet</em> 获取，而 <em>init-param</em> 设置的初始化参数只能被所属的 <em>Servlet</em> 获取</p>
+</li>
+<li><p>getRealPath(String path):获取当前 WEB 应用的名称</p>
+</li>
+<li><p>getContextPath():获取当前 WEB 应用的某一个文件对应的输入流。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">String contextPath = servletContext.getContextPath();</div><div class="line">System.out.println(&quot;contextPath: &quot; + contextPath);</div></pre></td></tr></table></figure>
+</li>
+<li><p>getResourceAsStream(String path):path的 / 为当前WEB应用的根目录(两种写法)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">try&#123;</div><div class="line">	ClassLoader classLoader = getClass().getClassLoader();</div><div class="line">	InputStream is = (InputStream) classLoader.getResourceAsStream(&quot;jdbc.properties&quot;);</div><div class="line">	System.out.println(&quot;is: &quot; + is);</div><div class="line">&#125;catch(Exception e)&#123;</div><div class="line">	e.printStackTrace();</div><div class="line">&#125;</div><div class="line">try&#123;</div><div class="line">	InputStream is2 = (InputStream) servletContext.getResourceAsStream(&quot;/WEB-INF/classes/jdbc.properties&quot;);</div><div class="line">	System.out.println(&quot;is2: &quot; + is2);</div><div class="line">&#125;catch(Exception e)&#123;</div><div class="line">	e.printStackTrace();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>java中有两个包都包含InputStream，而在使用IDE工具时可能会默认把org.omg.CORBA.portable.InputStream这个包放在前面的。</p>
+<p>解决方法：1 手动把org.omg.CORBA.portable.InputStream包换成 java.io.InputStream<br>          或者 2 在使用IDE自动补全时向下选择 java.io.InputStream中的InputStream</p>
+</blockquote>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/09/20/3/" title="JavaWeb_HTTP协议以及get、post请求">JavaWeb_HTTP协议以及get、post请求</a></h2>
+                <p class="excerpt">
+                
+                HTTP简介
+WEB浏览器与WEB服务器之间的一问一答的交互过程必须遵循一定的规则，这个规则就是HTTP协议。
+HTTP是 hypertext transfer protocol（超文本传输协议）的简写，它是 TCP/IP 协议集中的一个应用层协议，用于定义WEB浏览器与WEB服务器之间交换数据的过
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-09-20T07:03:32.433Z" class="post-list__meta--date date">2017-09-20</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/09/20/3/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/09/19/web/" title="web程序结构">web程序结构</a></h2>
+                <p class="excerpt">
+                
+                
+WEB-INF 目录下的 classes 和 lib 目录都可以存放 Java 的类文件，在 Servlet 容器运行时，Web 应用程序的类加载器将首先加载 classes 目录下的，其次才是 lib 目录下的类。如果这两个目录下存在同名的类，起作用的将是 classes 目录下的类 
+WEB-
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-09-19T06:39:01.000Z" class="post-list__meta--date date">2017-09-19</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/09/19/web/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>

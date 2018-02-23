@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>小白第一次真正写复杂sql的经历 | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="哭一下
+发现自己一旦卡在某个问题较长时间上时,脑袋就容易发热,而且还晕甚至全身乏力,久而久之还会有点干呕,睡眠也不好,当然,主要想要的太多可是穷。哭哭哭哭哭哭哭。。。
+
+开发背景&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;昨天下午,本来想摸鱼悠闲地生活的,结果组长突然给我丢来一个需求：写一个sql关于用户购买行为分析。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;n">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="小白第一次真正写复杂sql的经历 | Ronaldo">
+    <meta name="twitter:description" content="哭一下
+发现自己一旦卡在某个问题较长时间上时,脑袋就容易发热,而且还晕甚至全身乏力,久而久之还会有点干呕,睡眠也不好,当然,主要想要的太多可是穷。哭哭哭哭哭哭哭。。。
+
+开发背景&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;昨天下午,本来想摸鱼悠闲地生活的,结果组长突然给我丢来一个需求：写一个sql关于用户购买行为分析。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;n">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="小白第一次真正写复杂sql的经历 | Ronaldo">
+    <meta property="og:description" content="哭一下
+发现自己一旦卡在某个问题较长时间上时,脑袋就容易发热,而且还晕甚至全身乏力,久而久之还会有点干呕,睡眠也不好,当然,主要想要的太多可是穷。哭哭哭哭哭哭哭。。。
+
+开发背景&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;昨天下午,本来想摸鱼悠闲地生活的,结果组长突然给我丢来一个需求：写一个sql关于用户购买行为分析。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;n">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2018/01/04/一次写sql经历/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-01-04T03:33:03.024Z" class="post-list__meta--date date">2018-01-04</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">小白第一次真正写复杂sql的经历</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="哭一下"><a href="#哭一下" class="headerlink" title="哭一下"></a>哭一下</h3><blockquote>
+<p>发现自己一旦卡在某个问题较长时间上时,脑袋就容易发热,而且还晕甚至全身乏力,久而久之还会有点干呕,睡眠也不好,当然,主要想要的太多可是穷。哭哭哭哭哭哭哭。。。</p>
+</blockquote>
+<h3 id="开发背景"><a href="#开发背景" class="headerlink" title="开发背景"></a>开发背景</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;昨天下午,本来想摸鱼悠闲地生活的,结果组长突然给我丢来一个需求：写一个sql关于用户购买行为分析。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我一听,哇擦,好牛逼啊,我会吗?sql哎,我不会写哎?内心：组长,求放过,让我浑水摸鱼吧,找旁边的java开发熊吧。各种神佛保佑啊。。。<br>然后,就没有然后了,组长扔完需求就走了。啊,美好的摸鱼生活就这么没了啊。大哭！<br>好吧,看看需求吧。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一份Excel表里面罗列了一堆字段,看下图(好吧,事实证明我又错了,我以为是传一个参数然后查他的行为,原来不是,真正的需求是不传参数得到所有用户的行为分析,泪崩<del>~</del>~)：<br><img src="../../../../images/useractionsql3.png" alt=""></p>
+<p>什么行为分析?<br>对应上表,</p>
+<ul>
+<li>用户来源代表用户在哪个平台注册的(PC,wechat,app),这个较简单</li>
+<li>用户id,也简单</li>
+<li>注册日期,简单</li>
+<li>常用姓名,我日你MM。这个是用户下单时用的最多的姓名其实也是昵称</li>
+<li>手机号,也是用户下单用的最多的手机号,日你mon</li>
+<li>邮箱,一样,用户下单时用的最多的邮箱</li>
+<li>年龄,简单</li>
+<li>性别,简单</li>
+<li>城市</li>
+<li>地址,这个是常用的下单地址(常用的下单地址里包含城市、详细地址、姓名、手机号、邮箱),只需要根据addressid求和统计并且排序得出</li>
+<li>各个平台的购买次数以及总金额,靠,这又是另一张表了,而且还是需要计算。(难点在这里)</li>
+</ul>
+<p>先看看最简单版本的把各个平台及对应的下单总是和总花费金额给列出来：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT ordersource,COUNT(*) as ordersourcecount, SUM(realprice) as realpricesum FROM 表名 where custid = 值 GROUP BY ordersource;</div></pre></td></tr></table></figure></p>
+<p>一开始我用某个测试同事的custid,得到如图结果：<br><img src="../../../../images/useractionsql4.png" alt=""></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;没问题啊,都查出来了,但是问题是我最终需要的所有的数据都在一行上面,如上图所示数据有好几行,那肯定是不行的,那么我需要把他们弄到一行去,这里让我琢磨了一段时间。后来我想到了最low的方法,<code>ordersource</code>一共就那么几个值,干脆直接写死,我需要的是各个平台对应的下单次数以及下单金额,那么上图查出来的都在同样的字段名下肯定不行的,不行怎么办呢,想了好久发现可以取变量名啊。<br>举例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">SELECT </div><div class="line">f.ordersourcecount as source4, f.realpricesum as totalmoney4 from </div><div class="line">(SELECT ordersource,COUNT(*) as ordersourcecount, SUM(realprice) as realpricesum FROM 表名 where custid = 值 and ordersource = &apos;04&apos; GROUP BY ordersource)f</div><div class="line">ORDER BY COUNT(*) DESC;</div></pre></td></tr></table></figure></p>
+<p>结果如图:<br><img src="../../../../images/useractionsql5.png" alt=""></p>
+<p>升级版：<br><img src="../../../../images/useractionsql1.png" alt=""></p>
+<p>这不就OK了吗?<br>怎么会想到的,还不是被逼的！<br><strong>开玩笑,看以前的项目,发现有<code>select a.xx,b.xx from 表1 a, 表2 b where a.某个字段 = b.某个字段</code>,我想查多个不就是以这为基础吗？</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当然有很多数据不是现成的,需要从表中查出来得到结果集,根据这个结果集去查。知道了需求就去百度呗,终于发现了<code>(SELECT ordersource,COUNT(*) as ordersourcecount, SUM(realprice) as realpricesum FROM 表名 where custid = 值 and ordersource = &#39;04&#39; GROUP BY ordersource)f</code>这种写法,其实括号内的查询就得到了一张新表,我需要的就是这个新表的数据,给它弄个变量名不就OK了吗？这个解决了,只是我以为。。。</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;至于查下单最多的地址,其实只要在订单表里查对应的用户所有的下单地址,然后根据<code>addressid</code>来<code>count()</code>并且排序,使用<code>limit 1</code>即可得到第一条数据也是最多的,然后根据得到的<code>addressid</code>去地址表里查所有需要的信息。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT addressid FROM 表名 where custid = 值 GROUP BY addressid ORDER BY COUNT(*) DESC LIMIT 1</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最终还是很快写完了第一版,满满的仔细,然后突发奇想,查查我自己的呗,虽然我自己测试时买的金额不多(测试时把商品价格都改为1分钱的),但是查一查满足一下自己吧,结果,不查不知道,一查吓一跳！<br>看图(简化版的):<br><img src="../../../../images/useractionsql6.png" alt=""></p>
+<p><strong>之前的地址什么的还有数据,但是这里的各个平台的下单次数以及总金额全都没有,泪崩！！！</strong></p>
+<p>一开始怀疑自己是不是没在这个数据库里买过,然后一查,有数据,不用说了,存储过程有问题呗,改吧。</p>
+<p>测试一下,看看自己是什么问题：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT ordersource,COUNT(*) as ordersourcecount, SUM(realprice) as realpricesum FROM 表名 where custid = 值 GROUP BY ordersource;</div></pre></td></tr></table></figure></p>
+<p>结果如图：<br><img src="../../../../images/useractionsql2.png" alt=""></p>
+<p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;看到没有,我只在两个平台下过单,而测试在所有平台都下过单所以都有数据,但是我有的平台没下过单没数据,所以查出来是空,但是为什么查出来所有的平台数据都是空呢？</strong></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;就这个问题,让我从晚上加班一直到今天早上11点都没头绪,然后问了公司前辈(你看年轻人遇到问题想不通,百度又解决不了的毕竟各个人遇到的问题总不可能完全一样,只能问前辈了,他们经验老道,能快速定位问题透过现象发现本质),前辈看了会也头疼,然后说你先回去我帮你看看,有结果告诉你,最迟中午给你答复。<br>好吧,毕竟有人帮忙总比自己干瞪眼要好。<br><strong>没想到一会儿工夫,他说你把子查询里面的<code>group by</code>去掉不就好了嘛。</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我一听,我擦,试试,咦,有用！写进存储过程,OK了！！！卧槽,这么简单,fuck啊！！！<br>心里万分感激前辈。<br>最终存储过程：<br><img src="../../../../images/useractionsql.png" alt=""></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;心里十分惬意同时自信满满的交给组长,结果没一会儿,组长说你没理解我的意思,我要的是能查所有用户的行为分析并且做个统计,不需要传参数。<br>我：心里有句MMP不知能不能讲。。。</p>
+<p>好了,一切回到原点。。。</p>
+<h3 id="我又回来了-结局是我失败了-心疼"><a href="#我又回来了-结局是我失败了-心疼" class="headerlink" title="我又回来了,结局是我失败了,心疼"></a>我又回来了,结局是我失败了,心疼</h3><p>最后还是组长亲自出手了,看来要好好学sql了,之前只是复制粘贴别人的改改,一些基本语法都不会。。。</p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/01/10/阿里云服务器部署/" title="阿里云服务器部署Vue + webpack项目问题">阿里云服务器部署Vue + webpack项目问题</a></h2>
+                <p class="excerpt">
+                
+                环境配置看很久之前的第一次建站今天在踩完阿里云环境部署相关坑后终于来到了激动人心的时刻–把degree项目部署到服务器上,然后在服务器上跑,想想就激动！以前有在服务器上放项目的经验,不过那是jsp而且是公司自己的服务器,我总想着我也要搞搞这样才能出去吹牛。这不,degree项目是使用vue开发和we
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-01-10T05:44:02.801Z" class="post-list__meta--date date">2018-01-10</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/01/10/阿里云服务器部署/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/01/02/小知识点/" title="一些小知识点">一些小知识点</a></h2>
+                <p class="excerpt">
+                
+                js正则判断 //正斜杠在javascript正则表达式中可以\/表示,例如:1234var a = &amp;apos;1/2&amp;apos;a.replace(/\//, &amp;apos;lizz&amp;apos;) // 这里的 \/\\ 即代表匹配一个正斜杠var b = &amp;apos;1/2/3&amp;apos;b.r
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-01-02T12:22:01.692Z" class="post-list__meta--date date">2018-01-02</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/01/02/小知识点/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>

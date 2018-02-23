@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>degree项目开发记录 | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="MMP,vue开发遇到的很多坑可以看这里：https://segmentfault.com/a/1190000010230843#articleHeader11 ！！！简介
+该项目是个人第一次独立从前台到后台开发,也是第一个自己使用vue开发的真正意义上的项目
+
+目的
+
+使用vue开发实战,加深对vue的学习与理解;
+后台采用SpringMVC框架,熟悉后台环境部署;
+熟练使用数据库的相关操作;">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="degree项目开发记录 | Ronaldo">
+    <meta name="twitter:description" content="MMP,vue开发遇到的很多坑可以看这里：https://segmentfault.com/a/1190000010230843#articleHeader11 ！！！简介
+该项目是个人第一次独立从前台到后台开发,也是第一个自己使用vue开发的真正意义上的项目
+
+目的
+
+使用vue开发实战,加深对vue的学习与理解;
+后台采用SpringMVC框架,熟悉后台环境部署;
+熟练使用数据库的相关操作;">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="degree项目开发记录 | Ronaldo">
+    <meta property="og:description" content="MMP,vue开发遇到的很多坑可以看这里：https://segmentfault.com/a/1190000010230843#articleHeader11 ！！！简介
+该项目是个人第一次独立从前台到后台开发,也是第一个自己使用vue开发的真正意义上的项目
+
+目的
+
+使用vue开发实战,加深对vue的学习与理解;
+后台采用SpringMVC框架,熟悉后台环境部署;
+熟练使用数据库的相关操作;">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2017/12/28/degree项目开发记录/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-12-28T12:21:08.219Z" class="post-list__meta--date date">2017-12-28</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">degree项目开发记录</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="MMP-vue开发遇到的很多坑可以看这里：https-segmentfault-com-a-1190000010230843-articleHeader11-！！！"><a href="#MMP-vue开发遇到的很多坑可以看这里：https-segmentfault-com-a-1190000010230843-articleHeader11-！！！" class="headerlink" title="MMP,vue开发遇到的很多坑可以看这里：https://segmentfault.com/a/1190000010230843#articleHeader11 ！！！"></a>MMP,vue开发遇到的很多坑可以看这里：<a href="https://segmentfault.com/a/1190000010230843#articleHeader11" target="_blank" rel="external">https://segmentfault.com/a/1190000010230843#articleHeader11</a> ！！！</h3><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><blockquote>
+<p>该项目是个人第一次独立从前台到后台开发,也是第一个自己使用vue开发的真正意义上的项目</p>
+</blockquote>
+<p><strong>目的</strong></p>
+<ol>
+<li>使用vue开发实战,加深对vue的学习与理解;</li>
+<li>后台采用SpringMVC框架,熟悉后台环境部署;</li>
+<li>熟练使用数据库的相关操作;</li>
+<li>写一个能够保存个人每次验光度数的小工具,避免自己忘记度数,同时以后再次验光可以继续保存进来进行对比。</li>
+</ol>
+<h3 id="项目功能"><a href="#项目功能" class="headerlink" title="项目功能"></a>项目功能</h3><blockquote>
+<p>目前想到的就是做成一个微信公众号或者小程序,基于微信大流量平台以及方便等特性便于用户查询、添加自己的验光度数。<br>以后如果想到好玩的或者有用的功能在往上添加。</p>
+</blockquote>
+<h3 id="项目开发中遇到的坑"><a href="#项目开发中遇到的坑" class="headerlink" title="项目开发中遇到的坑"></a>项目开发中遇到的坑</h3><blockquote>
+<p>由于一开始做的是前台,使用的是vue，公司并没有使用vue进行过开发,之前项目结束自己大概看了下,感觉挺简单的,以为自己入了门。当开始着手开发这个项目时距离当初学习vue已经几乎两个月过去了,打开vue-cli构建的项目时只有一脸懵逼,好在也不是完全忘记,毕竟踩过的坑记忆最深刻。<br>谈谈这次使用vue开发遇到的坑吧:</p>
+</blockquote>
+<p>1.该项目是做成移动端的,所以采用了<strong>Element-ui</strong>的移动版<strong>mint-ui</strong>,这里便遇到了第一个问题,其实是我一开始学习vue的时候没在意。<br>什么问题呢?</p>
+<blockquote>
+<p>其实就是这些外部<strong>UI</strong>框架需要在 <strong>main.js</strong> 里面引入并且通过 <code>Vue.component(组件名, 组件)</code> 的形式注入,这样才能在<code>.vue</code>里使用。</p>
+</blockquote>
+<p>还有,这些<strong>UI</strong>框架或多或少都会有那种弹出框的组件,这个组件需要在 <em>Vue的原型对象上增加对应的属性</em>,例如: <code>Vue.prototype.$msgbox = MessageBox</code></p>
+<hr>
+<p>2.第二个坑在首页的树形图上。一开始我试了很久都不知道怎样设置树的高度,使之随着数据的增多而自动增长。<br>解决办法是: 在 <code>created</code>钩子函数里通过 <code>this.$nextTick()</code> 方法设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">this.$refs.xian.style.height = (this.$store.state.user.degrees.length % 2 === 0 ? this.$refs.right_container.offsetHeight : this.$refs.left_container.offsetHeight) + &apos;px&apos;</div></pre></td></tr></table></figure></p>
+<p><strong>老实说,一开始我并不知道 <code>this.$nextTick()</code> 有什么用处,看了官方文档才大概了解。(主要看深入响应式原理这一块)</strong></p>
+<blockquote>
+<p><strong>异步更新队列</strong><br>由于vue是数据驱动的,并且是<strong>异步</strong>更新DOM。只要数据变化,Vue 将开启一个队列，并缓冲在同一事件循环中发生的所有数据改变。<strong>如果同一个 watcher 被多次触发，只会被推入到队列中一次</strong>。这种在缓冲时去除重复数据对于避免不必要的计算和 DOM 操作上非常重要。然后，在<em>下一个的事件循环“tick”中</em>，Vue 刷新队列并执行实际 (已去重的) 工作。<br>例如，当你设置 <code>vm.someData = &#39;new value&#39;</code> ，该组件不会立即重新渲染。<em>当刷新队列时，组件会在事件循环队列清空时的下一个“tick”更新</em>。多数情况我们不需要关心这个过程，但是如果你想在 DOM 状态更新后做点什么，这就可能会有些棘手。虽然 Vue.js 通常鼓励开发人员沿着“数据驱动”的方式思考，避免直接接触 DOM，但是有时我们确实要这么做。为了在数据变化之后等待 Vue 完成更新 DOM ，可以在数据变化之后立即使用 <code>Vue.nextTick(callback)</code> 。<strong>这样回调函数在 DOM 更新完成后就会调用</strong>。</p>
+</blockquote>
+<p>官方文档说的很清楚,当数据改变后,Vue更新DOM。而我想做的就是当用户新增验光度数时,视光树上会相应的展示刚刚新增的度数(这点能做到),与此同时,视光树应该相应的增长！<br><strong>症结就在这里,如何做到当新增了一条数据,DOM刷新时连带着视光树相应的增长呢?</strong><br>这里就需要在数据变化之后立即使用<code>Vue.nextTick(callback)</code>,改变视光树的长度。</p>
+<p>这里当时还遇到个小问题,其实是脑子犯抽了。。。不知道怎么设置视光树的高度。当时直接<code>this.$refs.xian.height</code>发现没用,突然不知所措,why?</p>
+<blockquote>
+<p>23333333!<code>this.$refs.xian</code>没有<code>height</code>属性,这是<code>style</code>里面的属性,这个破问题当时还困扰了我较长时间,现在想想,真尴尬。。。</p>
+</blockquote>
+<hr>
+<p>3.<strong>第三个坑在<code>dispatch()</code>这里。</strong><br>老实说,对这个我不陌生,毕竟刚进公司做的项目是用react开发的,vue和react很相似,react里面的<code>dispatch</code>可以调用<code>model</code>层的<code>effects</code>里面的方法(公司使用的是<code>dva</code>框架),其实vue这里也是,<code>dispatch</code>调用的是<code>store</code>层里面的<code>actions</code>,和react相比其实就是换个名字。关键问题是我不知道在哪里调后台接口了。。。<br>主要在网上看到的大多数vue的项目都只有前台,一开始有点懵逼。然后把社区里面的那个高仿饿了么项目克隆下来发现它直接在各个<code>.vue</code>文件里面调用的,但是看了它的写法,万变不离其宗,还是磕磕绊绊的写出来了。至于<code>mutations</code>其实就类似于<code>dva</code>里面的<code>reducers</code>,也可以在里面进行逻辑操作的。网上看了不少项目,基本上都有在<code>mutations</code>进行逻辑操作。但是看了公司项目里面的代码,<code>reducers</code>基本上只是对之前的数据进行了读取、赋值与返回操作。逻辑大多写在<code>effects</code>,不知道vue是不是也应该把主要逻辑写在<code>actions</code>里,目前还太菜,没法领悟它的精髓啊。</p>
+<hr>
+<p>4.<strong>第四个坑比较弱智,一看就知道是vue写少了</strong>。我想在页面中直接打印输出<code>data</code>中的属性,我直接<code>this.属性名</code>,报错,说没有该属性,我就很讶异了,有啊,我定义了啊！边思考边排除发现是<code></code>这里报错,这我就很奇怪了。我看到页面上<code>v-for</code>语句可以直接<code>v-for=&quot;item,index in this.items&quot;</code>啊,怎么到了这里就不行了呢,然后看官方文档示例,果然是这个问题,应该这样写<code></code>,不然就是语法错误。PS:这是<code>Mustache</code>语法。</p>
+<hr>
+<p>5.<strong>第五个坑就在接口那里了</strong>。以前写react时由于同事已经搭好环境了,用的是<code>fetch</code>,我只管复制粘贴改改就能用了。没有深入了解这是什么？直到这次开发这个项目,才开始真正的去学习使用它。<br>我先是把之前项目的代码拷贝过来,发现不能启动。因为没有装<code>fetch</code>安装包。遂不加思索的装了<code>fetch</code>,报错,提示我安装<code>isomorphic-fetch</code>和<code>es6-promise</code>,按照要求来,OK！</p>
+<blockquote>
+<p>接口调用是在<code>action</code>层,先把定义好的接口引入,然后使用类似<code>const res = updateUserInfo(params)</code>方法即可。注意: 参数类型必须和后台接口需要的参数类型一致。</p>
+</blockquote>
+<hr>
+<p>6.<strong>第六个坑在后台这里</strong>。后台采用的是java。<br>一开始就想后台用SpringMVC+MyBatis,把来公司接触到的技术全部自己用一遍。结果,出身未捷身先死。。。<br>由于之前自己写过一篇入门级springMVC环境搭建,安装那篇博客来最基础的jsp页面没有问题能跑。但是这次作了一下,没有用项目自带的<code>Webcontent</code>文件夹,自己新建了一个文件夹。呵呵,坑就来了。</p>
+<blockquote>
+<p>坑当然是在配置文件里啦。由于用的新文件夹<code>degree</code>,所以需要在该文件夹下新建<code>META-INF</code>和<code>WEB-INF</code>两个文件夹,同时,在<code>WEB-INF</code>下新建<code>lib</code>包,所有的<code>jar</code>包放在这里;其次,在<code>WEB-INF</code>下新建<code>web.xml</code>和<code>applicationContext.xml</code>。<code>springmvc-servlet.xml</code>放在<code>classpath</code>路径下。</p>
+</blockquote>
+<hr>
+<p>7.<strong>接下来就是编写接口的坑了</strong>。<br>接口其实照着以前的项目写,一开始<code>get</code>和<code>post</code>两种接收请求方式的接口就有点让我郁闷,好在不难。主要坑在springMVC注解这里。</p>
+<blockquote>
+<p>平常我们<code>get</code>请求可能是<code>localhost:8080/degree?userid=1</code>这种样子的,但是我照着之前的项目写,作大死加了<code>@PathVariable(&quot;userid&quot;) String userid</code>,这下就坑的我比较惨了,一直想不通 why 会错?这是 why? 思考了很久,这真的是很久,才百度到,原来用了<code>@PathVariable</code>注解的话,前台接口应该这样传:<code>localhost:8080/degree/1</code>,看到没有,不需要写<code>userid</code>直接传值就OK啦!</p>
+</blockquote>
+<hr>
+<p>8.<strong>由于大部分接口是get请求,所以不可避免的遇到了中文乱码的坑</strong>。2333333。PS:web.xml里配置了过滤POST请求中文乱码的情况</p>
+<blockquote>
+<p>用了最low的方法,<code>request.getParameter(&quot;username&quot;).getBytes(&quot;ISO-8859-1&quot;),&quot;utf-8&quot;</code>。这是因为浏览器传输时是以<code>ISO-8859-1</code>编码格式进行编码的,由于我的tomcat设置了<code>utf-8</code>编码格式,所以<code>request</code>接收参数时需要转为<code>utf-8</code>。</p>
+</blockquote>
+<hr>
+<p>9.<strong>这个坑在mybatis里</strong>。之前从来没有用过mybatis,即使项目里面有我也没自己用过,所以只能在网上自己找教程用最简单的方法去写,当然,某些地方还能理解,因为之前学习了JDBC最原始的操作方法,对基础有些了解。但还是遇到了一些麻烦。<br>比如当一个<code>userid</code>对应多个<code>leftdegree</code>和<code>rightdegree</code>时,不可能用<code>selectOne</code>,只能是<code>selectList</code>。但是提供了这么多的<code>selectList</code>,我该用哪个?</p>
+<blockquote>
+<p>既然我想要一个List,那么我肯定需要传入一个List,由于java几乎没基础,所以当时在纠结直接在类里面<code>private List&lt;String&gt; leftdegree</code>呢还是在处理业务方法里面使用<code>List&lt;Degree&gt; degrees = session.selectList(statement,userid)</code>呢。<br>实践证明,选择第二种方式是正确的。</p>
+</blockquote>
+<hr>
+<p>10.<strong>还有一个坑是在各个对应数据表的类里面,类里面定义的字段必须与数据表里面的字段相同。</strong></p>
+<hr>
+<p>11.<strong>这个坑涉及到了vue的生命周期</strong>。<br>我刚进入页面时就要调用两个接口,需要向接口传递<code>userid</code>,<code>userid</code>我放在了<code>store</code>里面,同时在首页也放进了<code>date()</code>里面。<br>一开始我想用<code>this.userid</code>即<code>data()</code>里面的数据作为参数,但是看浏览器请求接口时发现并没有带参数(get请求)。回到代码上我发现,调用后台接口的操作是在<code>mounted()</code>里面,而一开始<code>data()</code>里面的<code>userid</code>也是通过<code>this.$store.state.user.userid</code>得到的。<br>但是<code>this.$store.state.user.userid</code>得数据是在<code>created</code>函数里面才赋值的。通过这一个坑以及对比VUE的生命周期图可以发现,<code>created</code>先于<code>mounted()</code>,但是,<code>mounted()</code>也先于<code>Mounted</code>(即数据改变,页面刷新)。</p>
+<hr>
+<p>12.<strong>第12个坑在跨域代理这里</strong>。<br>老实说,其实来公司第一个项目就接触过,但是当时我完全小白,完全没在意,苍老师说改哪里我就改哪里,不要问我为什么,当时得我问了也白问。<br>当时<code>react</code>的项目也是用脚手架搭建的,并且苍老师用了<code>dora-plugin-proxy</code>,这个插件默认的端口号是<code>8989</code>,而我们本地tomcat默认端口号是<code>8080</code>,端口号不一致,调用后台接口就有跨域请求的问题,但是当时在我进公司前苍老师就配置好了,所以我只知道项目启动的端口号是<code>8989</code>而没有深究,其实当时连<code>react</code>都不会用呢。<br>这不,自己弄得项目是通过<code>vue-cli</code>自动搭建的,它的端口号被我改成了<code>8088</code>,其实就是为了尝试下当初没有理解的困惑所做的试验。果然,作了一下还是有好处的,这不把跨域代理给实践了一波吗?<br>看书或者看视频得到的技术始终没有在项目中实践来的快来的深。这叫知行合一。<br>不扯了,讲讲怎么弄的。很简单,<code>vue-cli</code>搭建的项目在<code>build</code>文件夹里面有几个文件,其中包含了3个<code>webpack</code>的文件,了解下,一般不用改。我们需要改代理首先得找到相应的位置。</p>
+<blockquote>
+<p>在<code>webpack.dev.conf.js</code>文件里可以找到<code>proxy: config.dev.proxyTable</code>这段配置,这里的<code>proxy</code>其实就是配置的代理。<strong>它的值是<code>config.dev.proxyTable</code></strong>,很明显,这又是<code>config</code>的属性。我们需要找到<code>config</code>。<br>搜索一下或者在文件顶部可以看到<code>const config = require(&#39;../config&#39;)</code>。也就是说<code>config</code>是<code>config</code>文件夹,与<code>build</code>平级。<code>config.dev</code>又对应着什么呢?<br>我的config文件夹下有四个<code>.js</code>文件,我分别打开每一个去查找,最终在<em>index.js</em>文件中找到<code>dev</code>与它内部的<code>proxyTable</code>属性。不过它是空的,我们配置就写在里面。</p>
+</blockquote>
+<p>那么怎么写呢?<br>index.js文件头部有个链接:<em><a href="http://vuejs-templates.github.io/webpack" target="_blank" rel="external">http://vuejs-templates.github.io/webpack</a></em>。浏览器打开去看里面的配置示例就OK了。</p>
+<p><strong>扯一句,一开始我照着刚进公司的那个项目的<code>package.json</code>安装<code>dora</code>以及<code>dora-plugin-proxy</code>等配置,结果完全不起作用,到git上看提示已经很久不维护了,建议转<code>roadhog</code>,我差点直接按照他的建议来,不过好在留了个心眼问了下苍老师,苍老师说那是react用的,它在react基础上封装的,vue不能用。。。建议我用webpack自带的跨域代理。。。其实一开始就这么建议了,不过我以为<code>dora-plugin-proxy</code>比较屌所以想着复制他以前的代码来着的,结果愣是没成功。我怀疑<code>dora-plugin-proxy</code>也是给<code>react</code>用的。毕竟阿里的技术栈主要是<code>react</code>,这些又都是阿里开源的。</strong></p>
+<hr>
+<p>13.<strong>第13个坑。我日</strong><br>情景:向后台调接口,基本上都是需要返回值的,前台需要根据返回的<code>req.success</code>是<code>true</code>还是<code>false</code>来进行下一步操作。本来也没什么,照着以前的项目写,用到了<code>ReturnValue</code>这个类,但是前台不管怎么调都是<strong>406</strong>,把我给气的啊。网上找了半天,人家都说是<code>Accept</code>的原因,需要设置<code>text/html, application/xhtml+xml, */*</code>。好吧,我加了,还是没用。问同事,同事也没遇到过,就这样网上找了接近两小时,终于知道为什么了,<strong>少jar包！！！</strong></p>
+<blockquote>
+<p>最后,加了<code>jackson-annotations-2.6.5.jar</code>,<code>jackson-core-2.6.5.jar</code>和<code>jackson-databind-2.6.5.jar</code>三个jar包。真的想打人！！！</p>
+</blockquote>
+<hr>
+<p>14.<strong>第14个坑</strong><br>以前,一直以为在SpringMVC环境中,<code>@RequestBody</code>接收的是一个Json对象,一直在调试代码都没有成功,后来发现，其实 <code>@RequestBody</code>接收的是一个Json对象的字符串，而不是一个Json对象。然而在ajax请求往往传的都是Json对象，后来发现用 <code>JSON.stringify(data)</code>的方式就能将对象变成字符串。<br>后台接口使用<code>@RequestBody String item</code>时,前台参数写在<strong>body</strong>里面,这是个很低级的错误。如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">export async function getDegrees (params) &#123;</div><div class="line">  return request(&apos;/degree/account/getDegrees&apos;, &#123;</div><div class="line">    method: &apos;post&apos;,</div><div class="line">    body: params</div><div class="line">  &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<hr>
+<p>15.<strong>vue生命周期的问题</strong><br><img src="../../../../images/vue.png" alt=""><br>情景: 一进入首页就会调后台接口去数据库里查询有没有数据,如果有得到数据就把它显示在首页上。接口无报错,且数据能打印出来,但是首页就是没有数据,无论怎么刷新都不行,进入其他页面在返回时发现有数据了。怀疑与生命周期有关。<br>一开始在首页的<code>data()</code>里面是这样定义<code>username</code>属性的:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">username: this.$store.state.user.username === &apos;&apos; ? &apos;游客&apos; : this.$store.state.user.username</div></pre></td></tr></table></figure></p>
+<p>然后在<code>mounted()</code>里面<code>diapatch</code>store里面的<code>actions</code>,在<code>actions</code>里面调接口并得到返回值,然后在<code>mutations</code>里改变<code>state</code>里面对应属性的值。但是值改变了,页面上的数据却没变。问题就在这里。无论怎么刷新都不管用!<br>后来打开之前考下来的其他项目参考,发现它们在页面上的<code>data()</code>里面初始化的属性基本上都是没有值的。然后我便仿着来,同时在<code>mounted()</code>方法里加上了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">this.username = this.$store.state.user.username</div></pre></td></tr></table></figure></p>
+<p>结果仍然没有。<br>然后放弃了在<code>actions</code>里面调后台接口的想法,照着之前那位高仿饿了么的大神的写法在页面上直接调后台接口:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">getUserInfo(this.$store.state.user.userid).then(res =&gt; &#123;</div><div class="line">  console.log(res)</div><div class="line">  if (res.data.success) &#123;</div><div class="line">    this.$store.state.user.username = res.data.data.username</div><div class="line">    this.$store.state.user.phone = res.data.data.phone</div><div class="line">    this.username = this.$store.state.user.username</div><div class="line">  &#125;</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>搞定了。<br>至于原理我就有点不大了解了,只能去社区问了。<br>去社区问了,回来补充:</p>
+<blockquote>
+<p>1.首先原来的方法是在<code>mutations</code>里改了<code>state</code>的值，没有改<code>store</code>里的值，但是在<code>mounted</code>里取的确是<code>store</code>里的值，两个是不同步的<br>2.<code>data()</code>是在<code>mounted</code>之前执行的<br>3.<code>state</code>要和<code>store</code>同步需要用<code>vuex</code>的<code>mapState</code>方法，映射<code>store</code>到<code>state</code></p>
+</blockquote>
+<p>例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">computed: &#123;</div><div class="line">  ...mapState([</div><div class="line">    &apos;user&apos;</div><div class="line">  ])</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>注意！！！</strong><br>我在刚进页面时还需要获取用户的度数(如果数据库里有对应的数据的话),这时候我就想作一下,还是换成<code>dispatch</code>到<code>actions</code>层去调接口,然后<code>resolve</code>到页面上接收数据。根据网上前辈们的说法,我需要在计算属性里面使用<code>...mapState</code>来同步<code>store</code>和<code>state</code>里面的数据,但是不知道是不是我的写法问题还是方法不对,依然没起作用。刚进页面上依然没有数据,刷新也没有,只有点击其他地方再返回时页面上才有数据。</p>
+<p><strong>补充！！！</strong><br>这次是真的解决了！<br>我安装了<code>vue-devtools</code>来观察,发现刚进页面以及刷新时,<code>BaseState</code>里面没数据,接下来的<code>GET_MUTATIONS_DEGREES</code>倒是有数据,也就是说一直以来的猜想是对的,vue在初始化渲染的时候确实接收到没有数据。<br>这个时候又陷入绝望了,但是,生活还要继续啊,不能半途而废啊。<br>然后,又作了一把,没想成这次作对了。。。</p>
+<blockquote>
+<p>我把页面上<code>data</code>返回的属性同时写在了<code>state</code>里面,没成想,窝草,刷新有有有有有有有数！据！了！我日<strong>*</strong>。<br>哦,期间还遇到个js基础的坑,就是<code>splice</code>方法必需要两个参数,一个是删除的起始位置,还有一个是删除的个数或者长度吧。基础不牢靠啊！</p>
+</blockquote>
+<p><img src="../../../../images/basestate.png" alt=""><br><img src="../../../../images/mutations.png" alt=""></p>
+<p>最终<code>data</code>里面的代码写成了这样:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">userid: this.$store.state.user.userid || &apos;&apos;,</div><div class="line">username: this.$store.state.user.username || &apos;&apos;,</div><div class="line">left_eye_degrees_left: this.$store.state.user.left_eye_degrees_left || [], // 放在页面左边的左眼度数</div><div class="line">right_eye_degrees_left: this.$store.state.user.right_eye_degrees_left || [], // 放在页面左边的右眼度数</div><div class="line">left_eye_degrees_right: this.$store.state.user.left_eye_degrees_right || [], // 放在页面右边的左眼度数</div><div class="line">right_eye_degrees_right: this.$store.state.user.right_eye_degrees_right || [], // 放在页面右边的右眼度数</div><div class="line">date_left: this.$store.state.user.date_left || [], // 放在页面左边的时间</div><div class="line">date_right: this.$store.state.user.date_right || [] // 放在页面右边的时间</div></pre></td></tr></table></figure></p>
+<p><strong>我个人猜想,既然想让data里面的属性响应式变化,那可能需要在state里面定义一个一模一样的进行绑定,个人愚见。</strong></p>
+<p><strong>16.<code>this.$store.dispatch()</code></strong><br>今天想不在页面上直接调接口,想通过<code>this.$store.dispatch()</code>方法到<code>actions</code>层去调接口,突然发现打印出来是<code>Promise</code>类型,以前都没在意过,写法需要符合<code>Promise</code>语法:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">this.$store.dispatch(&apos;getDegrees&apos;, params).then((res) =&gt; </div><div class="line">  &#123;console.log(res)</div><div class="line">&#125;)</div><div class="line">&lt;!-- 分割 --&gt;</div><div class="line">return new Promise((resolve, reject) =&gt; &#123;</div><div class="line">  const res = getDegrees(params)</div><div class="line">  resolve(res) // 重点在这里需要resolve</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/01/02/小知识点/" title="一些小知识点">一些小知识点</a></h2>
+                <p class="excerpt">
+                
+                js正则判断 //正斜杠在javascript正则表达式中可以\/表示,例如:1234var a = &amp;apos;1/2&amp;apos;a.replace(/\//, &amp;apos;lizz&amp;apos;) // 这里的 \/\\ 即代表匹配一个正斜杠var b = &amp;apos;1/2/3&amp;apos;b.r
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-01-02T12:22:01.692Z" class="post-list__meta--date date">2018-01-02</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/01/02/小知识点/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/12/26/NestableRuntimeException/" title="关于出现 org.apache.commons.lang.exception.NestableRuntimeException的解决方法">关于出现 org.apache.commons.lang.exception.NestableRuntimeException的解决方法</a></h2>
+                <p class="excerpt">
+                
+                
+参考: http://blog.csdn.net/gu_gu_/article/details/50551775
+
+今天在开发个人小项目后台接口时遇到了报错: org.apache.commons.lang.exception.NestableRuntimeException后台是SpringMV
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-12-26T11:37:23.299Z" class="post-list__meta--date date">2017-12-26</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/12/26/NestableRuntimeException/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>

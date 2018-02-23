@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>js 浅拷贝和深拷贝 | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="参考《JavaScript高级程序设计》以及网上内容总结https://github.com/wengjq/Blog/issues/3https://stackoverflow.com/questions/728360/how-do-i-correctly-clone-a-javascript-objecthttps://stackoverflow.com/questions/4459928/ho">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="js 浅拷贝和深拷贝 | Ronaldo">
+    <meta name="twitter:description" content="参考《JavaScript高级程序设计》以及网上内容总结https://github.com/wengjq/Blog/issues/3https://stackoverflow.com/questions/728360/how-do-i-correctly-clone-a-javascript-objecthttps://stackoverflow.com/questions/4459928/ho">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="js 浅拷贝和深拷贝 | Ronaldo">
+    <meta property="og:description" content="参考《JavaScript高级程序设计》以及网上内容总结https://github.com/wengjq/Blog/issues/3https://stackoverflow.com/questions/728360/how-do-i-correctly-clone-a-javascript-objecthttps://stackoverflow.com/questions/4459928/ho">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2017/11/02/js浅拷贝和深拷贝/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-11-02T07:12:15.320Z" class="post-list__meta--date date">2017-11-02</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">js 浅拷贝和深拷贝</h1>
+  </header>
+
+  <section class="post">
+    <p>参考《JavaScript高级程序设计》以及网上内容总结<br><a href="https://github.com/wengjq/Blog/issues/3" target="_blank" rel="external">https://github.com/wengjq/Blog/issues/3</a><br><a href="https://stackoverflow.com/questions/728360/how-do-i-correctly-clone-a-javascript-object" target="_blank" rel="external">https://stackoverflow.com/questions/728360/how-do-i-correctly-clone-a-javascript-object</a><br><a href="https://stackoverflow.com/questions/4459928/how-to-deep-clone-in-javascript" target="_blank" rel="external">https://stackoverflow.com/questions/4459928/how-to-deep-clone-in-javascript</a><br><a href="https://github.com/mqyqingfeng/Blog/issues/32" target="_blank" rel="external">https://github.com/mqyqingfeng/Blog/issues/32</a><br><a href="http://jerryzou.com/posts/dive-into-deep-clone-in-javascript/" target="_blank" rel="external">http://jerryzou.com/posts/dive-into-deep-clone-in-javascript/</a></p>
+<blockquote>
+<p>更新于2018-01-17号<br>随着最近比较闲,有时间静下心来把深浅拷贝好好补充学习下,在网上看了不少前辈们的讲解才发现以前自己写的多low!</p>
+</blockquote>
+<p><strong>首先，浅拷贝和深拷贝只是针对复杂数据类型的复制。</strong></p>
+<h3 id="这里，不得不说js的数据类型了。"><a href="#这里，不得不说js的数据类型了。" class="headerlink" title="这里，不得不说js的数据类型了。"></a>这里，不得不说js的数据类型了。</h3><blockquote>
+<p>ECMAScript中有5种简单数据类型(也叫基本数据类型)和一种复杂数据类型(引用类型)。</p>
+<ul>
+<li>5种基本数据类型<ul>
+<li>Null</li>
+<li>Undefined</li>
+<li>Boolean</li>
+<li>String</li>
+<li>Number</li>
+</ul>
+</li>
+<li>复杂数据类型：Object</li>
+</ul>
+</blockquote>
+<p>为什么说浅拷贝和深拷贝只针对复杂数据类型(Object)呢(Array其实也是Object的一种)？<br>这时候需要了解js的堆栈相关知识了。<br>高程书上p81页有讲到：</p>
+<ul>
+<li><strong>基本类型值</strong>在内存中占据固定大小的空间，因此被保存在<strong>栈内存</strong>中</li>
+<li>引用类型的值是<strong>对象</strong>，保存在<strong>堆内存</strong>中</li>
+<li>从一个变量向另一个变量复制基本类型的值，会创建这个值的一个副本</li>
+<li>从一个变量向另一个变量复制引用类型的值，复制的其实是<strong>指针</strong>，因此两个变量最终都指向同一个对象。</li>
+<li>包含引用类型值的变量实际上包含的并不是对象本身，而是一个指向该对象的<strong>指针</strong>。</li>
+</ul>
+<p>这句话：<strong>从一个变量向另一个变量复制引用类型的值，复制的其实是指针，因此两个变量最终都指向同一个对象。</strong><br>也就是说，当我们以常规方法去复制引用类型的值(其实就是复杂数据类型)时，复制的是指针，它们共享了同一个内存空间，这种复制就是<strong>浅拷贝</strong>。</p>
+<blockquote>
+<p><em>浅拷贝是拷贝引用，拷贝后的引用都是指向同一个对象的实例，彼此之间的操作会互相影响</em>。</p>
+</blockquote>
+<h3 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h3><blockquote>
+<p><strong>源对象拷贝实例,其属性值若是对象则拷贝引用。</strong>。</p>
+</blockquote>
+<p>1.<strong>通用的浅拷贝—-直接赋值型</strong><br>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// 普通对象</div><div class="line">var obj1 = &#123;</div><div class="line">    value: &apos;1&apos;</div><div class="line">&#125;</div><div class="line">var obj2 = obj1</div><div class="line">obj1 === obj2 // true</div><div class="line">obj2.value = &apos;110&apos;</div><div class="line">obj1.value // &apos;110&apos;</div><div class="line">// 数组</div><div class="line">var arr1 = [1,2,3]</div><div class="line">var arr2 = arr1</div><div class="line">arr2[0] = 9</div><div class="line">arr1 // [9,2,3]</div><div class="line">arr1 === arr2 // true</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>以上就是最简单的浅拷贝,不论数组还是对象,直接赋值即可。<br>因为不论<code>obj1</code>还是<code>obj2</code>其实都是指向<code>{value: &#39;1&#39;}</code>对象的指针,它们引用的是同一个对象,这个对象在堆内存空间里只有唯一的位置,它们两指针都指向同一个堆内存空间。所以改变任何一个指针的属性值其实是在改变它所指向的那个对象的属性值。<br>同样的,<code>arr1</code>和<code>arr2</code>也都是指向<code>[1,2,3]</code>数组的指针。</p>
+</blockquote>
+<p>2.<strong>普通对象的浅拷贝—-Object.assign()</strong></p>
+<blockquote>
+<p>具体看MDN或者我的博客：<a href="https://lizhongzhen11.github.io/2017/10/31/Object.assign/" target="_blank" rel="external">https://lizhongzhen11.github.io/2017/10/31/Object.assign/</a> </p>
+</blockquote>
+<p>例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123;</div><div class="line">    value: &apos;1&apos;</div><div class="line">&#125;</div><div class="line">var obj2 = Object.assign(&#123;&#125;,obj1)</div><div class="line">obj2.value = &apos;110&apos;</div><div class="line">obj1.value // &apos;1&apos;</div><div class="line">obj1 === obj2 // false</div></pre></td></tr></table></figure></p>
+<p><strong>新手看到这里或者自己试验可能会混淆,可能会觉得你看,你改变了<code>obj2</code>的<code>value</code>属性值,<code>obj1</code>的<code>value</code>属性值没有改变啊,两个也不全等,这难道不是深拷贝吗？怎么会是浅拷贝呢？</strong></p>
+<blockquote>
+<p>不得不说,这个例子没有选好,但是很多新手刚开始并不懂的确会搞错。<br>从这个例子来看,<code>obj1</code>只有一个<code>value</code>属性且它的值为<code>1</code>,该值是字符串不是对象。而使用<code>Object.assign({},obj1)</code>时我们应该注意到,它的第一个参数也就是目标对象是<code>{}</code>,这意味着在堆内存里的确重新开辟了新的内存空间了。由于被拷贝的<code>obj1</code>指向的对象里面的属性值是基本数据类型,所以这里很多人会把这个拷贝看做深拷贝。<br><strong>但这是不正确的或以偏概全的。</strong></p>
+</blockquote>
+<p>改写一下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123;</div><div class="line">    value: &#123;</div><div class="line">        val: &apos;1&apos;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">var obj2 = Object.assign(&#123;&#125;, obj1)</div><div class="line">obj2.value.val = &apos;110&apos;</div><div class="line">obj1.value.val // &apos;110&apos;</div><div class="line">obj2 === obj1 // false</div><div class="line">obj2.value === obj1.value // true</div></pre></td></tr></table></figure></p>
+<p>是不是很神奇？是不是很amazing？<br>why呢？</p>
+<blockquote>
+<p>仔细观察<code>obj1</code>所指向的对象的结构,可以发现它有一个<code>value</code>属性,但是该属性的值却是一个<code>{val: &#39;1&#39;}</code>对象(也可以认为这是对象里嵌套着另一个对象吧)。这个对象内部还有一个<code>val</code>属性,值为<code>&#39;1&#39;</code>(string类型)。<br><code>value</code>属性的值是一个对象,是不是可以认为这个<code>value</code>其实只是一个指向<code>{val: &#39;1&#39;}</code>的指针呢？或者说<code>obj1</code>指向的对象通过<code>value</code>属性引用<code>{val: &#39;1&#39;}</code>。<br>再分析分析<code>obj2</code>,它是由<code>Object.assign({}, obj1)</code>得到。第一个参数<code>{}</code>其实已经在堆内存里开辟了新的内存空间了,所以直接<code>obj2 === obj1</code>打印的是<code>false</code>,但是<code>obj1.value</code>和<code>obj2.value</code>其实都是指向<code>{val: &#39;1&#39;}</code>的指针,所以<code>obj2.value === obj1.value</code>返回<code>true</code>。</p>
+</blockquote>
+<p><strong>从这里可以看出,Object.assign()方法拷贝的并不完整,当被拷贝的对象,它的内部属性也是一个指针时(即内部属性值是对象),他只能是浅拷贝。</strong></p>
+<hr>
+<p>3.<strong>数组的浅拷贝—-slice和concat</strong><br><a href="https://github.com/wengjq/Blog/issues/3" target="_blank" rel="external">https://github.com/wengjq/Blog/issues/3</a> 这里说的其实比较详细了,我这边就做个学习笔记。<br>这里我做个补充：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var arr1 = [1, [1,2], &#123;value: &apos;1&apos;&#125;]</div><div class="line">var arr2 = [].slice.call(arr1)</div><div class="line">arr2 // [1, [1,2], &#123;value: &apos;1&apos;&#125;]</div><div class="line">arr1 === arr2 // false</div><div class="line">arr1[1][0] = 9</div><div class="line">arr2 // [1, [9,2], &#123;value: &apos;1&apos;&#125;]</div><div class="line">arr1[1] === arr2[1] // true</div><div class="line">arr1[2] === arr2[2] // true</div><div class="line">arr1[2].value = &apos;110&apos;</div><div class="line">arr2[2].value // &apos;110&apos;</div><div class="line">arr1[2].value === arr2[2].value // true</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>其实这里<code>[].slice.call(arr1)</code>对<code>arr1</code>调用了数组的<code>slice</code>方法,一种变形罢了。原理跟链接里面的差不多,只是提醒。</p>
+</blockquote>
+<p>4.<strong>es6语法数组的扩展</strong><br>新知识：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var arr1 = [1, [2]]</div><div class="line">var arr2 = [...arr1]</div><div class="line">arr1 === arr2 // false</div><div class="line">arr2[1].push(9)</div><div class="line">arr2 // [1, [2, 9]]</div><div class="line">arr1 // [1, [2, 9]]</div><div class="line">arr1[1] === arr2[1] // true</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>可以看到,数组的扩展也是浅拷贝哦,记住了！</p>
+</blockquote>
+<p><strong>浅拷贝目前只能找到这么多,以后如果还有继续补充。</strong></p>
+<h3 id="注意！初学者可能会搞混以下代码"><a href="#注意！初学者可能会搞混以下代码" class="headerlink" title="注意！初学者可能会搞混以下代码"></a>注意！初学者可能会搞混以下代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var a = &#123;id: 1&#125;;</div><div class="line">var b = a;</div><div class="line">a === b; // true</div><div class="line">b.id = 2;</div><div class="line">a; // &#123;id: 2&#125;</div><div class="line">a = &#123;&#125;;</div><div class="line">b; // &#123;id: 2&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>其实仔细看看代码，基础牢固是不会搞混的，但有些初学者可能一时脑回路堵塞，想不通。<br>为什么<code>a={}</code>，后，<code>b</code>却不等于<code>{}</code>呢？<br>很简单，<code>a={}</code>,其实是把变量<code>a</code>强行指向<code>{}</code>，<code>a</code>一开始是指向<code>{id:1}</code>这个对象的，但是<code>a={}</code>将<code>a</code>指向了<code>{}</code>对象，取消了对<code>{id:2}</code>的指向，内存空间改变了，此时<code>a</code>和<code>b</code>两个变量就不是共享同一个内存空间了。</p>
+</blockquote>
+<h3 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h3><p><strong>那么深拷贝是什么呢？</strong></p>
+<blockquote>
+<p>在<strong>堆中重新分配内存</strong>，并且把源对象所有属性都进行新建拷贝，以保证深拷贝的对象的引用与原来的对象的引用没有关联，<strong>拷贝后的对象与原来的对象是完全隔离，互不影响</strong>。<br>注意完全隔离互不影响！！！即使拷贝的对象内部有嵌套的对象或数组,不论嵌套多少层,改变被拷贝的对象(源对象)或者拷贝得到的对象(目标对象)中的任何一属性值都应该完全互不影响。</p>
+</blockquote>
+<p>深拷贝常见方法：JSON.parse(),JSON.stringify(),jQury的$.extend(true,{},obj),lodash的<em>.cloneDeep和</em>.clone(value, true)。</p>
+<hr>
+<p>1.<strong>最简单粗暴的JSON.parse()和JSON.stringify(),但有弊端</strong><br>看例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123;</div><div class="line">    v1: &apos;1&apos;,</div><div class="line">    v2: &#123;</div><div class="line">        value: 886</div><div class="line">    &#125;,</div><div class="line">    v3: [9,9,9]</div><div class="line">&#125;</div><div class="line">var obj2 = JSON.parse(JSON.stringify(obj1))</div><div class="line">obj2.v2.value = 996</div><div class="line">obj1.v2.value // 886</div><div class="line">obj1 === obj2 // false</div><div class="line">obj1.v2.value === obj2.v2.value // false</div><div class="line">obj1.v3.push(4)</div><div class="line">obj1.v3 // [9,9,9,4]</div><div class="line">obj2.v3 // [9,9,9]</div><div class="line">obj1.v3 === obj2.v3 // false</div></pre></td></tr></table></figure></p>
+<p>如上例所示,真的是简单粗暴啊,是不是开发时直接用就百无一害呢？<br>不是的,它还是有弊端的。因为这种方法依托于JSON序列化,而序列化本身就有限制。<br><strong>具体可以查看：<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify</a></strong></p>
+<blockquote>
+<p>MDN上明确告知有五个注意点,其中：<strong>undefined、任意的函数以及 symbol 值，在序列化过程中会被忽略（出现在非数组对象的属性值中时）或者被转换成 null（出现在数组中时）</strong></p>
+</blockquote>
+<p>什么意思呢？看例子吧：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123;</div><div class="line">    v1: 521,</div><div class="line">    v2: function() &#123;</div><div class="line">        return 125</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">var obj2 = JSON.parse(JSON.stringify(obj1))</div><div class="line">obj2 // &#123;v1: 521&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>看到没有？内部属性值如果是函数的话,序列化过程中直接忽略掉了,这怎么行呢？<br><strong>所以该方法在使用时一定要先了解<code>JSON.stringify</code>方法的注意事项</strong>,如果开发过程中我们需要深拷贝的对象中没有符合<code>JSON.stringify</code>注意事项的的,那么直接用也OK的,如果有,请不要用。</p>
+</blockquote>
+<p><strong>注意,该方法还有一个很重大的弊端：循环引用。</strong><br>例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var obj1 = &#123;value: 1&#125;</div><div class="line">var obj2 = &#123;value: 2&#125;</div><div class="line">obj1.children = obj2</div><div class="line">obj2.parent = obj1</div><div class="line">var a = JSON.stringify(obj1) // Uncaught TypeError: Converting circular structure to JSON</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>可自行打印尝试下,如果存在循环引用请不要用该方法。</p>
+</blockquote>
+<p>2.<strong>jQury的$.extend(true,{},obj)</strong><br>看 <a href="https://github.com/wengjq/Blog/issues/3" target="_blank" rel="external">https://github.com/wengjq/Blog/issues/3</a> ,感觉我的水平写得不会比他好,还不如直接看他的,然后记录一下学习的困惑吧。</p>
+<blockquote>
+<p>主要需要记住该方法也无法处理源对象内部循环引用。</p>
+</blockquote>
+<p>除此之外还可以看：<a href="https://github.com/mqyqingfeng/Blog/issues/33" target="_blank" rel="external">https://github.com/mqyqingfeng/Blog/issues/33</a><br>把extend方法实现一遍,加深理解。</p>
+<blockquote>
+<p>如果想自己实现一个较完美的深拷贝库,看这个：<a href="http://jerryzou.com/posts/dive-into-deep-clone-in-javascript/" target="_blank" rel="external">http://jerryzou.com/posts/dive-into-deep-clone-in-javascript/</a></p>
+</blockquote>
+<h3 id="自己实现-当然还是参照别人的-尴尬"><a href="#自己实现-当然还是参照别人的-尴尬" class="headerlink" title="自己实现,当然还是参照别人的,尴尬"></a>自己实现,当然还是参照别人的,尴尬</h3><p>具体看：<a href="https://github.com/lizhongzhen11/myStudy/tree/master/jq#extendjs" target="_blank" rel="external">https://github.com/lizhongzhen11/myStudy/tree/master/jq#extendjs</a><br>这上面照着前辈的讲解实践的同时加上了自己的理解,若有不完善的可以在github上提issue!</p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/11/02/js作用域链/" title="js 作用域及作用域链">js 作用域及作用域链</a></h2>
+                <p class="excerpt">
+                
+                参考《JavaScript高级程序设计》
+执行环境及作用域全局执行环境是最外围的执行环境。在Web浏览器中，全局执行环境被认为是window对象，因此所有全局变量和函数都是作为window对象的属性和方法创建的。每个函数都有自己的执行环境。ECMAScript的执行流机制，当执行流进入一个函数时，函
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-11-02T07:12:53.612Z" class="post-list__meta--date date">2017-11-02</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/11/02/js作用域链/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/11/02/闭包/" title="闭包">闭包</a></h2>
+                <p class="excerpt">
+                
+                参考了《JavaScript高级程序设计》和阮一峰先生的博客http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html
+概念
+闭包是指有权访问另一个函数作用域中的变量的函数。
+
+理解：1.闭包首先肯定是一个函数。2
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-11-02T01:49:16.342Z" class="post-list__meta--date date">2017-11-02</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/11/02/闭包/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>

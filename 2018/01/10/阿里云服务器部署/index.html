@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>阿里云服务器部署Vue + webpack项目问题 | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="环境配置看很久之前的第一次建站今天在踩完阿里云环境部署相关坑后终于来到了激动人心的时刻–把degree项目部署到服务器上,然后在服务器上跑,想想就激动！以前有在服务器上放项目的经验,不过那是jsp而且是公司自己的服务器,我总想着我也要搞搞这样才能出去吹牛。这不,degree项目是使用vue开发和webpack打包的,为了避免踩坑,特地问了苍老师,苍老师说你先在本地npm run build打包好,">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="阿里云服务器部署Vue + webpack项目问题 | Ronaldo">
+    <meta name="twitter:description" content="环境配置看很久之前的第一次建站今天在踩完阿里云环境部署相关坑后终于来到了激动人心的时刻–把degree项目部署到服务器上,然后在服务器上跑,想想就激动！以前有在服务器上放项目的经验,不过那是jsp而且是公司自己的服务器,我总想着我也要搞搞这样才能出去吹牛。这不,degree项目是使用vue开发和webpack打包的,为了避免踩坑,特地问了苍老师,苍老师说你先在本地npm run build打包好,">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="阿里云服务器部署Vue + webpack项目问题 | Ronaldo">
+    <meta property="og:description" content="环境配置看很久之前的第一次建站今天在踩完阿里云环境部署相关坑后终于来到了激动人心的时刻–把degree项目部署到服务器上,然后在服务器上跑,想想就激动！以前有在服务器上放项目的经验,不过那是jsp而且是公司自己的服务器,我总想着我也要搞搞这样才能出去吹牛。这不,degree项目是使用vue开发和webpack打包的,为了避免踩坑,特地问了苍老师,苍老师说你先在本地npm run build打包好,">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2018/01/10/阿里云服务器部署/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-01-10T05:44:02.801Z" class="post-list__meta--date date">2018-01-10</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">阿里云服务器部署Vue + webpack项目问题</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="环境配置看很久之前的第一次建站"><a href="#环境配置看很久之前的第一次建站" class="headerlink" title="环境配置看很久之前的第一次建站"></a>环境配置看很久之前的<a href="https://lizhongzhen11.github.io/2017/10/28/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%BB%BA%E7%AB%99/" target="_blank" rel="external">第一次建站</a></h3><p>今天在踩完阿里云环境部署相关坑后终于来到了激动人心的时刻–把degree项目部署到服务器上,然后在服务器上跑,想想就激动！<br>以前有在服务器上放项目的经验,不过那是jsp而且是公司自己的服务器,我总想着我也要搞搞这样才能出去吹牛。<br>这不,degree项目是使用vue开发和webpack打包的,为了避免踩坑,特地问了苍老师,苍老师说你先在本地<code>npm run build</code>打包好,然后在eclipse里面导出war包放到服务器上tomcat文件夹下面的webapps文件夹下即可。<br>看看,多么easy~<br>然后我就踩坑了。。。放上去怎么访问也找不到一直报404。。。<br>然后开始走神,神游太虚后到下午,嗯,想到把以前项目放上去看看有没有用,发现后台的确在解析,服务器应该没问题,只是该死的测试组把数据库设置成了外网无法访问,我擦擦擦擦擦擦擦擦。<br>然后我换了个项目,可以运行,服务器没问题,那么只能是我项目配置问题或者我的webpack配置问题了。<br>因为一开始开发就想试试前台用8088端口,tomcat用8080端口跨域锻炼自己的,所以本地<code>npm start</code>直接是<code>localhost:8989</code>就有了,对,你没看错,连项目名都没有,后来打开来公司的第一个项目也就是用react开发的,发现它也是这样的。<br>这,我只好又问苍老师了,结果他说他打包好后就是把文件夹放到服务器tomcat的webapps下面的,然后就能跑了。<br>why I can’t ???</p>
+<p>由于我本地打开也没有项目名就能访问了,但是打开服务器ip:8080却是tomcat页面,我很没辙。然后胡乱搜索吧,找到个帖子<strong>webpack打包后该如何访问项目？</strong></p>
+<blockquote>
+<p>链接：<a href="https://www.cnblogs.com/camille666/p/after_webpack.html" target="_blank" rel="external">https://www.cnblogs.com/camille666/p/after_webpack.html</a></p>
+</blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这篇博客是想访问webpack打包后的项目,其实我也不会,而我需要的就是在服务器上访问打包后的项目,所以便照着试了下,能用,虽然没有解决我的问题,但好歹学到东西了。</p>
+<hr>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;找了很久,依然没辙,可以看出我真的很弱鸡,但是我这些坑踩完的话怎么说也算中级开发迈进了一步,一步一步稳扎稳打嘛。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接下来只好去：<a href="http://vuejs-templates.github.io/webpack/static.html" target="_blank" rel="external">http://vuejs-templates.github.io/webpack/static.html</a> 这里找,也就是config文件夹下的index.js文件的顶部链接。<br>这里讲到了处理<strong>静态资源</strong>方面的内容。(我翻译下)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先,使用vue-cli搭建的项目可以看到<code>src/assets</code>和<code>static/.</code>两个静态资源文件夹,它们是有区别的。(233333,两名字都不一样,没区别才怪呢,你不说我都不知道它们都是静态资源)</p>
+<h3 id="webpack的资源"><a href="#webpack的资源" class="headerlink" title="webpack的资源"></a>webpack的资源</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这里提到所有的模板和css都依赖于<code>vue-html-loader</code>和<code>css-loader</code>查找资源路径解析。它还举了个例子,<code>&lt;img src=&quot;./logo.png&quot;&gt;</code>和<code>background: url(./logo.png)</code>中的<code>./logo.png</code>是一个相对资源路径并且<strong>会被webpack当做一个module依赖释放。</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;因为,<code>./logo.png</code>并不是js,当被当做module依赖时,我们需要使用<code>url-loader</code>和<code>file-loader</code>处理。模板已经为我们配置好了这些,所以你可以免费的得到一些例如文件指纹和以base64内联为条件的特征(这句话不是很懂),当能够使用相对的或者moudule路径而不用担心发布问题。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;自从这些资源在build过程中可能会被内联或复制或重命名,它们基本上是你源代码的一部分。这就是为什么推荐把webpack处理的静态资源放在<code>/src</code>文件夹下,与其他源文件并列。事实上,你不得不把它们所有的都放在<code>/src/assets</code>：您可以基于模块/组件使用它们来组织它们。举个例子,你可以把每个组件放在它自己的目录下,同时它的静态资源就在它旁边。</p>
+<h3 id="资源释放规则"><a href="#资源释放规则" class="headerlink" title="资源释放规则"></a>资源释放规则</h3><ul>
+<li>相对路径,举例：<code>./assets/logo.png</code>将被当成一个模块依赖解析。它们会被自动替换路径基于你的webpack output配置。</li>
+<li>非前缀的路径,举例：<code>assets/logo.png</code>将和相对路径一样对待,并且翻译成<code>./assets/logo.png</code>。</li>
+<li>前缀带<code>~</code>的路径被当成模块请求,类似require(‘some-module/image.png’)。如果你想杠杆的调动webpack的模块解决配置你需要用到这个前缀。举例：如果你有<code>assets</code>的一个解析别名,你需要使用<code>&lt;img src=&quot;~assets/logo.png&quot;&gt;</code>来确保这个别名得到尊重。</li>
+<li>根相对路径,举例：<code>/assets/logo.png</code> 不会被处理.<h3 id="js中得到资源路径"><a href="#js中得到资源路径" class="headerlink" title="js中得到资源路径"></a>js中得到资源路径</h3>为了让webpack返回正确的资源路径,你需要使用<code>require(&#39;./relative/path/to/file.jpg&#39;)</code>,由<code>file-loader</code>来处理并且返回解析的路径。举例：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">computed: &#123;</div><div class="line">  background () &#123;</div><div class="line">    return require(&apos;./bgs/&apos; + this.id + &apos;.jpg&apos;)</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>注意上面的例子在最终build时将把在./bgs/下每个图片都包含。这是因为webpack不能猜测它们中的哪个在运行时会被使用,所以干脆把他们全包含在内。</p>
+<h3 id="“Real”静态资源"><a href="#“Real”静态资源" class="headerlink" title="“Real”静态资源"></a>“Real”静态资源</h3><p>相比较下,<code>static/</code>下的文件不会被webpack处理：它们正确的被复制到目的地伴随着相同的文件名。你必须参考这些文件使用绝对路径,绝对路径在<code>config.js</code>中的<code>build.assetsPublicPath</code> 和 <code>build.assetsSubDirectory</code>定义。<br>举例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">// config/index.js</div><div class="line">module.exports = &#123;</div><div class="line">  // ...</div><div class="line">  build: &#123;</div><div class="line">    assetsPublicPath: &apos;/&apos;,</div><div class="line">    assetsSubDirectory: &apos;static&apos;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;任何放在<code>static/</code>下的文件应该参考使用绝对定位<code>/static/[filename]</code>的形式。如果你把<code>assetSubDirectory</code>的值改为<code>assets</code>,然后这些路径将需要被改成<code>/assets/[filename]</code>。</p>
+<p>翻译结束,嗯,学到不少,但是好像不是这个问题。。。</p>
+<h3 id="网上又看到了这个问题：webpack-react打包后的文件如何在Apache服务器上部署？感觉很接近！"><a href="#网上又看到了这个问题：webpack-react打包后的文件如何在Apache服务器上部署？感觉很接近！" class="headerlink" title="网上又看到了这个问题：webpack+react打包后的文件如何在Apache服务器上部署？感觉很接近！"></a>网上又看到了这个问题：webpack+react打包后的文件如何在Apache服务器上部署？感觉很接近！</h3><p>地址：<a href="https://segmentfault.com/q/1010000007320935/a-1020000007321242" target="_blank" rel="external">https://segmentfault.com/q/1010000007320935/a-1020000007321242</a><br>看完似懂非懂的样子。</p>
+<hr>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>研究了一天了,突然把其他项目放上去启动tomcat会打印一大串东西,唯独我的项目放上去什么都不打印,终于发现了问题所在。然后我尝试在本地启动项目,果然,本地启动项目也是,后台会打印与项目相关的东西,但是服务器上没有,说明服务器上的tomcat根本没有解析这个项目！！！</strong><br>怎么办？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;百度吧,这估计是后台环境配置问题,当时偷懒没有看springMVC环境配置,现在踩坑了。<br>问了下苍老师,苍老师说你先看看能不能调服务器上的后台接口,如果能调就说明静态资源有问题,不能调说明配置有问题。到底是老江湖！<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不过我仔细想了想,如果真的是配置有问题,那么本地调接口也应该失败啊。<br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我重新打了个包放到服务器上,能调后台接口,我日！！！说明项目后台配置没问题,那就肯定是静态资源的问题！！！缩小范围了,真的不容易,我思考了一天了,我TMD又看到了希望！！！！！！</strong></p>
+<h3 id="解决了。。。"><a href="#解决了。。。" class="headerlink" title="解决了。。。"></a>解决了。。。</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间来到了2018-01-11,距离我踩服务器上访问不到我的项目的坑已经起码2天了。今天早上终于TMD解决了！！！<br>在苍老师帮助下,发现我的springmvc没有配置静态资源映射。他给我看的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 静态资源过滤 --&gt;</div><div class="line">&lt;mvc:resources location=&quot;/resources/&quot; mapping=&quot;/resources/**&quot;/&gt;</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;但是我仔细对比了以前的老项目,有两个项目根本没有这段代码,其实我也不是很懂,后来翻开自己曾经写过的一篇<a href="https://lizhongzhen11.github.io/2017/09/14/springMVC/" target="_blank" rel="external">springMVC项目搭建</a>,发现我当时也配置了,这就说明的确需要去映射静态资源的,至于为什么有的老项目没有这段代码,我当时也不知道why?<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;后来我把这段加上去,发现没有<code>resources</code>文件夹,然后建了一个。一开始放在<code>src</code>目录下与<code>com</code>并列,放到服务器上怎么跑都没用。然后仔细阅读当时的博客,发现博客上把<code>resources</code>建在了<code>WebContent</code>目录下,因为博客上搭建的springmvc项目是中规中矩的,所有代码都在<code>WebContent</code>,所以没问题。而我并没有把项目代码放在<code>WebContent</code>下,而是放在了<code>degree</code>文件下(与<code>WebContent</code>并列同级的),而且我用到了<code>webpack</code>打包,打包后的<code>dist</code>文件夹自动也放在了<code>degree</code>目录下,那么,我就在想了,我把配置文件里面的<code>resources</code>改成<code>dist</code>不就行了吗？</p>
+<blockquote>
+<p>看到 <a href="https://www.cnblogs.com/yank/p/4477204.html" target="_blank" rel="external">https://www.cnblogs.com/yank/p/4477204.html</a> 这里的解释,了解到<strong>mapping是映射的意思,location：本地资源路径,注意必须是webapp根目录下的路径。两个*，它表示映射resources/下所有的URL，包括子路径（即接多个/）</strong><br>我这里webapp不就是degree嘛,而我dist文件夹的确在degree下啊。</p>
+</blockquote>
+<p>然后我照做了,不行。。。<br>why?<br>我不知道,但是我知道这一定是springmvc访问静态资源的问题了,所以一直围绕着这个问题百度,最终,黄天不负有心人！！！让我找到了解决方案：</p>
+<blockquote>
+<p><a href="http://blog.csdn.net/sbangm/article/details/41722559" target="_blank" rel="external">http://blog.csdn.net/sbangm/article/details/41722559</a><br>这篇博客讲到,对静态资源的访问有<strong>两种方案</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">1.</div><div class="line"> &lt;mvc:default-servlet-handler/&gt;  </div><div class="line">2.</div><div class="line">&lt;mvc:resources mapping=&quot;/images/**&quot; location=&quot;/images/&quot; cache-period=&quot;31556926&quot;/&gt;  </div><div class="line">&lt;mvc:resources mapping=&quot;/js/**&quot; location=&quot;/js/&quot; cache-period=&quot;31556926&quot;/&gt;  </div><div class="line">&lt;mvc:resources mapping=&quot;/css/**&quot; location=&quot;/css/&quot; cache-period=&quot;31556926&quot;/&gt;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p><strong>注意！！！加<code>&lt;mvc:resources...</code>前，要加上<code>&lt;mvc:annotation-driver/&gt;</code>，否则servlet控件器会解析失败</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;然后我试了下第一种方法,果然成功了。我立马想到之前有的老项目配置里面没有<code>&lt;mvc:resources...</code>会不会也是用了第一种方法,打开一看果不其然。<br>不懂springmvc直接硬上太坑了,接下来java和springmvc要好好学了。</p>
+<hr>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接下来又遇到个小坑,虽然不报404了,但是页面显示空白,浏览器network一大堆报红,这还是打包后的静态资源没有的问题,不过之前百度时有看到别人提过该问题,确定为是webpack打包后的路径问题,然后继续百度下发现了在 <a href="https://segmentfault.com/a/1190000010230843#articleHeader11" target="_blank" rel="external">https://segmentfault.com/a/1190000010230843#articleHeader11</a> 上有解答。</p>
+<blockquote>
+<p>主要是把<code>assetsPublicPath: &#39;/&#39;</code>改为<code>assetsPublicPath: &#39;./&#39;</code>即可。具体可看该地址,人家讲的不错。<br>其实我之前也翻译过了,地址是<code>/static</code>的话webpack不会对它做任何处理,而地址<code>./static</code>会被当成一个模块依赖解析。它们会被自动替换路径基于你的webpack output配置。</p>
+</blockquote>
+<h3 id="OK-大功告成！！！开搞公众号"><a href="#OK-大功告成！！！开搞公众号" class="headerlink" title="OK,大功告成！！！开搞公众号~"></a>OK,大功告成！！！开搞公众号~</h3>
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/01/12/监听对象属性值的改变/" title="学习监听对象属性值改变">学习监听对象属性值改变</a></h2>
+                <p class="excerpt">
+                
+                首先非常感谢：http://hcysun.me/2016/04/28/JavaScript%E5%AE%9E%E7%8E%B0MVVM%E4%B9%8B%E6%88%91%E5%B0%B1%E6%98%AF%E6%83%B3%E7%9B%91%E6%B5%8B%E4%B8%80%E4%B8%AA%E
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-01-12T08:56:39.829Z" class="post-list__meta--date date">2018-01-12</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/01/12/监听对象属性值的改变/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/01/04/一次写sql经历/" title="小白第一次真正写复杂sql的经历">小白第一次真正写复杂sql的经历</a></h2>
+                <p class="excerpt">
+                
+                哭一下
+发现自己一旦卡在某个问题较长时间上时,脑袋就容易发热,而且还晕甚至全身乏力,久而久之还会有点干呕,睡眠也不好,当然,主要想要的太多可是穷。哭哭哭哭哭哭哭。。。
+
+开发背景&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;昨天下午,本来想摸鱼悠闲地生活的,结果组长突然给我
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-01-04T03:33:03.024Z" class="post-list__meta--date date">2018-01-04</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/01/04/一次写sql经历/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>

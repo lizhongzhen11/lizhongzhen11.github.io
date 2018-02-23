@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>vue学习 | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="VueJS 开发常见问题集锦 请看 https://segmentfault.com/a/1190000010230843#articleHeader11
+新手向：Vue 2.0 的建议学习顺序–尤雨溪 请看 https://zhuanlan.zhihu.com/p/23134551
+vue-cli新建一个项目。项目中的各个文件代表的意思 请看 http://blog.csdn.net/qq_3">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="vue学习 | Ronaldo">
+    <meta name="twitter:description" content="VueJS 开发常见问题集锦 请看 https://segmentfault.com/a/1190000010230843#articleHeader11
+新手向：Vue 2.0 的建议学习顺序–尤雨溪 请看 https://zhuanlan.zhihu.com/p/23134551
+vue-cli新建一个项目。项目中的各个文件代表的意思 请看 http://blog.csdn.net/qq_3">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="vue学习 | Ronaldo">
+    <meta property="og:description" content="VueJS 开发常见问题集锦 请看 https://segmentfault.com/a/1190000010230843#articleHeader11
+新手向：Vue 2.0 的建议学习顺序–尤雨溪 请看 https://zhuanlan.zhihu.com/p/23134551
+vue-cli新建一个项目。项目中的各个文件代表的意思 请看 http://blog.csdn.net/qq_3">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2017/09/27/Vue学习/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-09-27T05:08:59.690Z" class="post-list__meta--date date">2017-09-27</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">vue学习</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+<p><strong>VueJS 开发常见问题集锦</strong> 请看 <em><a href="https://segmentfault.com/a/1190000010230843#articleHeader11" target="_blank" rel="external">https://segmentfault.com/a/1190000010230843#articleHeader11</a></em></p>
+<p><strong>新手向：Vue 2.0 的建议学习顺序–尤雨溪</strong> 请看 <em><a href="https://zhuanlan.zhihu.com/p/23134551" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/23134551</a></em></p>
+<p><strong>vue-cli新建一个项目。项目中的各个文件代表的意思</strong> 请看 <em><a href="http://blog.csdn.net/qq_33769914/article/details/74182277" target="_blank" rel="external">http://blog.csdn.net/qq_33769914/article/details/74182277</a></em></p>
+<p><strong>vue学习路径</strong>请看 <em><a href="http://www.jianshu.com/p/7f21880af897" target="_blank" rel="external">http://www.jianshu.com/p/7f21880af897</a></em> (讲的是使用npm的方式开发)</p>
+<p><strong>learnVue</strong>请看 <em><a href="https://github.com/answershuto/learnVue" target="_blank" rel="external">https://github.com/answershuto/learnVue</a></em></p>
+<p><strong>vue-router</strong> 请看 <em><a href="https://router.vuejs.org/zh-cn/essentials/named-routes.html" target="_blank" rel="external">https://router.vuejs.org/zh-cn/essentials/named-routes.html</a></em> 和 <em><a href="http://www.cnblogs.com/axl234/p/5899952.html" target="_blank" rel="external">http://www.cnblogs.com/axl234/p/5899952.html</a></em></p>
+<p><strong>Vuex</strong> 请看 <em><a href="https://vuex.vuejs.org/zh-cn/state.html" target="_blank" rel="external">https://vuex.vuejs.org/zh-cn/state.html</a></em></p>
+<p><strong>Vuex 2.0 源码分析</strong> 请看 <em><a href="http://www.jqhtml.com/9032.html" target="_blank" rel="external">http://www.jqhtml.com/9032.html</a></em></p>
+<p><strong>Vue源码学习笔记</strong> 请看 <em><a href="http://jiongks.name/blog/vue-code-review/" target="_blank" rel="external">http://jiongks.name/blog/vue-code-review/</a></em></p>
+<p><strong>vue搭建的后台管理系统（别人家的）</strong> 请看 <em><a href="https://github.com/PanJiaChen/vue-element-admin" target="_blank" rel="external">https://github.com/PanJiaChen/vue-element-admin</a></em></p>
+<p><strong>公司自己学习vue并搭建的后台管理系统新手版（暂时啥都没有，适合入门）</strong> 请看 <em><a href="https://github.com/DEEP-WATER/ENVOR" target="_blank" rel="external">https://github.com/DEEP-WATER/ENVOR</a></em></p>
+<p><strong>Vue2.x踩坑与总结</strong> 请看 <em><a href="http://mrzhang123.github.io/2017/02/07/vue2/" target="_blank" rel="external">http://mrzhang123.github.io/2017/02/07/vue2/</a></em></p>
+<p><strong>vue中遇到的坑 — 变化检测问题（数组相关）</strong> 请看 <em><a href="http://www.cnblogs.com/zhuzhenwei918/p/6893496.html" target="_blank" rel="external">http://www.cnblogs.com/zhuzhenwei918/p/6893496.html</a></em></p>
+<p><strong>Vue.js原理分析之observer模块详解</strong> 请看 <em><a href="http://www.jb51.net/article/105867.htm" target="_blank" rel="external">http://www.jb51.net/article/105867.htm</a></em></p>
+<p>当出现 <em>v-for</em> 不能用于根元素（root element）时，可以在外面套个 <em>div</em>。因为v-for是个循环，它返回更多的元素。导致无法渲染。可以看 <em><a href="https://segmentfault.com/q/1010000007411018" target="_blank" rel="external">https://segmentfault.com/q/1010000007411018</a></em> 上面的回答。</p>
+<p><strong>Vue升级到2.5版本后的nextTick的改动引发的小bug</strong> 请看 <em><a href="https://mp.weixin.qq.com/s/6nTicqlTwvQHW_U9g47rBg" target="_blank" rel="external">https://mp.weixin.qq.com/s/6nTicqlTwvQHW_U9g47rBg</a></em></p>
+</blockquote>
+<h3 id="vue学习汇总（从0开始）"><a href="#vue学习汇总（从0开始）" class="headerlink" title="vue学习汇总（从0开始）"></a>vue学习汇总（从0开始）</h3><blockquote>
+<p>1.首先，我是找到 <em>vue</em> 的官方文档，跟着敲了一遍，真的很简单，因为首页基础内容没用到什么复杂知识，而且还是引入的 <em>js</em> 文件，不是脚手架搭建的，先跟着敲一遍理解。</p>
+<p>2.过度动画这块大概看了，暂时没用到。下面的尽量都看一看。</p>
+<p>3.基础看完其实可以带着看看 <em>API</em> 了，鼠标移到右上角学习自动显示。 <em>API</em> 好好看一遍。</p>
+<p>4.一开始我就把网上大神写的后台管理系统 <em><a href="https://github.com/PanJiaChen/vue-element-admin" target="_blank" rel="external">https://github.com/PanJiaChen/vue-element-admin</a></em> git了下来，因为是脚手架搭建的，用到了很多知识，也绕了很长时间，我在上面列出了一些链接，比如 <strong>vue-router</strong> 和 <strong>vuex</strong>，这两个重点看。</p>
+<p>5.由于之前写过 <em>react</em> 和 <em>dva</em>，所以感觉和 <em>dva</em> 很像。用那个后台管理系统来分析，先看看那个项目的 <em>readme</em> 文档。该项目把页面组件写在了 <em>views</em> 和 <em>components</em> 两个文件夹，路由写在 <em>router</em> 文件夹下的 <em>index.js</em> 里，<em>_import_development</em> 和 <em>_import_production</em> 两个文件是作者自己写的方法，用来方便导入组件的。<br><strong>下面列出了两种导入组件的方法，第二张图不是该项目！！！</strong><br><strong>注意_import_development里面的代码，它只是方便导入views文件夹下的组件，不能用于导入component文件夹下的组件</strong></p>
+</blockquote>
+<p><img src="../../../../images/vueElementAdmin/router.png" alt="Alt text"><br><img src="../../../../images/vueElementAdmin/router-index.png" alt="Alt text"></p>
+<blockquote>
+<p>分析 <em>router</em> 文件夹下 <em>index.js</em> 代码，举个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    path: &apos;/&apos;,</div><div class="line">    component: Layout,</div><div class="line">    redirect: &apos;/dashboard&apos;,</div><div class="line">    name: &apos;首页&apos;,</div><div class="line">    hidden: true,</div><div class="line">    children: [&#123; path: &apos;dashboard&apos;, component: _import(&apos;dashboard/index&apos;) &#125;]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p><strong>注意：Vue.use(Router)必须要有</strong></p>
+<blockquote>
+<p>我选取了首页根路径路由代码，第一个 <em>component</em> 导入了 <em>Layout</em> 组件，该组件其实把左侧菜单栏 <em>Sidebar</em> 和 顶部 <em>Navbar</em> 以及 主要渲染区域组装成一个组件，<em>redirect</em> 重定向到 <em>/dashboard</em> 页面，<em>children</em> 对应的是子路径。<em>children: [{ path: ‘dashboard’, component: _import(‘dashboard/index’) }]</em> 这段代码代表到了 <em>/dashboard</em>  地址还要渲染出 <em>views文件夹下dashboard文件夹下面的index.vue组件</em></p>
+</blockquote>
+<p><strong>接下来是 store 仓库</strong></p>
+<blockquote>
+<p>分析 <em>store</em> 文件夹下的代码最好先把 <em>vuex</em> 看看，了解下。</p>
+<p>其实用过 <em>dva</em> 的人学起来就简单多了， <em>store</em> 文件夹相当于 <em>dva</em> 里面的 <em>models</em> 文件夹，用来处理数据和业务逻辑的，这个项目把 <em>getters</em> 和 <em>store</em> 分出来单独写了。</p>
+<p>来到这里就要回到组件看代码了，以 <em>Navbar.vue</em> 举例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">import &#123; mapGetters &#125; from &apos;vuex&apos;</div><div class="line">import Levelbar from &apos;./Levelbar&apos;</div><div class="line">import TabsView from &apos;./TabsView&apos;</div><div class="line">import Hamburger from &apos;components/Hamburger&apos;</div><div class="line">import Screenfull from &apos;components/Screenfull&apos;</div><div class="line">import ErrorLog from &apos;components/ErrLog&apos;</div><div class="line">import errLogStore from &apos;store/errLog&apos;</div><div class="line"></div><div class="line">export default &#123;</div><div class="line">  components: &#123;</div><div class="line">    Levelbar,</div><div class="line">    TabsView,</div><div class="line">    Hamburger,</div><div class="line">    ErrorLog,</div><div class="line">    Screenfull</div><div class="line">  &#125;,</div><div class="line">  data() &#123;</div><div class="line">    return &#123;</div><div class="line">      log: errLogStore.state.errLog</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  computed: &#123;</div><div class="line">    ...mapGetters([</div><div class="line">      &apos;sidebar&apos;,</div><div class="line">      &apos;name&apos;,</div><div class="line">      &apos;avatar&apos;</div><div class="line">    ])</div><div class="line">  &#125;,</div><div class="line">  methods: &#123;</div><div class="line">    toggleSideBar() &#123;</div><div class="line">      this.$store.dispatch(&apos;ToggleSideBar&apos;)</div><div class="line">    &#125;,</div><div class="line">    logout() &#123;</div><div class="line">      this.$store.dispatch(&apos;LogOut&apos;).then(() =&gt; &#123;</div><div class="line">        location.reload()// 为了重新实例化vue-router对象 避免bug</div><div class="line">      &#125;)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<ul>
+<li>首先从 <em>vuex</em> 导入 <em>mapGetters</em>,这在接下来有用。</li>
+<li><em>components</em> 可以暂时不看，因为该组件需要在页面上用到其他的一些组件所以把它们导入进来</li>
+<li><em>data()</em> 方法返回的是初始值</li>
+<li><em>computed</em> 计算属性，里面的 <em>…mapGetters([‘sidebar’,’name’,’avatar’])</em> 其实是连接 <em>store</em> 文件夹下 <em>modules</em> 文件夹下的 <em>user.js</em> 里面的 <em>state</em> 属性里面的 <em>name,avatar</em> 以及 <em>app.js</em> 里面的 <em>state</em> 属性里的 <em>sidebar</em>，也就是说它连接的是 <em>store</em> 里面 <em>state</em> 的具体属性。这里和 <em>dva</em> 略有不同，因为 <em>dva</em> 连接的是 <em>models</em> 文件夹下具体的 <em>model</em> 文件（ <em>namespace</em> 命名的）。</li>
+</ul>
+<p><img src="../../../../images/vueElementAdmin/store.png" alt="Alt text"></p>
+<ul>
+<li><em>methods</em>，方法写在这里。注意的是 <em>this.$store.dispatch(‘ToggleSideBar’)</em> 这里的 <em>dispatch</em> 其实是向 <em>store</em> 文件夹下的 <em>modules</em> 文件夹下对应的 <em>app.js</em> 里面的 <em>actions下的ToggleSideBar</em> 分发数据(你可以认为开始处理业务逻辑了，因为通过 <em>…mapGetters</em> 的连接状态改变能够返回并响应式的改变页面)。PS：为什么是app.js?因为 <em>ToggleSideBar</em> 是写在 app.js 里面 <em>actions</em> 里的。哈哈哈哈哈！</li>
+</ul>
+<p><strong>分析一波app.js</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">state: &#123;</div><div class="line">    sidebar: &#123;</div><div class="line">      opened: !+Cookies.get(&apos;sidebarStatus&apos;)</div><div class="line">    &#125;,</div><div class="line">    visitedViews: []</div><div class="line">  &#125;,</div><div class="line">  mutations: &#123;</div><div class="line">    TOGGLE_SIDEBAR: state =&gt; &#123;</div><div class="line">      if (state.sidebar.opened) &#123;</div><div class="line">        Cookies.set(&apos;sidebarStatus&apos;, 1)</div><div class="line">      &#125; else &#123;</div><div class="line">        Cookies.set(&apos;sidebarStatus&apos;, 0)</div><div class="line">      &#125;</div><div class="line">      state.sidebar.opened = !state.sidebar.opened</div><div class="line">    &#125;,</div><div class="line">    ADD_VISITED_VIEWS: (state, view) =&gt; &#123;</div><div class="line">      if (state.visitedViews.some(v =&gt; v.path === view.path)) return</div><div class="line">      state.visitedViews.push(&#123; name: view.name, path: view.path &#125;)</div><div class="line">    &#125;,</div><div class="line">    DEL_VISITED_VIEWS: (state, view) =&gt; &#123;</div><div class="line">      let index</div><div class="line">      for (const [i, v] of state.visitedViews.entries()) &#123;</div><div class="line">        if (v.path === view.path) &#123;</div><div class="line">          index = i</div><div class="line">          break</div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">      state.visitedViews.splice(index, 1)</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  actions: &#123;</div><div class="line">    ToggleSideBar(&#123; commit &#125;) &#123;</div><div class="line">      commit(&apos;TOGGLE_SIDEBAR&apos;)</div><div class="line">    &#125;,</div><div class="line">    addVisitedViews(&#123; commit &#125;, view) &#123;</div><div class="line">      commit(&apos;ADD_VISITED_VIEWS&apos;, view)</div><div class="line">    &#125;,</div><div class="line">    delVisitedViews(&#123; commit, state &#125;, view) &#123;</div><div class="line">      return new Promise((resolve) =&gt; &#123;</div><div class="line">        commit(&apos;DEL_VISITED_VIEWS&apos;, view)</div><div class="line">        resolve([...state.visitedViews])</div><div class="line">      &#125;)</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li><em>actions</em> 相当于 <em>dva</em> 的 <em>effects</em>,<em>mutations</em> 相当于 <em>dva</em> 的 <em>reducers</em>。<em>actions</em> 里面的方法从页面接收数据，收到了使用 <em>commit</em> 调 <em>mutations</em>里面的方法。</li>
+<li>你 <em>state</em> 里面的属性必须写在 <em>getters</em> 里面。所有用到的属性都必须在 <em>getters</em> 里面写入。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">const getters = &#123;</div><div class="line">  sidebar: state =&gt; state.app.sidebar,</div><div class="line">  visitedViews: state =&gt; state.app.visitedViews,</div><div class="line">  token: state =&gt; state.user.token,</div><div class="line">  avatar: state =&gt; state.user.avatar,</div><div class="line">  name: state =&gt; state.user.name,</div><div class="line">  introduction: state =&gt; state.user.introduction,</div><div class="line">  status: state =&gt; state.user.status,</div><div class="line">  roles: state =&gt; state.user.roles,</div><div class="line">  setting: state =&gt; state.user.setting,</div><div class="line">  permission_routers: state =&gt; state.permission.routers,</div><div class="line">  addRouters: state =&gt; state.permission.addRouters</div><div class="line">&#125;</div><div class="line">export default getters</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>store下面的index.js</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">import Vue from &apos;vue&apos;</div><div class="line">import Vuex from &apos;vuex&apos;</div><div class="line">import app from &apos;./modules/app&apos;</div><div class="line">import user from &apos;./modules/user&apos;</div><div class="line">import permission from &apos;./modules/permission&apos;</div><div class="line">import getters from &apos;./getters&apos;</div><div class="line">Vue.use(Vuex)</div><div class="line">const store = new Vuex.Store(&#123;</div><div class="line">  modules: &#123;</div><div class="line">    app,</div><div class="line">    user,</div><div class="line">    permission</div><div class="line">  &#125;,</div><div class="line">  getters</div><div class="line">&#125;)</div><div class="line">export default store</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>所有的 <em>modules</em> 文件必须在这里导入。多看看 vuex 吧，骚年们！！！</p>
+<h3 id="The-end-世界是你们的，也是我的"><a href="#The-end-世界是你们的，也是我的" class="headerlink" title="The end: 世界是你们的，也是我的~"></a>The end: 世界是你们的，也是我的~</h3></blockquote>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/10/12/事件冒泡和事件捕获/" title="JS 事件冒泡和事件捕获 事件委托">JS 事件冒泡和事件捕获 事件委托</a></h2>
+                <p class="excerpt">
+                
+                发现之前学的一些知识，不怎么用的时候容易忘记，这样不好，所以记录下来
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;他们是描述事件触发时序问题的术语。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;事件捕获指的是从document到触发事件的那个节点
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-10-12T05:33:40.524Z" class="post-list__meta--date date">2017-10-12</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/10/12/事件冒泡和事件捕获/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/09/26/js/" title="js相关">js相关</a></h2>
+                <p class="excerpt">
+                
+                
+MDN web docs https://developer.mozilla.org/zh-CN/
+http://www.w3cplus.com/
+
+js and jQuery
+JavaScript参考教程：http://javascript.ruanyifeng.com/nodejs/modul
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-09-26T06:09:51.189Z" class="post-list__meta--date date">2017-09-26</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/09/26/js/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>

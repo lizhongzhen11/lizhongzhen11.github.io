@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>Spring4.0学习7--IOC 容器中 Bean 的生命周期方法 和 创建 Bean 后置处理器 | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="IOC 容器中 Bean 的生命周期方法
+Spring IOC 容器可以管理 Bean 的生命周期, Spring 允许在 Bean 生命周期的特定点执行定制的任务.Spring IOC 容器对 Bean 的生命周期进行管理的过程:
+
+通过构造器或工厂方法创建 Bean 实例
+为 Bean 的属性设置值和对其他 Bean 的引用
+调用 Bean 的初始化方法
+Bean 可以使用了
+当容器关闭时,">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Spring4.0学习7--IOC 容器中 Bean 的生命周期方法 和 创建 Bean 后置处理器 | Ronaldo">
+    <meta name="twitter:description" content="IOC 容器中 Bean 的生命周期方法
+Spring IOC 容器可以管理 Bean 的生命周期, Spring 允许在 Bean 生命周期的特定点执行定制的任务.Spring IOC 容器对 Bean 的生命周期进行管理的过程:
+
+通过构造器或工厂方法创建 Bean 实例
+为 Bean 的属性设置值和对其他 Bean 的引用
+调用 Bean 的初始化方法
+Bean 可以使用了
+当容器关闭时,">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Spring4.0学习7--IOC 容器中 Bean 的生命周期方法 和 创建 Bean 后置处理器 | Ronaldo">
+    <meta property="og:description" content="IOC 容器中 Bean 的生命周期方法
+Spring IOC 容器可以管理 Bean 的生命周期, Spring 允许在 Bean 生命周期的特定点执行定制的任务.Spring IOC 容器对 Bean 的生命周期进行管理的过程:
+
+通过构造器或工厂方法创建 Bean 实例
+为 Bean 的属性设置值和对其他 Bean 的引用
+调用 Bean 的初始化方法
+Bean 可以使用了
+当容器关闭时,">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2017/11/17/Spring学习7/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-11-17T07:17:21.530Z" class="post-list__meta--date date">2017-11-17</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">Spring4.0学习7--IOC 容器中 Bean 的生命周期方法 和 创建 Bean 后置处理器</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="IOC-容器中-Bean-的生命周期方法"><a href="#IOC-容器中-Bean-的生命周期方法" class="headerlink" title="IOC 容器中 Bean 的生命周期方法"></a>IOC 容器中 Bean 的生命周期方法</h3><blockquote>
+<p><strong>Spring IOC 容器可以管理 Bean 的生命周期</strong>, Spring 允许在 Bean 生命周期的特定点执行定制的任务.<br>Spring IOC 容器对 Bean 的生命周期进行管理的过程:</p>
+<ul>
+<li>通过构造器或工厂方法创建 Bean 实例</li>
+<li>为 Bean 的属性设置值和对其他 Bean 的引用</li>
+<li><strong>调用 Bean 的初始化方法</strong></li>
+<li>Bean 可以使用了</li>
+<li><strong>当容器关闭时, 调用 Bean 的销毁方法</strong><br>在 Bean 的声明里设置 init-method 和 destroy-method 属性, 为 Bean 指定初始化和销毁方法.</li>
+</ul>
+</blockquote>
+<p><strong>注意：由于对xml不怎么了解，以为所有的xml头部的<code>http xmln</code>都是一样的，然后跟着视频练习，报错：<code>cvc-complex-type.3.2.2: 元素 &#39;bean&#39; 中不允许出现属性 &#39;destory-method&#39;</code>,当时百思不得其解，因为视频里的老师也没做什么特别的操作，然后问以前同事，他告诉我上面的http xlmn这种连接我没导入，尴尬。又是一个坑，踩到了。</strong><br>重开一个包com.chenyixun,新建测试用的Main.java和Car.java,src下新建beans-cycle.xml<br>Car.java:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public class Car &#123;</div><div class="line">	public Car() &#123;</div><div class="line">		super();</div><div class="line">		// TODO Auto-generated constructor stub</div><div class="line">		System.out.println(&quot;constructor...&quot;);</div><div class="line">	&#125;</div><div class="line">	private String brand;</div><div class="line">	public void setBrand(String brand) &#123;</div><div class="line">		System.out.println(&quot;setBrand...&quot;);</div><div class="line">		this.brand = brand;</div><div class="line">	&#125;</div><div class="line">	public void init2() &#123;</div><div class="line">		System.out.println(&quot;init2...&quot;);</div><div class="line">	&#125;</div><div class="line">	public void destory() &#123;</div><div class="line">		System.out.println(&quot;destory...&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>beans-cycle.xml(注意该配置文件头部导入对应的http xmln连接):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;bean id=&quot;car&quot; class=&quot;com.chenyixun.Car&quot; init-method=&quot;init2&quot; destory-method=&quot;destory&quot;&gt;</div><div class="line">  	&lt;property name=&quot;brand&quot; value=&quot;玛莎拉蒂&quot;&gt;&lt;/property&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure></p>
+<p>Main.java:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(&quot;beans-cycle.xml&quot;);</div><div class="line">Car car = (Car)ctx.getBean(&quot;car&quot;);</div><div class="line">System.out.println(car);		</div><div class="line">// 关闭IOC容器</div><div class="line">ctx.close();</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>运行打印输出发现，构造器最先打印，在容器关闭的时候调destory方法</p>
+</blockquote>
+<h3 id="创建-Bean-后置处理器"><a href="#创建-Bean-后置处理器" class="headerlink" title="创建 Bean 后置处理器"></a>创建 Bean 后置处理器</h3><blockquote>
+<p><strong>Bean 后置处理器允许在调用初始化方法前后对 Bean 进行额外的处理.</strong><br><strong>Bean 后置处理器对 IOC 容器里的所有 Bean 实例逐一处理</strong>, 而非单一实例. 其典型应用是: 检查 Bean 属性的正确性或根据特定的标准更改 Bean 的属性.<br>对Bean 后置处理器而言, 需要实现<code>Interface BeanPostProcessor</code>接口. 在初始化方法被调用前后, Spring 将把每个 Bean 实例分别传递给上述接口的以下两个方法:</p>
+<ul>
+<li>postProcessAfterInitialization(Object bean, String beanName)</li>
+<li>postProcessBeforeinitialization(Object bean, String beanName)</li>
+</ul>
+</blockquote>
+<p>Spring IOC 容器对 Bean 的生命周期进行管理的过程:</p>
+<ul>
+<li>通过构造器或工厂方法创建 Bean 实例</li>
+<li>为 Bean 的属性设置值和对其他 Bean 的引用</li>
+<li><strong>将 Bean 实例传递给 Bean 后置处理器的 postProcessBeforeInitialization 方法</strong></li>
+<li>调用 Bean 的初始化方法</li>
+<li><strong>将 Bean 实例传递给 Bean 后置处理器的 postProcessAfterInitialization方法</strong></li>
+<li>Bean 可以使用了</li>
+<li>当容器关闭时, 调用 Bean 的销毁方法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">public class MyBeanPostProcessor implements BeanPostProcessor &#123;</div><div class="line">    @Override</div><div class="line">    public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException &#123;</div><div class="line">        System.out.println(&quot;postProcessBeforeInitialization: &quot; + bean + &quot;,&quot; + beanName);</div><div class="line">        return bean;</div><div class="line">    &#125;</div><div class="line">    @Override</div><div class="line">    public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException &#123;</div><div class="line">        System.out.println(&quot;postProcessAfterInitialization: &quot; + bean + &quot;,&quot; + beanName);</div><div class="line">        return bean;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>需要在配置文件里面配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!-- </div><div class="line">    实现BeanPostProcessor接口，并提供</div><div class="line">    Object postProcessBeforeInitialization(Object bean, String beanName): init-method方法之前</div><div class="line">    Object postProcessAfterInitialization(Object bean, String beanName): init-method方法之后</div><div class="line">    的实现</div><div class="line">    bean: bean本身</div><div class="line">    beanName: IOC容器配置bean的名字</div><div class="line">    返回值：实际上返回给用户的那个bean,注意：可以在以上两个方法中返回修改的bean,甚至返回一个新的bean</div><div class="line">--&gt;</div><div class="line">&lt;bean class=&quot;com.chenyixun.MyBeanPostProcessor&quot;/&gt;</div></pre></td></tr></table></figure></p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/11/17/Spring学习8/" title="Spring4.0学习8--通过工厂方法配置bean">Spring4.0学习8--通过工厂方法配置bean</a></h2>
+                <p class="excerpt">
+                
+                通过调用静态工厂方法创建 Bean
+调用静态工厂方法创建 Bean是将对象创建的过程封装到静态方法中. 当客户端需要对象时, 只需要简单地调用静态方法, 而不同关心创建对象的细节.要声明通过静态方法创建的 Bean, 需要在 Bean 的 class 属性里指定拥有该工厂的方法的类, 同时在 fac
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-11-17T08:51:31.471Z" class="post-list__meta--date date">2017-11-17</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/11/17/Spring学习8/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/11/16/Spring学习6/" title="Spring4.0学习6--使用外部属性文件和SpEL">Spring4.0学习6--使用外部属性文件和SpEL</a></h2>
+                <p class="excerpt">
+                
+                使用外部属性文件
+在配置文件里配置 Bean 时, 有时需要在 Bean 的配置里混入系统部署的细节信息(例如: 文件路径, 数据源配置信息等). 而这些部署细节实际上需要和 Bean 配置相分离Spring 提供了一个 PropertyPlaceholderConfigurer 的 BeanFac
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-11-16T11:13:26.862Z" class="post-list__meta--date date">2017-11-16</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/11/16/Spring学习6/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>

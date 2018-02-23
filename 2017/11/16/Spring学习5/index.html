@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>Spring4.0学习5--bean之间的关系以及bean的作用域 | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="继承
+Spring 允许继承 bean 的配置, 被继承的 bean 称为父 bean. 继承这个父 Bean 的 Bean 称为子 Bean子 Bean 从父 Bean 中继承配置, 包括 Bean 的属性配置子 Bean 也可以覆盖从父 Bean 继承过来的配置父 Bean 可以作为配置模板, 也可以作为 Bean 实例. 若只想把父 Bean 作为模板, 可以设置 &amp;lt;bean&amp;gt;">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Spring4.0学习5--bean之间的关系以及bean的作用域 | Ronaldo">
+    <meta name="twitter:description" content="继承
+Spring 允许继承 bean 的配置, 被继承的 bean 称为父 bean. 继承这个父 Bean 的 Bean 称为子 Bean子 Bean 从父 Bean 中继承配置, 包括 Bean 的属性配置子 Bean 也可以覆盖从父 Bean 继承过来的配置父 Bean 可以作为配置模板, 也可以作为 Bean 实例. 若只想把父 Bean 作为模板, 可以设置 &amp;lt;bean&amp;gt;">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Spring4.0学习5--bean之间的关系以及bean的作用域 | Ronaldo">
+    <meta property="og:description" content="继承
+Spring 允许继承 bean 的配置, 被继承的 bean 称为父 bean. 继承这个父 Bean 的 Bean 称为子 Bean子 Bean 从父 Bean 中继承配置, 包括 Bean 的属性配置子 Bean 也可以覆盖从父 Bean 继承过来的配置父 Bean 可以作为配置模板, 也可以作为 Bean 实例. 若只想把父 Bean 作为模板, 可以设置 &amp;lt;bean&amp;gt;">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2017/11/16/Spring学习5/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-11-16T07:09:36.405Z" class="post-list__meta--date date">2017-11-16</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">Spring4.0学习5--bean之间的关系以及bean的作用域</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><blockquote>
+<p><strong>Spring 允许继承 bean 的配置</strong>, 被继承的 bean 称为父 bean. 继承这个父 Bean 的 Bean 称为子 Bean<br><em>子 Bean 从父 Bean 中继承配置, 包括 Bean 的属性配置</em><br>子 Bean 也可以<strong>覆盖</strong>从父 Bean 继承过来的配置<br>父 Bean 可以作为配置模板, 也可以作为 Bean 实例. <strong>若只想把父 Bean 作为模板, 可以设置 <code>&lt;bean&gt;</code> 的abstract 属性为 true</strong>, 这样 Spring 将不会实例化这个 Bean<br><strong>并不是 <code>&lt;bean&gt;</code> 元素里的所有属性都会被继承</strong>. 比如: autowire, abstract 等.<br>也可以忽略父 Bean 的 class 属性, 让子 Bean 指定自己的类, 而共享相同的属性配置. 但此时 <strong>abstract 必须设为 true</strong></p>
+</blockquote>
+<p>新开一个包，com.zhouxingchi,新建一个Main.java类<br>Main.java:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">package com.zhouxingchi;</div><div class="line">import org.springframework.context.ApplicationContext;</div><div class="line">import org.springframework.context.support.ClassPathXmlApplicationContext;</div><div class="line">import com.jay.Address;</div><div class="line">public class Main &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		ApplicationContext ctx = new ClassPathXmlApplicationContext(&quot;beans-relation.xml&quot;);</div><div class="line">		Address address = (Address)ctx.getBean(&quot;address&quot;);</div><div class="line">		System.out.println(address);</div><div class="line">		address = (Address)ctx.getBean(&quot;address2&quot;);</div><div class="line">		System.out.println(address);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在src文件夹下新建一个bean配置文件，取名beans-relation.xml:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 抽象bean: bean的abstract属性为true的bean，这样的bean不能被IOC容器实例化，只能被继承 --&gt;</div><div class="line">&lt;!-- 若某一个bean的class属性没有指定，则该bean必须是一个抽象bean --&gt;</div><div class="line">//&lt;bean id=&quot;address&quot; class=&quot;com.jay.Address&quot; p:city=&quot;nanjing&quot; p:street=&quot;应天大街&quot; abstract=&quot;true&quot;&gt;&lt;/bean&gt;</div><div class="line">&lt;bean id=&quot;address&quot; class=&quot;com.jay.Address&quot; p:city=&quot;nanjing&quot; p:street=&quot;应天大街&quot;&gt;&lt;/bean&gt;</div><div class="line">&lt;!-- bean 配置的继承：使用 bean 的 parent 属性指定继承哪个 bean 的配置 --&gt;</div><div class="line">&lt;bean id=&quot;address2&quot; p:city=&quot;nanjing&quot; p:street=&quot;奥体大街&quot; parent=&quot;address&quot;&gt;&lt;/bean&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>注意：如果<code>abstract=&quot;true&quot;</code>，则该bean为抽象bean，不能被实例化，会报异常</strong></p>
+<h3 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h3><blockquote>
+<p>Spring 允许用户通过 <strong>depends-on</strong> 属性设定 Bean <strong>前置依赖的Bean</strong>，前置依赖的 Bean 会在本 Bean 实例化之前创建好<br><strong>如果前置依赖于多个 Bean，则可以通过逗号，空格或的方式配置 Bean 的名称</strong></p>
+</blockquote>
+<p>beans-relation.xml:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;bean id=&quot;car&quot; class=&quot;com.jay.Car&quot; p:brand=&quot;玛莎拉蒂&quot; p:price=&quot;1800000&quot;&gt;&lt;/bean&gt;</div><div class="line">&lt;!-- 要求在配置Person时，必须有一个关联的car！换句话说，Person这个bean依赖于Car这个bean --&gt;</div><div class="line">&lt;bean id=&quot;person&quot; class=&quot;com.jay.Person&quot; p:name=&quot;周星驰&quot; p:address-ref=&quot;address&quot; </div><div class="line">	p:car-ref=&quot;car&quot; depends-on=&quot;car&quot;&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure></p>
+<p>Main.java:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Person person = (Person)ctx.getBean(&quot;person&quot;);</div><div class="line">System.out.println(person);</div></pre></td></tr></table></figure></p>
+<p><strong>注意：如果被依赖的bean不存在，则报异常</strong></p>
+<h3 id="bean的作用域"><a href="#bean的作用域" class="headerlink" title="bean的作用域"></a>bean的作用域</h3><blockquote>
+<p>在 Spring 中, 可以在 <code>&lt;bean&gt;</code> 元素的 <strong>scope</strong> 属性里设置 Bean 的作用域.<br><strong>默认情况下, Spring 只为每个在 IOC 容器里声明的 Bean 创建唯一一个实例, 整个 IOC 容器范围内都能共享该实例</strong>：所有后续的 getBean() 调用和 Bean 引用都将返回这个唯一的 Bean 实例.该作用域被称为 singleton, 它是所有 Bean 的默认作用域.</p>
+</blockquote>
+<p><img src="../../../../images/springbean1.png" alt=""><br>继续新建一个包，com.chenglong.里面新建个Main.java<br>com.jay.Car.java里面加个无参构造器(用来观察什么时候创建了bean实例):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public Car() &#123;</div><div class="line">		super();</div><div class="line">		System.out.println(&quot;constructor...&quot;);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>src文件夹下新建个beans-scope.xml配置文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;!-- </div><div class="line">  		使用bean的scope属性来配置bean的作用域</div><div class="line">  		singleton:默认值。容器初始时创建 bean 实例，在整个容器生命周期只创建这一个bean</div><div class="line">  		prototype:原型的，容器初始化时不创建bean的实例，而在每次请求时创建一个新的bean实例，并返回</div><div class="line">   --&gt;</div><div class="line">  &lt;bean id=&quot;car&quot; class=&quot;com.jay.Car&quot; scope=&quot;prototype&quot;&gt;</div><div class="line">  	&lt;property name=&quot;brand&quot; value=&quot;玛莎拉蒂&quot;&gt;&lt;/property&gt;</div><div class="line">  	&lt;property name=&quot;price&quot; value=&quot;1800000&quot;&gt;&lt;/property&gt;</div><div class="line">  &lt;/bean&gt;</div></pre></td></tr></table></figure></p>
+<p>Main.java:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">public class Main &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		ApplicationContext ctx = new ClassPathXmlApplicationContext(&quot;beans-scope.xml&quot;);</div><div class="line">        // 下面的代码注释掉，运行起来可以直观看到singleton和prototype的区别</div><div class="line">		//Car car = (Car) ctx.getBean(&quot;car&quot;);</div><div class="line">		//Car car2 = (Car) ctx.getBean(&quot;car&quot;);</div><div class="line">        //System.out.println(car == car2); // true</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>运行上面代码可以看到，当<code>scope=</code></strong></p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/11/16/Spring学习6/" title="Spring4.0学习6--使用外部属性文件和SpEL">Spring4.0学习6--使用外部属性文件和SpEL</a></h2>
+                <p class="excerpt">
+                
+                使用外部属性文件
+在配置文件里配置 Bean 时, 有时需要在 Bean 的配置里混入系统部署的细节信息(例如: 文件路径, 数据源配置信息等). 而这些部署细节实际上需要和 Bean 配置相分离Spring 提供了一个 PropertyPlaceholderConfigurer 的 BeanFac
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-11-16T11:13:26.862Z" class="post-list__meta--date date">2017-11-16</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/11/16/Spring学习6/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/11/16/Spring学习4/" title="Spring4.0学习4--自动装配">Spring4.0学习4--自动装配</a></h2>
+                <p class="excerpt">
+                
+                XML 配置里的 Bean 自动装配
+Spring IOC 容器可以自动装配 Bean. 需要做的仅仅是在 &amp;lt;bean&amp;gt; 的 autowire 属性里指定自动装配的模式byType(根据类型自动装配): 若 IOC 容器中有多个与目标 Bean 类型一致的 Bean. 在这种情况下, S
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-11-16T05:52:07.024Z" class="post-list__meta--date date">2017-11-16</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/11/16/Spring学习4/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>

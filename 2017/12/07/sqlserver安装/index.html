@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>win10系统安装sql server爬坑之旅 | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="经历。。。
+一开始电脑上有 Navicat,可以直接连接数据库,本来也够用了,前段时间学习 spring 和 jdbc 就下载了 mysql,心想也差不多够了吧,虽然祥哥早就把 sql server 安装包给我了,之前在公司另一台破旧的win7电脑上也安装成功了,所以也没太在意。直到昨天,组长分配任务,让我帮忙写几个很简单的常量表,接到项目,连接数据库,建表,写接口,发现要写存储过程了,嗯,直接在">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="win10系统安装sql server爬坑之旅 | Ronaldo">
+    <meta name="twitter:description" content="经历。。。
+一开始电脑上有 Navicat,可以直接连接数据库,本来也够用了,前段时间学习 spring 和 jdbc 就下载了 mysql,心想也差不多够了吧,虽然祥哥早就把 sql server 安装包给我了,之前在公司另一台破旧的win7电脑上也安装成功了,所以也没太在意。直到昨天,组长分配任务,让我帮忙写几个很简单的常量表,接到项目,连接数据库,建表,写接口,发现要写存储过程了,嗯,直接在">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="win10系统安装sql server爬坑之旅 | Ronaldo">
+    <meta property="og:description" content="经历。。。
+一开始电脑上有 Navicat,可以直接连接数据库,本来也够用了,前段时间学习 spring 和 jdbc 就下载了 mysql,心想也差不多够了吧,虽然祥哥早就把 sql server 安装包给我了,之前在公司另一台破旧的win7电脑上也安装成功了,所以也没太在意。直到昨天,组长分配任务,让我帮忙写几个很简单的常量表,接到项目,连接数据库,建表,写接口,发现要写存储过程了,嗯,直接在">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2017/12/07/sqlserver安装/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-12-07T02:23:26.328Z" class="post-list__meta--date date">2017-12-07</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">win10系统安装sql server爬坑之旅</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="经历。。。"><a href="#经历。。。" class="headerlink" title="经历。。。"></a>经历。。。</h3><blockquote>
+<p>一开始电脑上有 Navicat,可以直接连接数据库,本来也够用了,前段时间学习 spring 和 jdbc 就下载了 mysql,心想也差不多够了吧,虽然祥哥早就把 sql server 安装包给我了,之前在公司另一台破旧的win7电脑上也安装成功了,所以也没太在意。<br>直到昨天,组长分配任务,让我帮忙写几个很简单的常量表,接到项目,连接数据库,建表,写接口,发现要写存储过程了,嗯,直接在 Navicat 上操作吧,结果居然不行！！！<br>问同事，才知道,原来 Navicat 可以连接 sql server(这个项目的数据库是sql server),但是不能写存储过程,貌似需要组长在数据库里面设置一下才行,然后得知他们都是自己有 sql server,没有麻烦组长,我就想要不我也装一下吧,说不定以后还用得到呢。<br>然后…开始了爬坑之旅…</p>
+</blockquote>
+<p>一开始,心想,祥哥都给了我安装包和教程地址,不就是手到擒来的事吗?小 case!(得意脸~)</p>
+<p><strong>按照教程步骤来,第一步就GG了(教程地址:<a href="http://www.downcc.com/tech/4135.html" target="_blank" rel="external">http://www.downcc.com/tech/4135.html</a>)</strong></p>
+<blockquote>
+<p>Why?</p>
+</blockquote>
+<p>因为 win10 一直提醒我安装 .net framework3.5!<br>我点击安装,它检查了一会告诉我网络有问题,有你妹妹的问题啊,网络明明是好的啊!<br>我点击跳过,它果真跳过,嗯，直接关闭了,我xxxxxxxx!<br>后来,我想,我老老实实的去下载.net framework3.5吧。</p>
+<blockquote>
+<p>经过百度我知道,我win10自带的.net framework4.0,因为我一开始通过百度软件下载的那个.net安装工具来安装的,我想先安装个4.0吧,结果告诉我电脑有,这是我真的xxxxxx了!既然我有为什么不给我安装sql server???<br>然后继续通过那个下载工具下载了3.5版本的,一脸懵逼,擦擦擦!没用。。。</p>
+</blockquote>
+<p>一直百度中。。。<br>期间浪费了很长时间。。。不过也不是没有收获。我知道<strong>为什么windows自动下载软件时报没有网络这个问题的解决方法了</strong>。</p>
+<blockquote>
+<p>一般情况下,我们需要<strong>右击我的电脑</strong>,点击<strong>管理</strong>,弹出计算机管理窗口。点击服务和应用程序,然后点击服务(看下图的红框框),找到<strong>windows Update</strong>改成手动,然后<strong>启动</strong>,这个不启动,windows怎么联网下载呢?</p>
+</blockquote>
+<p><img src="../../../../images/sqlserver1.png" alt=""><br><img src="../../../../images/sqlserver2.png" alt=""></p>
+<p>然后,继续爬坑。。。</p>
+<p><strong>就这样一直待到21:30左右,老板看没什么人了我还在,估计内心在想,这小伙很不错,沉迷敲代码无法自拨,走近一看,我日XXXXX,你丫的在看什么???</strong><br>这时，我只好舔着脸说,老板,我安装 sql server 失败了。(老板不想和我说话。。。)<br>好吧,老板过来帮我操作一波。我问他我win10自带的4.0为什么不行,老板说,人家要的是3.5!<br>然后让我继续通过windows自动下载3.5版本的。<br>电脑一直在那连接,终于连接好了,开始下载,但几乎没动。。。<br>老板叹了口气,明天再来下吧。。。</p>
+<p>第二天,天气不好,但我的心情很好,因为我觉得一早过来肯定刷刷刷的把sql server安装好,hahahahahaha!</p>
+<blockquote>
+<p><strong>人不能太得意!(没事,放在心里就好,哈哈哈哈哈哈哈)</strong></p>
+</blockquote>
+<p>嗯,果不其然,又TMD遇到坑了!我擦你XXXX!<br>好不容易等到windows把.net framework3.5下载好,结果sql server检查环境时说重启电脑失败。好吧,我傻逼嘻嘻的重启电脑,顺便去倒个茶,跟祥哥说一下进展,结果,幸亏我说了进展,祥哥立马指出,你重启电脑也没用的,需要删除注册表!我日。。。<br>多亏了自己多嘴说了一下,避免了一个坑,继续百度。</p>
+<blockquote>
+<p><strong>删注册表的步骤教程:<a href="https://jingyan.baidu.com/article/a24b33cd52a0b919fe002bae.html" target="_blank" rel="external">https://jingyan.baidu.com/article/a24b33cd52a0b919fe002bae.html</a></strong></p>
+</blockquote>
+<p>OK！Let’s go!</p>
+<p>然后,我又遇到坑了。。。在下面这一步,由于当时没截图,只能找个成功的图展示下大概位置。<br><img src="../../../../images/sqlserver3.png" alt=""></p>
+<blockquote>
+<p>这里我点击下一步时,报错:<strong>属性不匹配。存在属性(Directory, Archive)，包括属性(0)，不包括属性(Archive, Compressed, Encrypted)</strong>。<br>心塞,一波三折,不过好在有百度。解决方案:<a href="http://blog.csdn.net/guet_kite/article/details/69952196" target="_blank" rel="external">http://blog.csdn.net/guet_kite/article/details/69952196</a><br>大意就是<strong>在C:\Program Files里找到“Microsoft SQL Server”文件夹，右键属性—高级—取消勾选“可以存档文件夹”—确定—应用。</strong>和<strong>C:\Program Files (x86)\Microsoft SQL Server 的也改一下 属性&gt;&gt;高级&gt;&gt;可以存档的文件夹 （取消√）</strong>。<br>这样就解决了。</p>
+</blockquote>
+<p>然后我继续紧跟着教程走,终于没报错了(期间有一步让我们输入内置数据库管理员密码,其实就是设置密码),OK!安装完成,真不容易,不过好在自己解决了,为了防止自己忘记,遂记录下来。</p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/12/12/JDBC学习2/" title="JDBC学习2">JDBC学习2</a></h2>
+                <p class="excerpt">
+                
+                
+示例地址:https://github.com/lizhongzhen11/jdbcStudy-1
+
+SQL 注入攻击SQL 注入是利用某些系统没有对用户输入的数据进行充分的检查，而在用户输入数据中注入非法的 SQL 语句段或命令，从而利用系统的 SQL 引擎完成恶意行为的做法
+
+对于 Java 
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-12-12T02:00:56.716Z" class="post-list__meta--date date">2017-12-12</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/12/12/JDBC学习2/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/12/04/JDBC学习1/" title="JDBC学习1">JDBC学习1</a></h2>
+                <p class="excerpt">
+                
+                
+示例地址:https://github.com/lizhongzhen11/jdbcStudy-1
+
+数据持久化持久化(persistence)：把数据保存到可掉电式存储设备中以供之后使用。大多数情况下，特别是企业级应用，数据持久化意味着将内存中的数据保存到硬盘上加以”固化”，而持久化的实现过程大
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-12-04T01:32:16.455Z" class="post-list__meta--date date">2017-12-04</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/12/04/JDBC学习1/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>

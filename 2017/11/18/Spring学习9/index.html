@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>Spring4.0学习9--通过注解配置bean | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="一、在 classpath 中扫描组件
+组件扫描(component scanning):  Spring 能够从 classpath 下自动扫描, 侦测和实例化具有特定注解的组件.特定组件包括:
+
+@Component: 基本注解, 标识了一个受 Spring 管理的组件
+@Respository: 标识持久层组件
+@Service: 标识服务层(业务层)组件
+@Controller: 标识表现">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Spring4.0学习9--通过注解配置bean | Ronaldo">
+    <meta name="twitter:description" content="一、在 classpath 中扫描组件
+组件扫描(component scanning):  Spring 能够从 classpath 下自动扫描, 侦测和实例化具有特定注解的组件.特定组件包括:
+
+@Component: 基本注解, 标识了一个受 Spring 管理的组件
+@Respository: 标识持久层组件
+@Service: 标识服务层(业务层)组件
+@Controller: 标识表现">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Spring4.0学习9--通过注解配置bean | Ronaldo">
+    <meta property="og:description" content="一、在 classpath 中扫描组件
+组件扫描(component scanning):  Spring 能够从 classpath 下自动扫描, 侦测和实例化具有特定注解的组件.特定组件包括:
+
+@Component: 基本注解, 标识了一个受 Spring 管理的组件
+@Respository: 标识持久层组件
+@Service: 标识服务层(业务层)组件
+@Controller: 标识表现">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2017/11/18/Spring学习9/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-11-18T09:16:44.918Z" class="post-list__meta--date date">2017-11-18</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">Spring4.0学习9--通过注解配置bean</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="一、在-classpath-中扫描组件"><a href="#一、在-classpath-中扫描组件" class="headerlink" title="一、在 classpath 中扫描组件"></a>一、在 classpath 中扫描组件</h3><blockquote>
+<p>组件扫描(component scanning):  Spring 能够从 classpath 下自动扫描, 侦测和实例化具有特定注解的组件.<br>特定组件包括:</p>
+<ul>
+<li>@Component: 基本注解, 标识了一个受 Spring 管理的组件</li>
+<li>@Respository: 标识持久层组件</li>
+<li>@Service: 标识服务层(业务层)组件</li>
+<li>@Controller: 标识表现层组件</li>
+</ul>
+</blockquote>
+<p>对于扫描到的组件, <strong>Spring 有默认的命名策略</strong>: 使用非限定类名, 第一个字母小写. <strong>也可以在注解中通过 value 属性值标识组件的名称</strong></p>
+<p>当在组件类上使用了特定的注解之后, 还需要在 Spring 的配置文件中声明 <code>&lt;context:component-scan&gt;</code> ：</p>
+<ul>
+<li><strong>base-package 属性指定一个需要扫描的基类包，Spring 容器将会扫描这个基类包里及其子包中的所有类.</strong> </li>
+<li><strong>当需要扫描多个包时, 可以使用逗号分隔.</strong></li>
+<li><p>如果仅希望扫描特定的类而非基包下的所有类，可使用 resource-pattern 属性过滤特定的类，示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;context:component-scan base-package=&quot;com.lizz&quot; resource-pattern=&quot;autowire/*.class&quot; /&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>&lt;context:include-filter&gt;</code> 子节点表示要包含的目标类</p>
+</li>
+<li><code>&lt;context:exclude-filter&gt;</code> 子节点表示要排除在外的目标类</li>
+<li><code>&lt;context:component-scan&gt;</code> 下可以拥有若干个 <code>&lt;context:include-filter&gt;</code> 和 <code>&lt;context:exclude-filter&gt;</code> 子节点</li>
+</ul>
+<p>示例：</p>
+<blockquote>
+<p>新建一个com.annotation包，然后在该包内分别新建三个子包：controller、service、repository，同时新建TestObject.java和Main.java，在三个子包内分别新建对应名称的类：UserController.java、UserService.java、UserRepository.java、UserRepositoryImpl.java。新建一个beans-annotation.xml</p>
+</blockquote>
+<p>TestObject.java:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">package com.annotation;</div><div class="line">import org.springframework.stereotype.Component;</div><div class="line">@Component</div><div class="line">public class TestObject &#123;&#125;</div></pre></td></tr></table></figure></p>
+<p>UserController.java:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">package com.annotation.controller;</div><div class="line">import org.springframework.stereotype.Controller;</div><div class="line">@Controller</div><div class="line">public class UserController &#123;</div><div class="line">	public void excute() &#123;</div><div class="line">		System.out.println(&quot;UserController excute...&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>UserService.java:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">package com.annotation.service;</div><div class="line">import org.springframework.stereotype.Service;</div><div class="line">@Service</div><div class="line">public class UserService &#123;</div><div class="line">	public void add() &#123;</div><div class="line">		System.out.println(&quot;UserService add...&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>UserRepository.java:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">package com.annotation.repository;</div><div class="line">public interface UserRepository &#123;</div><div class="line">	void save();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>UserRepositoryImpl.java:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">package com.annotation.repository;</div><div class="line">import org.springframework.stereotype.Repository;</div><div class="line">@Repository(&quot;userRepository&quot;)</div><div class="line">public class UserRepositoryImpl implements UserRepository &#123;</div><div class="line">	@Override</div><div class="line">	public void save() &#123;</div><div class="line">		System.out.println(&quot;UserRepositoryImpl save...&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Main.java:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">package com.annotation;</div><div class="line">import org.springframework.context.ApplicationContext;</div><div class="line">import org.springframework.context.support.ClassPathXmlApplicationContext;</div><div class="line">import com.annotation.controller.UserController;</div><div class="line">import com.annotation.repository.UserRepository;</div><div class="line">import com.annotation.service.UserService;</div><div class="line">public class Main &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		ApplicationContext ctx = new ClassPathXmlApplicationContext(&quot;beans-annotation.xml&quot;);</div><div class="line">		TestObject to = (TestObject)ctx.getBean(&quot;testObject&quot;);</div><div class="line">		System.out.println(to);</div><div class="line">		UserController userController = (UserController)ctx.getBean(&quot;userController&quot;);</div><div class="line">		System.out.println(userController);</div><div class="line">		UserService userService = (UserService)ctx.getBean(&quot;userService&quot;);</div><div class="line">		System.out.println(userService);</div><div class="line">		UserRepository userRepository = (UserRepository)ctx.getBean(&quot;userRepository&quot;);</div><div class="line">		System.out.println(userRepository);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>beans-annotation.xml:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 指定 spring IOC 容器扫描的包 --&gt;</div><div class="line">&lt;context:component-scan base-package=&quot;com.annotation&quot;&gt;&lt;/context:component-scan&gt;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>试试<code>resource-pattern</code>属性，改写上面的代码,Main.java里面的<code>TestObject</code>、<code>UserController</code>、<code>UserService</code>三段相关代码隐藏</p>
+</blockquote>
+<p>改写beans-annotation.xml:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 指定 spring IOC 容器扫描的包 --&gt;</div><div class="line">&lt;!-- 这里 resource-pattern 指定了只扫描 repository 包下面的所有的类 --&gt;</div><div class="line">&lt;context:component-scan base-package=&quot;com.annotation&quot; resource-pattern=&quot;repository/*.class&quot;&gt;&lt;/context:component-scan&gt;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p><code>&lt;context:include-filter&gt;</code> 和 <code>&lt;context:exclude-filter&gt;</code> 子节点支持多种类型的过滤表达式：</p>
+</blockquote>
+<p><img src="../../../../images/beanzhujie1.png" alt=""></p>
+<p>改写beans-annotation.xml实践下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 指定 spring IOC 容器扫描的包 --&gt;</div><div class="line">  &lt;!-- </div><div class="line">	  &lt;context:component-scan base-package=&quot;com.annotation&quot; resource-pattern=&quot;repository/*.class&quot;&gt;</div><div class="line">	  &lt;/context:component-scan&gt;</div><div class="line">  --&gt;</div><div class="line">  &lt;!-- context:exclude-filter 子节点指定排除哪些表达式的组件 --&gt;</div><div class="line">  &lt;context:component-scan base-package=&quot;com.annotation&quot;&gt;</div><div class="line">  	&lt;context:exclude-filter type=&quot;annotation&quot; expression=&quot;org.springframework.stereotype.Repository&quot; /&gt;</div><div class="line">  &lt;/context:component-scan&gt;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>结果，后台报异常，<strong>No bean named ‘userRepository’ is defined</strong>。</p>
+</blockquote>
+<p>继续改写beans-annotation.xml实践下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 指定 spring IOC 容器扫描的包 --&gt;</div><div class="line">  &lt;!-- </div><div class="line">	  &lt;context:component-scan base-package=&quot;com.annotation&quot; resource-pattern=&quot;repository/*.class&quot;&gt;</div><div class="line">	  &lt;/context:component-scan&gt;</div><div class="line">  --&gt;</div><div class="line">  &lt;!-- context:exclude-filter 子节点指定排除哪些表达式的组件 --&gt;</div><div class="line">  &lt;!--  </div><div class="line">  &lt;context:component-scan base-package=&quot;com.annotation&quot;&gt;</div><div class="line">  	&lt;context:exclude-filter type=&quot;annotation&quot; expression=&quot;org.springframework.stereotype.Repository&quot; /&gt;</div><div class="line">  &lt;/context:component-scan&gt;</div><div class="line">  --&gt;</div><div class="line">  </div><div class="line">  &lt;context:component-scan base-package=&quot;com.annotation&quot; use-default-filters=&quot;false&quot;&gt;</div><div class="line">  	&lt;context:include-filter type=&quot;annotation&quot; expression=&quot;org.springframework.stereotype.Repository&quot; /&gt;</div><div class="line">  &lt;/context:component-scan&gt;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意：使用<code>&lt;context:include-filter&gt;</code>时需要加上<code>use-default-filters=&quot;false&quot;</code>，不然不起作用。不加该属性会默认把@Controller、@Service、@Repository等组件也给扫描进来。</p>
+</blockquote>
+<h3 id="组件装配"><a href="#组件装配" class="headerlink" title="组件装配"></a>组件装配</h3><blockquote>
+<p><code>&lt;context:component-scan&gt;</code> 元素还会自动注册 AutowiredAnnotationBeanPostProcessor 实例, 该实例可以自动装配具有 @Autowired 和 @Resource 、@Inject注解的属性.</p>
+</blockquote>
+<p><strong>使用 @Autowired 自动装配 Bean</strong><br>@Autowired 注解自动装配具有<strong>兼容类型</strong>的单个 Bean属性</p>
+<ul>
+<li><strong>构造器, 普通字段(即使是非 public), 一切具有参数的方法都可以应用@Authwired 注解</strong></li>
+<li><em>默认情况下, 所有使用 @Authwired 注解的属性都需要被设置. 当 Spring 找不到匹配的 Bean 装配属性时, 会抛出异常</em>, <strong>若某一属性允许不被设置, 可以设置 @Authwired 注解的 required 属性为 false</strong></li>
+<li>默认情况下, 当 IOC 容器里存在多个类型兼容的 Bean 时, 通过类型的自动装配将无法工作. 此时可以在 <strong>@Qualifier</strong> 注解里提供 Bean 的名称. <strong>Spring 允许对方法的入参标注 @Qualifiter 已指定注入 Bean 的名称</strong></li>
+<li>@Authwired 注解也可以应用在<strong>数组类型</strong>的属性上, 此时 Spring 将会把所有匹配的 Bean 进行自动装配.</li>
+<li>@Authwired 注解也可以应用在<strong>集合属性</strong>上, 此时 Spring 读取该集合的类型信息, 然后自动装配所有与之兼容的 Bean. </li>
+<li>@Authwired 注解用在 <strong>java.util.Map</strong> 上时, 若该 Map 的键值为 String, 那么 Spring 将自动装配与之 Map 值类型兼容的 Bean, 此时 Bean 的名称作为键值</li>
+</ul>
+<p><strong>使用 @Resource 或 @Inject 自动装配 Bean</strong></p>
+<blockquote>
+<p>Spring 还支持 @Resource 和 @Inject 注解，这两个注解和 @Autowired 注解的功用类似<br><strong>@Resource 注解要求提供一个 Bean 名称的属性，若该属性为空，则自动采用标注处的变量或方法名作为 Bean 的名称</strong><br>@Inject 和 @Autowired 注解一样也是按类型匹配注入的 Bean， 但没有 reqired 属性<br><strong>建议使用 @Autowired 注解</strong></p>
+</blockquote>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/11/21/Spring学习10/" title="Spring4.0学习10">Spring4.0学习10</a></h2>
+                <p class="excerpt">
+                
+                泛型依赖注入Spring 4.x 中可以为子类注入子类对应的泛型类型的成员变量的引用
+示例:
+
+新建beans-generic.di.xml,新建com.generic.di包,包下面新建6个类，分别是Main.java,User.java,BaseService.java,BaseReposito
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-11-21T11:47:11.715Z" class="post-list__meta--date date">2017-11-21</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/11/21/Spring学习10/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/11/17/Spring学习8/" title="Spring4.0学习8--通过工厂方法配置bean">Spring4.0学习8--通过工厂方法配置bean</a></h2>
+                <p class="excerpt">
+                
+                通过调用静态工厂方法创建 Bean
+调用静态工厂方法创建 Bean是将对象创建的过程封装到静态方法中. 当客户端需要对象时, 只需要简单地调用静态方法, 而不同关心创建对象的细节.要声明通过静态方法创建的 Bean, 需要在 Bean 的 class 属性里指定拥有该工厂的方法的类, 同时在 fac
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-11-17T08:51:31.471Z" class="post-list__meta--date date">2017-11-17</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/11/17/Spring学习8/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>

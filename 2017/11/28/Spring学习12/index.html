@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>Spring4.0学习12--在xml文件中配置AOP | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="指定切面的优先级在同一个连接点上应用不止一个切面时, 除非明确指定, 否则它们的优先级是不确定的.切面的优先级可以通过实现 Ordered 接口或利用 @Order 注解指定.实现 Ordered 接口, getOrder() 方法的返回值越小, 优先级越高.若使用 @Order 注解, 序号出现在注解中123456@Aspect@Order(0)public class Validate&amp;#12">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Spring4.0学习12--在xml文件中配置AOP | Ronaldo">
+    <meta name="twitter:description" content="指定切面的优先级在同一个连接点上应用不止一个切面时, 除非明确指定, 否则它们的优先级是不确定的.切面的优先级可以通过实现 Ordered 接口或利用 @Order 注解指定.实现 Ordered 接口, getOrder() 方法的返回值越小, 优先级越高.若使用 @Order 注解, 序号出现在注解中123456@Aspect@Order(0)public class Validate&amp;#12">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Spring4.0学习12--在xml文件中配置AOP | Ronaldo">
+    <meta property="og:description" content="指定切面的优先级在同一个连接点上应用不止一个切面时, 除非明确指定, 否则它们的优先级是不确定的.切面的优先级可以通过实现 Ordered 接口或利用 @Order 注解指定.实现 Ordered 接口, getOrder() 方法的返回值越小, 优先级越高.若使用 @Order 注解, 序号出现在注解中123456@Aspect@Order(0)public class Validate&amp;#12">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2017/11/28/Spring学习12/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-11-28T11:10:36.150Z" class="post-list__meta--date date">2017-11-28</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">Spring4.0学习12--在xml文件中配置AOP</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="指定切面的优先级"><a href="#指定切面的优先级" class="headerlink" title="指定切面的优先级"></a>指定切面的优先级</h3><p>在同一个连接点上应用不止一个切面时, 除非明确指定, 否则它们的优先级是不确定的.<br>切面的优先级可以通过实现 Ordered 接口或利用 @Order 注解指定.<br>实现 Ordered 接口, getOrder() 方法的返回值越小, 优先级越高.<br>若使用 @Order 注解, 序号出现在注解中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@Aspect</div><div class="line">@Order(0)</div><div class="line">public class Validate&#123;&#125;</div><div class="line">@Aspect</div><div class="line">@Order(1)</div><div class="line">public class Logging&#123;&#125;</div></pre></td></tr></table></figure></p>
+<p>在编写 AspectJ 切面时, 可以直接在通知注解中书写切入点表达式. 但同一个切点表达式可能会在多个通知中重复出现.<br>在 AspectJ 切面中, 可以通过 <code>@Pointcut</code> 注解将一个切入点声明成简单的方法. <strong>切入点的方法体通常是空的</strong>, 因为将切入点定义与应用程序逻辑混在一起是不合理的.<br>切入点方法的访问控制符同时也控制着这个切入点的可见性. 如果切入点要在多个切面中共用, 最好将它们集中在一个公共的类中. 在这种情况下, 它们必须被声明为 public. 在引入这个切入点时, 必须将类名也包括在内. 如果类没有与这个切面放在同一个包中, 还必须包含包名.<br>其他通知可以通过方法名称引入该切入点.</p>
+<h3 id="用基于-XML-的配置声明切面"><a href="#用基于-XML-的配置声明切面" class="headerlink" title="用基于 XML 的配置声明切面"></a>用基于 XML 的配置声明切面</h3><blockquote>
+<p>除了使用 AspectJ 注解声明切面, Spring 也支持在 Bean 配置文件中声明切面. 这种声明是通过 aop schema 中的 XML 元素完成的.<br>正常情况下, <strong>基于注解的声明要优先于基于 XML 的声明</strong>. 通过 AspectJ 注解, 切面可以与 AspectJ 兼容, 而基于 XML 的配置则是 Spring 专有的. 由于 AspectJ 得到越来越多的 AOP 框架支持, 所以以注解风格编写的切面将会有更多重用的机会.</p>
+</blockquote>
+<h3 id="基于-XML-—-声明切面"><a href="#基于-XML-—-声明切面" class="headerlink" title="基于 XML —- 声明切面"></a>基于 XML —- 声明切面</h3><p>当使用 XML 声明切面时, 需要在 <code>&lt;beans&gt;</code> 根元素中导入 aop Schema<br>在 Bean 配置文件中, 所有的 Spring AOP 配置都必须定义在 <code>&lt;aop:config&gt;</code> 元素内部. 对于每个切面而言, 都要创建一个 <code>&lt;aop:aspect&gt;</code> 元素来为具体的切面实现引用后端 Bean 实例.<br>切面 Bean 必须有一个标示符, 供 <code>&lt;aop:aspect&gt;</code> 元素引用</p>
+<h3 id="基于-XML-—-声明切入点"><a href="#基于-XML-—-声明切入点" class="headerlink" title="基于 XML —- 声明切入点"></a>基于 XML —- 声明切入点</h3><p>切入点使用 <code>&lt;aop:pointcut&gt;</code> 元素声明<br>切入点必须定义在 <code>&lt;aop:aspect&gt;</code> 元素下, 或者直接定义在 <code>&lt;aop:config&gt;</code> 元素下.<br>定义在 <code>&lt;aop:aspect&gt;</code> 元素下: 只对当前切面有效<br>定义在 <code>&lt;aop:config&gt;</code> 元素下: 对所有切面都有效<br>基于 XML 的 AOP 配置不允许在切入点表达式中用名称引用其他切入点.</p>
+<h3 id="基于-XML-—-声明通知"><a href="#基于-XML-—-声明通知" class="headerlink" title="基于 XML —- 声明通知"></a>基于 XML —- 声明通知</h3><p>在 aop Schema 中, 每种通知类型都对应一个特定的 XML 元素.<br>通知元素需要使用 <code>&lt;pointcut-ref&gt;</code> 来引用切入点, 或用 <code>&lt;pointcut&gt;</code> 直接嵌入切入点表达式.  method 属性指定切面类中通知方法的名称.</p>
+<p>示例：<br>Arithmetic.java:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public interface Arithmetic &#123;</div><div class="line">	public int add(int i, int j);</div><div class="line">	public int sub(int i, int j);</div><div class="line">	public int mul(int i, int j);</div><div class="line">	public int div(int i, int j);	</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>ArithmeticImpl.java:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">public class ArithmeticImpl implements Arithmetic &#123;</div><div class="line">	@Override</div><div class="line">	public int add(int i, int j) &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		int result = i + j;</div><div class="line">		return result;</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	public int sub(int i, int j) &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		int result = i - j;</div><div class="line">		return result;</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	public int mul(int i, int j) &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		int result = i * j;	</div><div class="line">		return result;</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	public int div(int i, int j) &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		int result = i / j;	</div><div class="line">		return result;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Validate.java:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">public class Validate &#123;</div><div class="line">	public void validate(JoinPoint joinPoint)&#123;</div><div class="line">		System.out.println(&quot;--&gt;validate: &quot; + Arrays.asList(joinPoint.getArgs()));</div><div class="line">	&#125;	</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>LoggingAspect.java:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line">public class LoggingAspect &#123;</div><div class="line">	public void beforeMethod(JoinPoint joinPoint) &#123;</div><div class="line">		String methodName = joinPoint.getSignature().getName();</div><div class="line">		Object [] args = joinPoint.getArgs();</div><div class="line">		System.out.println(&quot;The method &quot; + methodName + &quot;begins with&quot; + Arrays.asList(args));</div><div class="line">	&#125;</div><div class="line">	public void afterMethod(JoinPoint joinPoint) &#123;</div><div class="line">		String methodName = joinPoint.getSignature().getName();</div><div class="line">		System.out.println(&quot;The method &quot; + methodName + &quot;ends&quot;);</div><div class="line">	&#125;</div><div class="line">	public void afterReturning(JoinPoint joinPoint, Object result) &#123;</div><div class="line">		String methodName = joinPoint.getSignature().getName();</div><div class="line">		System.out.println(&quot;The method &quot; + methodName + &quot;begins with&quot; + result);</div><div class="line">	&#125;</div><div class="line">	public Object aroundMethod(ProceedingJoinPoint pjd) &#123;</div><div class="line">		Object result = null;</div><div class="line">		String methodName = pjd.getSignature().getName();</div><div class="line">		try&#123;</div><div class="line">			//前置通知</div><div class="line">			System.out.println(&quot;The method &quot; + methodName + &quot;begins with&quot; + Arrays.asList(pjd.getArgs()));</div><div class="line">			//执行目标方法</div><div class="line">			result = pjd.proceed();</div><div class="line">			//返回通知</div><div class="line">			System.out.println(&quot;The method &quot; + methodName + &quot;ends with&quot; + result);</div><div class="line">		&#125; catch(Throwable e) &#123;</div><div class="line">			System.out.println(&quot;The method &quot; + methodName + &quot;occurs exception&quot; + e);</div><div class="line">			throw new RuntimeException();</div><div class="line">		&#125;</div><div class="line">		//后置通知</div><div class="line">		System.out.println(&quot;The method &quot; + methodName + &quot;ends&quot;);</div><div class="line">		return result;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Main.java:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public class Main &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		// 1.获取IOC容器</div><div class="line">		ApplicationContext ctx = new ClassPathXmlApplicationContext(&quot;applicationContext-xml.xml&quot;);</div><div class="line">		// 2.从IOC获取bean实例</div><div class="line">		Arithmetic arithmetic = (Arithmetic) ctx.getBean(&quot;arithmetic&quot;);</div><div class="line">		// 3.使用bean</div><div class="line">		int result = arithmetic.add(1, 2);</div><div class="line">		System.out.println(&quot;result: &quot;+result);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>applicationContext-xml.xml:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 配置bean --&gt;</div><div class="line">  &lt;bean id=&quot;arithmetic&quot; class=&quot;com.aop_xml.ArithmeticImpl&quot;&gt;&lt;/bean&gt;</div><div class="line">  &lt;!-- 配置切面的bean --&gt;</div><div class="line">  &lt;bean id=&quot;loggingAspect&quot; class=&quot;com.aop_xml.LoggingAspect&quot;&gt;&lt;/bean&gt;</div><div class="line">  &lt;bean id=&quot;validate&quot; class=&quot;com.aop_xml.Validate&quot;&gt;&lt;/bean&gt;</div><div class="line">  &lt;!-- 配置AOP --&gt;</div><div class="line">  &lt;aop:config&gt;</div><div class="line">  	&lt;!-- 配置切点表达式 --&gt;</div><div class="line">  	&lt;aop:pointcut expression=&quot;execution(* com.aop_xml.Arithmetic.*(int, int))&quot; id=&quot;pointcut&quot;/&gt;</div><div class="line">  	&lt;!-- 配置切面通知 --&gt;</div><div class="line">  	&lt;aop:aspect ref=&quot;loggingAspect&quot; order=&quot;2&quot;&gt;</div><div class="line">  	&lt;!-- </div><div class="line">  		&lt;aop:before method=&quot;beforeMethod&quot; pointcut-ref=&quot;pointcut&quot; /&gt;</div><div class="line">  		&lt;aop:after method=&quot;afterMethod&quot; pointcut-ref=&quot;pointcut&quot; /&gt;</div><div class="line">  		&lt;aop:after-returning method=&quot;afterReturning&quot; pointcut-ref=&quot;pointcut&quot; returning=&quot;result&quot; /&gt;</div><div class="line">  	 --&gt;	</div><div class="line">  		&lt;aop:around method=&quot;aroundMethod&quot; pointcut-ref=&quot;pointcut&quot;/&gt;</div><div class="line">  	&lt;/aop:aspect&gt;</div><div class="line">  	&lt;aop:aspect ref=&quot;validate&quot; order=&quot;1&quot;&gt;</div><div class="line">  		&lt;aop:before method=&quot;validate&quot; pointcut-ref=&quot;pointcut&quot; /&gt;</div><div class="line">  	&lt;/aop:aspect&gt;</div><div class="line">  &lt;/aop:config&gt;</div></pre></td></tr></table></figure></p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/11/29/Spring学习13/" title="Spring4.0学习13--使用JdbcTemplate和JdbcDaoSupport">Spring4.0学习13--使用JdbcTemplate和JdbcDaoSupport</a></h2>
+                <p class="excerpt">
+                
+                一、JdbcTemplate 简介
+为了使 JDBC 更加易于使用, Spring 在 JDBC API 上定义了一个抽象层, 以此建立一个 JDBC 存取框架.作为 Spring JDBC 框架的核心, JDBC 模板的设计目的是为不同类型的 JDBC 操作提供模板方法. 每个模板方法都能控制整个
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-11-29T02:09:00.982Z" class="post-list__meta--date date">2017-11-29</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/11/29/Spring学习13/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/11/22/Spring学习11/" title="Spring4.0学习11--AOP">Spring4.0学习11--AOP</a></h2>
+                <p class="excerpt">
+                
+                动态代理在业务处理时，有时候我们需要添加一些日志等非核心的需求代码，如果这些代码分散在各个核心代码间会很冗余，不利于管理和维护，这时候我们可以使用动态代理来解决以上问题。举个例子：12345678910111213141516@Override	public int add(int i, int j
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-11-22T08:32:10.707Z" class="post-list__meta--date date">2017-11-22</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/11/22/Spring学习11/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>JDBC学习4--数据库事务 | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="示例地址:https://github.com/lizhongzhen11/jdbcStudy-1
+
+数据库事务
+在数据库中,所谓事务是指一组逻辑操作单元,使数据从一种状态变换到另一种状态。
+
+为确保数据库中数据的一致性,数据的操纵应当是离散的成组的逻辑单元:当它全部完成时,数据的一致性可以保持,而当这个单元中的一部分操作失败,整个事务应全部视为错误,所有从起始点以后的操作应全部回退到开始状态。">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="JDBC学习4--数据库事务 | Ronaldo">
+    <meta name="twitter:description" content="示例地址:https://github.com/lizhongzhen11/jdbcStudy-1
+
+数据库事务
+在数据库中,所谓事务是指一组逻辑操作单元,使数据从一种状态变换到另一种状态。
+
+为确保数据库中数据的一致性,数据的操纵应当是离散的成组的逻辑单元:当它全部完成时,数据的一致性可以保持,而当这个单元中的一部分操作失败,整个事务应全部视为错误,所有从起始点以后的操作应全部回退到开始状态。">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="JDBC学习4--数据库事务 | Ronaldo">
+    <meta property="og:description" content="示例地址:https://github.com/lizhongzhen11/jdbcStudy-1
+
+数据库事务
+在数据库中,所谓事务是指一组逻辑操作单元,使数据从一种状态变换到另一种状态。
+
+为确保数据库中数据的一致性,数据的操纵应当是离散的成组的逻辑单元:当它全部完成时,数据的一致性可以保持,而当这个单元中的一部分操作失败,整个事务应全部视为错误,所有从起始点以后的操作应全部回退到开始状态。">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2017/12/14/JDBC学习4/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-12-14T06:45:12.369Z" class="post-list__meta--date date">2017-12-14</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">JDBC学习4--数据库事务</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+<p>示例地址:<a href="https://github.com/lizhongzhen11/jdbcStudy-1" target="_blank" rel="external">https://github.com/lizhongzhen11/jdbcStudy-1</a></p>
+</blockquote>
+<h3 id="数据库事务"><a href="#数据库事务" class="headerlink" title="数据库事务"></a>数据库事务</h3><blockquote>
+<p>在数据库中,所谓事务是指<strong>一组逻辑操作单元,使数据从一种状态变换到另一种状态</strong>。</p>
+</blockquote>
+<p>为确保数据库中数据的<strong>一致性</strong>,数据的操纵应当是离散的成组的逻辑单元:当它全部完成时,数据的一致性可以保持,而当这个单元中的一部分操作失败,整个事务应全部视为错误,所有从起始点以后的操作应全部回退到开始状态。</p>
+<blockquote>
+<p>要么一同完成,要么一起失败。</p>
+</blockquote>
+<p>事务的操作:先定义开始一个事务,然后对数据作修改操作,这时如果<strong>提交(COMMIT)</strong>,这些修改就永久地保存下来,如果<strong>回退(ROLLBACK)</strong>,数据库管理系统将放弃所作的所有修改而回到开始事务时的状态。</p>
+<p>事务的ACID(acid)属性</p>
+<ol>
+<li>原子性（Atomicity）:原子性是指事务是一个不可分割的工作单位，事务中的操作要么都发生，要么都不发生。 </li>
+<li>一致性（Consistency）:事务必须使数据库从一个一致性状态变换到另外一个一致性状态。</li>
+<li>隔离性（Isolation）:事务的隔离性是指一个事务的执行不能被其他事务干扰，即一个事务内部的操作及使用的数据对并发的其他事务是隔离的，并发执行的各个事务之间不能互相干扰。</li>
+<li>持久性（Durability）:持久性是指一个事务一旦被提交，它对数据库中数据的改变就是永久性的，接下来的其他操作和数据库故障不应该对其有任何影响</li>
+</ol>
+<h3 id="JDBC-事物处理"><a href="#JDBC-事物处理" class="headerlink" title="JDBC 事物处理"></a>JDBC 事物处理</h3><p>事务：指构成单个逻辑工作单元的操作集合<br>事务处理：保证所有事务都作为一个工作单元来执行，即使出现了故障，都不能改变这种执行方式。当在一个事务中执行多个操作时，要么所有的事务都被提交(commit)，要么整个事务回滚(rollback)到最初状态<br>当一个连接对象被创建时，默认情况下是自动提交事务：每次执行一个 SQL 语句时，如果执行成功，就会向数据库自动提交，而不能回滚<br>为了让多个 SQL 语句作为一个事务执行：</p>
+<ul>
+<li>调用 Connection 对象的 setAutoCommit(false); 以取消自动提交事务</li>
+<li>在所有的 SQL 语句都成功执行后，调用 commit(); 方法提交事务</li>
+<li>在出现异常时，调用 rollback(); 方法回滚事务</li>
+<li>若此时 Connection 没有被关闭, 则需要恢复其自动提交状态</li>
+</ul>
+<p>部分示例代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line">public class JDBCTransaction &#123;</div><div class="line">	/*</div><div class="line">	 * 场景:李中贞给周杰伦汇款1000W</div><div class="line">	 * </div><div class="line">	 * 关于事务:</div><div class="line">	 * 1. 如果多个操作,每个操作使用的是自己的单独的连接,则无法保证事务</div><div class="line">	 * 2. 具体步骤:</div><div class="line">	 * ①: 事务操作开始前,开始事务: 取消 Connection 默认提交行为 connection.setAutoCommit(false);</div><div class="line">	 * ②: 如果事务操作都成功,则提交事务: connection.commit();</div><div class="line">	 * ③: 回滚事务: 若出现异常,则在 catch 块中回滚事务</div><div class="line">	 * </div><div class="line">	 */</div><div class="line">	@Test</div><div class="line">	public void testTransaction() &#123;</div><div class="line">//		Dao dao = new Dao();</div><div class="line">//		</div><div class="line">//		String sql = &quot;update JDBCTransaction set money = money - 10000000 where id = 1&quot;;</div><div class="line">//		dao.update(sql);</div><div class="line">//		</div><div class="line">//		sql = &quot;update JDBCTransaction set money = money + 10000000 where id = 2&quot;;</div><div class="line">//		dao.update(sql);</div><div class="line">		Connection connection = null;</div><div class="line">		try&#123;</div><div class="line">			connection = JDBCTest.getConnection2();</div><div class="line">			// 开始事务:取消默认提交</div><div class="line">			connection.setAutoCommit(false);</div><div class="line">			String sql = &quot;update JDBCTransaction set money = money - 10000000 where id = 1&quot;;</div><div class="line">			update(connection, sql);</div><div class="line">			sql = &quot;update JDBCTransaction set money = money + 10000000 where id = 2&quot;;</div><div class="line">			update(connection, sql);</div><div class="line">			// 提交事务</div><div class="line">			connection.commit();</div><div class="line">		&#125; catch (Exception e) &#123;</div><div class="line">			try &#123;</div><div class="line">				connection.rollback();</div><div class="line">			&#125; catch (Exception e2) &#123;</div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">		&#125; finally &#123;</div><div class="line">			JDBCTest.release(null, null, connection);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">    - - -</div><div class="line">	public void update(Connection connection, String sql, Object ... args) &#123;</div><div class="line">		PreparedStatement preparedStatement = null;</div><div class="line">		try&#123;</div><div class="line">			preparedStatement = connection.prepareStatement(sql);</div><div class="line">			// 填充占位符,没有传args过来时不走这一步</div><div class="line">			for(int i = 0; i &lt; args.length; i++) &#123;</div><div class="line">				preparedStatement.setObject(i + 1, args[i]);</div><div class="line">			&#125;</div><div class="line">			preparedStatement.executeUpdate();</div><div class="line">		&#125; catch (Exception e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125; finally &#123;</div><div class="line">			JDBCTest.release(null, preparedStatement, null);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="数据库的隔离级别"><a href="#数据库的隔离级别" class="headerlink" title="数据库的隔离级别"></a>数据库的隔离级别</h3><p>对于同时运行的多个事务, 当这些事务访问数据库中相同的数据时, 如果没有采取必要的隔离机制, 就会导致各种并发问题:</p>
+<blockquote>
+<ul>
+<li>脏读: 对于两个事物 T1, T2, T1 读取了已经被 T2 更新但还没有被提交的字段. 之后, 若 T2 回滚, T1读取的内容就是临时且无效的.</li>
+<li>不可重复读: 对于两个事物 T1, T2, T1 读取了一个字段, 然后 T2 更新了该字段. 之后, T1再次读取同一个字段, 值就不同了.</li>
+<li>幻读: 对于两个事物 T1, T2, T1 从一个表中读取了一个字段, 然后 T2 在该表中插入了一些新的行. 之后, 如果 T1 再次读取同一个表, 就会多出几行.</li>
+</ul>
+</blockquote>
+<p>数据库事务的隔离性: 数据库系统必须具有隔离并发运行各个事务的能力, 使它们不会相互影响, 避免各种并发问题.<br><strong>一个事务与其他事务隔离的程度称为隔离级别</strong>. 数据库规定了多种事务隔离级别, 不同隔离级别对应不同的干扰程度</p>
+<blockquote>
+<p><strong>隔离级别越高, 数据一致性就越好, 但并发性越弱</strong></p>
+</blockquote>
+<p>数据库提供的 4 种事务隔离级别:<br><img src="../../../../images/jdbcstudy9.png" alt=""></p>
+<blockquote>
+<p>Oracle 支持的 2 种事务隔离级别：<strong>READ COMMITED</strong>, SERIALIZABLE. <strong>Oracle 默认的事务隔离级别为: READ COMMITED</strong><br>Mysql 支持 4 中事务隔离级别. <strong>Mysql 默认的事务隔离级别为: REPEATABLE READ</strong></p>
+</blockquote>
+<h3 id="在-MySql-中设置隔离级别"><a href="#在-MySql-中设置隔离级别" class="headerlink" title="在 MySql 中设置隔离级别"></a>在 MySql 中设置隔离级别</h3><p>每启动一个 mysql 程序, 就会获得一个单独的数据库连接. 每个数据库连接都有一个全局变量 <code>@@tx_isolation</code>, 表示当前的事务隔离级别. MySQL 默认的隔离级别为 Repeatable Read<br>查看当前的隔离级别: SELECT @@tx_isolation;<br>设置当前 mySQL 连接的隔离级别:  </p>
+<ul>
+<li>set transaction isolation level read committed;<br>设置数据库系统的全局的隔离级别:</li>
+<li>set global transaction isolation level read committed;</li>
+</ul>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/12/15/JDBC学习5/" title="JDBC学习5--批量处理和JDBC数据库连接池(DBCP和c3p0)">JDBC学习5--批量处理和JDBC数据库连接池(DBCP和c3p0)</a></h2>
+                <p class="excerpt">
+                
+                
+练习代码地址: https://github.com/lizhongzhen11/jdbcStudy-2
+
+批量处理当需要成批插入或者更新记录时。可以采用Java的批量更新机制，这一机制允许多条语句一次性提交给数据库批量处理。通常情况下比单独提交处理更有效率
+
+JDBC的批量处理语句包括下面两个方
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-12-15T03:06:02.562Z" class="post-list__meta--date date">2017-12-15</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/12/15/JDBC学习5/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/12/13/JDBC学习3/" title="JDBC学习3--DAO设计模式">JDBC学习3--DAO设计模式</a></h2>
+                <p class="excerpt">
+                
+                DAO: Data Access Object
+示例地址:https://github.com/lizhongzhen11/jdbcStudy-1
+
+why?
+
+实现功能的模块化。更有利于代码的维护和升级。DAO 可以被子类继承或直接使用
+
+what?
+
+访问数据信息的类。包含了对数据的 CRUD(
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-12-13T08:39:29.823Z" class="post-list__meta--date date">2017-12-13</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/12/13/JDBC学习3/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>

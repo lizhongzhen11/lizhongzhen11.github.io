@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>java重定向问题 | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="今天在开发雀巢水新需求的过程中，发现java部分是直接返回页面的，不是那种前台 ajax 调用接口返回值，以前没在意，直到新需求要求不同的商品对应不同的支付方式（蛋疼），水票还不能单独购买。好了。。。担心用户单独购买水票或者几种不同支付方式的商品一起购买，结果肯定不给跳到订单提交页的，但是由于后台接口用的是public ModelAndView这种声明方式，注定必须返回页面的，不管往哪跳反正都得跳">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="java重定向问题 | Ronaldo">
+    <meta name="twitter:description" content="今天在开发雀巢水新需求的过程中，发现java部分是直接返回页面的，不是那种前台 ajax 调用接口返回值，以前没在意，直到新需求要求不同的商品对应不同的支付方式（蛋疼），水票还不能单独购买。好了。。。担心用户单独购买水票或者几种不同支付方式的商品一起购买，结果肯定不给跳到订单提交页的，但是由于后台接口用的是public ModelAndView这种声明方式，注定必须返回页面的，不管往哪跳反正都得跳">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="java重定向问题 | Ronaldo">
+    <meta property="og:description" content="今天在开发雀巢水新需求的过程中，发现java部分是直接返回页面的，不是那种前台 ajax 调用接口返回值，以前没在意，直到新需求要求不同的商品对应不同的支付方式（蛋疼），水票还不能单独购买。好了。。。担心用户单独购买水票或者几种不同支付方式的商品一起购买，结果肯定不给跳到订单提交页的，但是由于后台接口用的是public ModelAndView这种声明方式，注定必须返回页面的，不管往哪跳反正都得跳">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2017/11/01/java重定向/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-11-01T12:02:10.783Z" class="post-list__meta--date date">2017-11-01</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">java重定向问题</h1>
+  </header>
+
+  <section class="post">
+    <p>今天在开发雀巢水新需求的过程中，发现java部分是直接返回页面的，不是那种前台 ajax 调用接口返回值，以前没在意，直到新需求要求不同的商品对应不同的支付方式（蛋疼），水票还不能单独购买。好了。。。担心用户单独购买水票或者几种不同支付方式的商品一起购买，结果肯定不给跳到订单提交页的，但是由于后台接口用的是<code>public ModelAndView</code>这种声明方式，注定必须返回页面的，不管往哪跳反正都得跳，哪怕本页刷新也行，这就有点操蛋了，一开始就想着给用户提个醒，毕竟前台也有<code>alert</code>优化框，弹出来提醒一下不就好了吗。但关键问题就在这，java初学者只能依葫芦画瓢，有的依还好，没得依就惨了，毕竟和那种<code>ajax</code>调接口的方式不同，不是那种：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$.post(&quot;接口&quot;,function (data) &#123;</div><div class="line">    if (data.success) &#123;</div><div class="line">        // ...</div><div class="line">    &#125; else &#123;</div><div class="line">        console.log(&quot;接口调用失败&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>而是这种：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rtv.setMsg(&quot;水票不能单独购买！&quot;);</div><div class="line">mv.setViewName(&quot;redirect:/......&quot;);</div></pre></td></tr></table></figure></p>
+<p>当时想了很久，毕竟java很菜，就是想不通该用什么方法才能在页面刷新情况下给个返回值告诉用户，你这种下单组合不对，不能这么搞。。。<br>从人道主义精神和用户体验角度来说，必须得提醒用户，不然得被喷死啊。后来请教师傅，告诉我他写的某个接口有类似的，师傅无师自通，我纠结了许久的问题找到了解决方案。<br>但是，抄作业都抄不对啊。。。<br>我抄的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mv.addObject(&quot;msg&quot;, &quot;你选择的商品无法一起下单！&quot;);</div><div class="line">mv.setViewName(&quot;redirect:/...&quot;);</div><div class="line">return mv;</div></pre></td></tr></table></figure></p>
+<p>师傅的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mv.addObject(&quot;msg&quot;, &quot;你选择的商品无法一起下单！&quot;);</div><div class="line">mv.setViewName(&quot;...&quot;);</div><div class="line">return mv;</div></pre></td></tr></table></figure></p>
+<p><strong>两段代码明显差异就是一个有<code>redirect:</code>一个没有</strong><br><strong>也就是说，一个重定向了一个没重定向，都是跳这个页面。</strong></p>
+<blockquote>
+<p>我加了重定向，页面跳转了，但是没有弹出框提醒，倒是<code>msg</code>信息显示在浏览器地址栏后面，不加重定向反而正常弹框提醒(前台能取到值了)。</p>
+</blockquote>
+<h3 id="这时候我就奇怪了，重定向和不加重定向跳同一个页面有什么区别？"><a href="#这时候我就奇怪了，重定向和不加重定向跳同一个页面有什么区别？" class="headerlink" title="这时候我就奇怪了，重定向和不加重定向跳同一个页面有什么区别？"></a>这时候我就奇怪了，重定向和不加重定向跳同一个页面有什么区别？</h3><blockquote>
+<p>后来学习JSP基础时发现，请求的转发只发出了一次请求，而重定向则发出了两次请求。请求的重定向时，地址栏不再是初次发出的请求地址。地址栏为最后响应的那个地址。</p>
+</blockquote>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/11/02/闭包/" title="闭包">闭包</a></h2>
+                <p class="excerpt">
+                
+                参考了《JavaScript高级程序设计》和阮一峰先生的博客http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html
+概念
+闭包是指有权访问另一个函数作用域中的变量的函数。
+
+理解：1.闭包首先肯定是一个函数。2
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-11-02T01:49:16.342Z" class="post-list__meta--date date">2017-11-02</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/11/02/闭包/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/10/31/Object.getOwnPropertyDescriptor/" title="Object.getOwnPropertyDescriptor()和Object.getOwnPropertyDescriptors()还有Object.getPrototypeOf()">Object.getOwnPropertyDescriptor()和Object.getOwnPropertyDescriptors()还有Object.getPrototypeOf()</a></h2>
+                <p class="excerpt">
+                
+                Object.getOwnPropertyDescriptor() 方法返回指定对象上一个自有属性对应的属性描述符。（自有属性指的是直接赋予该对象的属性，不需要从原型链上进行查找的属性）
+
+语法：Object.getOwnPropertyDescriptor(obj, prop)
+参数
+obj：需要
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-10-31T08:07:52.025Z" class="post-list__meta--date date">2017-10-31</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/10/31/Object.getOwnPropertyDescriptor/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>

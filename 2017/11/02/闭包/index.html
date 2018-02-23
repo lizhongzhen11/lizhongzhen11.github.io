@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>闭包 | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="参考了《JavaScript高级程序设计》和阮一峰先生的博客http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html
+概念
+闭包是指有权访问另一个函数作用域中的变量的函数。
+
+理解：1.闭包首先肯定是一个函数。2.这个函数能用其他函数里面的变量
+这里得了解js的作用域以及作用域链的知识了。
+
+我们都知道，js里">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="闭包 | Ronaldo">
+    <meta name="twitter:description" content="参考了《JavaScript高级程序设计》和阮一峰先生的博客http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html
+概念
+闭包是指有权访问另一个函数作用域中的变量的函数。
+
+理解：1.闭包首先肯定是一个函数。2.这个函数能用其他函数里面的变量
+这里得了解js的作用域以及作用域链的知识了。
+
+我们都知道，js里">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="闭包 | Ronaldo">
+    <meta property="og:description" content="参考了《JavaScript高级程序设计》和阮一峰先生的博客http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html
+概念
+闭包是指有权访问另一个函数作用域中的变量的函数。
+
+理解：1.闭包首先肯定是一个函数。2.这个函数能用其他函数里面的变量
+这里得了解js的作用域以及作用域链的知识了。
+
+我们都知道，js里">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2017/11/02/闭包/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-11-02T01:49:16.342Z" class="post-list__meta--date date">2017-11-02</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">闭包</h1>
+  </header>
+
+  <section class="post">
+    <p>参考了《JavaScript高级程序设计》和阮一峰先生的博客<a href="http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2009/08/learning_javascript_closures.html</a></p>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><blockquote>
+<p><strong>闭包</strong>是指有权访问另一个函数作用域中的变量的函数。</p>
+</blockquote>
+<p><strong>理解：</strong><br>1.闭包首先肯定是一个函数。<br>2.这个函数能用其他函数里面的变量</p>
+<p><strong>这里得了解js的作用域以及作用域链的知识了。</strong></p>
+<blockquote>
+<p>我们都知道，js里面的函数是可以直接使用全局变量的，但是如果一个变量是在函数内部声明的话，那么函数外面的世界是不能直接读取该变量的。</p>
+<hr>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;js高程设计这本书对作用域链的概括：当某个函数被调用时，会创建一个执行环境及相应的作用域链。然后，使用 <em>arguments</em> 和其他命名参数的值来初始化函数的活动对象。但在作用域链中，外部函数的活动对象始终处于第二位，外部函数的外部函数的活动对象处于第三位，…直至作为作用域链终点的全局执行环境。<br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作用域链这里不详细讲，需要另开一篇文章才讲的清</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// 全局变量</div><div class="line">var a = 1;</div><div class="line">function test1() &#123;</div><div class="line">    console.log(a);</div><div class="line">&#125;</div><div class="line">test1(); // 1</div><div class="line">- - - - - -</div><div class="line">// 函数内部的局部变量</div><div class="line">function test2() &#123;</div><div class="line">    var b = 2;</div><div class="line">    console.log(&quot;函数内部直接使用:&quot; + b);</div><div class="line">&#125;</div><div class="line">test2(); // 函数内部直接使用:2</div><div class="line">console.log(&quot;函数外部直接使用:&quot; + b); // Uncaught ReferenceError: b is not defined</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p><strong>但是，有时候我们需要读取函数内部的内容，那该怎么办呢？</strong></p>
+<blockquote>
+<p>其实只要把函数内部的内容<code>return</code>出来就可以了。</p>
+</blockquote>
+<p><strong>第一种直接return</strong><br>上述代码改写下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function test2() &#123;</div><div class="line">    var b = 2;</div><div class="line">    console.log(&quot;函数内部直接使用:&quot; + b);</div><div class="line">    return b;</div><div class="line">&#125;</div><div class="line">test2(); // 函数内部直接使用:2</div><div class="line">var outside_b = test2(); // 函数内部直接使用:2</div><div class="line">console.log(&quot;函数外部间接使用:&quot; + outside_b); // 函数外部间接使用:2</div></pre></td></tr></table></figure></p>
+<p><strong>第二种间接return</strong><br>继续改写代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function test2() &#123;</div><div class="line">    var b = 2;</div><div class="line">    function inside() &#123;</div><div class="line">        console.log(&quot;函数内部直接使用:&quot; + b);</div><div class="line">    &#125;</div><div class="line">    return inside;</div><div class="line">&#125;</div><div class="line">var outside_b = test2(); </div><div class="line">console.log(&quot;函数外部间接使用:&quot; + outside_b()); </div><div class="line">// 函数内部直接使用:2</div><div class="line">// 函数外部间接使用:undefined</div></pre></td></tr></table></figure></p>
+<p><strong>这里的inside函数就是闭包</strong></p>
+<blockquote>
+<p>上面的代码中，由于 <em>inside</em> 函数在 <em>test2</em> 函数内部，其实 <em>inside</em> 就是 <em>test2</em> 的孩子，js中，孩子可以直接用爸爸的，但是爸爸不能直接用孩子的。（和现实生活很像，孩子用父母的钱，但是父母很少开口跟孩子要钱，有的父母估计都要不到。。。）</p>
+</blockquote>
+<hr>
+<blockquote>
+<p>所以 <em>inside</em> 函数是可以直接读取到变量<code>b</code>的，但我们最终目的是让 <em>test2</em> 函数外面的世界也能读取到<code>b</code>的值，这个时候必然需要<code>return</code>出来。而 <em>inside</em> 是函数，直接<code>return</code>函数名即可。</p>
+</blockquote>
+<hr>
+<blockquote>
+<p><code>test2()</code>表示立即执行 <em>test2</em> 函数，看了代码就知道，立即执行 <em>test2</em> 得到的是 <em>inside</em> 函数,所以<code>var outside_b = test2();</code>这一步相当于把 <em>inside</em> 函数赋值给了 <code>outside_b</code>，然后<code>outside_b()</code>立即执行的其实是 <em>inside</em> 函数，所以先得到 <em>函数内部直接使用:2</em>。</p>
+</blockquote>
+<p><strong>为什么紧接着会有 <em>函数外部间接使用:undefined</em> 呢？</strong></p>
+<blockquote>
+<p>还是看代码，<em>inside</em> 函数立即执行的是<code>console.log(&quot;函数内部直接使用:&quot; + b);</code>这段代码，其实返回的也是这段代码，你试试<code>console.log()</code>里面再套个<code>console.log</code>返回的也是<code>undefined</code></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">console.log(console.log(&apos;试试看。。。&apos;))</div><div class="line">// 试试看。。。</div><div class="line">// undefined</div></pre></td></tr></table></figure>
+<p>我觉得阮一峰先生对闭包的总结非常好：<strong>在本质上，闭包就是将函数内部和函数外部连接起来的一座桥梁。</strong></p>
+<hr>
+<p>接下来看看高程书里面的例子：<br><img src="../../../../images/closures1.jpg" alt=""></p>
+<p>从图中可以看到，它返回的是一个数组，里面有10个函数，并且每个函数是一样的。<br>我们期望的是每个函数都应该返回自己的索引值，但结果并不是。</p>
+<blockquote>
+<p>书中的解释：每个函数的作用域链中都保存着 <em>createFunctions()</em> 函数的活动对象，所以它们引用的都是同一个变量<code>i</code>。当 <em>createFunctions()</em> 函数返回后，变量<code>i</code>的值是10，此时每个函数都引用着保存变量<code>i</code>的同一个变量对象，所以在每个函数内部<code>i</code>的值都是10。</p>
+</blockquote>
+<p>老实说，这个解释我一开始看不懂，想了半天我自己改了下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function createFunctions() &#123;</div><div class="line">    var result = new Array();</div><div class="line">    for(var i = 0; i &lt; 10; i++)&#123;</div><div class="line">        function a()&#123;</div><div class="line">            return i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    return a</div><div class="line">&#125;</div><div class="line">var cba = createFunctions()</div><div class="line">cba(); // 10</div></pre></td></tr></table></figure>
+<blockquote>
+<p>这样一改稍微能理解了吧，其实本质是一样的，我们以为它会将每个<code>i</code>返回，但是其实它是直接遍历完将最后的<code>i</code>值返回给我们，也就是说它直接遍历完后将最终的<code>i</code>值赋值给数组，数组循环添加了10次同样的<code>i</code>值。</p>
+</blockquote>
+<p>如何返回每个<code>i</code>值呢，改变下：<br><img src="../../../../images/closures2.jpg" alt=""></p>
+<blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;改写后，没有直接把闭包赋值给数组，而是定义了一个匿名函数，并将立即执行该匿名函数的结果赋值给数组。这里的匿名函数有一个参数<code>num</code>，也就是最终的函数要返回的值。在调用每个匿名函数时，我们传入了变量<code>i</code>。由于函数参数是按值传递的，所以就会将变量<code>i</code>的当前值复制给参数<code>num</code>。而在这个匿名函数的内部，又创建并返回了一个访问<code>num</code>的闭包。这样一来，<code>result</code>数组中的每个函数都有自己<code>num</code>变量的一个副本，因此就可以返回各自不同的数值了。<br><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其实(i)起到了立即执行的作用，这样每次遍历就立即执行函数而不是等遍历完才执行</strong></p>
+</blockquote>
+<h3 id="闭包中的this对象"><a href="#闭包中的this对象" class="headerlink" title="闭包中的this对象"></a>闭包中的this对象</h3><p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先强调一点：普通函数中的this指向全局对象，构造函数中的this指向实例，老早以前就写过，切记！！！</strong></p>
+<blockquote>
+<p>高程书指出：this对象是在运行时基于函数的执行环境绑定的。在全局函数中，this等于<code>window</code>(非node环境)；<em>而当函数被作为某个对象的方法调用时，this等于那个对象</em>。不过，匿名函数的执行环境具有全局性，因此其this对象通常指向<code>window</code>。但有时候由于编写闭包的方式不同，这一点可能不会那么明显。</p>
+</blockquote>
+<p>先来看看阮一峰先生的举例(和高程书上一样的)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var name = &quot;The Window&quot;;</div><div class="line">var object = &#123;</div><div class="line">　　name : &quot;My Object&quot;,</div><div class="line">　　getNameFunc : function()&#123;</div><div class="line">　　　　return function()&#123;</div><div class="line">　　　　　　return this.name;</div><div class="line">　　　　&#125;;</div><div class="line">　　&#125;</div><div class="line">&#125;;</div><div class="line">alert(object.getNameFunc()()); // The Window</div></pre></td></tr></table></figure></p>
+<p>另一个：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">var name = &quot;The Window&quot;;</div><div class="line">var object = &#123;</div><div class="line">　　name : &quot;My Object&quot;,</div><div class="line">　　getNameFunc : function()&#123;</div><div class="line">　　　　var that = this;</div><div class="line">　　　　return function()&#123;</div><div class="line">　　　　　　return that.name;</div><div class="line">　　　　&#125;;</div><div class="line">　　&#125;</div><div class="line">&#125;;</div><div class="line">alert(object.getNameFunc()()); // My Object</div></pre></td></tr></table></figure></p>
+<p><strong>为什么两者的值不一样？</strong></p>
+<blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的理解：两段代码都<code>return function(){...}</code>，那么这个function其实是匿名函数而且并不是<code>object</code>对象的方法(<em>getNameFunc</em>才是)，所以<code>return function(){return this.name;};</code>里面的<code>this</code>其实指向全局对象<code>window</code>,那么<code>window.name</code>在这里是<code>&quot;The Window&quot;</code>。</p>
+<hr>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第二段代码在<code>return function(){...}</code>之前就将匿名函数 <em>getNameFunc</em> 的<code>this</code>赋值给了<code>that</code>，<strong><em>getNameFunc</em> 匿名函数是<code>object</code>对象的方法，所以他的<code>this</code>指向该对象</strong>，那么<code>that</code>也就指向该对象，所以这里的值是<code>object.name</code>也就是<code>&quot;My Object&quot;</code></p>
+</blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;书上解释：每个函数在被调用时都会自动取得两个特殊变量：this和arguments。内部函数在搜索这两个变量时，只会搜索到其活动对象为止，因此永远不可能直接访问外部函数中的这两个变量。不过，把外部作用域中的this对象保存在一个闭包能够访问到的变量里，就可以让闭包访问该对象了。</p>
+<p>几种特殊情况下，this的值可能会意外的改变<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var name = &quot;The Window&quot;;</div><div class="line">var object = &#123;</div><div class="line">    name: &quot;My Object&quot;,</div><div class="line">    getName: function() &#123;</div><div class="line">        return this.name; // &quot;My Object&quot;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">object.getName(); // &quot;My Object&quot;</div><div class="line">(object.getName)(); // &quot;My Object&quot;</div><div class="line">(object.getName = object.getName)(); // &quot;The Window&quot; 非严格模式下</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>书上内容：第一行代码就是简单的调用了<code>object.getName()</code>。第二行代码在调用该方法前先给它加上了括号。虽然加上括号后，就好像只是在引用一个函数，但this的值得到了维持，因为<code>object.getName</code>和<code>(object.getName)</code>的定义是相同的。<br>第三行代码先执行了一条赋值语句，然后在调用赋值后的结果。因为这个赋值表达式的值是函数本身，所以this得值不能得到维持，结果就返回了”The Window”(可能this从<code>object</code>改变成了<code>getName</code>这个函数)。</p>
+</blockquote>
+<h3 id="内存泄漏"><a href="#内存泄漏" class="headerlink" title="内存泄漏"></a>内存泄漏</h3><p>书中内容：</p>
+<blockquote>
+<p>由于IE9之前版本对JScript和COM对象使用不同的垃圾收集例程（高程第4章），因此闭包在IE的这些版本中会导致一些特殊的问题。具体来说，如果闭包的作用域链中保存着一个HTML元素，那么就意味着该元素将无法被销毁。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function assignHandler() &#123;</div><div class="line">    var element = document.getElementById(&quot;someElement&quot;);</div><div class="line">    element.onclick = function () &#123;</div><div class="line">        alert(element.id);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>以上代码创建了一个作为element元素事件处理程序的闭包，而这个闭包则又创建了一个循环引用。由于匿名函数保存了一个对<code>assignHandler()</code>的活动对象的引用，因此就会导致无法减少element的引用数。只要匿名函数存在，element的引用数至少也是1，因此它所占用的内存就永远不会被回收。</p>
+</blockquote>
+<p>解决方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function assignHandler() &#123;</div><div class="line">    var element = document.getElementById(&quot;someElement&quot;);</div><div class="line">    var id = element.id;</div><div class="line">    element.onclick = function () &#123;</div><div class="line">        alert(id);</div><div class="line">    &#125;;</div><div class="line">    element = null;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>在上面的代码中，通过把<code>element.id</code>的一个副本保存在一个变量中，并且在闭包中引用该变量消除了循环引用。即使闭包不直接引用element，包含函数的活动对象中也仍然会保存一个引用。因此，有必要把element变量设置为<code>null</code>。这样就能够解除对DOM对象的引用，顺利地减少其引用数，确保正常回收占用的内存。</p>
+</blockquote>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/11/02/js浅拷贝和深拷贝/" title="js 浅拷贝和深拷贝">js 浅拷贝和深拷贝</a></h2>
+                <p class="excerpt">
+                
+                参考《JavaScript高级程序设计》以及网上内容总结https://github.com/wengjq/Blog/issues/3https://stackoverflow.com/questions/728360/how-do-i-correctly-clone-a-javascript-ob
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-11-02T07:12:15.320Z" class="post-list__meta--date date">2017-11-02</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/11/02/js浅拷贝和深拷贝/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/11/01/java重定向/" title="java重定向问题">java重定向问题</a></h2>
+                <p class="excerpt">
+                
+                今天在开发雀巢水新需求的过程中，发现java部分是直接返回页面的，不是那种前台 ajax 调用接口返回值，以前没在意，直到新需求要求不同的商品对应不同的支付方式（蛋疼），水票还不能单独购买。好了。。。担心用户单独购买水票或者几种不同支付方式的商品一起购买，结果肯定不给跳到订单提交页的，但是由于后台接
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-11-01T12:02:10.783Z" class="post-list__meta--date date">2017-11-01</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/11/01/java重定向/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>

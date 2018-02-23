@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>Object.getOwnPropertyDescriptor()和Object.getOwnPropertyDescriptors()还有Object.getPrototypeOf() | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="Object.getOwnPropertyDescriptor() 方法返回指定对象上一个自有属性对应的属性描述符。（自有属性指的是直接赋予该对象的属性，不需要从原型链上进行查找的属性）
+
+语法：Object.getOwnPropertyDescriptor(obj, prop)
+参数
+obj：需要查找的目标对象
+prop：目标对象内属性名称（String类型）
+
+
+返回值： 如果指定的属性存在于">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Object.getOwnPropertyDescriptor()和Object.getOwnPropertyDescriptors()还有Object.getPrototypeOf() | Ronaldo">
+    <meta name="twitter:description" content="Object.getOwnPropertyDescriptor() 方法返回指定对象上一个自有属性对应的属性描述符。（自有属性指的是直接赋予该对象的属性，不需要从原型链上进行查找的属性）
+
+语法：Object.getOwnPropertyDescriptor(obj, prop)
+参数
+obj：需要查找的目标对象
+prop：目标对象内属性名称（String类型）
+
+
+返回值： 如果指定的属性存在于">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Object.getOwnPropertyDescriptor()和Object.getOwnPropertyDescriptors()还有Object.getPrototypeOf() | Ronaldo">
+    <meta property="og:description" content="Object.getOwnPropertyDescriptor() 方法返回指定对象上一个自有属性对应的属性描述符。（自有属性指的是直接赋予该对象的属性，不需要从原型链上进行查找的属性）
+
+语法：Object.getOwnPropertyDescriptor(obj, prop)
+参数
+obj：需要查找的目标对象
+prop：目标对象内属性名称（String类型）
+
+
+返回值： 如果指定的属性存在于">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2017/10/31/Object.getOwnPropertyDescriptor/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-10-31T08:07:52.025Z" class="post-list__meta--date date">2017-10-31</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">Object.getOwnPropertyDescriptor()和Object.getOwnPropertyDescriptors()还有Object.getPrototypeOf()</h1>
+  </header>
+
+  <section class="post">
+    <p><strong>Object.getOwnPropertyDescriptor() 方法返回指定对象上一个自有属性对应的属性描述符。（自有属性指的是直接赋予该对象的属性，不需要从原型链上进行查找的属性）</strong></p>
+<ul>
+<li>语法：<code>Object.getOwnPropertyDescriptor(obj, prop)</code></li>
+<li>参数<ul>
+<li>obj：需要查找的目标对象</li>
+<li>prop：目标对象内属性名称（String类型）</li>
+</ul>
+</li>
+<li>返回值： 如果指定的属性存在于对象上，则返回其属性描述符对象（property descriptor），否则返回 undefined。</li>
+<li>描述：该方法允许对一个属性的描述进行检索。在 Javascript 中， 属性 由一个字符串类型的“名字”（name）和一个“属性描述符”（property descriptor）对象构成。更多关于属性描述符类型以及他们属性的信息可以查看：Object.defineProperty.</li>
+</ul>
+<blockquote>
+<p>一个属性描述符是一个记录，由下面属性当中的某些组成的：</p>
+<ul>
+<li>value：该属性的值(仅针对数据属性描述符有效)</li>
+<li>writable：当且仅当属性的值可以被改变时为true。(仅针对数据属性描述有效)</li>
+<li>get：获取该属性的访问器函数（getter）。如果没有访问器， 该值为undefined。(仅针对包含访问器或设置器的属性描述有效)</li>
+<li>set：获取该属性的设置器函数（setter）。 如果没有设置器， 该值为undefined。(仅针对包含访问器或设置器的属性描述有效)</li>
+<li>configurable：当且仅当指定对象的属性描述可以被改变或者属性可被删除时，为true。</li>
+<li>enumerable：当且仅当指定对象的属性可以被枚举出时，为 true。</li>
+</ul>
+</blockquote>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">var o, d;</div><div class="line">o = &#123; get foo() &#123; return 17; &#125; &#125;;</div><div class="line">d = Object.getOwnPropertyDescriptor(o, &quot;foo&quot;);</div><div class="line">// d &#123;</div><div class="line">//   configurable: true,</div><div class="line">//   enumerable: true,</div><div class="line">//   get: /*the getter function*/,</div><div class="line">//   set: undefined</div><div class="line">// &#125;</div><div class="line">o = &#123; bar: 42 &#125;;</div><div class="line">d = Object.getOwnPropertyDescriptor(o, &quot;bar&quot;);</div><div class="line">// d &#123;</div><div class="line">//   configurable: true,</div><div class="line">//   enumerable: true,</div><div class="line">//   value: 42,</div><div class="line">//   writable: true</div><div class="line">// &#125;</div><div class="line">o = &#123;&#125;;</div><div class="line">Object.defineProperty(o, &quot;baz&quot;, &#123;</div><div class="line">  value: 8675309,</div><div class="line">  writable: false,</div><div class="line">  enumerable: false</div><div class="line">&#125;);</div><div class="line">d = Object.getOwnPropertyDescriptor(o, &quot;baz&quot;);</div><div class="line">// d &#123;</div><div class="line">//   value: 8675309,</div><div class="line">//   writable: false,</div><div class="line">//   enumerable: false,</div><div class="line">//   configurable: false</div><div class="line">// &#125;</div></pre></td></tr></table></figure>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>在 ES5 中，如果该方法的第一个参数不是对象（而是原始类型），那么就会产生出现 TypeError。而在 ES2015，第一个的参数不是对象的话就会被强制转换为对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Object.getOwnPropertyDescriptor(&apos;foo&apos;, 0);</div><div class="line">// 类型错误: &quot;foo&quot; 不是一个对象  // ES5 code</div><div class="line">Object.getOwnPropertyDescriptor(&apos;foo&apos;, 0);</div><div class="line">// Object returned by ES2015 code: &#123;</div><div class="line">//   configurable: false,</div><div class="line">//   enumerable: true,</div><div class="line">//   value: &quot;f&quot;,</div><div class="line">//   writable: false</div><div class="line">// &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="Object-getOwnPropertyDescriptors-方法用来获取一个对象的所有自身属性的描述符。"><a href="#Object-getOwnPropertyDescriptors-方法用来获取一个对象的所有自身属性的描述符。" class="headerlink" title="Object.getOwnPropertyDescriptors() 方法用来获取一个对象的所有自身属性的描述符。"></a>Object.getOwnPropertyDescriptors() 方法用来获取一个对象的所有自身属性的描述符。</h3><ul>
+<li>语法：<code>Object.getOwnPropertyDescriptors(obj)</code></li>
+<li>参数<ul>
+<li>obj：任意对象</li>
+</ul>
+</li>
+<li>返回值：所指定对象的所有自身属性的描述符，如果没有任何自身属性，则返回空对象。</li>
+</ul>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><p><strong>浅拷贝一个对象</strong></p>
+<blockquote>
+<p>Object.assign() 方法只能拷贝源对象的可枚举的自身属性，同时拷贝时无法拷贝属性的特性们，而且访问器属性会被转换成数据属性，也无法拷贝源对象的原型，该方法配合 Object.create() 方法可以实现上面说的这些。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Object.create(</div><div class="line">  Object.getPrototypeOf(obj), </div><div class="line">  Object.getOwnPropertyDescriptors(obj) </div><div class="line">);</div></pre></td></tr></table></figure>
+<p><strong>创建子类</strong></p>
+<blockquote>
+<p>创建子类的典型方法是定义子类，将其原型设置为超类的实例，然后在该实例上定义属性。这可能会让尴尬，特别是对于 getters 和 setter 而言。 相反，您可以使用此代码设置原型：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function superclass() &#123;&#125;</div><div class="line">superclass.prototype = &#123;</div><div class="line">  // 在这里定义方法和属性</div><div class="line">&#125;;</div><div class="line">function subclass() &#123;&#125;</div><div class="line">subclass.prototype = Object.create(superclass.prototype, Object.getOwnPropertyDescriptors(&#123;</div><div class="line">  // 在这里定义方法和属性</div><div class="line">&#125;));</div></pre></td></tr></table></figure>
+<h3 id="Object-getPrototypeOf"><a href="#Object-getPrototypeOf" class="headerlink" title="Object.getPrototypeOf()"></a>Object.getPrototypeOf()</h3><p><strong>Object.getPrototypeOf() 方法返回指定对象的原型（内部[[Prototype]]属性的值）</strong><br>语法：<code>Object.getPrototypeOf(object)</code></p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/11/01/java重定向/" title="java重定向问题">java重定向问题</a></h2>
+                <p class="excerpt">
+                
+                今天在开发雀巢水新需求的过程中，发现java部分是直接返回页面的，不是那种前台 ajax 调用接口返回值，以前没在意，直到新需求要求不同的商品对应不同的支付方式（蛋疼），水票还不能单独购买。好了。。。担心用户单独购买水票或者几种不同支付方式的商品一起购买，结果肯定不给跳到订单提交页的，但是由于后台接
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-11-01T12:02:10.783Z" class="post-list__meta--date date">2017-11-01</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/11/01/java重定向/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/10/31/Object.keys()/" title="Object.keys()">Object.keys()</a></h2>
+                <p class="excerpt">
+                
+                Object.keys() 方法会返回一个由一个给定对象的自身可枚举属性组成的数组，数组中属性名的排列顺序和使用 for…in 循环遍历该对象时返回的顺序一致 （两者的主要区别是 一个 for-in 循环还会枚举其原型链上的属性）。简单来讲就是遍历对象的可枚举属性，然后返回得到的键名组成一个数组Ob
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-10-31T07:39:09.231Z" class="post-list__meta--date date">2017-10-31</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/10/31/Object.keys()/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>

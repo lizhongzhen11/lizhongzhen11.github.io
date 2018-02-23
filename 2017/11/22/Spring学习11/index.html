@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>Spring4.0学习11--AOP | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="动态代理在业务处理时，有时候我们需要添加一些日志等非核心的需求代码，如果这些代码分散在各个核心代码间会很冗余，不利于管理和维护，这时候我们可以使用动态代理来解决以上问题。举个例子：12345678910111213141516@Override	public int add(int i, int j) &amp;#123;		// TODO Auto-generated method stub		Syst">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Spring4.0学习11--AOP | Ronaldo">
+    <meta name="twitter:description" content="动态代理在业务处理时，有时候我们需要添加一些日志等非核心的需求代码，如果这些代码分散在各个核心代码间会很冗余，不利于管理和维护，这时候我们可以使用动态代理来解决以上问题。举个例子：12345678910111213141516@Override	public int add(int i, int j) &amp;#123;		// TODO Auto-generated method stub		Syst">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Spring4.0学习11--AOP | Ronaldo">
+    <meta property="og:description" content="动态代理在业务处理时，有时候我们需要添加一些日志等非核心的需求代码，如果这些代码分散在各个核心代码间会很冗余，不利于管理和维护，这时候我们可以使用动态代理来解决以上问题。举个例子：12345678910111213141516@Override	public int add(int i, int j) &amp;#123;		// TODO Auto-generated method stub		Syst">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2017/11/22/Spring学习11/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-11-22T08:32:10.707Z" class="post-list__meta--date date">2017-11-22</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">Spring4.0学习11--AOP</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h3><p>在业务处理时，有时候我们需要添加一些日志等非核心的需求代码，如果这些代码分散在各个核心代码间会很冗余，不利于管理和维护，这时候我们可以使用动态代理来解决以上问题。<br>举个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">	public int add(int i, int j) &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		System.out.println(&quot;The method begins with (i: &quot; +i+ &quot;, j: &quot;+j+&quot;)&quot;);</div><div class="line">		int result = i + j;</div><div class="line">		System.out.println(&quot;ends with&quot; + result);</div><div class="line">		return result;</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	public int sub(int i, int j) &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		System.out.println(&quot;The method begins with (i: &quot; +i+ &quot;, j: &quot;+j+&quot;)&quot;);	</div><div class="line">		int result = i - j;</div><div class="line">		System.out.println(&quot;ends with&quot; + result);</div><div class="line">		return result;</div><div class="line">	&#125;</div></pre></td></tr></table></figure></p>
+<p>上述代码中，在add()和sub()方法里都有打印输出的代码，万一方法一多，每个方法里面都有这种打印输出的代码时就很难去维护了，这些代码虽然不是核心代码但是在开发过程中也是可以帮助我们定位问题的，还是有必要的，可是大家又不想这样敲这么多代码，有没有什么方法能够提高效率解决这个问题呢？</p>
+<p>这时候我们可以使用<strong>动态代理</strong>解决上述问题</p>
+<blockquote>
+<p>代理设计模式的原理: <strong>使用一个代理将对象包装起来</strong>, 然后用该代理对象取代原始对象. 任何对原始对象的调用都要通过代理. 代理对象决定是否以及何时将方法调用转到原始对象上.</p>
+</blockquote>
+<p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">public class ArithmeticLoggingProxy &#123;</div><div class="line">	// 要代理的对象</div><div class="line">	private Arithmetic target;</div><div class="line">	public ArithmeticLoggingProxy(Arithmetic target) &#123;</div><div class="line">		this.target = target;</div><div class="line">	&#125;</div><div class="line">	public Arithmetic getLoggingProxy() &#123;</div><div class="line">		Arithmetic proxy = null;</div><div class="line">		// 代理对象由哪一个类加载器加载负责</div><div class="line">		ClassLoader loader = target.getClass().getClassLoader();</div><div class="line">		// 代理对象的类型，即其中有哪些方法</div><div class="line">		Class [] interfaces = new Class[]&#123;Arithmetic.class&#125;;</div><div class="line">		// 当调用代理对象其中的方法时，该执行的代码</div><div class="line">		InvocationHandler h = new InvocationHandler() &#123;</div><div class="line">			/*</div><div class="line">			 * proxy:正在返回的那个代理对象，一般情况下，在invoke方法中都不使用该对象</div><div class="line">			 * method:正在被调用的方法</div><div class="line">			 * args:调用方法时，传入的参数</div><div class="line">			*/</div><div class="line">			@Override</div><div class="line">			public Object invoke(Object proxy, Method method, Object[] args) throws Throwable &#123;</div><div class="line">				// TODO Auto-generated method stub</div><div class="line">				String methodName = method.getName();</div><div class="line">				// 日志</div><div class="line">				System.out.println(&quot;The method &quot; + methodName + &quot;begins with&quot; + Arrays.asList(args));</div><div class="line">				// 执行方法</div><div class="line">				Object result = method.invoke(target, args);</div><div class="line">				// 日志</div><div class="line">				System.out.println(&quot;The method &quot; + methodName + &quot;ends with&quot; + Arrays.asList(result));</div><div class="line">				return result;</div><div class="line">			&#125;</div><div class="line">		&#125;;</div><div class="line">		proxy = (Arithmetic) Proxy.newProxyInstance(loader, interfaces, h);</div><div class="line">		return proxy;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>上述代码把那些需要打印输出的日志代码通过动态代理包装了起来，当我们想改日志内容时只需要修改上述代码就能做到所有应用该代理的日志都跟着变。<br>不过，这种写法对一般程序员要求略高</p>
+</blockquote>
+<h3 id="AOP-简介"><a href="#AOP-简介" class="headerlink" title="AOP 简介"></a>AOP 简介</h3><blockquote>
+<p>AOP(Aspect-Oriented Programming, <strong>面向切面编程</strong>): 是一种新的方法论, 是对传统 OOP(Object-Oriented Programming, 面向对象编程) 的补充.<br>AOP 的主要编程对象是<strong>切面(aspect)</strong>, 而<strong>切面模块化横切关注点</strong>.<br>在应用 AOP 编程时, 仍然需要<strong>定义公共功能</strong>, 但可以明确的定义这个功能在哪里, 以什么方式应用, <strong>并且不必修改受影响的类</strong>. 这样一来<strong>横切关注点就被模块化到特殊的对象(切面)里</strong>.</p>
+</blockquote>
+<p>AOP 的好处:</p>
+<ul>
+<li>每个事物逻辑位于一个位置, 代码不分散, 便于维护和升级</li>
+<li>业务模块更简洁, 只包含核心业务代码.</li>
+</ul>
+<h3 id="AOP-术语"><a href="#AOP-术语" class="headerlink" title="AOP 术语"></a>AOP 术语</h3><ul>
+<li>切面(Aspect):  <strong>横切关注点(跨越应用程序多个模块的功能)被模块化的特殊对象</strong></li>
+<li>通知(Advice):  <strong>切面必须要完成的工作</strong></li>
+<li>目标(Target): <strong>被通知的对象</strong></li>
+<li>代理(Proxy): <strong>向目标对象应用通知之后创建的对象</strong></li>
+<li>连接点（Joinpoint）：<strong>程序执行的某个特定位置</strong>：如类某个方法调用前、调用后、方法抛出异常后等。<strong>连接点由两个信息确定：方法表示的程序执行点；相对点表示的方位</strong>。例如 ArithmethicCalculator#add() 方法执行前的连接点，执行点为 ArithmethicCalculator#add()； 方位为该方法执行前的位置</li>
+<li>切点（pointcut）：每个类都拥有多个连接点：例如 ArithmethicCalculator 的所有方法实际上都是连接点，即连接点是程序类中客观存在的事务。<strong>AOP 通过切点定位到特定的连接点。类比：连接点相当于数据库中的记录，切点相当于查询条件</strong>。切点和连接点不是一对一的关系，一个切点匹配多个连接点，切点通过 org.springframework.aop.Pointcut 接口进行描述，它使用类和方法作为连接点的查询条件。</li>
+</ul>
+<h3 id="Spring-AOP"><a href="#Spring-AOP" class="headerlink" title="Spring  AOP"></a>Spring  AOP</h3><p>AspectJ：Java 社区里最完整最流行的 AOP 框架.<br>在 Spring2.0 以上版本中, 可以使用基于 AspectJ 注解或基于 XML 配置的 AOP</p>
+<h3 id="在-Spring-中启用-AspectJ-注解支持"><a href="#在-Spring-中启用-AspectJ-注解支持" class="headerlink" title="在 Spring 中启用 AspectJ 注解支持"></a>在 Spring 中启用 AspectJ 注解支持</h3><blockquote>
+<p>要在 Spring 应用中使用 AspectJ 注解, 必须在 classpath 下包含 AspectJ 类库: aopalliance.jar、aspectj.weaver.jar 和 spring-aspects.jar<br>将 aop Schema 添加到 <code>&lt;beans&gt;</code> 根元素中.<br>要在 Spring IOC 容器中启用 AspectJ 注解支持, 只要在 Bean 配置文件中定义一个空的 XML 元素 <code>&lt;aop:aspectj-autoproxy&gt;</code><br>当 Spring IOC 容器侦测到 Bean 配置文件中的 <code>&lt;aop:aspectj-autoproxy&gt;</code> 元素时, 会自动为与 AspectJ 切面匹配的 Bean 创建代理.</p>
+</blockquote>
+<h3 id="用-AspectJ-注解声明切面"><a href="#用-AspectJ-注解声明切面" class="headerlink" title="用 AspectJ 注解声明切面"></a>用 AspectJ 注解声明切面</h3><p><strong>要在 Spring 中声明 AspectJ 切面, 只需要在 IOC 容器中将切面声明为 Bean 实例</strong>. 当在 Spring IOC 容器中初始化 AspectJ 切面之后, Spring IOC 容器就会为那些与 AspectJ 切面相匹配的 Bean 创建代理.</p>
+<blockquote>
+<p>在 AspectJ 注解中, 切面只是一个带有 @Aspect 注解的 Java 类.<br>通知是标注有某种注解的简单的 Java 方法.</p>
+</blockquote>
+<p>AspectJ 支持 5 种类型的通知注解: </p>
+<ul>
+<li>@Before: 前置通知, 在方法执行之前执行</li>
+<li>@After: 后置通知, 在方法执行之后执行 </li>
+<li>@AfterRunning: 返回通知, 在方法返回结果之后执行</li>
+<li>@AfterThrowing: 异常通知, 在方法抛出异常之后</li>
+<li>@Around: 环绕通知, 围绕着方法执行</li>
+</ul>
+<h3 id="前置通知"><a href="#前置通知" class="headerlink" title="前置通知"></a>前置通知</h3><blockquote>
+<p>前置通知:在方法执行之前执行的通知<br>前置通知使用 @Before 注解, 并将切入点表达式的值作为注解值.</p>
+</blockquote>
+<p>示例：<br>新建个包com.aop,src下新建个applicationContext.xml文件,aop下新建四个类：Main.java、Arithmetic.java、ArithmeticImpl.java、LoggingAspect.java<br>applicationContext.xml:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;context:component-scan base-package=&quot;com.aop&quot;&gt;&lt;/context:component-scan&gt;</div><div class="line">&lt;!-- 使用Aspectj注解起作用：自动为匹配的类生成代理对象 --&gt;</div><div class="line">&lt;aop:aspectj-autoproxy&gt;&lt;/aop:aspectj-autoproxy&gt;</div></pre></td></tr></table></figure></p>
+<p>Arithmetic.java:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public interface Arithmetic &#123;</div><div class="line">	public int add(int i, int j);</div><div class="line">	public int sub(int i, int j);</div><div class="line">	public int mul(int i, int j);</div><div class="line">	public int div(int i, int j);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>ArithmeticImpl.java:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">@Component</div><div class="line">public class ArithmeticImpl implements Arithmetic &#123;</div><div class="line">	@Override</div><div class="line">	public int add(int i, int j) &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		int result = i + j;</div><div class="line">		return result;</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	public int sub(int i, int j) &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		int result = i - j;</div><div class="line">		return result;</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	public int mul(int i, int j) &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		int result = i * j;</div><div class="line">		return result;</div><div class="line">	&#125;</div><div class="line">	@Override</div><div class="line">	public int div(int i, int j) &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		int result = i / j;</div><div class="line">		return result;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>Main.java:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public class Main &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		// 1.获取IOC容器</div><div class="line">		ApplicationContext ctx = new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);</div><div class="line">		// 2.从IOC获取bean实例</div><div class="line">		Arithmetic arithmetic = ctx.getBean(Arithmetic.class);</div><div class="line">		// 3.使用bean</div><div class="line">		int result = arithmetic.add(1, 2);</div><div class="line">		System.out.println(&quot;result: &quot;+result);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>LoggingAspect.java:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">// 把这个类声明为一个切面：需要把该类放到IOC容器中、再声明为一个切面</div><div class="line">@Aspect</div><div class="line">@Component</div><div class="line">public class LoggingAspect &#123;</div><div class="line">	// 声明该方法是一个前置通知：在目标方法开始之前执行</div><div class="line">	@Before(&quot;execution(public int com.aop.Arithmetic.add(int, int))&quot;)</div><div class="line">	public void beforeMethod() &#123;</div><div class="line">		System.out.println(&quot;The method begins&quot;);</div><div class="line">	&#125;</div><div class="line">	// 声明该方法是一个后置通知：在目标方法执行后(无论是否发生异常),都执行的通知</div><div class="line">	// 在后置通知中，还不能访问目标方法的执行结果</div><div class="line">	@After(&quot;execution(public int com.aop.Arithmetic.add(int, int))&quot;)</div><div class="line">	public void afterMethod() &#123;</div><div class="line">		System.out.println(&quot;The method ends&quot;);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="利用方法签名编写-AspectJ-切入点表达式"><a href="#利用方法签名编写-AspectJ-切入点表达式" class="headerlink" title="利用方法签名编写 AspectJ 切入点表达式"></a>利用方法签名编写 AspectJ 切入点表达式</h3><blockquote>
+<p>最典型的切入点表达式时根据方法的签名来匹配各种方法:<br>execution <code>*</code> com.atguigu.spring.ArithmeticCalculator.<code>*</code>(..): 匹配 ArithmeticCalculator 中声明的所有方法,<strong>第一个 <em> 代表任意修饰符及任意返回值. 第二个 </em> 代表任意方法. .. 匹配任意数量的参数</strong>. 若目标类与接口与该切面在同一个包中, 可以省略包名.<br>execution public <code>*</code> ArithmeticCalculator.<code>*</code>(..): 匹配 ArithmeticCalculator 接口的所有公有方法.<br>execution public double ArithmeticCalculator.<code>*</code>(..): 匹配 ArithmeticCalculator 中返回 double 类型数值的方法<br>execution public double ArithmeticCalculator.<code>*</code>(double, ..): 匹配第一个参数为 double 类型的方法, .. 匹配任意数量任意类型的参数<br>execution public double ArithmeticCalculator.<code>*</code>(double, double): 匹配参数类型为 double, double 类型的方法.</p>
+</blockquote>
+<h3 id="后置通知-上述示例已经包含了"><a href="#后置通知-上述示例已经包含了" class="headerlink" title="后置通知(上述示例已经包含了)"></a>后置通知(上述示例已经包含了)</h3><blockquote>
+<p>后置通知是在连接点完成之后执行的, 即连接点返回结果或者抛出异常的时候, 下面的后置通知记录了方法的终止.<br>一个切面可以包括一个或者多个通知.</p>
+</blockquote>
+<h3 id="返回通知"><a href="#返回通知" class="headerlink" title="返回通知"></a>返回通知</h3><blockquote>
+<p><strong>无论连接点是正常返回还是抛出异常, 后置通知都会执行. 如果只想在连接点返回的时候记录日志, 应使用返回通知代替后置通知.</strong></p>
+</blockquote>
+<h3 id="异常通知"><a href="#异常通知" class="headerlink" title="异常通知"></a>异常通知</h3><p>只在连接点抛出异常时才执行异常通知<br><strong>将 throwing 属性添加到 @AfterThrowing 注解中</strong>, 也可以访问连接点抛出的异常. Throwable 是所有错误和异常类的超类. 所以在异常通知方法可以捕获到任何错误和异常.<br>如果只对某种特殊的异常类型感兴趣, 可以将参数声明为其他异常的参数类型. 然后通知就只在抛出这个类型及其子类的异常时才被执行.</p>
+<h3 id="环绕通知"><a href="#环绕通知" class="headerlink" title="环绕通知"></a>环绕通知</h3><blockquote>
+<p>环绕通知是所有通知类型中功能最为强大的, 能够全面地控制连接点. 甚至<strong>可以控制是否执行连接点</strong>.<br>对于环绕通知来说, 连接点的参数类型必须是 ProceedingJoinPoint . 它是 JoinPoint 的子接口, 允许控制何时执行, 是否执行连接点.<br>在环绕通知中需要明确调用 ProceedingJoinPoint 的 proceed() 方法来执行被代理的方法. 如果忘记这样做就会导致通知被执行了, 但目标方法没有被执行.<br><strong>注意: 环绕通知的方法需要返回目标方法执行之后的结果, 即调用 joinPoint.proceed(); 的返回值, 否则会出现空指针异常</strong></p>
+</blockquote>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/11/28/Spring学习12/" title="Spring4.0学习12--在xml文件中配置AOP">Spring4.0学习12--在xml文件中配置AOP</a></h2>
+                <p class="excerpt">
+                
+                指定切面的优先级在同一个连接点上应用不止一个切面时, 除非明确指定, 否则它们的优先级是不确定的.切面的优先级可以通过实现 Ordered 接口或利用 @Order 注解指定.实现 Ordered 接口, getOrder() 方法的返回值越小, 优先级越高.若使用 @Order 注解, 序号出现在
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-11-28T11:10:36.150Z" class="post-list__meta--date date">2017-11-28</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/11/28/Spring学习12/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/11/21/Spring学习10/" title="Spring4.0学习10">Spring4.0学习10</a></h2>
+                <p class="excerpt">
+                
+                泛型依赖注入Spring 4.x 中可以为子类注入子类对应的泛型类型的成员变量的引用
+示例:
+
+新建beans-generic.di.xml,新建com.generic.di包,包下面新建6个类，分别是Main.java,User.java,BaseService.java,BaseReposito
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-11-21T11:47:11.715Z" class="post-list__meta--date date">2017-11-21</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/11/21/Spring学习10/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>

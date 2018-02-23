@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>springMVC项目搭建 | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="参考
+http://www.jianshu.com/p/0ccaa4af05fc（**着重看**）http://www.jianshu.com/p/19a7a16d66b4http://www.cnblogs.com/mafly/p/5839863.htmlhttp://www.cnblogs.com/shinejaie/p/5244258.html
+
+常用注解
+http://www.jiansh">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="springMVC项目搭建 | Ronaldo">
+    <meta name="twitter:description" content="参考
+http://www.jianshu.com/p/0ccaa4af05fc（**着重看**）http://www.jianshu.com/p/19a7a16d66b4http://www.cnblogs.com/mafly/p/5839863.htmlhttp://www.cnblogs.com/shinejaie/p/5244258.html
+
+常用注解
+http://www.jiansh">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="springMVC项目搭建 | Ronaldo">
+    <meta property="og:description" content="参考
+http://www.jianshu.com/p/0ccaa4af05fc（**着重看**）http://www.jianshu.com/p/19a7a16d66b4http://www.cnblogs.com/mafly/p/5839863.htmlhttp://www.cnblogs.com/shinejaie/p/5244258.html
+
+常用注解
+http://www.jiansh">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2017/09/14/springMVC/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-09-14T07:03:02.820Z" class="post-list__meta--date date">2017-09-14</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">springMVC项目搭建</h1>
+  </header>
+
+  <section class="post">
+    <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p><a href="http://www.jianshu.com/p/0ccaa4af05fc（**着重看**）" target="_blank" rel="external">http://www.jianshu.com/p/0ccaa4af05fc（**着重看**）</a><br><a href="http://www.jianshu.com/p/19a7a16d66b4" target="_blank" rel="external">http://www.jianshu.com/p/19a7a16d66b4</a><br><a href="http://www.cnblogs.com/mafly/p/5839863.html" target="_blank" rel="external">http://www.cnblogs.com/mafly/p/5839863.html</a><br><a href="http://www.cnblogs.com/shinejaie/p/5244258.html" target="_blank" rel="external">http://www.cnblogs.com/shinejaie/p/5244258.html</a></p>
+</blockquote>
+<h2 id="常用注解"><a href="#常用注解" class="headerlink" title="常用注解"></a>常用注解</h2><blockquote>
+<p><a href="http://www.jianshu.com/p/0d0e45d14e6b" target="_blank" rel="external">http://www.jianshu.com/p/0d0e45d14e6b</a></p>
+</blockquote>
+<h1 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h1><ul>
+<li><p><strong>①、Eclipse 搭建 Spring 项目</strong></p>
+<ul>
+<li>New-Web-Dynamic Web Project-next-起个名字-finish</li>
+<li>接下来一定要将项目的字符集改为UTF-8</li>
+<li>右键项目——properties,点击Resource,Other一栏选择UTF-8(如果本来就是UTF-8就不用改)</li>
+</ul>
+</li>
+<li><p><strong>②、导入 jar 包</strong></p>
+<ul>
+<li>下载Sping框架的jar包，自己找，将jar包解压移到项目的/WebContent/WEB-INF/lib下(查看.settings文件夹下面的 org.eclipse.wst.common.component 文件，检查 source-path 是不是 /WebContent ，不是的话就在对应的文件夹下配置)。</li>
+<li>WEB-INF作为Tomcat启动后的安全文件夹，浏览器不能访问到该目录下的资源。Tomcat启动会默认在此目录下读取相应配置文件。</li>
+<li>右击项目名，Build Path - Configure Bulid Path… - Libraries - Add JARs…，在弹出的框里边找到项目的/WebContent/WEB-INF/lib，这样就看到刚刚你复制过来的 jar 包了。</li>
+</ul>
+</li>
+<li><p><strong>③、配置！！！</strong></p>
+<blockquote>
+<p>官网对框架的解释说明：<br>Spring MVC 框架是围绕一个 DispatcherServlet 来设计的，这个 Servlet 会把请求分发给各个处理器，并支持可配置的处理器映射、视图渲染、本地化、时区与主题渲染等，甚至还能支持文件上传。<br>处理器是你的应用中注解了 @Controller 和 @RequestMapping 的类和方法，Spring 为处理器方法提供了极其多样灵活的配置。</p>
+</blockquote>
+</li>
+</ul>
+<p><strong><em>关于 servlet</em></strong></p>
+<blockquote>
+<p>servlet 是在服务器上运行的小程序，譬如用 java 编写的 server 端程序。大致过程如下：<br>1、客户端（浏览器）访问网站，网站发送请求至服务器（tomcat 或 weblogic 等）；<br>2、服务器将请求信息发送至 servlet。<br>3、servlet 生成响应内容（我们写的程序控制响应）并将其传送给服务器。<br>4、服务器将响应返回给客户端。<br>5、客户端进行展示。</p>
+</blockquote>
+<h3 id="1-编写-web-xml"><a href="#1-编写-web-xml" class="headerlink" title="1.编写 web.xml"></a>1.编写 web.xml</h3><ul>
+<li>当我们打开WebContent/WEB-INF目录的时候，发现里面只有一个lib目录，这是存放各种jar包的地方。我们知道一个web项目必须要有一个web.xml文件才行。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</div><div class="line">&lt;web-app xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;  </div><div class="line">           xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot;  </div><div class="line">           xsi:schemaLocation=&quot;http://xmlns.jcp.org/xml/ns/javaee                         http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd&quot; id=&quot;WebApp_ID&quot;&gt; </div><div class="line">&lt;!-- 这是项目的名称 --&gt; </div><div class="line">&lt;display-name&gt;springmvc&lt;/display-name&gt;   </div><div class="line">&lt;/web-app&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2-验证-web-项目是否搭建成功"><a href="#2-验证-web-项目是否搭建成功" class="headerlink" title="2.验证 web 项目是否搭建成功"></a>2.验证 web 项目是否搭建成功</h3><ul>
+<li><p>为了验证到目前为止的正确性，我们在WebContent目录下面新建一个jsp文件。名字就叫index.jsp</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"> &lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot; pageEncoding=&quot;UTF-8&quot;%&gt;</div><div class="line"> &lt;html&gt;    </div><div class="line"> &lt;head&gt;         </div><div class="line">&lt;meta charset=&quot;UTF-8&quot; /&gt;     </div><div class="line">&lt;/head&gt;    </div><div class="line"> &lt;body&gt;恭喜，web項目已經成功搭建！&lt;/body&gt; </div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>我们现在就将这个项目部署到Tomcat,来验证是否可以跑起来。</p>
+</li>
+<li>在项目上右键——Debug As——Debug on Server。直接点击Finish</li>
+<li>经过一段时间，控制台开始打印日志信息，当我们看到这些信息的时候，说明Tomcat已经启动完毕了。</li>
+<li>让我们打开浏览器，在地址栏输入以下信息</li>
+<li><a href="http://localhost:8088/springmvc/index.jsp" target="_blank" rel="external">http://localhost:8088/springmvc/index.jsp</a></li>
+<li>我电脑上Tomcat配置的端口号是8088，具体情况视你自己的Tomcat决定，可能是8080等。</li>
+<li>可见，能够成功访问页面了，这说明我们到目前为止的操作是正确的。</li>
+</ul>
+<h3 id="3-集成SpringMVC"><a href="#3-集成SpringMVC" class="headerlink" title="3. 集成SpringMVC"></a>3. 集成SpringMVC</h3><blockquote>
+<p>我们在web.xml文件里面添加下面的配置</p>
+</blockquote>
+<p> <strong>3.1 配置监听器</strong><br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"> &lt;listener&gt;     </div><div class="line">      &lt;listener-class&gt;</div><div class="line">            org.springframework.web.context.ContextLoaderListener</div><div class="line">      &lt;/listener-class&gt; </div><div class="line">&lt;/listener&gt; </div><div class="line">&lt;listener&gt;</div><div class="line">     &lt;listener-class&gt;</div><div class="line">     org.springframework.web.util.IntrospectorCleanupListener</div><div class="line">     &lt;/listener-class&gt; </div><div class="line">&lt;/listener&gt;</div></pre></td></tr></table></figure></p>
+<p> <strong>3.2 配置过滤器，解决POST乱码问题</strong><br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"> &lt;filter&gt;</div><div class="line">     &lt;filter-name&gt;encoding&lt;/filter-name&gt;</div><div class="line">     &lt;filter-class&gt;</div><div class="line">              org.springframework.web.filter.CharacterEncodingFilter</div><div class="line">     &lt;/filter-class&gt;</div><div class="line">     &lt;init-param&gt;</div><div class="line">         &lt;param-name&gt;encoding&lt;/param-name&gt;</div><div class="line">         &lt;param-value&gt;UTF-8&lt;/param-value&gt;</div><div class="line">     &lt;/init-param&gt;</div><div class="line">&lt;/filter&gt;</div><div class="line">&lt;filter-mapping&gt;     </div><div class="line">     &lt;filter-name&gt;encoding&lt;/filter-name&gt;</div><div class="line">     &lt;url-pattern&gt;/*&lt;/url-pattern&gt; </div><div class="line">&lt;/filter-mapping&gt;</div></pre></td></tr></table></figure></p>
+<p> <strong>3.3 配置SpringMVC分发器，拦截所有请求</strong><br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"> &lt;servlet&gt;</div><div class="line">      &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;</div><div class="line">      &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;</div><div class="line">      &lt;!-- 配置DispatcherServlet的一个初始化参数：配置dispatcher-servlet配置文件的位置和名称 --&gt;      </div><div class="line">      &lt;init-param&gt;</div><div class="line">          &lt;param-name&gt;namespace&lt;/param-name&gt;</div><div class="line">          &lt;param-value&gt;dispatcher-servlet&lt;/param-value&gt;</div><div class="line">      &lt;/init-param&gt;</div><div class="line">&lt;/servlet&gt;</div><div class="line">&lt;servlet-mapping&gt;</div><div class="line">      &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt; //这里的&lt;servlet-name&gt;必须与上面的保持一致</div><div class="line">      &lt;url-pattern&gt;/&lt;/url-pattern&gt;</div><div class="line">&lt;/servlet-mapping&gt;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>在这个配置中，我们规定了 DispatcherServlet 的关联 XML 文件名称叫做 <em>dispatcher-servlet</em>。<br><em>注意，这里的路径是相对于web.xml来说的，也就是说，这个文件也在WEB-INF的根目录下。</em><br>所以，我们需要在WEB-INF的根目录下新建一个dispatcher-servlet.xml文件。<br>至此，web.xml文件的编写就告一段落了。<br> <strong>如果没有用注解，用最原始的方式访问后台java类时，那么假设<code>&lt;a href=&quot;test&quot;&gt;</code>，这里的test应该是<code>&lt;url-pattern&gt;/test&lt;/url-pattern&gt;</code>中配置的test，如果不一样则访问不了</strong></p>
+</blockquote>
+<p> <strong>3.4 编写dispatcher-servlet.xml</strong><br> <strong>dispatcher-servlet.xml 的作用就是配置SpringMVC分发器。</strong><br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"> &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</div><div class="line"> &lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;     xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;      xmlns:p=&quot;http://www.springframework.org/schema/p&quot;     xmlns:context=&quot;http://www.springframework.org/schema/context&quot;     xmlns:util=&quot;http://www.springframework.org/schema/util&quot;      xmlns:mvc=&quot;http://www.springframework.org/schema/mvc&quot;     xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd        http://www.springframework.org/schema/context         http://www.springframework.org/schema/context/spring-context-3.0.xsd        http://www.springframework.org/schema/util         http://www.springframework.org/schema/util/spring-util-3.0.xsd         http://www.springframework.org/schema/mvc         http://www.springframework.org/schema/mvc/spring-mvc.xsd       &quot;&gt; </div><div class="line">&lt;!-- 开启注解模式驱动 --&gt;              </div><div class="line">    &lt;mvc:annotation-driven&gt;&lt;/mvc:annotation-driven&gt; </div><div class="line">&lt;!-- 扫包 --&gt;</div><div class="line">    &lt;context:component-scan base-package=&quot;com.springmvc.*&quot;&gt;&lt;/context:component-scan&gt;</div><div class="line">&lt;!-- 静态资源过滤 --&gt;</div><div class="line">    &lt;mvc:resources location=&quot;/resources/&quot; mapping=&quot;/resources/**&quot;/&gt;</div><div class="line">&lt;!-- 视图渲染 jsp/freemaker/velocity--&gt;</div><div class="line">    &lt;bean class=&quot;org.springframework.web.servlet.view.InternalResourceViewResolver&quot;&gt;</div><div class="line">&lt;!-- 制定页面存放的路径，如果value值为空，则默认文件放在WebContent文件夹下 --&gt;</div><div class="line">        &lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/pages&quot;&gt;&lt;/property&gt;</div><div class="line">&lt;!-- 文件的后缀，如果value值为空，则默认所有文件 --&gt;</div><div class="line">        &lt;property name=&quot;suffix&quot; value=&quot;.jsp&quot;&gt;&lt;/property&gt;</div><div class="line">    &lt;/bean&gt;</div><div class="line">&lt;/beans&gt;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>根据配置，有三个需要注意的地方。</p>
+<ul>
+<li>（1）、它会扫描 com.springmvc 包下所有的 java 类，但凡是遇到有注解的，比如 @Controller, @Service, @Autowired,就会将它们加入到 Spring 的 bean 工厂里面去。</li>
+<li>（2）、所有的静态资源文件，比如说 js, css, images 都需要放在 /resources 目录下，这个目录现在我们还没有建。</li>
+<li>（3）、所有的展示页面，比如 jsp 文件，都需要放置在 /WEB-INF/pages 目录下，这个目录现在我们也没有建。、</li>
+<li>（4）、如果页面存放路径没有设置那么访问<a href="http://localhost:8080/SpringMVCDemon/resources/html/index.html，即代表访问WebContent/resources/html/index.html" target="_blank" rel="external">http://localhost:8080/SpringMVCDemon/resources/html/index.html，即代表访问WebContent/resources/html/index.html</a></li>
+<li>（5）、<strong>最近在学习尚硅谷SpringMVC视频时发现，最开始他在src文件夹下配了个springmvc.xml，然后我照着这边<code>&lt;context:component-scan base-package=&quot;com.springmvc.*&quot;&gt;&lt;/context:component-scan&gt;</code>在<code>com.springmvc</code>后面加了<code>.*</code>，结果怎么也跳不到那个页面，我就很奇怪了，后来仔细看了视频，发现他后面没有<code>.*</code>，我照着试了下，这就可以了。看来这个配置文件位置不一样，配置也要跟着改。</strong><br><strong>后来，我问了春春，他说我在web.xml指定了位置(<code>&lt;param-value&gt;classpath:springmvc.xml&lt;/param-value&gt;</code>)，如果不指定的话位置就在位置就是在web.xml的同一级。春春让我加 <code>.* *</code> 试试(中间不用空格,这里因为排版问题加了空格才能显示)，结果也能跳转。或者在加一层文件夹就可以用<code>.*</code>了。春春初步估计单个<code>*</code>使用的话下面必须是文件夹。</strong></li>
+</ul>
+</blockquote>
+<p> <img src="../../../../images/javabuildpath.png" alt=""></p>
+<h3 id="分割"><a href="#分割" class="headerlink" title="分割"></a>分割</h3><blockquote>
+<p>OK，我们把对应的目录加上。<br>首先是 Java 文件的目录</p>
+<ul>
+<li>我们在 src 文件夹右键，新建一个 com 包，再在里面建一个 springmvc 包，或者用<strong>.</strong>的方式一起建。</li>
+<li>根据 SpringMVC 的分层，我们在 springmvc 包下面建三个包，分别是 <strong>controller, service, dao</strong></li>
+<li>这样的话，当我们项目一旦启动，springmvc 就会扫描这三个包，将里面但凡是有注解的类都提取出来，放进 Spring 容器（或者说 Spring 的 bean 工厂），借由 Spring 容器来统一管理。这也是你从来没有去 new 一个 Controller 的原因。<br>接下来，我们来建静态资源的目录。</li>
+<li>在 WebContent 目录下新建一个 resources 文件夹。</li>
+<li>然后顺便把 js, css, img 的文件夹都建一下(建在resources下)，这里就存放我们的静态资源文件。</li>
+<li>最后，我们在 WEB-INF 目录下建一个 pages 文件夹，作为展示页面的存放目录。 </li>
+<li>将之前的 index.jsp 拷贝进来</li>
+<li>这样就配置的差不多了。 </li>
+</ul>
+</blockquote>
+<h3 id="4-导包和验证"><a href="#4-导包和验证" class="headerlink" title="4. 导包和验证"></a>4. 导包和验证</h3><blockquote>
+<p>我们将jar包放到lib目录：<br>然后启动项目，验证一下到目前为止的构建是否正确。<br>打开Servers视图，点击如图像是甲虫一样的图标。<br>发现报错了，错误信息如下：</p>
+<ul>
+<li><em>java.io.FileNotFoundException:Could not open ServletContext resource [/WEB-INF/applicationContext.xml]</em></li>
+<li>它说我们在WEB-INF下面少了一个applicationContext.xml 这个文件，原来，我们少了对SpringBean工厂的配置，它的意思就是说，我们要规定一下，在Spring容器启动的时候，需要自动加载哪些东西？</li>
+<li>于是，我们把 applicationContext.xml 加上。(加在WEB-INF文件夹下)<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt; </div><div class="line">&lt;beans xmlns=&quot;http://www.springframework.org/schema/beans&quot;     xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:aop=&quot;http://www.springframework.org/schema/aop&quot; xmlns:context=&quot;http://www.springframework.org/schema/context&quot; xmlns:tx=&quot;http://www.springframework.org/schema/tx&quot;     xmlns:util=&quot;http://www.springframework.org/schema/util&quot;</div><div class="line">xmlns:p=&quot;http://www.springframework.org/schema/p&quot;     xsi:schemaLocation=&quot;http://www.springframework.org/schema/beans      http://www.springframework.org/schema/beans/spring-beans.xsd     </div><div class="line">http://www.springframework.org/schema/aop      </div><div class="line">http://www.springframework.org/schema/aop/spring-aop-4.0.xsd   </div><div class="line">http://www.springframework.org/schema/tx      </div><div class="line">http://www.springframework.org/schema/tx/spring-tx-4.0.xsd   </div><div class="line">http://www.springframework.org/schema/context      http://www.springframework.org/schema/context/spring-context-4.0.xsd   http://www.springframework.org/schema/util      http://www.springframework.org/schema/util/spring-util-4.0.xsd&quot;&gt;  </div><div class="line">&lt;/beans&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>里面我们啥也不配置，再次启动Tomcat，成功。</p>
+</blockquote>
+<h3 id="5-配置ViewController"><a href="#5-配置ViewController" class="headerlink" title="5. 配置ViewController"></a>5. 配置ViewController</h3><blockquote>
+<p>我们知道，<strong>WEB-INF目录下的任何资源都是无法直接通过浏览器的url地址去访问的，保证了安全性。这也是我们为什么把页面都放在该目录下的原因。</strong><br>为了有所区分，我们还单独建立了一个pages文件夹，将这些页面保存起来。<br>现在，为了访问这个页面，我们需要用到SpringMVC的页面跳转机制。</p>
+<ul>
+<li>我们在Controller包下新建一个ViewController<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">package com.springmvc.controller;</div><div class="line">import javax.servlet.http.HttpServletRequest; </div><div class="line">import org.springframework.stereotype.Controller; </div><div class="line">import org.springframework.web.bind.annotation.RequestMapping; </div><div class="line">import org.springframework.web.servlet.ModelAndView;  </div><div class="line"></div><div class="line">@Controller </div><div class="line">public class ViewController &#123;</div><div class="line">      @RequestMapping(&quot;/view&quot;)</div><div class="line">      public ModelAndView view(HttpServletRequest request)&#123;</div><div class="line">         String path = request.getParameter(&quot;path&quot;) + &quot;&quot;;</div><div class="line">         ModelAndView mav = new ModelAndView();</div><div class="line">         mav.setViewName(path);</div><div class="line">         return mav;</div><div class="line">     &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>我只需要将想要访问的页面放在path里面，通过url传进来就行了。<br>因为添加了java类，因此我们重新启动Tomcat。<br>启动完成后，在地址栏输入：(<em>有的人可能端口号是8080</em>)<br><a href="http://localhost:8088/springmvc/view?path=index" target="_blank" rel="external">http://localhost:8088/springmvc/view?path=index</a><br>结果 报404<br>没关系，我们看他报什么错。</p>
+<ul>
+<li><em>message /springmvc/WEB-INF/pagesindex.jsp</em><br>pagesindex.jsp是什么鬼？？<br>原来，在dispatcher-servlet.xml中，我们少写了一个 “/“<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;property name=&quot;prefix&quot; value=&quot;/WEB-INF/pages&quot;&gt;&lt;/property&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>在<em>pages</em>后面加个/<br>OK</p>
+</blockquote>
+<h3 id="6-引入静态资源"><a href="#6-引入静态资源" class="headerlink" title="6. 引入静态资源"></a>6. 引入静态资源</h3><blockquote>
+<p>比如，我在resources/img目录下放了一张图片，怎么引入到index.jsp呢？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">background : url(http://localhost:8088/springmvc/resources/img/bg.jpg);</div><div class="line">background-size : 100% 100%;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<ul>
+<li>的确，这是一种方式。可是，它有一个缺点就是根路径写死了，我们肯定不希望这样的。</li>
+<li><p>其实，我们可以在viewController里面拿到项目根路径，然后传递到jsp页面就OK了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">package com.springmvc.controller;</div><div class="line">import javax.servlet.http.HttpServletRequest;</div><div class="line">import org.springframework.stereotype.Controller;</div><div class="line">import org.springframework.web.bind.annotation.RequestMapping;</div><div class="line">import org.springframework.web.servlet.ModelAndView;</div><div class="line">@Controller</div><div class="line">public class ViewController &#123;</div><div class="line">    @RequestMapping(&quot;/view&quot;)</div><div class="line">    public ModelAndView view(HttpServletRequest request)&#123;</div><div class="line">        String path = request.getParameter(&quot;path&quot;) + &quot;&quot;;</div><div class="line">        ModelAndView mav = new ModelAndView();</div><div class="line">        String contextPath = request.getContextPath();</div><div class="line">        mav.addObject(&quot;contextPath&quot;,contextPath);</div><div class="line">        mav.setViewName(path);</div><div class="line">        return mav;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>我们把调试信息 “恭喜，web項目已經成功搭建！” 删掉。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;%@ page language=&quot;java&quot; contentType=&quot;text/html; charset=UTF-8&quot; pageEncoding=&quot;UTF-8&quot;%&gt; </div><div class="line">&lt;html&gt;</div><div class="line">     &lt;head&gt;</div><div class="line">         &lt;meta charset=&quot;UTF-8&quot; /&gt;</div><div class="line">     &lt;/head&gt;</div><div class="line">      &lt;style&gt;</div><div class="line">         body &#123;</div><div class="line">             background : url($&#123;contextPath&#125;/resources/img/bg.jpg);</div><div class="line">             background-size : 100% 100%;</div><div class="line">         &#125;</div><div class="line">     &lt;/style&gt;</div><div class="line">     &lt;body&gt;      &lt;/body&gt;</div><div class="line"> &lt;/html&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>${contextPath} 可以取到Controller传过来的contextPath值。<br>成功了！</p>
+</blockquote>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/09/16/dva/" title="学习日记--dva">学习日记--dva</a></h2>
+                <p class="excerpt">
+                
+                dva安装
+dva安装可以去 antd 官方文档上跟着快速操作。
+值得注意的是，dva 封装了 react，所以初学者不必纠结于怎么去配置各种各样的环境了，因为 dva 给你配置好了，什么 react 相关的包或者 es6 语法相关的全部都配置好了。重要的事说三遍 结合react + dva + r
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-09-16T05:14:11.943Z" class="post-list__meta--date date">2017-09-16</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/09/16/dva/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/07/31/网上链接收藏/" title="一些网上看到的知识点汇总（非js、java）">一些网上看到的知识点汇总（非js、java）</a></h2>
+                <p class="excerpt">
+                
+                一个全新的开源技术文档发布和分享平台：https://love2.io/
+前端开发面试题：https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers
+
+创造狮导航
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-07-31T01:38:19.942Z" class="post-list__meta--date date">2017-07-31</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/07/31/网上链接收藏/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>

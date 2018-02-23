@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>Spring4.0学习13--使用JdbcTemplate和JdbcDaoSupport | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="一、JdbcTemplate 简介
+为了使 JDBC 更加易于使用, Spring 在 JDBC API 上定义了一个抽象层, 以此建立一个 JDBC 存取框架.作为 Spring JDBC 框架的核心, JDBC 模板的设计目的是为不同类型的 JDBC 操作提供模板方法. 每个模板方法都能控制整个过程, 并允许覆盖过程中的特定任务. 通过这种方式, 可以在尽可能保留灵活性的情况下, 将数据库存取">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Spring4.0学习13--使用JdbcTemplate和JdbcDaoSupport | Ronaldo">
+    <meta name="twitter:description" content="一、JdbcTemplate 简介
+为了使 JDBC 更加易于使用, Spring 在 JDBC API 上定义了一个抽象层, 以此建立一个 JDBC 存取框架.作为 Spring JDBC 框架的核心, JDBC 模板的设计目的是为不同类型的 JDBC 操作提供模板方法. 每个模板方法都能控制整个过程, 并允许覆盖过程中的特定任务. 通过这种方式, 可以在尽可能保留灵活性的情况下, 将数据库存取">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Spring4.0学习13--使用JdbcTemplate和JdbcDaoSupport | Ronaldo">
+    <meta property="og:description" content="一、JdbcTemplate 简介
+为了使 JDBC 更加易于使用, Spring 在 JDBC API 上定义了一个抽象层, 以此建立一个 JDBC 存取框架.作为 Spring JDBC 框架的核心, JDBC 模板的设计目的是为不同类型的 JDBC 操作提供模板方法. 每个模板方法都能控制整个过程, 并允许覆盖过程中的特定任务. 通过这种方式, 可以在尽可能保留灵活性的情况下, 将数据库存取">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2017/11/29/Spring学习13/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-11-29T02:09:00.982Z" class="post-list__meta--date date">2017-11-29</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">Spring4.0学习13--使用JdbcTemplate和JdbcDaoSupport</h1>
+  </header>
+
+  <section class="post">
+    <h2 id="一、JdbcTemplate-简介"><a href="#一、JdbcTemplate-简介" class="headerlink" title="一、JdbcTemplate 简介"></a>一、JdbcTemplate 简介</h2><blockquote>
+<p>为了使 JDBC 更加易于使用, Spring 在 JDBC API 上定义了一个抽象层, 以此建立一个 JDBC 存取框架.<br>作为 Spring JDBC 框架的核心, <strong>JDBC 模板</strong>的设计目的是为不同类型的 JDBC 操作提供<strong>模板方法</strong>. 每个模板方法都能控制整个过程, 并允许覆盖过程中的特定任务. 通过这种方式, 可以在尽可能保留灵活性的情况下, 将数据库存取的工作量降到最低.</p>
+</blockquote>
+<h3 id="1-使用-JdbcTemplate-更新数据库"><a href="#1-使用-JdbcTemplate-更新数据库" class="headerlink" title="1.使用 JdbcTemplate 更新数据库"></a>1.使用 JdbcTemplate 更新数据库</h3><p>1.1用 sql 语句和参数更新数据库:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// update</div><div class="line">public int update(String sql, Object... args) throws DataAccessException</div></pre></td></tr></table></figure></p>
+<p>1.2批量更新数据库:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// batchUpdate</div><div class="line">public int[] batchUpdate(String sql, List&lt;Object[]&gt; batchArgs)</div></pre></td></tr></table></figure></p>
+<h3 id="2-使用-JdbcTemplate-查询数据库"><a href="#2-使用-JdbcTemplate-查询数据库" class="headerlink" title="2.使用 JdbcTemplate 查询数据库"></a>2.使用 JdbcTemplate 查询数据库</h3><p>2.1 查询单行:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// queryForObject</div><div class="line">public &lt;T&gt; queryForObject(String sql, ParameterizedRowMapper&lt;T&gt; rm, Object... args) throws DataAccessException</div></pre></td></tr></table></figure></p>
+<p>2.2 便利的 BeanPropertyRowMapper 实现<br><img src="../../../../images/springjdbc1.png" alt=""><br>2.3 查询多行:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// query</div><div class="line">public &lt;T&gt; List&lt;T&gt; query(String sql, ParameterizedRowMapper&lt;T&gt; rm, Object... args) throws DataAccessException</div></pre></td></tr></table></figure></p>
+<p>2.4 单值查询:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// queryForObject</div><div class="line">public &lt;T&gt; T queryForObject(String sql, Class&lt;T&gt; requiredType, Object... args) throws DataAccessException</div></pre></td></tr></table></figure></p>
+<p>2.5 小练习：<br>重开一个项目,导包，src下建 com.springjdbc 包(包内建JDBCTest.java),applicationContext.xml,db.properties,本地数据库打开，新建 springstudy 数据库,内部建张表 employees.</p>
+<blockquote>
+<p><strong>注意：视频里老师用的是<code>List&lt;Object[]&gt; batchArgs = new ArrayList&lt;&gt;();</code>的形式非常简洁,最后他直接<code>jdbcTemplate.batchUpdate(sql,batchArgs);</code>,这里他的 batchUpdate是<code>batchUpdate(String sql, List&lt;Object[]&gt; batchArgs)</code> 类型的，而我本地并没有这个类型，所以没法用他的这种写法。</strong></p>
+<hr>
+<p><strong>后来经过与公司java同事探讨,怀疑是不是jar包版本问题,因为他电脑上也可以。而他用的是spring-jdbc-3.2.3,将我的spring-jdbc-3.0.2替换掉，果然能用了。跨行要踩得坑真多。。。</strong></p>
+</blockquote>
+<p>employees表:<br><img src="../../../../images/springjdbc2.png" alt=""></p>
+<p>db.properties:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">jdbc.user=root</div><div class="line">jdbc.password=123456</div><div class="line">jdbc.driverClass=com.mysql.jdbc.Driver</div><div class="line">jdbc.jdbcUrl=jdbc:mysql://localhost:3306/springstudy?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false</div><div class="line">jdbc.initPoolSize=5</div><div class="line">jdbc.maxPoolSize=10</div></pre></td></tr></table></figure></p>
+<p>applicationContext.xml:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 导入资源文件 --&gt;</div><div class="line">&lt;context:property-placeholder location=&quot;classpath:db.properties&quot; /&gt;</div><div class="line">&lt;!-- 配置C3P0数据源 --&gt;</div><div class="line">&lt;bean id=&quot;dataSource&quot; class=&quot;com.mchange.v2.c3p0.ComboPooledDataSource&quot;&gt;</div><div class="line">	&lt;property name=&quot;user&quot; value=&quot;$&#123;jdbc.user&#125;&quot;&gt;&lt;/property&gt;</div><div class="line">	&lt;property name=&quot;password&quot; value=&quot;$&#123;jdbc.password&#125;&quot;&gt;&lt;/property&gt;</div><div class="line">	&lt;property name=&quot;jdbcUrl&quot; value=&quot;$&#123;jdbc.jdbcUrl&#125;&quot;&gt;&lt;/property&gt;</div><div class="line">	&lt;property name=&quot;driverClass&quot; value=&quot;$&#123;jdbc.driverClass&#125;&quot;&gt;&lt;/property&gt;</div><div class="line">	&lt;!-- &lt;property name=&quot;initPoolSize&quot; value=&quot;$&#123;jdbc.initPoolSize&#125;&quot;&gt;&lt;/property&gt;</div><div class="line">	&lt;property name=&quot;maxPoolSize&quot; value=&quot;$&#123;jdbc.maxPoolSize&#125;&quot;&gt;&lt;/property&gt;--&gt;</div><div class="line">&lt;/bean&gt;</div><div class="line">&lt;!-- 配置spring的JdbcTemplate --&gt;</div><div class="line">&lt;bean id=&quot;jdbcTemplate&quot; class=&quot;org.springframework.jdbc.core.JdbcTemplate&quot;&gt;</div><div class="line">	&lt;property name=&quot;dataSource&quot; ref=&quot;dataSource&quot; /&gt;</div><div class="line">&lt;/bean&gt;</div></pre></td></tr></table></figure></p>
+<p>JDBCTest.java:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">public class JDBCTest &#123;</div><div class="line">	private ApplicationContext ctx = null;</div><div class="line">	private JdbcTemplate jdbcTemplate;</div><div class="line">	&#123;</div><div class="line">		ctx = new ClassPathXmlApplicationContext(&quot;applicationContext.xml&quot;);</div><div class="line">		jdbcTemplate = (JdbcTemplate) ctx.getBean(&quot;jdbcTemplate&quot;);</div><div class="line">	&#125;</div><div class="line">	@Test</div><div class="line">	public void testDataSource() throws SQLException &#123;</div><div class="line">		DataSource dataSource = ctx.getBean(DataSource.class);</div><div class="line">		System.out.println(dataSource.getConnection());</div><div class="line">	&#125;</div><div class="line">	/*</div><div class="line">	 * 执行INSERT,UPDATE,DELETE</div><div class="line">	 */</div><div class="line">//	@Test</div><div class="line">//	public void testUpdate() &#123;</div><div class="line">//		String sql = &quot;UPDATE employees SET last_name = ? WHERE id = ?&quot;;</div><div class="line">//		jdbcTemplate.update(sql, &quot;周润发&quot;, 5);</div><div class="line">//	&#125;</div><div class="line">	/*</div><div class="line">	 * 执行批量更新：批量的INSERT, UPDATE, DELETE</div><div class="line">	 * 最后一个参数是Object[] 的List类型：因为修改一条记录需要一个 Object 数组，那么多条不就需要多个 Object 数组吗？ </div><div class="line">	 */</div><div class="line">	@Test</div><div class="line">	public void testBatchUpdate() &#123;</div><div class="line">		String sql = &quot;INSERT INTO employees(id,last_name, email, dept_id) VALUES(?,?,?,?)&quot;;</div><div class="line">		List&lt;String&gt; dataSetName = new ArrayList&lt;&gt;();</div><div class="line">		List&lt;String&gt; dataSetEmail = new ArrayList&lt;&gt;();</div><div class="line">		List&lt;Integer&gt; dataSetDeptId = new ArrayList&lt;&gt;();</div><div class="line">		for(int i = 0; i&lt;10;i++)&#123;</div><div class="line">			dataSetName.add(&quot;aa&quot;+i);</div><div class="line">			dataSetEmail.add(&quot;11@&quot;+i);</div><div class="line">			dataSetDeptId.add(1);</div><div class="line">		&#125;</div><div class="line">		BatchPreparedStatementSetter batchArgs = new BatchPreparedStatementSetter()&#123;</div><div class="line">			@Override</div><div class="line">			public int getBatchSize() &#123;</div><div class="line">				// TODO Auto-generated method stub</div><div class="line">				return dataSetName.size();</div><div class="line">			&#125;</div><div class="line">			@Override</div><div class="line">			public void setValues(PreparedStatement ps, int i) throws SQLException &#123;</div><div class="line">				// TODO Auto-generated method stub</div><div class="line">			    try&#123;</div><div class="line">			    	ps.setObject(1, i+100);</div><div class="line">			    	ps.setObject(2, dataSetName.get(i));</div><div class="line">			    	ps.setObject(3, dataSetEmail.get(i));</div><div class="line">			    	ps.setObject(4, dataSetDeptId.get(i));</div><div class="line">			    &#125; catch(Exception e)&#123;</div><div class="line">			        e.printStackTrace();</div><div class="line">			    &#125;</div><div class="line">			&#125;</div><div class="line">		&#125;;</div><div class="line">		jdbcTemplate.batchUpdate(sql,batchArgs);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>上面的代码我跑了一次，数据库也插入数据了，当我继续跑的时候报错了，报错原因是:数据库设置了索引，而插入的值不唯一。如果想继续插入，要改数据。</p>
+</blockquote>
+<p><img src="../../../../images/springjdbc3.png" alt=""><br><img src="../../../../images/springjdbc4.png" alt=""></p>
+<blockquote>
+<p>既然知道包比较老，新版本有新方法，想着试一试吧。把lib里面的老版本的jdbc包删了，把3.2.3版本的弄进来并且 add path 进去，结果直接报ClassNotFoundException,启动时直接提醒有错，可是看了代码界面并没有报错的提示，纠结了起码半小时，百度了下发现人家也有遇到过文件在却还是报这种错，打开一看，原来是tomcat下的包没有删，我一想，我擦，我只是把lib下的包删了，但是build path下面的没动啊，点进去一看，果然是这个错。3.0版本的已经删了，但是build path下面还有，这当然找不到啊，遂删之，跑了起来。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">/*</div><div class="line">* 换成spring-jdbc-3.2.3版本的包,使用batchUpdate(String sql, List&lt;Object[]&gt; batchArgs) 类型 </div><div class="line">*/</div><div class="line">	@Test</div><div class="line">	public void testBatchUpdate() &#123;</div><div class="line">		String sql = &quot;INSERT INTO employees(id,last_name, email, dept_id) VALUES(?,?,?,?)&quot;;</div><div class="line">		List&lt;Object[]&gt; batchArgs = new ArrayList&lt;&gt;();</div><div class="line">		batchArgs.add(new Object[]&#123;6, &quot;刘德华&quot;, &quot;@qq.com&quot;, 2&#125;);</div><div class="line">		batchArgs.add(new Object[]&#123;7, &quot;梁朝伟&quot;, &quot;@qq.com&quot;, 3&#125;);</div><div class="line">		batchArgs.add(new Object[]&#123;8, &quot;吴孟达&quot;, &quot;@qq.com&quot;, 2&#125;);</div><div class="line">		batchArgs.add(new Object[]&#123;9, &quot;梁家辉&quot;, &quot;@qq.com&quot;, 3&#125;);</div><div class="line">		batchArgs.add(new Object[]&#123;10, &quot;李连杰&quot;, &quot;@qq.com&quot;, 2&#125;);</div><div class="line">		jdbcTemplate.batchUpdate(sql, batchArgs);</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<p><img src="../../../../images/springjdbc5.png" alt=""></p>
+<p>2.6 <strong>从数据库中获取一条记录，实际得到对应的一个对象</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@Test</div><div class="line">public void testQueryForObject() &#123;</div><div class="line">	String sql = &quot;SELECT id, last_name lastName, email FROM employees WHERE id = ?&quot;;</div><div class="line">	RowMapper&lt;Employee&gt; rowMapper = new BeanPropertyRowMapper&lt;&gt;(Employee.class) ;</div><div class="line">	Employee employee = jdbcTemplate.queryForObject(sql, rowMapper, 1);</div><div class="line">	System.out.println(employee);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>注意：不是调用 queryForObject(String sql, Class<employee> requiredType, Object… args) 方法<br>上面的 Class<employee> requiredType 代表指定的类型比如 id<br>这里应该调用 queryForObject(String sql, RowMapper<employee> rowMapper, Object… args) 方法</employee></employee></employee></p>
+<ul>
+<li>1.其中的 RowMapper 指定如何去映射结果集的行，常用的实现类为 BeanPropertyRowMapper</li>
+<li>2.使用 SQL 中列的别名完成列名和类的属性名的映射，例如 last_name lastName</li>
+<li>3.不支持级联属性，JdbcTemplate 到底是一个 JDBC 小工具，而不是 ORM 框架</li>
+</ul>
+</blockquote>
+<p>2.7 <strong>查到实体类的集合</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@Test</div><div class="line">public void testQueryForList() &#123;</div><div class="line">	String sql = &quot;SELECT id, last_name lastName, email FROM employees WHERE id &gt; ?&quot;;</div><div class="line">	RowMapper&lt;Employee&gt; rowMapper = new BeanPropertyRowMapper&lt;&gt;(Employee.class);</div><div class="line">	List&lt;Employee&gt; employees = jdbcTemplate.query(sql, rowMapper, 5);</div><div class="line">	System.out.println(employees);</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>2.8 <strong>获取单个列的值，或做统计查询</strong><br><strong>使用 queryForObject(String sql, Class<long> requiredType) 方法</long></strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">@Test</div><div class="line">public void testQueryForObject2() &#123;</div><div class="line">	String sql = &quot;SELECT count(id) from employees&quot;;</div><div class="line">	long count = jdbcTemplate.queryForObject(sql, Long.class);</div><div class="line">	System.out.println(count);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="3-简化-JDBC-模板查询"><a href="#3-简化-JDBC-模板查询" class="headerlink" title="3.简化 JDBC 模板查询"></a>3.简化 JDBC 模板查询</h3><p>每次使用都创建一个 JdbcTemplate 的新实例, 这种做法效率很低下.</p>
+<blockquote>
+<p><strong>JdbcTemplate 类被设计成为线程安全的</strong>, 所以可以在 IOC 容器中声明它的单个实例, 并将这个实例注入到所有的 DAO 实例中.<br>JdbcTemplate 也利用了 Java 1.5 的特定(自动装箱, 泛型, 可变长度等)来简化开发<br>Spring JDBC 框架还提供了一个 JdbcDaoSupport 类来简化 DAO 实现. 该类声明了 jdbcTemplate 属性, 它可以从 IOC 容器中注入, 或者自动从数据源中创建.(<strong>不推荐</strong>)</p>
+</blockquote>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/11/30/Spring学习14/" title="Spring4.0学习14--使用NamedParameterJdbcTemplate">Spring4.0学习14--使用NamedParameterJdbcTemplate</a></h2>
+                <p class="excerpt">
+                
+                在 JDBC 模板中使用具名参数在经典的 JDBC 用法中, SQL 参数是用占位符 ? 表示,并且受到位置的限制. 定位参数的问题在于, 一旦参数的顺序发生变化, 就必须改变参数绑定.在 Spring JDBC 框架中, 绑定 SQL 参数的另一种选择是使用具名参数(named parameter
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-11-30T06:55:20.272Z" class="post-list__meta--date date">2017-11-30</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/11/30/Spring学习14/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/11/28/Spring学习12/" title="Spring4.0学习12--在xml文件中配置AOP">Spring4.0学习12--在xml文件中配置AOP</a></h2>
+                <p class="excerpt">
+                
+                指定切面的优先级在同一个连接点上应用不止一个切面时, 除非明确指定, 否则它们的优先级是不确定的.切面的优先级可以通过实现 Ordered 接口或利用 @Order 注解指定.实现 Ordered 接口, getOrder() 方法的返回值越小, 优先级越高.若使用 @Order 注解, 序号出现在
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-11-28T11:10:36.150Z" class="post-list__meta--date date">2017-11-28</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/11/28/Spring学习12/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>

@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>JavaWeb_HTTP协议以及get、post请求 | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="HTTP简介
+WEB浏览器与WEB服务器之间的一问一答的交互过程必须遵循一定的规则，这个规则就是HTTP协议。
+HTTP是 hypertext transfer protocol（超文本传输协议）的简写，它是 TCP/IP 协议集中的一个应用层协议，用于定义WEB浏览器与WEB服务器之间交换数据的过程以及数据本身的格式。
+HTTP协议的版本 HTTP/1.0、HTTP/1.1、HTTP-NG
+
+H">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="JavaWeb_HTTP协议以及get、post请求 | Ronaldo">
+    <meta name="twitter:description" content="HTTP简介
+WEB浏览器与WEB服务器之间的一问一答的交互过程必须遵循一定的规则，这个规则就是HTTP协议。
+HTTP是 hypertext transfer protocol（超文本传输协议）的简写，它是 TCP/IP 协议集中的一个应用层协议，用于定义WEB浏览器与WEB服务器之间交换数据的过程以及数据本身的格式。
+HTTP协议的版本 HTTP/1.0、HTTP/1.1、HTTP-NG
+
+H">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="JavaWeb_HTTP协议以及get、post请求 | Ronaldo">
+    <meta property="og:description" content="HTTP简介
+WEB浏览器与WEB服务器之间的一问一答的交互过程必须遵循一定的规则，这个规则就是HTTP协议。
+HTTP是 hypertext transfer protocol（超文本传输协议）的简写，它是 TCP/IP 协议集中的一个应用层协议，用于定义WEB浏览器与WEB服务器之间交换数据的过程以及数据本身的格式。
+HTTP协议的版本 HTTP/1.0、HTTP/1.1、HTTP-NG
+
+H">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2017/09/20/3/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2017-09-20T07:03:32.433Z" class="post-list__meta--date date">2017-09-20</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">JavaWeb_HTTP协议以及get、post请求</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="HTTP简介"><a href="#HTTP简介" class="headerlink" title="HTTP简介"></a>HTTP简介</h3><ul>
+<li><strong>WEB浏览器</strong>与<strong>WEB服务器</strong>之间的一问一答的交互过程必须遵循一定的规则，这个规则就是HTTP协议。</li>
+<li>HTTP是 <em>hypertext transfer protocol</em>（超文本传输协议）的简写，它是 <em>TCP/IP</em> 协议集中的一个应用层协议，<strong>用于定义WEB浏览器与WEB服务器之间交换数据的过程以及数据本身的格式</strong>。</li>
+<li>HTTP协议的版本 HTTP/1.0、HTTP/1.1、HTTP-NG</li>
+</ul>
+<h3 id="HTTP与HTTPS的区别：http-www-mahaixiang-cn-internet-1233-html"><a href="#HTTP与HTTPS的区别：http-www-mahaixiang-cn-internet-1233-html" class="headerlink" title="HTTP与HTTPS的区别：http://www.mahaixiang.cn/internet/1233.html"></a>HTTP与HTTPS的区别：<a href="http://www.mahaixiang.cn/internet/1233.html" target="_blank" rel="external">http://www.mahaixiang.cn/internet/1233.html</a></h3><h3 id="HTTP会话方式"><a href="#HTTP会话方式" class="headerlink" title="HTTP会话方式"></a>HTTP会话方式</h3><p><img src="../../../../images/http.png" alt=""></p>
+<ul>
+<li>浏览器与WEB服务器的连接过程是短暂的，每次连接只处理一个请求和响应。对每一个页面的访问，浏览器与WEB服务器都要建立一次单独的连接。</li>
+<li>浏览器到WEB服务器之间的所有通讯都是完全独立分开的请求和响应对。</li>
+</ul>
+<h3 id="HTTP请求消息"><a href="#HTTP请求消息" class="headerlink" title="HTTP请求消息"></a>HTTP请求消息</h3><blockquote>
+<p>请求消息的结构：</p>
+<ul>
+<li><strong>一个请求行、若干消息头、以及实体内容</strong>，其中的一些消息头和实体内容都是可选的，<strong>消息头和实体内容之间要用空行隔开</strong>。</li>
+</ul>
+</blockquote>
+<p>   <img src="../../../../images/request.png" alt=""></p>
+<h3 id="HTTP响应消息"><a href="#HTTP响应消息" class="headerlink" title="HTTP响应消息"></a>HTTP响应消息</h3><blockquote>
+<p>响应消息的结构：</p>
+<ul>
+<li><strong>一个状态行、若干消息头、以及实体内容</strong>，其中的一些消息头和实体内容都是可选的，<strong>消息头和实体内容之间要用空行隔开</strong>。</li>
+</ul>
+</blockquote>
+<p>   <img src="../../../../images/response.png" alt=""></p>
+<h3 id="HTTP消息其他细节"><a href="#HTTP消息其他细节" class="headerlink" title="HTTP消息其他细节"></a>HTTP消息其他细节</h3><ul>
+<li>响应消息的实体内容就是网页文件的内容，也就是在浏览器中使用查看源文件的方式所看到的内容。</li>
+<li>一个使用GET方式的请求消息中不能包含实体内容，只有使用POST、PUT和DELETE方式的请求消息中才可以包含实体内容。 </li>
+</ul>
+<h3 id="使用GET和POST方式传递参数"><a href="#使用GET和POST方式传递参数" class="headerlink" title="使用GET和POST方式传递参数"></a>使用GET和POST方式传递参数</h3><blockquote>
+<p>在URL地址后面可以附加一些参数</p>
+<ul>
+<li>举例：<a href="http://www.it315.org/servlet/ParamsServlet?param1=abc&amp;param2=xyz" target="_blank" rel="external">http://www.it315.org/servlet/ParamsServlet?param1=abc&amp;param2=xyz</a><br>GET方式</li>
+<li>举例：GET /servlet/ParamsServlet?param1=abc&amp;param2=xyz HTTP/1.1</li>
+<li>特点：传送的数据量是有限制的，一般限制在1KB以下。<br>POST方式</li>
+<li>举例：<ul>
+<li>POST /servlet/ParamsServlet HTTP/1.1</li>
+<li>Host:</li>
+<li>Content-Type: application/x-www-form-urlencoded</li>
+<li>Content-Length: 28</li>
+<li></li>
+<li>param1=abc&amp;param2=xyz</li>
+</ul>
+</li>
+<li>特点：传送的数据量要比GET方式传送的数据量大得多 。</li>
+</ul>
+</blockquote>
+<p>  <strong>使用GET方式传递参数</strong></p>
+<ul>
+<li>在浏览器地址栏中输入某个URL地址或单击网页上的一个超链接时，浏览器发出的HTTP请求消息的请求方式为GET。</li>
+<li>如果网页中的<code>&lt;form&gt;</code>表单元素的method属性被设置为了“GET”，浏览器提交这个FORM表单时生成的HTTP请求消息的请求方式也为GET。</li>
+<li>使用GET请求方式给WEB服务器传递参数的格式： <em><a href="http://www.atguigu.com/counter.jsp?name=lc&amp;password=123" target="_blank" rel="external">http://www.atguigu.com/counter.jsp?name=lc&amp;password=123</a></em></li>
+<li><p>使用GET方式传送的数据量一般限制在1KB以下。</p>
+<p><strong>使用POST方式传递参数</strong></p>
+</li>
+<li>POST请求方式主要用于向WEB服务器端程序提交FORM表单中的数据。</li>
+<li>POST方式将各个表单字段元素及其数据作为HTTP消息的实体内容发送给WEB服务器，传送的数据量要比使用GET方式传送的数据量大得多。</li>
+</ul>
+<h3 id="如何在-Servlet-中获取请求信息"><a href="#如何在-Servlet-中获取请求信息" class="headerlink" title="如何在 Servlet 中获取请求信息"></a>如何在 Servlet 中获取请求信息</h3><blockquote>
+<p>Servlet 的 service() 方法用于应答请求：因为每次请求都会调用该方法<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">public void service(ServletRequest arg0, ServletResponse arg1) throws ServletException, IOException &#123;&#125;</div></pre></td></tr></table></figure></p>
+<p>ServletRequest:封装了请求信息。可以从中获取到任何请求信息</p>
+<p>ServletResponse:封装了响应信息。如果想给用户什么响应的话，具体可以使用该方法</p>
+<p>这两个接口的实现类都是服务器给予实现的，并在服务器调用 service 方法时传入</p>
+</blockquote>
+<p> <strong>ServletRequest</strong></p>
+<ul>
+<li><p>获取请求参数</p>
+<ul>
+<li>String getParameter(String name):根据请求参数的名字，返回参数值。但是参数有多个值（如 checkbox），该方法只能获取到第一个提交的值。</li>
+<li>String[] getParameterValues(String value):根据请求参数的名字，返回请求参数对应的字符串数组。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException &#123;</div><div class="line">  String[] intresting = request.getParameterValues(&quot;intresting&quot;);</div><div class="line">  for(String ins: intresting) &#123;</div><div class="line">      System.out.println(&quot;&gt;&gt; &quot; + ins);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>Map getParameterMap():返回参数名对应的 Enumeration 对象，类似于 ServletConfig(或ServletContext)的 getInitParameterNames() 方法。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Map&lt;String, String[]&gt; map = request.getParameterMap();</div><div class="line">for(Map.Entry&lt;String, String[]&gt; entry: map.entrySet()) &#123;</div><div class="line">  System.out.println(&quot;**&quot; + entry.getKey() + &quot;:&quot; + Arrays.asList(entry.getValue()));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>Enumeration getParameterNames():返回请求参数的键值对： key:参数名，value:参数值，String数组类型。</li>
+</ul>
+<blockquote>
+<p>获取请求的 URI：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">HttpServletRequest httpServletRequest = (HttpServletRequest) request;</div><div class="line">String requestURI = httpServletRequest.getRequestURI();</div><div class="line">System.out.println(requestURI);</div></pre></td></tr></table></figure>
+<p>获取请求方式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String method = httpServletRequest.getMethod();</div></pre></td></tr></table></figure>
+<p>若是一个GET请求，获取请求参数对应的那个字符串，即 ? 后的那个字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String queryString = httpServletRequest.getQueryString();</div></pre></td></tr></table></figure>
+<p>获取请求的Servlet的映射路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String servletPath = httpServletRequest.getServletPath();</div></pre></td></tr></table></figure>
+<p>和 attribute 相关的几个方法</p>
+</blockquote>
+<p><strong>HttpServletRequest:是ServletRequest的子接口。针对于HTTP请求所定义。里边包含了大量获取HTTP请求相关的方法。</strong></p>
+</li>
+</ul>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/09/26/4/" title="Safari不能正确解析yyyy-mm-dd">Safari不能正确解析yyyy-mm-dd</a></h2>
+                <p class="excerpt">
+                
+                
+开发PC端遇到的问题，网上找了个时间插件，在windows系统上没问题，到了苹果电脑的 safari 却显示错误，console 了半天才发现时间打印出来是 0000-00 以及 invalid date ，后来在网上看了个相关问题，具体是说 Safari不能正确解析yyyy-mm-dd，看链接 
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-09-26T05:08:28.827Z" class="post-list__meta--date date">2017-09-26</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/09/26/4/">继续阅读</a></div>
+                           
+            </div>
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2017/09/19/Servlet/" title="Servlet">Servlet</a></h2>
+                <p class="excerpt">
+                
+                Servlet简介
+Java Servlet是和平台无关的服务器端组件，它运行在Servlet容器中。Servlet容器负责Servlet和客户的通信以及调用Servlet的方法，Servlet和客户的通信采用“请求/响应”的模式。
+Servlet可完成如下功能：
+创建并返回基于客户请求的动态HTM
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2017-09-19T07:52:36.000Z" class="post-list__meta--date date">2017-09-19</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/09/19/Servlet/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>
