@@ -67,7 +67,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+              <li class="navigation__item"><a href="/#blog" title="Blogを読む" class="blog-button">Blog</a></li>
             
             </ul>
           </nav>
@@ -137,6 +137,22 @@
             <div class="main-post-list">
     
   <ol class="post-list">
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/12/01/Spring学习16/" title="link to post.title">Spring4.0学习16--事务管理(2)</a></h2>
+      <p class="excerpt">
+    
+      事务传播属性
+当事务方法被另一个事务方法调用时, 必须指定事务应该如何传播. 例如: 方法可能继续在现有事务中运行, 也可能开启一个新事务, 并在自己的事务中运行.事务的传播行为可以由传播属性指定. Spring 定义了 7  种类传播行为.
+
+
+需求(继续之前的练习)用户可以同时购买两种书籍,但是当余额不足,只能购买其中一种书时,需要事务能正常跑,被购买的对应书库存相应减少,余额减少,未被购买的
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2017-12-01T02:54:16.964Z" class="post-list__meta--date date">2017-12-01</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/12/01/Spring学习16/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
   
     
     <li>
@@ -275,25 +291,12 @@ Bean 可以使用了
     </li>
   
     
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/11/16/Spring学习6/" title="link to post.title">Spring4.0学习6--使用外部属性文件和SpEL</a></h2>
-      <p class="excerpt">
-    
-      使用外部属性文件
-在配置文件里配置 Bean 时, 有时需要在 Bean 的配置里混入系统部署的细节信息(例如: 文件路径, 数据源配置信息等). 而这些部署细节实际上需要和 Bean 配置相分离Spring 提供了一个 PropertyPlaceholderConfigurer 的 BeanFactory 后置处理器, 这个处理器允许用户将 Bean 配置的部分内容外移到属性文件中. 可以在 B
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-11-16T11:13:26.862Z" class="post-list__meta--date date">2017-11-16</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/11/16/Spring学习6/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
   </ol>
 
 
   <nav class="pagination" role="navigation">
     
-      <a class="older-posts pagination__newer btn btn-small btn-tertiary" href="/page/2/">&larr; Prev</a>
+      <a class="older-posts pagination__newer btn btn-small btn-tertiary" href="/page/2/">&larr; 前へ</a>
     
     <span class="pagination__page-number" >  3 / 10 </span>
     
@@ -338,7 +341,7 @@ Bean 可以使用了
       
       
     
-      <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/page/4/">Next &rarr;</a>
+      <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/page/4/">次へ &rarr;</a>
     
   </nav>
 
