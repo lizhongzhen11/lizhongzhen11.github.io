@@ -97,7 +97,7 @@ tools.">
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="Blogを読む" class="blog-button">Blog</a></li>
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
             
             </ul>
           </nav>
@@ -170,7 +170,7 @@ tools.">
     <div class="post-meta">
       <time datetime="2018-01-30T07:19:54.284Z" class="post-list__meta--date date">2018-01-30</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       No. <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -216,7 +216,7 @@ tools.">
 <li><a href="#50">进入详情页控制台报<code>cannot read property &#39;getLeft&#39; of undefined</code>问题</a></li>
 <li><a href="#51">详情页有附件面板,新增时,附件面板默认出现某条数据的问题</a></li>
 <li><a href="#52">下拉框验证问题</a></li>
-<li><a href="#53">部分word不能预览问题</a></li>
+<li><a href="#53">部分 word 2007/2010不能预览问题</a></li>
 </ul>
 </li>
 </ul>
@@ -436,7 +436,11 @@ tools.">
 <p>(11).<a id="51"><strong>详情页有附件面板,新增时,附件面板默认出现某条数据的问题</strong></a><br><strong><a href="#1">返回目录</a></strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;测试发现,带有附件面板的详情编辑页,在新增时会默认有一条附件数据,这是不对的。如图：<br><img src="../../../../images/ext_new.png" alt=""></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;很明显,新增时刚进入页面,图上的附件面板附件编号22那条数据不应该出现。我看了下<strong>NetWork</strong>,发现一进页面就掉接口得到返回值了。其实如果是双击查看详情页或者修改的情况下这样是没问题的,但是可惜新增时也调了同样的方法,开发过程中忽略了新增时这个情况,所以需要做个判断。如果是新增的情况下,就不给它调接口。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;但是,该判断怎么加呢？加在哪呢？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我发现该接口分别在<code>OnDetailRefresh()</code>方法以及<code>OnCreateEditWin()</code>里面调用。我先是注释掉<code>OnCreateEditWin()</code>里面的接口,没用;然后注释掉<code>OnDetailRefresh()</code>里面的接口,有用。但是双击查看时附件也不见了,说明需要在<code>OnDetailRefresh()</code>里加个判断。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;但是我们需要知道它点新增时调用的是什么方法,点开父类找到<code>OnNew()</code>方法,发现它里面调用了<code>OnInitData()</code>方法,在<code>OnInitData()</code>里发现又调用了<code>OnDetailRefresh()</code>方法。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;好像很明了了,但是回到子类看完全不是啊,子类把<code>OnInitData()</code>方法重写了,子类里面的<code>OnInitData()</code>完全没有调用<code>OnDetailRefresh()</code>,反而是在<code>OnLoadData()</code>里面调用的。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一开始我以为可以通过传递<code>id</code>给<code>OnDetailRefresh()</code>方法,然后没有<code>id</code>就不调接口。确实实现了,但是出现了另一个问题即<strong>当我先点击其他带有附件的记录并进入详情页查看后,然后点击新增时发现附件面板依然有数据,恰好是刚刚点击查看详情的那条记录的附件信息,很明显,这依然不对。然后我发现<code>NetWork</code>并没有调接口,那只能说明是先前加入面板的数据没有清空,所以我百度了下找到了清空方法,在调接口前先使用<code>me.plCheckGrid.store.removeAll()</code>清空面板就可以了。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// OnLoadData()方法</div><div class="line">me.OnDetailRefresh(id);</div><div class="line">// OnDetailRefresh()方法</div><div class="line">OnDetailRefresh : function(itemId) &#123;</div><div class="line">  var me = this;</div><div class="line">  var mep = me.tranPrefix;</div><div class="line">  var id = tools.GetValue(mep+&apos;id&apos;);</div><div class="line">  var ide = tools.GetEncode(tools.GetEncode(id));</div><div class="line">  me.plCheckGrid.store.removeAll();</div><div class="line">  if (me.plCheckGrid &amp;&amp; me.plCheckGrid.store &amp;&amp; id) &#123;</div><div class="line">    me.plCheckGrid.store.proxy.url = tools.GetUrl(&apos;接口.id=&apos;) + id;</div><div class="line">    me.plCheckGrid.store.load();</div><div class="line">  &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>(12)<a id="52"><strong>下拉框验证问题</strong></a><br><strong><a href="#1">返回目录</a></strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;测试给熊提了个bug,说下拉框没有选择默认’请选择’字段点击保存居然也可以,存到数据库中值为<strong>-2</strong>,这时很明显需要加个验证提示。打开<strong>tools.js</strong>里面的<code>tools.FormCombo()</code>方法,发现只有不为空的验证,其他什么验证也没有。后来熊在网上找到了Ext中的combox以及里面自带的属性,其中有一个函数<code>validator()</code>可以用来进行其他验证。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;添加的代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">validator: function(value) &#123;</div><div class="line">  if(value == &apos;--请选择--&apos;) &#123;</div><div class="line">    return &apos;请选择&apos; + label + &apos;！&apos;;</div><div class="line">  &#125; else &#123;</div><div class="line">    return true;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>(12)<a id="53"><strong>部分word不能预览问题</strong></a><br><strong><a href="#1">返回目录</a></strong><br>发现word 2007/2010版本的无法预览,百度搜了下可能是插件兼容性的问题,目前无解。。。<br>黄健雄找了个折中的方法,在接口内部加一个<code>ReturnValue</code>,然后通过判断<code>ReturnValue</code>来改写提示语。</p>
+<p>(12)<a id="53"><strong>部分word 2007/2010 不能预览问题</strong></a><br><strong><a href="#1">返回目录</a></strong><br>发现word 2007/2010版本的无法预览,后台报错<code>org.artofsolving.jodconverter.office.OfficeException</code>,百度搜了下可能是插件兼容性的问题,目前无解。。。<br>黄健雄找了个折中的方法,在接口内部加一个<code>ReturnValue</code>,然后通过判断<code>ReturnValue</code>来改写提示语。</p>
+<blockquote>
+<p>好吧,最终解决了。感谢陈德林陈老师,他之前也发现过 word 2007 以上版本有问题,然后他改了下代码,好吧,我看不懂也改不了。实力太菜。。。</p>
+</blockquote>
+<p>FileUpload里面的copy方法修改：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">int numBytesRead = 0;</div><div class="line">// 一次写入多个字节到输出流中,减少IO访问次数</div><div class="line">while((numBytesRead = in.read(buffer)) != -1) &#123;</div><div class="line">  out.write(buffer, 0, numBytesRead);</div><div class="line">&#125;</div><div class="line">// 多次写字节到输出流中,在office 2007 版本以上会报错</div><div class="line">//  while (in.read(buffer) &gt; 0) &#123;  </div><div class="line">//    out.write(buffer);  </div><div class="line">//  &#125;</div></pre></td></tr></table></figure></p>
 
   </section>
 
@@ -447,7 +451,7 @@ tools.">
     
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">新しい記事</span>
+                <span class="read-more-item-dim">Newer Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/02/08/test2/" title=""></a></h2>
                 <p class="excerpt">
                 
@@ -472,7 +476,7 @@ tools.">
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">以前の記事</span>
+                <span class="read-more-item-dim">Older Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/01/22/js词法作用域/" title="js词法作用域----静态作用域">js词法作用域----静态作用域</a></h2>
                 <p class="excerpt">
                 
