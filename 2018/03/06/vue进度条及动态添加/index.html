@@ -149,7 +149,12 @@
 
   <section class="post">
     <h3 id="地址：https-github-com-lizhongzhen11-myStudy-tree-master-vue"><a href="#地址：https-github-com-lizhongzhen11-myStudy-tree-master-vue" class="headerlink" title="地址：https://github.com/lizhongzhen11/myStudy/tree/master/vue"></a>地址：<a href="https://github.com/lizhongzhen11/myStudy/tree/master/vue" target="_blank" rel="external">https://github.com/lizhongzhen11/myStudy/tree/master/vue</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最近有点闲，被拉过去用vue对一老项目进行重构开发。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当然，主要是我师傅在弄，看我太闲了顺带上我。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不过还是要感谢下，毕竟只有不断地去做才能更加清醒的认识到自己的不足。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主要做了两件事,一个是开发一个带渐变色的进度条，一个就是动态添加/删除输入框之类的。一开始进度条让我搞了两天，至于动态添加/删除有点拖着，然后发现师傅写好了一个，仔细研究代码才发现还是有点道道的。</p>
-
+<h3 id="一、进度条"><a href="#一、进度条" class="headerlink" title="一、进度条"></a>一、进度条</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;项目采用的是<strong>iview</strong>框架,该ui框架是自带进度条的,其实该框架的这种简洁的进度条与整个框架风格相统一,挺好的。但是我司ui设计了带渐变色的进度条,而且进度条上的小球颜色也要不同,师傅还让我做成组件。。。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;谈到渐变,肯定想到CSS渐变效果,这个是没有问题的。但是,我一开始以为直接在一个进度条框上进行css渐变效果就可以达到比如80%渐变,剩下的20%保持背景色这种效果。也正是这样的想法,耽误了我很长时间,不停地找css如何让前80%渐变后20%颜色不变的方法。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;后来,没辙了,只好去某技术群里问大佬们,这里说明技术群还是必须的。大佬们一阵见血的说,<strong>你弄两个进度条div,一个设背景色,另一个css渐变然后通过定位移上去不就好了吗</strong>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我擦,真的是一针见血,思考方式完全不一样啊,我一直在死钻牛角尖,但其实换种思路这根本就不是问题了。开发不仅仅是敲代码,还要考虑设计思想。学到了。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接下来,进度条肯定不是写死的,是根据时间日期来不断地变化的。所以在算时间定位这里也耗费了不少时间。</p>
+<blockquote>
+<p>不过思路应该是一样的,先得到开始结束时间的时间跨度,然后拿当天时间与它们对比,在时间范围内的计算与开始时间的时间跨度,除以总跨度即可得到百分比从而确定位置。不过超过了结束时间,那么整个进度条完成;没到达开始时间,整个进度条默认颜色。</p>
+</blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在chrome浏览器测试正常后,突发奇想去试试兼容性,发现firefox完全没有进度条,全重叠在一起。百度了下才知道,是时间格式的问题。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>一开始我用的是2018-03-06的形式,chrome正常,但是！firefox进行时间相减时报NaN,只支持javascript官方时间构造器格式即2018/03/06.遂改成这种形式,解决了。</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;至于改颜色,由于vue用的不多,磕磕绊绊的改好了,但也是写死的形式,没能达到师傅要求的传参改变颜色的形式。不过,接下来继续修改应该是可以达到的。</p>
+<h3 id="二、动态增删"><a href="#二、动态增删" class="headerlink" title="二、动态增删"></a>二、动态增删</h3>
   </section>
 
 </article>
