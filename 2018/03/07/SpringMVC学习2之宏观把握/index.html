@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>宏观上把握SpringMVC框架 | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="拷贝自：http://blog.csdn.net/eson_15/article/details/51689023SpringMVC流程示意图：
+springmvc的执行流程分析&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;向服务器发送Http request请求，请求被前端控制器（DispatcherServlet）捕获。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="宏观上把握SpringMVC框架 | Ronaldo">
+    <meta name="twitter:description" content="拷贝自：http://blog.csdn.net/eson_15/article/details/51689023SpringMVC流程示意图：
+springmvc的执行流程分析&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;向服务器发送Http request请求，请求被前端控制器（DispatcherServlet）捕获。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="宏观上把握SpringMVC框架 | Ronaldo">
+    <meta property="og:description" content="拷贝自：http://blog.csdn.net/eson_15/article/details/51689023SpringMVC流程示意图：
+springmvc的执行流程分析&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;向服务器发送Http request请求，请求被前端控制器（DispatcherServlet）捕获。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2018/03/07/SpringMVC学习2之宏观把握/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Blogを読む" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-03-07T07:57:15.780Z" class="post-list__meta--date date">2018-03-07</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       No. <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">宏观上把握SpringMVC框架</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="拷贝自：http-blog-csdn-net-eson-15-article-details-51689023"><a href="#拷贝自：http-blog-csdn-net-eson-15-article-details-51689023" class="headerlink" title="拷贝自：http://blog.csdn.net/eson_15/article/details/51689023"></a>拷贝自：<a href="http://blog.csdn.net/eson_15/article/details/51689023" target="_blank" rel="external">http://blog.csdn.net/eson_15/article/details/51689023</a></h3><p>SpringMVC流程示意图：<br><img src="../../../../images/springmvc_Macroscopic.png" alt=""></p>
+<p><strong>springmvc的执行流程分析</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;向服务器发送<strong>Http request</strong>请求，请求被前端控制器（<strong>DispatcherServlet</strong>）捕获。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前端控制器根据<strong>xml</strong>文件中的配置（或者注解）对请求的<strong>URL</strong>进行解析，得到请求资源标识符（<strong>URI</strong>）。然后根据该<strong>URI</strong>，调用处理器映射器（<strong>HandlerMapping</strong>）获得处理该请求的<strong>Handler</strong>以及<strong>Handler</strong>对应的拦截器，最后以 <strong>HandlerExecutionChain</strong> 对象的形式返回。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前端控制器根据获得的<strong>Handler</strong>，选择一个合适的处理器适配器（<strong>HandlerAdapter</strong>）去执行该<strong>Handler</strong>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;处理器适配器提取<strong>request</strong>中的模型数据，填充<strong>Handler</strong>入参，执行处理器（<strong>Handler</strong>）（也称之为<strong>Controller</strong>）.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Handler(Controller)</strong>执行完成后，向处理器适配器返回一个<strong>ModelAndView</strong>对象，处理器适配器再向前端控制器返回该<strong>ModelAndView</strong>对象（<strong>ModelAndView</strong>只是一个逻辑视图）。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;根据返回的<strong>ModelAndView</strong>，前端控制器请求一个适合的视图解析器（<strong>ViewResolver</strong>）（必须是已经注册到Spring容器中的<strong>ViewResolver</strong>）去进行视图解析，然后视图解析器向前端控制器返回一个真正的视图<strong>View（jsp）</strong>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前端控制器通过<strong>Model</strong>解析出<strong>ModelAndView</strong>中的参数进行解析，最终展现出完整的<strong>View</strong>并通过<strong>Http response</strong>返回给客户端。</p>
+<blockquote>
+<p>上面描述了一下springmvc的执行流程，如果还是有点模糊的话，我用下面这个流程图来表示一下，也为了自己更好的理解整个执行流程：</p>
+</blockquote>
+<p><img src="../../../../images/springmvc_Macroscopic2.png" alt=""></p>
+<blockquote>
+<p>经过这么一分析，现在对<strong>springmvc</strong>的执行流程有了宏观上的了解了，从上面的分析可以看出，<strong>springmvc</strong>有几个主要的组件，下面结合我们编程，来分析一下这几个组件：</p>
+</blockquote>
+<ol>
+<li>前端控制器DispatcherServlet（不需要程序员开发）。<br>作用：接收请求，响应结果，相当于转发器，中央处理器。有了DispatcherServlet减少了其它组件之间的耦合度。</li>
+<li>处理器映射器HandlerMapping（不需要程序员开发）。<br>作用：根据请求的url查找Handler。</li>
+<li>处理器适配器HandlerAdapter（不需要程序员开发）。<br>作用：按照特定规则（HandlerAdapter要求的规则）去执行Handler。</li>
+<li>处理器Handler（<strong>需要程序员开发</strong>）。<br>注意：编写Handler时按照HandlerAdapter的要求去做，这样适配器才可以去正确执行Handler</li>
+<li>视图解析器ViewResolver（不需要程序员开发）。<br>作用：进行视图解析，根据逻辑视图名解析成真正的视图（view）</li>
+<li>视图View（<strong>需要程序员开发jsp</strong>）。<br>View是一个接口，实现类支持不同的View类型（jsp、freemarker、pdf…）<br>【注】：不需要程序员开发的，需要程序员自己做一下配置即可。</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;现在看来，其实真正需要程序员开发的就<strong>两大块：一个是Handler，一个是jsp</strong>，这样的话，其实和struts2就差不多了，所以不要被上面那个一系列的流程给绕傻了。<br>整个springmvc的架构就总结到这吧，后面就要开始走进springmvc的世界了。</p>
+<p><strong>接下来的系列直接看 <a href="http://blog.csdn.net/eson_15/article/details/51689023" target="_blank" rel="external">http://blog.csdn.net/eson_15/article/details/51689023</a> 原版博客即可,这篇博客拷过来主要为了查找方便。</strong></p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">以前の記事</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/03/06/vue进度条及动态添加/" title="vue进度条及动态添加">vue进度条及动态添加</a></h2>
+                <p class="excerpt">
+                
+                地址：https://github.com/lizhongzhen11/myStudy/tree/master/vue&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;最近有点闲，被拉过去用vue对一老项目进行重构开发。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-03-06T12:21:17.789Z" class="post-list__meta--date date">2018-03-06</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/03/06/vue进度条及动态添加/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>
