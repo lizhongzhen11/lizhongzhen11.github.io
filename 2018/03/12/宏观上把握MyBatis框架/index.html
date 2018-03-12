@@ -155,6 +155,10 @@ mybatis框架是一个持久层框架，是Apache下的顶级项目。mybatis可
 <p>mybatis框架是一个<strong>持久层框架</strong>，是Apache下的顶级项目。mybatis可以让开发者的主要精力放在sql上，通过mybatis提供的映射方式，自由灵活的生成满足需要的sql语句。MyBatis可以将向<code>preparedStatement</code>中的输入参数自动进行输入映射，将查询结果集灵活映射成java对象（输出映射）。</p>
 </blockquote>
 <p><strong>本文主要是为了给自己学习mybatis一个链接,以防遗忘。接下来的学习继续看链接的原文即可。</strong></p>
+<h3 id="一些配置注意以及学习"><a href="#一些配置注意以及学习" class="headerlink" title="一些配置注意以及学习"></a>一些配置注意以及学习</h3><p><strong>log4j配置文件</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;mybatis的依赖包中有很多日志包，既然mybatis依赖log4j，那我们首先要建立一个log4j.properties文件，这个可以在官方的文件中拷贝下,具体配置如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># Global logging configuration</div><div class="line"># developer--&gt;DEBUG  productor--&gt;INFO or ERROR</div><div class="line">log4j.rootLogger=DEBUG, stdout</div><div class="line"># MyBatis logging configuration...</div><div class="line">log4j.logger.org.mybatis.example.BlogMapper=TRACE</div><div class="line"># Console output...</div><div class="line">log4j.appender.stdout=org.apache.log4j.ConsoleAppender</div><div class="line">log4j.appender.stdout.layout=org.apache.log4j.PatternLayout</div><div class="line">log4j.appender.stdout.layout.ConversionPattern=%5p [%t] - %m%n</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>在开发环境下日志级别要设置成DEBUG，产品模式下可以设置成INFO或者ERROR</p>
+</blockquote>
 
   </section>
 
