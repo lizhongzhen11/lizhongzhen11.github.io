@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>TCP三次握手与四次挥手 | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="参考自：http://blog.csdn.net/qq598535550/article/details/52997218http://blog.csdn.net/guyuealian/article/details/52535294
+声明&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;由于本人并不了解TCP相关协议,所以该文主要是复制粘贴。至于为什么要复制粘贴？当然是为了">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="TCP三次握手与四次挥手 | Ronaldo">
+    <meta name="twitter:description" content="参考自：http://blog.csdn.net/qq598535550/article/details/52997218http://blog.csdn.net/guyuealian/article/details/52535294
+声明&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;由于本人并不了解TCP相关协议,所以该文主要是复制粘贴。至于为什么要复制粘贴？当然是为了">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="TCP三次握手与四次挥手 | Ronaldo">
+    <meta property="og:description" content="参考自：http://blog.csdn.net/qq598535550/article/details/52997218http://blog.csdn.net/guyuealian/article/details/52535294
+声明&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;由于本人并不了解TCP相关协议,所以该文主要是复制粘贴。至于为什么要复制粘贴？当然是为了">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2018/03/16/TCP握手与挥手/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-03-16T03:18:17.827Z" class="post-list__meta--date date">2018-03-16</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">TCP三次握手与四次挥手</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="参考自："><a href="#参考自：" class="headerlink" title="参考自："></a>参考自：</h3><p><a href="http://blog.csdn.net/qq598535550/article/details/52997218" target="_blank" rel="external">http://blog.csdn.net/qq598535550/article/details/52997218</a><br><a href="http://blog.csdn.net/guyuealian/article/details/52535294" target="_blank" rel="external">http://blog.csdn.net/guyuealian/article/details/52535294</a></p>
+<h3 id="声明"><a href="#声明" class="headerlink" title="声明"></a>声明</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于本人并不了解TCP相关协议,所以该文主要是复制粘贴。至于为什么要复制粘贴？当然是为了以后深入学习了解时查资料方便。毕竟网上讲解一大堆,但是自己多看看整合在一起查找起来方便点。</p>
+<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p>在谈及TCP建立连接和释放连接过程，先来简单认识一下TCP报文段首部格式的的几个名词（这里只是简单说明，具体请查看相关教程）</p>
+<ol>
+<li><p>序列号<strong>seq</strong>：占4个字节,用来标记数据段的顺序,TCP把连接中发送的所有数据字节都编上一个序号,第一个字节的编号由本地随机产生；给字节编上序号后,就给每一个报文段指派一个序号；序列号seq就是这个报文段中的第一个字节的数据编号。</p>
+</li>
+<li><p>确认号<strong>ack</strong>：占4个字节,期待收到对方下一个报文段的第一个数据字节的序号；序列号表示报文段携带数据的第一个字节的编号；而确认号指的是期望接收到下一个字节的编号；因此当前报文段最后一个字节的编号+1即为确认号。</p>
+</li>
+<li><p>确认<strong>ACK</strong>：占1位,仅当ACK=1时,确认号字段才有效。ACK=0时，确认号无效。</p>
+</li>
+<li><p>同步<strong>SYN</strong>：连接建立时用于同步序号。当SYN=1,ACK=0时表示：这是一个连接请求报文段。若同意连接,则在响应报文段中使得SYN=1,ACK=1。因此,SYN=1表示这是一个连接请求,或连接接受报文。<strong>SYN这个标志位只有在TCP建产连接时才会被置1,握手完成后SYN标志位被置0</strong>。</p>
+</li>
+<li><p>终止<strong>FIN</strong>：用来释放一个连接。FIN=1表示：此报文段的发送方的数据已经发送完毕,并要求释放运输连接。</p>
+</li>
+</ol>
+<p><strong>PS：ACK、SYN和FIN这些大写的单词表示标志位，其值要么是1，要么是0；ack、seq小写的单词表示序号。</strong></p>
+<blockquote>
+<p>建立TCP需要三次握手才能建立，而断开连接则需要四次握手。整个过程如下图所示：</p>
+</blockquote>
+<p><img src="../../../../images/tcp.png" alt=""></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;先来看看如何建立连接的。</p>
+<p><img src="../../../../images/tcp1.png" alt=""></p>
+<blockquote>
+<p>首先Client(客户)端发送连接请求报文，Server(服务)端接受连接后回复ACK报文，并为这次连接分配资源。Client端接收到ACK报文后也向Server端发送ACK报文，并分配资源，这样TCP连接就建立了。</p>
+</blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;那如何断开连接呢？简单的过程如下：</p>
+<p><img src="../../../../images/tcp2.png" alt=""></p>
+<p><strong>注意：中断连接端可以是Client端，也可以是Server端！！！</strong></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;假设Client端发起中断连接请求,也就是发送<strong>FIN</strong>报文。Server端接到<strong>FIN</strong>报文后,意思是说“我Client端没有数据要发给你了”,但是如果你还有数据没有发送完成,则不必急着关闭<strong>Socket</strong>,可以继续发送数据。所以你先发送<strong>ACK</strong>,“告诉Client端,你的请求我收到了,但是我还没准备好,请继续你等我的消息”。这个时候Client端就进入 <strong>FIN_WAIT</strong> 状态,继续等待Server端的<strong>FIN</strong>报文。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当Server端确定数据已发送完成,则向Client端发送<strong>FIN</strong>报文,“告诉Client端,好了,我这边数据发完了,准备好关闭连接了。Client端收到<strong>FIN</strong>报文后,就知道可以关闭连接了,但是他还是不相信网络,怕Server端不知道要关闭,所以发送<strong>ACK</strong>后进入<strong>TIME_WAIT</strong>状态，如果Server端没有收到<strong>ACK</strong>则可以重传。“Server端收到ACK后,就知道可以断开连接了”。Client端等待了<strong>2MSL</strong>后依然没有收到回复,则证明Server端已正常关闭,那好,我Client端也可以关闭连接了。Ok，TCP连接就这样关闭了！</p>
+<hr>
+<p>整个过程Client端所经历的状态如下：</p>
+<p><img src="../../../../images/tcp3.png" alt=""></p>
+<hr>
+<p>而Server端所经历的过程如下：<br><img src="../../../../images/tcp4.png" alt=""></p>
+<blockquote>
+<p>注意：<br>在TIME_WAIT状态中,如果TCP client端最后一次发送的ACK丢失了,它将重新发送。<br>TIME_WAIT状态中所需要的时间是依赖于实现方法的。典型的值为30秒、1分钟和2分钟。<br>等待之后连接正式关闭，并且所有的资源(包括端口号)都被释放。</p>
+</blockquote>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ol>
+<li><p>为什么连接的时候是三次握手，关闭的时候却是四次握手？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;因为当Server端收到Client端的<strong>SYN</strong>连接请求报文后,可以直接发送<strong>SYN+ACK</strong>报文。其中<strong>ACK</strong>报文是用来应答的,<strong>SYN</strong>报文是用来同步的。但是关闭连接时,当Server端收到<strong>FIN</strong>报文时,很可能并不会立即关闭<strong>SOCKET</strong>,所以只能先回复一个<strong>ACK</strong>报文,告诉Client端,”你发的<strong>FIN</strong>报文我收到了”。只有等到我Server端所有的报文都发送完了,我才能发送<strong>FIN</strong>报文,因此不能一起发送。故需要四步握手。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发送了<strong>FIN</strong>只是表示这端不能继续发送数据(应用层不能再调用send发送),但是还可以接收数据。收到一个<strong>FIN</strong>只意味着这一方向上没有数据流动,一个TCP连接在收到一个<strong>FIN</strong>后仍能发送数据,比如：如主机A收到主机B的<strong>FIN</strong>断开TCP连接请求,只是表示主机B已经发送完数据,主机A收到FIN后作出应答,并终止这个方向的数据传输,此时处于半关闭状态。但是主机A仍然可以发送数据的,只有当主机A发送完数据并发送FIN给主机B时,主机B才停止这个方向的数据传输,并关闭TCP连接。</p>
+</li>
+<li><p>为什么TIME_WAIT状态需要经过2MSL(最大报文段生存时间)才能返回到CLOSE状态？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;虽然按道理,四个报文都发送完毕,我们可以直接进入CLOSE状态了,但是我们必须假想网络是不可靠的,有可能最后一个<strong>ACK</strong>丢失。所以<strong>TIME_WAIT</strong>状态就是用来重发可能丢失的ACK报文。</p>
+</li>
+<li><p>为什么要有三次握手<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;两次握手的问题在于服务器端不知道一个<strong>SYN</strong>是否是无效的,而三次握手机制因为客户端会给服务器回复第二次握手,也意味着服务器会等待客户端的第三次握手,如果第三次握手迟迟不来,服务器便会认为这个<strong>SYN</strong>是无效的,释放相关资源。但这时有个问题就是客户端完成第二次握手便认为连接已建立,而第三次握手可能在传输中丢失,服务端会认为连接是无效的,这时如果Client端向Server写数据,Server端将以RST包响应,方能感知到Server的错误。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;总的来说,三次握手可以保证任何一次握手出现问题,都是可以被发现或补救的。</p>
+</li>
+</ol>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/03/12/宏观上把握MyBatis框架/" title="宏观上把握MyBatis框架">宏观上把握MyBatis框架</a></h2>
+                <p class="excerpt">
+                
+                原文地址：http://blog.csdn.net/eson_15/article/details/51582967
+mybatis框架是一个持久层框架，是Apache下的顶级项目。mybatis可以让开发者的主要精力放在sql上，通过mybatis提供的映射方式，自由灵活的生成满足需要的sql语句
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-03-12T09:08:51.746Z" class="post-list__meta--date date">2018-03-12</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/03/12/宏观上把握MyBatis框架/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>
