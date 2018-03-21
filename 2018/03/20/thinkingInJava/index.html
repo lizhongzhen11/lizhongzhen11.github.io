@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>Thinking in Java 学习笔记 | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="1、java基础数据类型&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;java基础数据类型：int, float, double, boolean, short, long, byte以及char.&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;其中,char类型是一个单一的 16 位 Unicode 字符。char类型用单引号表示也可以是整数。1">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Thinking in Java 学习笔记 | Ronaldo">
+    <meta name="twitter:description" content="1、java基础数据类型&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;java基础数据类型：int, float, double, boolean, short, long, byte以及char.&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;其中,char类型是一个单一的 16 位 Unicode 字符。char类型用单引号表示也可以是整数。1">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Thinking in Java 学习笔记 | Ronaldo">
+    <meta property="og:description" content="1、java基础数据类型&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;java基础数据类型：int, float, double, boolean, short, long, byte以及char.&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;其中,char类型是一个单一的 16 位 Unicode 字符。char类型用单引号表示也可以是整数。1">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2018/03/20/thinkingInJava/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-03-20T05:25:01.159Z" class="post-list__meta--date date">2018-03-20</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">Thinking in Java 学习笔记</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="1、java基础数据类型"><a href="#1、java基础数据类型" class="headerlink" title="1、java基础数据类型"></a>1、java基础数据类型</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;java基础数据类型：<strong>int, float, double, boolean, short, long, byte以及char</strong>.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其中,char类型是一个单一的 16 位 Unicode 字符。char类型用单引号表示也可以是整数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cahr a = &apos;a&apos;; // 必须限定长度为一个字节。等效于 char a = 97; 因为&apos;a&apos;在ASCII码表里对应97.</div><div class="line">char b = &apos;中文&apos;;</div><div class="line">char c = 97;</div><div class="line">System.out.println(a == c); // true</div></pre></td></tr></table></figure></p>
+<h3 id="2、假设一个值是29-7，我们把它强转成一个char，那么结果值到底是-30-还是29-呢？"><a href="#2、假设一个值是29-7，我们把它强转成一个char，那么结果值到底是-30-还是29-呢？" class="headerlink" title="2、假设一个值是29.7，我们把它强转成一个char，那么结果值到底是 30 还是29 呢？"></a>2、假设一个值是29.7，我们把它强转成一个char，那么结果值到底是 30 还是29 呢？</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将一个 float 或 double 值造型成整数值后，总是将小数部分“砍掉”，不作任何进位处理。所以结果是29.</p>
+<h3 id="3、构造函数"><a href="#3、构造函数" class="headerlink" title="3、构造函数"></a>3、构造函数</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;构造函数是在产生对象时被java系统<strong>自动调用</strong>的，我们不能在程序中像调用其他方法一样去调用构造方法（<strong>必须通过关键词new自动调用它</strong>）。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;构造器属于一种较特殊的方法类型，因为它没有返回值。<br><strong>注意！</strong></p>
+<ul>
+<li>构造器里通过<code>this</code>调另一个构造器,只能调用一个,不能调用两个。</li>
+<li>除构造器之外的方法不能调用构造器。</li>
+</ul>
+<h3 id="4、垃圾收集"><a href="#4、垃圾收集" class="headerlink" title="4、垃圾收集"></a>4、垃圾收集</h3><ul>
+<li>垃圾收集并不等于“破坏”！</li>
+<li>我们的对象可能不会当作垃圾被收掉！</li>
+<li>垃圾收集只跟内存有关！</li>
+</ul>
+<p>不必过多地使用<code>finalize()</code>。它并不是进行普通清除工作的理想场所。<code>finalize()</code>最有用处的地方之一是观察垃圾收集的过程。</p>
+<h3 id="5、成员初始化"><a href="#5、成员初始化" class="headerlink" title="5、成员初始化"></a>5、成员初始化</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Java 尽自己的全力保证所有变量都能在使用前得到正确的初始化。若被定义成相对于一个方法的“局部”变量，这一保证就通过编译期的出错提示表现出来。因此，如果使用下述代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">void f() &#123;</div><div class="line">    int i;</div><div class="line">    i++;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上述代码会报错,提示未初始化。但是这样改：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public class InitialValues &#123;</div><div class="line">    private int i;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        InitialValues initialValues = new InitialValues();</div><div class="line">        System.out.println(initialValues.i);  // 0</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>能正常运行且<code>i</code>有一个初始值0.</p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/03/16/TCP握手与挥手/" title="TCP三次握手与四次挥手">TCP三次握手与四次挥手</a></h2>
+                <p class="excerpt">
+                
+                参考自：http://blog.csdn.net/qq598535550/article/details/52997218http://blog.csdn.net/guyuealian/article/details/52535294
+声明&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-03-16T03:18:17.827Z" class="post-list__meta--date date">2018-03-16</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/03/16/TCP握手与挥手/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>
