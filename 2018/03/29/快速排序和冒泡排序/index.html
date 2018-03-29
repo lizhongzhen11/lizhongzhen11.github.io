@@ -14,19 +14,25 @@
 
     <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;最近空闲时间逛论坛发现,好多人在面试时问了排序算法,比如快速排序以及冒泡排序。我回想了下,依稀记得有什么for循环嵌套,然后就没了。这样可不好,不能工作了就忘了这些基础,会被淘汰的。所以又重新学习了下这两个算法,发现自己还是有很多坑要填,做个学习笔记吧,以免又忘了。
 
-快速排序参考: https://blog.csdn.ne">
+排序算法说明:
+
+时间复杂度指的是一个算法执行所耗费的时">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="快速排序和冒泡排序 | Ronaldo">
     <meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;最近空闲时间逛论坛发现,好多人在面试时问了排序算法,比如快速排序以及冒泡排序。我回想了下,依稀记得有什么for循环嵌套,然后就没了。这样可不好,不能工作了就忘了这些基础,会被淘汰的。所以又重新学习了下这两个算法,发现自己还是有很多坑要填,做个学习笔记吧,以免又忘了。
 
-快速排序参考: https://blog.csdn.ne">
+排序算法说明:
+
+时间复杂度指的是一个算法执行所耗费的时">
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="快速排序和冒泡排序 | Ronaldo">
     <meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;最近空闲时间逛论坛发现,好多人在面试时问了排序算法,比如快速排序以及冒泡排序。我回想了下,依稀记得有什么for循环嵌套,然后就没了。这样可不好,不能工作了就忘了这些基础,会被淘汰的。所以又重新学习了下这两个算法,发现自己还是有很多坑要填,做个学习笔记吧,以免又忘了。
 
-快速排序参考: https://blog.csdn.ne">
+排序算法说明:
+
+时间复杂度指的是一个算法执行所耗费的时">
 
     
     <meta name="author" content="lizhongzhen">
@@ -73,7 +79,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+              <li class="navigation__item"><a href="/#blog" title="Blogを読む" class="blog-button">Blog</a></li>
             
             </ul>
           </nav>
@@ -146,7 +152,7 @@
     <div class="post-meta">
       <time datetime="2018-03-29T02:24:32.587Z" class="post-list__meta--date date">2018-03-29</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       No. <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -157,6 +163,14 @@
     <blockquote>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最近空闲时间逛论坛发现,好多人在面试时问了排序算法,比如快速排序以及冒泡排序。我回想了下,依稀记得有什么<code>for</code>循环嵌套,然后就没了。这样可不好,不能工作了就忘了这些基础,会被淘汰的。所以又重新学习了下这两个算法,发现自己还是有很多坑要填,做个学习笔记吧,以免又忘了。</p>
 </blockquote>
+<p>排序算法说明:</p>
+<ul>
+<li>时间复杂度指的是一个算法执行所耗费的时间</li>
+<li>空间复杂度指运行完一个程序所需内存的大小</li>
+<li>稳定指,如果a=b,a在b的前面,排序后a仍然在b的前面</li>
+<li>不稳定指,如果a=b,a在b的前面,排序后可能会交换位置</li>
+</ul>
+<p>排序算法图片总结:<br><img src="../../../../images/sortsuanfa.png" alt=""></p>
 <h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><p>参考: <a href="https://blog.csdn.net/loving_m/article/details/52993521" target="_blank" rel="external">https://blog.csdn.net/loving_m/article/details/52993521</a><br>      <a href="https://blog.csdn.net/morewindows/article/details/6684558" target="_blank" rel="external">https://blog.csdn.net/morewindows/article/details/6684558</a></p>
 <blockquote>
 <p><strong>该方法的基本思想是</strong>：<br>1．先从数列中取出一个数作为基准数。<br>2．分区过程，将比这个数大的数全放到它的右边，小于或等于它的数全放到它的左边。<br>3．再对左右区间重复第二步，直到各区间只有一个数。</p>
@@ -180,6 +194,23 @@
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先我需要解决问题2.1。我肯定要返回一个数组,但是不可能直接<code>return arr</code>,也不可能<code>return left</code>同样不可能<code>return right</code>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这时候就要思考了,我第一次调用<code>quickSort()</code>得到了<code>left</code>和<code>right</code>数组,那我肯定还需要继续对这两个数组内部进行再度排序。再度排序方法其实一样,继续分别在这两个数组内部找一个基准数,然后把比这个基准数小的放到<strong>新的<code>left</code>数组</strong>内,以此类推,对这个<strong>新<code>left</code></strong>继续调用<code>quickSort()</code>继续重复操作,那么比较到最后,<strong>可能只有一个数据甚至没有数据比最终的基准数小,那么不就可以确定该数或者基准数就是最小数据,应该放在数组的第一位了呢</strong>。所以我需要在方法一开始就判断<code>arr.length &lt;= 1</code>,它代表了可能最后的基准数就是最小的或者有一个数据比最后的基准数小。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这样确定了第一个数和最终的基准数,那么就可以对比最终的基准数大的数据继续快速排序,然后不就可以得到第二个、第三个等等等等的数据了吗？而得到的这些数据依然放在数组内,只是它们的数组只包含它们一个数据罢了,所以最终可以用<code>concat()</code>方法把它们连接在一起,这样,快速排序方法就完成了。</p>
 </blockquote>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;至于问题2.2,自己动手运行一把看看呗。<br><img src="../../../../images/quickSort.png" alt=""><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;经过动手实践,证明这种想法是错的。</p>
+<h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><p>参考：<a href="https://blog.csdn.net/shuaizai88/article/details/73250615" target="_blank" rel="external">https://blog.csdn.net/shuaizai88/article/details/73250615</a><br>     <a href="https://www.cnblogs.com/zhouliang/p/6638010.html" target="_blank" rel="external">https://www.cnblogs.com/zhouliang/p/6638010.html</a><br>     <a href="https://www.cnblogs.com/beli/p/6297741.html" target="_blank" rel="external">https://www.cnblogs.com/beli/p/6297741.html</a></p>
+<blockquote>
+<p>冒泡排序的思想：比较相邻两个数据值,如果后面的比前面的大就调换位置,否则位置不变。<br>第一轮循环后,最后一个元素应该是最大的值。<br>按照步骤一的方法进行相邻两个元素的比较,这个时候由于最后一个元素已经是最大的了,所以最后一个元素不用比较。</p>
+</blockquote>
+<p>我的初步实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">var arr = [72,6,57,88,60,42,83,73,48,85]</div><div class="line">function maopao(arr) &#123;</div><div class="line">	for(var i = 0; i &lt; arr.length; i++) &#123;</div><div class="line">		for(var j = 1; j &lt; arr.length; j++) &#123;</div><div class="line">			if(arr[j] &gt; arr[j + 1]) &#123;</div><div class="line">				var x = arr[j]</div><div class="line">				arr[j] = arr[j+1]</div><div class="line">				arr[j+1] = x</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">maopao(arr)</div><div class="line">arr // [72, 6, 42, 48, 57, 60, 73, 83, 85, 88]</div></pre></td></tr></table></figure></p>
+<p>？？？WTF？？？<br>为什么会这样？？？<br>为什么第一个是72呢？？？</p>
+<blockquote>
+<p>这是因为我的<code>j</code>是从1开始的,相当于一开始就比较<code>arr[1]</code>和<code>arr[2]</code>,忽略了<code>arr[0]</code>。让<code>j</code>从0开始就能正确排序了。</p>
+</blockquote>
+<p><strong>但是,我仔细对比网上的代码,发现两个for循环里有点不一样,给出网上的代码：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function maopao(arr) &#123;</div><div class="line">    for(var i = 0; i &lt; arr.length - 1; i++) &#123;</div><div class="line">        for(var j = 0; j &lt; arr.length - i - 1; j++) &#123;</div><div class="line">            if(arr[j] &gt; arr[j+1]) &#123;</div><div class="line">                var x = arr[j]</div><div class="line">                arr[j] = arr[j+1]</div><div class="line">                arr[j+1] = x</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>有没有觉得奇怪,为什么<code>i &lt; arr.length -1</code>?以及为什么<code>j &lt; arr.length - i - 1</code>?</p>
+</blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先,思考下为什么要两层<code>for</code>循环嵌套?<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我可以先只用一层<code>for</code>循环来实践下会发生什么：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var arr = [72,6,57,88,60,42,83,73,48,85]</div><div class="line">function maopao2(arr) &#123;</div><div class="line">    for(var j = 0; j &lt; arr.length - 1; j++) &#123;</div><div class="line">        if(arr[j] &gt; arr[j+1]) &#123;</div><div class="line">            var x = arr[j]</div><div class="line">            arr[j] = arr[j+1]</div><div class="line">            arr[j+1] = x</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">maopao2(arr)</div><div class="line">arr // [6, 57, 72, 60, 42, 83, 73, 48, 85, 88]</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;只用了一个<code>for</code>循环,我们只能得到数组中最大的数据,其他的数据位置几乎没有变化。而且这里我也用了<code>j &lt; arr.length -1</code>,为什么呢？相信看代码就能明白,因为我下面直接用<code>arr[j]</code>与<code>arr[j+1]</code>进行比较了,那么<code>j</code>最大值并不需要与<code>arr.length-1</code>相等,因为我还需要<code>arr[j+1]</code>,所以只需要<code>j+1</code>的最大值与<code>arr.length-1</code>相等即可,那么<code>j</code>最大值只需要与<code>arr.length-2</code>相等即可,这样还少循环一次,效率上略微提高点。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我用了一个<code>for</code>循环并不能达到我所需要的结果,它只得到了最大值,那么我该如何继续排序呢？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其实思路是一样的,依然用<code>for</code>循环去比较相邻两个数的大小。一个比较耿直的思维是对刚刚<code>for</code>循环完的数组继续<code>for</code>循环可以得到第二大的数据,然后以此类推得到第三大等等数据,把这种思维实践下就是:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">maopao2(arr)</div><div class="line">arr // [6, 57, 72, 60, 42, 83, 73, 48, 85, 88]</div><div class="line">maopao2(arr)</div><div class="line">arr // [6, 57, 60, 42, 72, 73, 48, 83, 85, 88]</div><div class="line">...</div><div class="line">arr // [6, 42, 48, 57, 60, 72, 73, 83, 85, 88]</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这样很蠢的不断去调用<code>maopao2()</code>也能得到最终正确的排序。怎么优化上述代码或者设计呢？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们可以观察到,其实不断调用<code>maopao2()</code>也是一次循环事件了,那我可不可以在<code>maopao2()</code>外面套一层循环？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">for(var i = 0; i &lt; arr.length; i++) &#123;</div><div class="line">    maopao2(arr)</div><div class="line">&#125;</div><div class="line">arr // [6, 42, 48, 57, 60, 72, 73, 83, 85, 88]</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;经过实践,这依然是正确的。那么能不能继续优化呢？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答案是当然可以！<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;第一轮循环结束,我得到了最大的数,第二轮循环结束,我得到了第二大的数,那么当我第一轮循环结束时,最大的数是不是已经移到了数组最后一项？第二轮循环时还需要对数组最后一项进行比较吗？答案是不需要的。第二轮循环只需要比较到倒数第三位置与倒数第二位置上的数据即可,因为倒数第一已经在上一轮循环被确定以及肯定是最大的数了。<strong>那么内层循环是不是只要循环数组总长度 - 1 - 外层循环的轮数就可以了？这样内层循环次数越来越少效率不就提高了嘛？这就是为什么<code>j &lt; arr.length - i - 1</code></strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;还可以再优化下吗？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;依然可以！<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>依然是上面的数组,总长度为10,当<code>i=7</code>时,已经是第8轮循环了,我已经确定了倒数第8大的数据,只剩下倒数第一和倒数第二了(因为数组下标是从0开始的,0对应着第一轮循环即确定第一大数据),那我是不是只要再循环一次就能结束？第9轮循环对应着<code>i=8</code>啊,而如果<code>i&lt;arr.length</code>那么<code>i</code>最大值是9,可我<code>i=8</code>就能确定了为什么还要多循环一次呢？所以可以优化为<code>i &lt; arr.length - 1</code></strong></p>
 
   </section>
 
@@ -192,7 +223,7 @@
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">Older Post</span>
+                <span class="read-more-item-dim">以前の記事</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/03/20/thinkingInJava/" title="Thinking in Java 学习笔记">Thinking in Java 学习笔记</a></h2>
                 <p class="excerpt">
                 
