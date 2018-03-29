@@ -222,6 +222,7 @@ Vector">
 <li><a href="#1571">removeAll()以及retainAll()</a></li>
 </ul>
 </li>
+<li><a href="#158"></a></li>
 </ul>
 </li>
 <li><a href="#16"></a></li>
@@ -359,6 +360,7 @@ Vector">
 <li><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过上面的方法,完成了<code>elementData</code>的重新赋值,接下来在看<code>batchRemove()</code>就容易很多了。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;结合示例,<code>batchRemove()</code>里面的<strong>c</strong>其实是我传进来的<strong>c2</strong>,循环遍历<strong>elementData</strong>,然后结合<code>complement</code>同时利用<code>contains()</code>来判断<strong>c</strong>中是否存在<code>elementData</code>中的元素,如果<code>complement</code>为true,同时<strong>c</strong>中也存在<code>elementData</code>中的元素,那么对<code>elementData</code>重新赋值(<strong>从下标为0开始</strong>)。最后通过<code>finally</code>判断<code>w</code>是不是和<code>size</code>相等,不等的话将<code>elementData</code>中多余的参数给清空掉。(<strong>w其实就是c的长度</strong>)</p>
 </li>
 </ol>
+<h3 id="15-8、"><a href="#15-8、" class="headerlink" title="15.8、"></a><a id="158">15.8、</a></h3><p><strong><a href="#123">返回目录</a></strong></p>
 
   </section>
 
@@ -367,6 +369,19 @@ Vector">
 <section class="read-more">
            
     
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Newer Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/03/29/快速排序和冒泡排序/" title="快速排序和冒泡排序">快速排序和冒泡排序</a></h2>
+                <p class="excerpt">
+                
+                
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;最近空闲时间逛论坛发现,好多人在面试时问了排序算法,比如快速排序以及冒泡排序。我回想了下,依稀记得有什么for循环嵌套,然后就没了。这样可不好,不能工作了就忘了这些基础,会被淘汰的。所以又重新学习了下这两个算法,发现自己还是有
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-03-29T02:24:32.587Z" class="post-list__meta--date date">2018-03-29</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/03/29/快速排序和冒泡排序/">继续阅读</a></div>
+                           
+            </div>
         
         
                

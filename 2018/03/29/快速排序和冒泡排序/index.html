@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>快速排序和冒泡排序 | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;最近空闲时间逛论坛发现,好多人在面试时问了排序算法,比如快速排序以及冒泡排序。我回想了下,依稀记得有什么for循环嵌套,然后就没了。这样可不好,不能工作了就忘了这些基础,会被淘汰的。所以又重新学习了下这两个算法,发现自己还是有很多坑要填,做个学习笔记吧,以免又忘了。
+
+快速排序参考: https://blog.csdn.ne">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="快速排序和冒泡排序 | Ronaldo">
+    <meta name="twitter:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;最近空闲时间逛论坛发现,好多人在面试时问了排序算法,比如快速排序以及冒泡排序。我回想了下,依稀记得有什么for循环嵌套,然后就没了。这样可不好,不能工作了就忘了这些基础,会被淘汰的。所以又重新学习了下这两个算法,发现自己还是有很多坑要填,做个学习笔记吧,以免又忘了。
+
+快速排序参考: https://blog.csdn.ne">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="快速排序和冒泡排序 | Ronaldo">
+    <meta property="og:description" content="&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;最近空闲时间逛论坛发现,好多人在面试时问了排序算法,比如快速排序以及冒泡排序。我回想了下,依稀记得有什么for循环嵌套,然后就没了。这样可不好,不能工作了就忘了这些基础,会被淘汰的。所以又重新学习了下这两个算法,发现自己还是有很多坑要填,做个学习笔记吧,以免又忘了。
+
+快速排序参考: https://blog.csdn.ne">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2018/03/29/快速排序和冒泡排序/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-03-29T02:24:32.587Z" class="post-list__meta--date date">2018-03-29</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">快速排序和冒泡排序</h1>
+  </header>
+
+  <section class="post">
+    <blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最近空闲时间逛论坛发现,好多人在面试时问了排序算法,比如快速排序以及冒泡排序。我回想了下,依稀记得有什么<code>for</code>循环嵌套,然后就没了。这样可不好,不能工作了就忘了这些基础,会被淘汰的。所以又重新学习了下这两个算法,发现自己还是有很多坑要填,做个学习笔记吧,以免又忘了。</p>
+</blockquote>
+<h3 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h3><p>参考: <a href="https://blog.csdn.net/loving_m/article/details/52993521" target="_blank" rel="external">https://blog.csdn.net/loving_m/article/details/52993521</a><br>      <a href="https://blog.csdn.net/morewindows/article/details/6684558" target="_blank" rel="external">https://blog.csdn.net/morewindows/article/details/6684558</a></p>
+<blockquote>
+<p><strong>该方法的基本思想是</strong>：<br>1．先从数列中取出一个数作为基准数。<br>2．分区过程，将比这个数大的数全放到它的右边，小于或等于它的数全放到它的左边。<br>3．再对左右区间重复第二步，直到各区间只有一个数。</p>
+</blockquote>
+<p>网上前辈对快速排序做了个进一步的说明：<strong>挖坑填数+分治法</strong></p>
+<p>不完整的代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">var times = 0</div><div class="line">var arr = [72,6,57,88,60,42,83,73,48,85]</div><div class="line">function quickSort(arr) &#123;</div><div class="line">	var left = []</div><div class="line">	var right = []</div><div class="line">	if(arr.length &gt; 0) &#123;</div><div class="line">		var x = arr.splice(0,1)</div><div class="line">	&#125;</div><div class="line">	for(var i = 0; i &lt; arr.length; i++) &#123;</div><div class="line">		if(arr[i] &lt; x) &#123;</div><div class="line">			left.push(arr[i])</div><div class="line">		&#125; else &#123;</div><div class="line">			right.push(arr[i])</div><div class="line">		&#125;</div><div class="line">        console.log(&quot;第&quot;+(++times)+&quot;次排序后：&quot;+arr)</div><div class="line">	&#125;</div><div class="line">	return quickSort(left).concat(x, quickSort(right))</div><div class="line">&#125;</div><div class="line">quickSort(arr) // 堆栈溢出！！！</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>上面这段代码还是我看了下相关博客然后以为自己会了就大差不差的写出来的,结果运行下直接打脸,<strong>堆栈溢出了</strong>。<br>百思不得其解,只好照着他人代码一个个对比,发现少了一个判断<code>arr</code>长度是否大于<strong>1</strong>的<code>if</code>判断语句。加上试了试,能用了！</p>
+</blockquote>
+<p>完整且正确的代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">var times = 0</div><div class="line">var arr = [72,6,57,88,60,42,83,73,48,85]</div><div class="line">function quickSort(arr) &#123;</div><div class="line">    if(arr.length &lt;= 1) &#123;</div><div class="line">        return arr</div><div class="line">    &#125;</div><div class="line">	var left = []</div><div class="line">	var right = []</div><div class="line">	if(arr.length &gt; 0) &#123;</div><div class="line">		var x = arr.splice(0,1)</div><div class="line">	&#125;</div><div class="line">	for(var i = 0; i &lt; arr.length; i++) &#123;</div><div class="line">		if(arr[i] &lt; x) &#123;</div><div class="line">			left.push(arr[i])</div><div class="line">		&#125; else &#123;</div><div class="line">			right.push(arr[i])</div><div class="line">		&#125;</div><div class="line">        console.log(&quot;第&quot;+(++times)+&quot;次排序后：&quot;+arr)</div><div class="line">	&#125;</div><div class="line">	return quickSort(left).concat(x, quickSort(right))</div><div class="line">&#125;</div><div class="line">quickSort(arr) // [6, 42, 48, 57, 60, 73, 83, 85, 88]</div></pre></td></tr></table></figure></p>
+<p>这个方法其实思想也很简单,关键要理解。有几个难点要牢记：</p>
+<ol>
+<li><strong>当我第一次通过<code>for</code>循环后得到了左右两个数组以及基准数,那么我如何对左右两个数组继续进行排序呢?(第一次得到的左右两个数组仅仅是跟一个基准数进行比较而已,远远没有达到所有数据都进行排序的效果。)</strong><br>答案是<strong>递归</strong>。</li>
+<li><strong>如果想到了用递归,那么我该怎么实施呢？直接<code>return quickSort(?)</code>?</strong><ul>
+<li>2.1 这里又有一个问题了：我调用<code>quickSort(arr)</code>后肯定是要得到排序后的数组,可是上述我自己写得不完整的代码里并没有<code>return 数组</code>这一步啊,即使我不断递归,那我怎么返回数组呢？</li>
+<li>2.2 还有,如果直接<code>return quickSort(left)</code>或者<code>return quickSort(right)</code>肯定是不对的。那我<code>return quickSort(left.concat(x, right))</code>?</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先我需要解决问题2.1。我肯定要返回一个数组,但是不可能直接<code>return arr</code>,也不可能<code>return left</code>同样不可能<code>return right</code>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这时候就要思考了,我第一次调用<code>quickSort()</code>得到了<code>left</code>和<code>right</code>数组,那我肯定还需要继续对这两个数组内部进行再度排序。再度排序方法其实一样,继续分别在这两个数组内部找一个基准数,然后把比这个基准数小的放到<strong>新的<code>left</code>数组</strong>内,以此类推,对这个<strong>新<code>left</code></strong>继续调用<code>quickSort()</code>继续重复操作,那么比较到最后,<strong>可能只有一个数据甚至没有数据比最终的基准数小,那么不就可以确定该数或者基准数就是最小数据,应该放在数组的第一位了呢</strong>。所以我需要在方法一开始就判断<code>arr.length &lt;= 1</code>,它代表了可能最后的基准数就是最小的或者有一个数据比最后的基准数小。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这样确定了第一个数和最终的基准数,那么就可以对比最终的基准数大的数据继续快速排序,然后不就可以得到第二个、第三个等等等等的数据了吗？而得到的这些数据依然放在数组内,只是它们的数组只包含它们一个数据罢了,所以最终可以用<code>concat()</code>方法把它们连接在一起,这样,快速排序方法就完成了。</p>
+</blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;至于问题2.2,自己动手运行一把看看呗。<br><img src="../../../../images/quickSort.png" alt=""><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;经过动手实践,证明这种想法是错的。</p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/03/20/thinkingInJava/" title="Thinking in Java 学习笔记">Thinking in Java 学习笔记</a></h2>
+                <p class="excerpt">
+                
+                一、目录
+java基础数据类型
+假设一个值是29.7，我们把它强转成一个char，那么结果值到底是 30 还是29 呢？
+构造函数
+垃圾收集
+成员初始化
+public, protected, default(friendly), private 对应的访问权限
+final
+方法过载与覆盖
+抽象方法
+
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-03-20T05:25:01.159Z" class="post-list__meta--date date">2018-03-20</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/03/20/thinkingInJava/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>
