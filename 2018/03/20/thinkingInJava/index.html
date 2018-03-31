@@ -220,6 +220,9 @@ Vector">
 <li><a href="#156">排序</a></li>
 <li><a href="#157">新集合</a><ul>
 <li><a href="#1571">removeAll()以及retainAll()</a></li>
+<li><a href="#1572">Lists</a></li>
+<li><a href="#1573">Sets</a></li>
+<li><a href="#1574">Maps</a></li>
 </ul>
 </li>
 <li><a href="#158"></a></li>
@@ -361,7 +364,9 @@ Vector">
 <li><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过上面的方法,完成了<code>elementData</code>的重新赋值,接下来在看<code>batchRemove()</code>就容易很多了。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;结合示例,<code>batchRemove()</code>里面的<strong>c</strong>其实是我传进来的<strong>c2</strong>,循环遍历<strong>elementData</strong>,然后结合<code>complement</code>同时利用<code>contains()</code>来判断<strong>c</strong>中是否存在<code>elementData</code>中的元素,如果<code>complement</code>为true,同时<strong>c</strong>中也存在<code>elementData</code>中的元素,那么对<code>elementData</code>重新赋值(<strong>从下标为0开始</strong>)。最后通过<code>finally</code>判断<code>w</code>是不是和<code>size</code>相等,不等的话将<code>elementData</code>中多余的参数给清空掉。(<strong>w其实就是c的长度</strong>)</p>
 </li>
 </ol>
-<h3 id="15-8、"><a href="#15-8、" class="headerlink" title="15.8、"></a><a id="158">15.8、</a></h3><p><strong><a href="#123">返回目录</a></strong></p>
+<h3 id="15-7-2、Lists"><a href="#15-7-2、Lists" class="headerlink" title="15.7.2、Lists"></a><a id="1572">15.7.2、Lists</a></h3><p><strong><a href="#123">返回目录</a></strong><br>包含：<strong>List、ArrayList、LinkedList</strong>。<br>ArrayList 允许我们快速访问元素,但在从列表中部插入和删除元素时,速度却嫌稍慢。<br>LinkedList 提供优化的顺序访问性能,同时可以高效率地在列表中部进行插入和删除操作。但在进行随机访问时,速度却相当慢,此时应换用 ArrayList。<br><img src="../../../../images/lists.png" alt=""></p>
+<h3 id="15-7-3、Sets"><a href="#15-7-3、Sets" class="headerlink" title="15.7.3、Sets"></a><a id="1573">15.7.3、Sets</a></h3><p><strong><a href="#123">返回目录</a></strong><br>包含：<strong>Set、HashSet、TreeSet</strong>。<br>Set <strong>添加到 Set 的每个元素都必须是独一无二的；否则Set 就不会添加重复的元素</strong>。添加到 Set 里的对象必须定义<code>equals()</code>,从而建立对象的<strong>唯一性</strong>。Set 拥有与 Collection 完全相同的接口。一个 Set不能保证自己可按任何特定的顺序维持自己的元素。<br>HashSet 用于除非常小的以外的所有Set。对象也必须定义 <strong>hashCode()</strong><br>TreeSet 由一个“红黑树”后推得到的顺序 Set。<br><img src="../../../../images/sets.png" alt=""></p>
+<h3 id="15-7-4、Maps"><a href="#15-7-4、Maps" class="headerlink" title="15.7.4、Maps"></a><a id="1574">15.7.4、Maps</a></h3><p><strong><a href="#123">返回目录</a></strong><br>包含：<strong>Map、HashMap、TreeMap</strong><br>HashMap 基于一个散列表实现（用它代替Hashtable）。针对“键－值”对的插入和检索,这种形式具有最稳定的性能。可通过构建器对这一性能进行调整,以便设置散列表的“能力”和“装载因子”。<br>TreeMap 在一个“红－黑”树的基础上实现。查看键或者“键－值”对时,它们会按固定的顺序排列(取决于Comparable 或Comparator,稍后即会讲到)。TreeMap 最大的好处就是我们得到的是已排好序的结果。<br><img src="../../../../images/maps.png" alt=""></p>
 
   </section>
 
