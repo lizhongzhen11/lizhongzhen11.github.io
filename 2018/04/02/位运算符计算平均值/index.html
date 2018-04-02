@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>为什么在 Java 中用 (low+high)&gt;&gt;&gt;1 代替 (low+high)/2 或 (low+high)&gt;&gt;1 来计算平均值呢？好在哪里？ | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="抄自：https://www.cnblogs.com/zt007/p/7169735.html?utm_source=itdadao&amp;amp;utm_medium=referral
+
+&amp;gt;&amp;gt;&amp;gt;与&amp;gt;&amp;gt;是位运算符,只对整型有效(不能用于浮点型)。当是整型的时候(low+high)&amp;gt;&amp;gt;1可以代替(low+high)/2。&amp;gt;&amp;gt;&amp;gt;是无符号右移运算符。">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="为什么在 Java 中用 (low+high)&gt;&gt;&gt;1 代替 (low+high)/2 或 (low+high)&gt;&gt;1 来计算平均值呢？好在哪里？ | Ronaldo">
+    <meta name="twitter:description" content="抄自：https://www.cnblogs.com/zt007/p/7169735.html?utm_source=itdadao&amp;amp;utm_medium=referral
+
+&amp;gt;&amp;gt;&amp;gt;与&amp;gt;&amp;gt;是位运算符,只对整型有效(不能用于浮点型)。当是整型的时候(low+high)&amp;gt;&amp;gt;1可以代替(low+high)/2。&amp;gt;&amp;gt;&amp;gt;是无符号右移运算符。">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="为什么在 Java 中用 (low+high)&gt;&gt;&gt;1 代替 (low+high)/2 或 (low+high)&gt;&gt;1 来计算平均值呢？好在哪里？ | Ronaldo">
+    <meta property="og:description" content="抄自：https://www.cnblogs.com/zt007/p/7169735.html?utm_source=itdadao&amp;amp;utm_medium=referral
+
+&amp;gt;&amp;gt;&amp;gt;与&amp;gt;&amp;gt;是位运算符,只对整型有效(不能用于浮点型)。当是整型的时候(low+high)&amp;gt;&amp;gt;1可以代替(low+high)/2。&amp;gt;&amp;gt;&amp;gt;是无符号右移运算符。">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2018/04/02/位运算符计算平均值/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-04-02T02:34:14.719Z" class="post-list__meta--date date">2018-04-02</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">为什么在 Java 中用 (low+high)&gt;&gt;&gt;1 代替 (low+high)/2 或 (low+high)&gt;&gt;1 来计算平均值呢？好在哪里？</h1>
+  </header>
+
+  <section class="post">
+    <p>抄自：<a href="https://www.cnblogs.com/zt007/p/7169735.html?utm_source=itdadao&amp;utm_medium=referral" target="_blank" rel="external">https://www.cnblogs.com/zt007/p/7169735.html?utm_source=itdadao&amp;utm_medium=referral</a></p>
+<blockquote>
+<p><code>&gt;&gt;&gt;</code>与<code>&gt;&gt;</code>是位运算符,只对整型有效(不能用于浮点型)。<br>当是整型的时候<code>(low+high)&gt;&gt;1</code>可以代替<code>(low+high)/2</code>。<br><code>&gt;&gt;&gt;</code>是无符号右移运算符。<strong>如果 <code>low+high</code>是正整数,这三种运算是等价的</strong>。<br> 由于有编译器优化,他们的效率应该是相同的(如果不存在编译器优化,移位运算更快)。</p>
+</blockquote>
+<p>用<code>&gt;&gt;&gt;</code>一般是有特殊的目的。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;至于<code>&gt;&gt;&gt;</code>和<code>&gt;&gt;</code>的区别,则在于有符号和无符号。比如<code>-2&gt;&gt;&gt;1</code>的结果是<code>2147483647</code>,而<code>-2&gt;&gt;1</code>的结果是<code>-1</code>。(其中<code>2147483647</code>是<code>-2</code>的补码右移一位后,左边补0的结果。)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>这里计算平均值使用<code>&gt;&gt;&gt;</code>取代<code>&gt;&gt;</code>,恐怕是因为可能出现很大的数字,这些数字单独用不会超过<code>Integer.MAX_VALUE</code>,但求和之后可能超过,这时如果使用<code>&gt;&gt;</code>或者<code>/</code>来计算,会因为溢出而算出负数结果。</strong></p>
+<p>用下面的程序可以说明问题：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">private static void testFun() &#123;</div><div class="line">    int low = Integer.MAX_VALUE;</div><div class="line">    int high = Integer.MAX_VALUE;</div><div class="line">    System.out.println(&quot;low:&quot; + low); // 先看一眼数字</div><div class="line">    int as = (low + high) / 1;</div><div class="line">    int div = (low + high) &gt;&gt; 1;</div><div class="line">    int au = (low + high) &gt;&gt;&gt; 1;</div><div class="line">    System.out.println(&quot;as:&quot; + as); // 使用 / 计算的平均值。</div><div class="line">    System.out.println(&quot;div:&quot; + div); // 使用 &gt;&gt; 计算的平均值，与/相同。</div><div class="line">    System.out.println(&quot;au:&quot; + au); // 使用 &gt;&gt;&gt; 计算的平均值。</div><div class="line">&#125;</div><div class="line">/*  执行结果：</div><div class="line">    low:2147483647</div><div class="line">    as:-1</div><div class="line">    div:-1</div><div class="line">    au:2147483647</div><div class="line">*/</div></pre></td></tr></table></figure></p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/03/30/计数排序/" title="计数排序">计数排序</a></h2>
+                <p class="excerpt">
+                
+                摘抄自：https://www.cnblogs.com/developerY/p/3166462.html       https://blog.csdn.net/gaoruxue918/article/details/61467416
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-03-30T05:13:57.624Z" class="post-list__meta--date date">2018-03-30</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/03/30/计数排序/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>
