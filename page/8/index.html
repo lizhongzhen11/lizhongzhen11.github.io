@@ -67,7 +67,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+              <li class="navigation__item"><a href="/#blog" title="Blogを読む" class="blog-button">Blog</a></li>
             
             </ul>
           </nav>
@@ -137,6 +137,22 @@
             <div class="main-post-list">
     
   <ol class="post-list">
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/10/27/jsonp/" title="link to post.title">jsonp学习</a></h2>
+      <p class="excerpt">
+    
+      抄自：https://segmentfault.com/a/1190000007935557
+jsonp的诞生
+首先，ajax是无法跨域的，但是我们有跨域需求，有需求就要想办法解决，这样开发者就会思考解决办法。
+其次，开发者们发现，&amp;lt;script&amp;gt;标签的src属性是可以跨域的。把跨域服务器写成 调用本地的函数，回调数据回来不就好了？
+json刚好被js支持（json其实是object）
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2017-10-27T07:49:45.706Z" class="post-list__meta--date date">2017-10-27</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/10/27/jsonp/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
   
     
     <li>
@@ -285,26 +301,12 @@ thisArg
     </li>
   
     
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/10/23/js_return/" title="link to post.title">js return</a></h2>
-      <p class="excerpt">
-    
-      今天看囧克斯关于 vue 源码解读发现一段代码通过 return 巧妙地避免了不必要的深度遍历(在有广播事件到来时，如果当前 vm 的 _eventsCount 为 0，则不必向其子 vm 继续传播该事件)，当时看到return都有点忘了，基础不牢固
-
-源码123456789101112export.$broadcast = function (event) &amp;#123;    if (!this
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-10-23T02:29:19.325Z" class="post-list__meta--date date">2017-10-23</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/10/23/js_return/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
   </ol>
 
 
   <nav class="pagination" role="navigation">
     
-      <a class="older-posts pagination__newer btn btn-small btn-tertiary" href="/page/7/">&larr; Prev</a>
+      <a class="older-posts pagination__newer btn btn-small btn-tertiary" href="/page/7/">&larr; 前へ</a>
     
     <span class="pagination__page-number" >  8 / 11 </span>
     
@@ -353,7 +355,7 @@ thisArg
       
       
     
-      <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/page/9/">Next &rarr;</a>
+      <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/page/9/">次へ &rarr;</a>
     
   </nav>
 

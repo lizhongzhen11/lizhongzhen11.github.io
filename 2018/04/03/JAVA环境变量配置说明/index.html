@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>JAVA环境变量JAVA_HOME、CLASSPATH、PATH配置说明以及javac命令无法使用的问题 | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="抄自：https://blog.csdn.net/luckykapok918/article/details/37053949基础概念
+current directory(当前目录)：当前在用的目录就是当前目录&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;比如说当你打开NOTEPAD,并处于运行状态时候,当前目录就是c:/windows；&amp;nbsp;&amp;nbsp;&amp;nbsp">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="JAVA环境变量JAVA_HOME、CLASSPATH、PATH配置说明以及javac命令无法使用的问题 | Ronaldo">
+    <meta name="twitter:description" content="抄自：https://blog.csdn.net/luckykapok918/article/details/37053949基础概念
+current directory(当前目录)：当前在用的目录就是当前目录&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;比如说当你打开NOTEPAD,并处于运行状态时候,当前目录就是c:/windows；&amp;nbsp;&amp;nbsp;&amp;nbsp">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="JAVA环境变量JAVA_HOME、CLASSPATH、PATH配置说明以及javac命令无法使用的问题 | Ronaldo">
+    <meta property="og:description" content="抄自：https://blog.csdn.net/luckykapok918/article/details/37053949基础概念
+current directory(当前目录)：当前在用的目录就是当前目录&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;比如说当你打开NOTEPAD,并处于运行状态时候,当前目录就是c:/windows；&amp;nbsp;&amp;nbsp;&amp;nbsp">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2018/04/03/JAVA环境变量配置说明/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Blogを読む" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-04-03T02:32:08.789Z" class="post-list__meta--date date">2018-04-03</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       No. <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">JAVA环境变量JAVA_HOME、CLASSPATH、PATH配置说明以及javac命令无法使用的问题</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="抄自：https-blog-csdn-net-luckykapok918-article-details-37053949"><a href="#抄自：https-blog-csdn-net-luckykapok918-article-details-37053949" class="headerlink" title="抄自：https://blog.csdn.net/luckykapok918/article/details/37053949"></a>抄自：<a href="https://blog.csdn.net/luckykapok918/article/details/37053949" target="_blank" rel="external">https://blog.csdn.net/luckykapok918/article/details/37053949</a></h3><h3 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h3><ol>
+<li><strong>current directory(当前目录)</strong>：当前在用的目录就是当前目录<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;比如说当你打开NOTEPAD,并处于运行状态时候,当前目录就是c:/windows；<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果你用cmd命令打开命令行窗口,当前目录就是c:/windows/system32;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果你在用java这条指令,当前目录就是JAVA下的BIN目录所在的路径,因为java.exe在bin里面。在java开发配置环境变量时,系统默认(我们对classpath不做任何设定时)的路径也是当前目录。</li>
+</ol>
+<ol>
+<li><strong>JAVA_HOME</strong>：它是指jdk的安装目录<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;像D:/j2sdk1.4.2_16,在这路径下你应该能够找到bin、lib等目录。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为什么要设置它呢,不设定可不可以呢？不设定也是可以滴,但是最好还是设置一下。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们现在就当它是一个变量代换 <strong>JAVA_HOME = D:/j2sdk1.4.2_16</strong>, 就是为了避免多写字,它还有一个好处就是当我们需要改变某个jdk时,只需要改 JAVA_HOME 的值就可以了。等在后面看了 Tomcat 的启动分析时你就明白了。当在环境变量中引用它的时候要用 <strong>%JAVA_HOME%</strong> 来表示  <strong>D:/j2sdk1.4.2_16</strong>。</li>
+<li><strong>Path</strong>：系统变量Path告诉操作系统可执行文件(<em>.exe、</em>.bat等)所在的路径<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当OS(操作系统)发现某个<code>*.exe</code>时,windows默认从当前目录开始查找这个命令,若查不到,OS就会到Path所设定的路径中去寻找该命令,然后执行。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>系统默认的系统变量为：Path = %SystemRoot%;%SystemRoot%/system32;%SystemRoot%/System32/Wbem</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;就是说处于上面3个目录(多个变量用分号隔开)中的<code>*.exe</code>文件,可以在任意地方被执行(在运行窗口能直接执行的命令,像cmd、notepad等,基本都在上面的3个目录里面),所以他们可以直接运行。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>上面的%SystemRoot%是什么意思呢？%SystemRoot%就是安装操作系统的时候,系统默认的安装路径</strong><blockquote>
+<p>若你的windows xp装在C:/WINDOWS,则你的%systemRoot%路径就是c:/windows。<br><strong>%systemRoot%只是一个符号,代表你的系统安装目录</strong> </p>
+</blockquote>
+</li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;下面是常见系统默认安装路径:<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 98—-c:/windows<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2000–c:/winnt<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2003–c:/windows<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; xp—-c:/windows </p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当我们要进行java开发时,OS经常需要用到java.exe、javac.exe等,(若jdk安装在D:/j2sdk1.4.2_16)因此应该将 D:/j2sdk1.4.2_16/bin(%JAVA_HOME%/bin)加入到系统的path中去。</p>
+<blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>注意：如果你加入的位置不是在最后,那还需要在bin后面加上英文状态下的分号：<code>%JAVA_HOME%/bin;</code>多个变量之间要用分号隔开,如果它前面没有,你就加一个</strong>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明确一下：%JAVA_HOME%/jre/bin 这个路径是不需要加入Path的。参考：<a href="http://java.sun.com/javase/6/docs/technotes/tools/windows/jdkfiles.html" target="_blank" rel="external">http://java.sun.com/javase/6/docs/technotes/tools/windows/jdkfiles.html</a></p>
+</blockquote>
+<p>4.&nbsp;&nbsp;<strong>CLASSPATH</strong>：告诉java虚拟机(jvm)要使用或执行的*.class文件放在什么地方<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLASSPATH是专门针对java的,它相当于windows的path;path是针对整个windows的。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所谓的JVM就好像是在微软OS上面再激活另外一个OS,对JVM来说CLASSPATH就好像是对微软OS来说的PATH,所以要用jvm开运行程序就需要设定classpath,然而jvm像windows一样它也有个默认的查找class文件的路径,对刚开始学习java的我们来说,默认的已经够我们用了,那就是当前路径,因此不设置classpath也可以。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在windows中 classpath 大小写没有关系,其他的环境变量名称也一样。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当我们不设定classpath时,系统默认的classpath是当前目录,如果你个人想设置classpath的话,那么务必在classpath中加入<code>&quot;.&quot;</code>,这个英文状态下的点就表示当前目录。至于classpath中要不要加入其他的路径(包括文件目录、包的根目录等),这要看开发的需要,一般我们初学者是用不到的。</p>
+<p>JAVA_HOME = D:/j2sdk1.4.2_16<br>Path 环境变量中在最前面加入(若系统原来没有就新建) %JAVA_HOME%/bin; （加在最前面可以提高查找速度）<br>CLASSPATH = . 这一步可以不用设。</p>
+<h3 id="javac命令无法使用"><a href="#javac命令无法使用" class="headerlink" title="javac命令无法使用"></a>javac命令无法使用</h3><p>参考自：<a href="https://www.zhihu.com/question/28428426" target="_blank" rel="external">https://www.zhihu.com/question/28428426</a></p>
+<ol>
+<li><p>win10系统下javac无法使用问题<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>Win 10 下编辑界面,会逐条将变量分开显示,以便操作和查看。将配置的路径放到最上面,然后再次进入 Path 路径编辑,居然编辑界面自动变回 Win 7 的样式,所有变量连成一串,并且自动在配置的变量值前后加了引号和一个分号,导致路径失效。</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;有以下两种解决方法：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (1). 删掉多余的引号和分号<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (2). 添加路径时，将两个路径分开添加，且不添加分号</p>
+</li>
+<li><p>在Windows上装了Oracle/Sun JDK(过程中还同意安装了Public JRE),然后没有修改过PATH环境变量的配置？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;那么在命令行里运行的<code>java.exe</code>来自<code>Public JRE</code>,具体来说在<code>C:\Windows\System32\java.exe</code>。它会找到您系统上现在装着的那个<code>Public JRE</code>的具体路径去运行Java程序。而<code>javac.exe</code>不是JRE的一部分,而是JDK的。JDK的安装程序不会自动将自己的bin目录配置到PATH环境变量上,所以在命令行里也看不到它。<strong>要解决这个问题要么自己手动把JDK安装目录的bin目录配置到PATH环境变量里,要么在命令行用JDK的全路径去访问javac.exe</strong>。</p>
+</li>
+</ol>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">以前の記事</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/04/02/位运算符计算平均值/" title="为什么在 Java 中用 (low+high)&gt;&gt;&gt;1 代替 (low+high)/2 或 (low+high)&gt;&gt;1 来计算平均值呢？好在哪里？">为什么在 Java 中用 (low+high)&gt;&gt;&gt;1 代替 (low+high)/2 或 (low+high)&gt;&gt;1 来计算平均值呢？好在哪里？</a></h2>
+                <p class="excerpt">
+                
+                抄自：https://www.cnblogs.com/zt007/p/7169735.html?utm_source=itdadao&amp;amp;utm_medium=referral
+
+&amp;gt;&amp;gt;&amp;gt;与&amp;gt;&amp;gt;是位运算符,只对整型有效(不能用于浮点型)。当是整型的时候(low+hig
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-04-02T02:34:14.719Z" class="post-list__meta--date date">2018-04-02</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/04/02/位运算符计算平均值/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>
