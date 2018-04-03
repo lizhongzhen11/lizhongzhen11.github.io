@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>Java main方法 | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="参考自：https://blog.csdn.net/show_me_the_world/article/details/47106191https://blog.csdn.net/show_me_the_world/article/details/47106191
+背景&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;来公司接触java也一年多了,虽然最近才开始真正系统性的学">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Java main方法 | Ronaldo">
+    <meta name="twitter:description" content="参考自：https://blog.csdn.net/show_me_the_world/article/details/47106191https://blog.csdn.net/show_me_the_world/article/details/47106191
+背景&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;来公司接触java也一年多了,虽然最近才开始真正系统性的学">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Java main方法 | Ronaldo">
+    <meta property="og:description" content="参考自：https://blog.csdn.net/show_me_the_world/article/details/47106191https://blog.csdn.net/show_me_the_world/article/details/47106191
+背景&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;来公司接触java也一年多了,虽然最近才开始真正系统性的学">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2018/04/03/java中的main方法/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-04-03T03:13:36.968Z" class="post-list__meta--date date">2018-04-03</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">Java main方法</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="参考自："><a href="#参考自：" class="headerlink" title="参考自："></a>参考自：</h3><p><a href="https://blog.csdn.net/show_me_the_world/article/details/47106191" target="_blank" rel="external">https://blog.csdn.net/show_me_the_world/article/details/47106191</a><br><a href="https://blog.csdn.net/show_me_the_world/article/details/47106191" target="_blank" rel="external">https://blog.csdn.net/show_me_the_world/article/details/47106191</a></p>
+<h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;来公司接触java也一年多了,虽然最近才开始真正系统性的学习,但是之前也断断续续用java写过代码。心里一直有个疑惑：我发现公司项目里比如用springmvc框架搭建的,代码里几乎没看到过<code>public static void main(String[] args)</code>,全是注解。但是,为什么看书上的例子,运行测试类时都要有一个<code>main</code>方法呢？这个<code>main</code>方法到底是什么啊？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于本人技术有限,只能百度去找答案了。虽然在开发中不需要关注这些,但是了解下为什么总归也不错的。</p>
+<h3 id="网上讲解"><a href="#网上讲解" class="headerlink" title="网上讲解"></a>网上讲解</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;main方法是我们学习Java语言学习的第一个方法,也是每个java使用者最熟悉的方法,<strong>每个Java应用程序都必须有且仅有一个main方法</strong>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;可以说main方法是最简单的方法,因为main方法几乎是固定不变得,除了<code>String[] args</code>可以写成<code>String args[]</code>,以及<code>args</code>的名称可以改变外,其它所有均不改变。main方法也是特殊的，因为它的类型必须是<code>public static void</code>,甚至名字都必须是<code>main</code>,还有括号内的参数<code>String[] args</code>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>根据Java语言规范,main方法必须声明为<code>public</code></strong>。但是在<strong>JavaSE1.4以前</strong>的版本中,当main方法不是<code>public</code>时,有些版本的Java解释器也可以执行Java应用程序。详见 <a href="http://bugs.sun.com/bugdatabase/index.jsp" target="_blank" rel="external">http://bugs.sun.com/bugdatabase/index.jsp</a> ,<strong>bug号码4252539</strong>。当时SUN公司的工程师解释说，Java虚拟机规范并没有要求main方法一定是public。以上只是写出来,丰富一下兴趣。<strong>如果有人说Java main方法从来只能用public,那样说实际上还是错的,因为以前出过这么个BUG。但是在1.4版本之后main方法已经被强制成了public,所以现在我们看到的main方法只能是public</strong>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;main方法之所以是<code>public</code>,是因为一个Java程序在运行时首先创建一个JVM实例,程序要运行需要调用main方法,JVM从外部调用main方法这就需要访问权限修饰符必须给出外部访问的权限,所以只能用<code>public</code>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;java虚拟机通过main方法找到需要启动的运行程序,并且检查main函数所在类是否被java虚拟机装载。如果没有装载,那么就装载该类,并且装载所有相关的其他类。因此程序在运行的时候,第一个执行的方法就是main()方法。通常情况下,如果要运行一个类的方法,必须首先实例化出来这个类的一个对象,然后通过<strong>对象名.方法名()</strong>的方式来运行方法,但是因为main是程序的入口,这时候还没有实例化对象,因此将main方法声明为static的,这样这个方法就可以直接通过<strong>类名.方法名()</strong>的方式来调用。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>void</code>表示main方法<strong>没有返回值</strong>,没有返回值的原因是因为Java不需要main方法向操作系统返回退出信息。<strong>如果main方法正常退出,那么Java应用层序的退出代码为0,表示成功的运行了程序</strong>。</p>
+<blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;main的名称不能变是为了JVM能够识别程序运行的起点,main方法可以被重载,重载的main方法不会被执行。main方法作为程序初始线程的起点,任何其他线程均由该线程启动。JVM内部有两种线程,<strong>非守护线程和守护线程,main方法属于非守护线程</strong>,守护线程通常由JVM自己使用,Java程序也可以表明自己的线程是守护线程。当程序中所有的非守护线程终止时,JVM退出。也可以用<code>Runtime</code>类或者<code>System.exit()</code>来退出。</p>
+</blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>String[] args</code>,是main方法中唯一可以改变的地方！args是arguments的缩写,只是一个变量默认名,习惯性写作它,但是也可以改变的,只要符合命名规则随便你写成什么。在使用集成开发工具的今天,<code>String[] args</code>更像是一种摆设了,很多初学者都不知道它的作用,其实它是程序运行传入的一个参数组。一个简单的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public class Test&#123;  </div><div class="line">    public static void main(String[] args)&#123;  </div><div class="line">        System.out.println(&quot;获取数组args[]的数据&quot;);  </div><div class="line">        for(int i=0;i&lt;args.length;i++)&#123;  </div><div class="line">            System.out.println(args[i]);  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以管理员身份运行CMD,因为我的Test.java是直接保存在F盘中的,输入f:跳转到目录,输入<code>Javac Test.java</code>将其编译为<code>Test.class</code>文件,然后再输入<code>java Test 1 2 3</code>,可以发现打印输出1 2 3。</p>
+<h3 id="以上讲解了main方法-但是为什么现在的web项目里没有main方法呢？"><a href="#以上讲解了main方法-但是为什么现在的web项目里没有main方法呢？" class="headerlink" title="以上讲解了main方法,但是为什么现在的web项目里没有main方法呢？"></a>以上讲解了main方法,但是为什么现在的web项目里没有main方法呢？</h3><p>抄自：<br><a href="https://blog.csdn.net/lyt_7cs1dn9/article/details/52469472" target="_blank" rel="external">https://blog.csdn.net/lyt_7cs1dn9/article/details/52469472</a><br><a href="https://ask.csdn.net/questions/369015" target="_blank" rel="external">https://ask.csdn.net/questions/369015</a><br><a href="https://www.cnblogs.com/dhl-2013/articles/3272516.html" target="_blank" rel="external">https://www.cnblogs.com/dhl-2013/articles/3272516.html</a></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先理解一下main方法：你的java程序要运行,总要有一个起点,所以我们就约定,从main方法这里开始一行一行执行,java程序跑起来,一般是通过主类的main方法启动的。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>其次,web项目是由容器启动的</strong>。也就是服务器,tomcat之类。</p>
+<blockquote>
+<p><code>tomcat</code>的主类是<code>BootStrap</code>类,这个类里面有一个main方法,以此类的<strong>main方法作为入口启动</strong>,同时这里它主要加载tomcat自己的配置和web.xml里面配置的内容。web项目部署到tomcat服务器之后,启动tomcat,tomcat从它自己的主函数开始运行,就一直在跑着,等到请求过来的时候。tomcat接受到请求,它直接从项目文件中把那个没有主函数的应用拉进来,就这么直截了当的执行了其中的方法。<br><strong>相当于只有一个main方法,其他的都是等请求过来的时候,根据请求调用相应的方法</strong>。</p>
+</blockquote>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/04/03/JAVA环境变量配置说明/" title="JAVA环境变量JAVA_HOME、CLASSPATH、PATH配置说明以及javac命令无法使用的问题">JAVA环境变量JAVA_HOME、CLASSPATH、PATH配置说明以及javac命令无法使用的问题</a></h2>
+                <p class="excerpt">
+                
+                抄自：https://blog.csdn.net/luckykapok918/article/details/37053949基础概念
+current directory(当前目录)：当前在用的目录就是当前目录&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;比如说当你打开NO
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-04-03T02:32:08.789Z" class="post-list__meta--date date">2018-04-03</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/04/03/JAVA环境变量配置说明/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>
