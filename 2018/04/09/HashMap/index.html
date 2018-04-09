@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>管中窥豹：HashMap原理学习以及jdk1.8版本中源码的变更 | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="学习自https://www.cnblogs.com/skywang12345/p/3310835.htmlhttps://blog.csdn.net/unscdf117/article/details/78729674?locationNum=2&amp;amp;fps=1https://www.cnblogs.com/chengxiao/p/6059914.htmlhttps://blog.csdn.">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="管中窥豹：HashMap原理学习以及jdk1.8版本中源码的变更 | Ronaldo">
+    <meta name="twitter:description" content="学习自https://www.cnblogs.com/skywang12345/p/3310835.htmlhttps://blog.csdn.net/unscdf117/article/details/78729674?locationNum=2&amp;amp;fps=1https://www.cnblogs.com/chengxiao/p/6059914.htmlhttps://blog.csdn.">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="管中窥豹：HashMap原理学习以及jdk1.8版本中源码的变更 | Ronaldo">
+    <meta property="og:description" content="学习自https://www.cnblogs.com/skywang12345/p/3310835.htmlhttps://blog.csdn.net/unscdf117/article/details/78729674?locationNum=2&amp;amp;fps=1https://www.cnblogs.com/chengxiao/p/6059914.htmlhttps://blog.csdn.">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2018/04/09/HashMap/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-04-09T05:26:13.599Z" class="post-list__meta--date date">2018-04-09</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">管中窥豹：HashMap原理学习以及jdk1.8版本中源码的变更</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="学习自"><a href="#学习自" class="headerlink" title="学习自"></a>学习自</h3><p><a href="https://www.cnblogs.com/skywang12345/p/3310835.html" target="_blank" rel="external">https://www.cnblogs.com/skywang12345/p/3310835.html</a><br><a href="https://blog.csdn.net/unscdf117/article/details/78729674?locationNum=2&amp;fps=1" target="_blank" rel="external">https://blog.csdn.net/unscdf117/article/details/78729674?locationNum=2&amp;fps=1</a><br><a href="https://www.cnblogs.com/chengxiao/p/6059914.html" target="_blank" rel="external">https://www.cnblogs.com/chengxiao/p/6059914.html</a><br><a href="https://blog.csdn.net/jack__frost/article/details/69388422" target="_blank" rel="external">https://blog.csdn.net/jack__frost/article/details/69388422</a></p>
+<h3 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本文也是在博览网上诸位前辈们的讲解后自己对比着去理解写下的笔记,很多细节部分可以看上面的链接,下面的内容更多是自己的理解学习过程。</p>
+<h3 id="jdk1-8里面的HashMap"><a href="#jdk1-8里面的HashMap" class="headerlink" title="jdk1.8里面的HashMap"></a>jdk1.8里面的HashMap</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;jdk1.8版本的<code>HashMap</code>源码实现与上述第一个链接中的源码略有不同,不过大同小异。比如<code>get()</code>以及<code>HashMap</code>的构造函数都有些变化。但是不妨碍我们理解其设计原理。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以<code>get()</code>为例,内部就两行代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public V get(Object key) &#123;</div><div class="line">    Node&lt;K,V&gt; e;</div><div class="line">    return (e = getNode(hash(key), key)) == null ? null : e.value;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;写法上更简洁了些,而且这里采用了内部类<code>Node</code>。<code>Node</code>是<code>HashMap</code>的一个内部类,实现<code>Map.Entry</code>接口,本质是一个<strong>KV映射</strong>,下图中每个元素都是一个<code>Node</code>对象。<br><img src="../../../../images/hashmap.png" alt=""></p>
+<p><code>HashMap</code>顾名思义是通过<strong>Hash表</strong>进行存储.<strong>为了解决哈希碰撞的问题,Java采用这种数组 + 链表方式来进行存储</strong>。下面来看看<code>Node</code>这个内部类是干嘛用的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">static class Node&lt;K,V&gt; implements Map.Entry&lt;K,V&gt; &#123;</div><div class="line">    final int hash;</div><div class="line">    final K key;</div><div class="line">    V value;</div><div class="line">    Node&lt;K,V&gt; next;</div><div class="line">    Node(int hash, K key, V value, Node&lt;K,V&gt; next) &#123;</div><div class="line">        this.hash = hash;</div><div class="line">        this.key = key;</div><div class="line">        this.value = value;</div><div class="line">        this.next = next;</div><div class="line">    &#125;</div><div class="line">    public final K getKey()        &#123; return key; &#125;</div><div class="line">    public final V getValue()      &#123; return value; &#125;</div><div class="line">    public final String toString() &#123; return key + &quot;=&quot; + value; &#125;</div><div class="line">    public final int hashCode() &#123;</div><div class="line">        return Objects.hashCode(key) ^ Objects.hashCode(value);</div><div class="line">    &#125;</div><div class="line">    public final V setValue(V newValue) &#123;</div><div class="line">        V oldValue = value;</div><div class="line">        value = newValue;</div><div class="line">        return oldValue;</div><div class="line">    &#125;</div><div class="line">    public final boolean equals(Object o) &#123;</div><div class="line">        if (o == this)</div><div class="line">            return true;</div><div class="line">        if (o instanceof Map.Entry) &#123;</div><div class="line">            Map.Entry&lt;?,?&gt; e = (Map.Entry&lt;?,?&gt;)o;</div><div class="line">            if (Objects.equals(key, e.getKey()) &amp;&amp;</div><div class="line">                Objects.equals(value, e.getValue()))</div><div class="line">                return true;</div><div class="line">        &#125;</div><div class="line">        return false;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对比本文开头第一个链接里面的源码,其实就是1.7版本<code>HashMap</code>里面的内部类<code>Entry</code>,当然,该内部类里面的方法做了些删减。</p>
+</blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>HashMap</code>既然是用来存储的,那么总得有增加和删除操作吧,具体对应哪个方法呢？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;想必用过的人肯定立即能答出,<code>HashMap</code>通过<code>put</code>方法进行增加操作的,当然也有个<code>remove</code>方法进行删除。不过,这时候我却想到了之前学习<code>List</code>集合时貌似用的是<code>add()</code>啊,怎么到这里却是<code>put</code>了。老司机们肯定会说,傻了吧!<code>HashMap</code>实现的是<code>Map</code>,而<code>ArrayList</code>实现的是<code>List</code>,<code>List</code>又继承自<code>Collection</code>,而<code>Map</code>和<code>Collection</code>完全没有关系。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;那么,问题来了,<code>HashMap</code>里面的<code>put</code>方法是怎么实现的呢？和<code>ArrayList</code>里面的<code>add</code>有何不同？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;那么,看看<code>put</code>方法吧：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public V put(K key, V value) &#123;</div><div class="line">    return putVal(hash(key), key, value, false, true);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;直接调了个<code>putVal()</code>然后当个甩手掌柜。那只能继续往下看了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">transient Node&lt;K,V&gt;[] table;</div><div class="line">final V putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict) &#123;</div><div class="line">    Node&lt;K,V&gt;[] tab; Node&lt;K,V&gt; p; int n, i;</div><div class="line">    if ((tab = table) == null || (n = tab.length) == 0)</div><div class="line">        n = (tab = resize()).length;</div><div class="line">    if ((p = tab[i = (n - 1) &amp; hash]) == null)</div><div class="line">        tab[i] = newNode(hash, key, value, null);</div><div class="line">    else &#123;</div><div class="line">        Node&lt;K,V&gt; e; K k;</div><div class="line">        if (p.hash == hash &amp;&amp; ((k = p.key) == key || (key != null &amp;&amp; key.equals(k))))</div><div class="line">            e = p;</div><div class="line">        else if (p instanceof TreeNode)</div><div class="line">            e = ((TreeNode&lt;K,V&gt;)p).putTreeVal(this, tab, hash, key, value);</div><div class="line">        else &#123;</div><div class="line">            for (int binCount = 0; ; ++binCount) &#123;</div><div class="line">                if ((e = p.next) == null) &#123;</div><div class="line">                    p.next = newNode(hash, key, value, null);</div><div class="line">                    if (binCount &gt;= TREEIFY_THRESHOLD - 1) // -1 for 1st</div><div class="line">                        treeifyBin(tab, hash);</div><div class="line">                    break;</div><div class="line">                &#125;</div><div class="line">                if (e.hash == hash &amp;&amp; ((k = e.key) == key || (key != null &amp;&amp; key.equals(k))))</div><div class="line">                    break;</div><div class="line">                p = e;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        if (e != null) &#123; // existing mapping for key</div><div class="line">            V oldValue = e.value;</div><div class="line">            if (!onlyIfAbsent || oldValue == null)</div><div class="line">                e.value = value;</div><div class="line">            afterNodeAccess(e);</div><div class="line">            return oldValue;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    ++modCount;</div><div class="line">    if (++size &gt; threshold)</div><div class="line">        resize();</div><div class="line">    afterNodeInsertion(evict);</div><div class="line">    return null;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>putVal()</code>一上来就在判断里把<code>table</code>赋值给<code>tab</code>然后对<code>tab</code>进行判断。那么问题又来了,<code>table</code>从哪里来的？何时赋值给它的？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在类中查找,不难发现,<code>table</code>在一开始就定义好只是。那么是怎么给它赋值的呢？比如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">HashMap map = new HashMap();</div><div class="line">map.put(&quot;one&quot;, 1);</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这个时候,我需要去研究<code>HashMap</code>的构造函数了。<code>HashMap</code>有四个构造函数,我就不一一贴出来了。这里我调用的其实是无参构造函数,仅仅是将<code>loadFactor</code>赋值为<strong>0.75f</strong>。至于为什么是<strong>0.75f</strong>,第一个链接里面的博客讲到：<strong>默认加载因子是 0.75, 这是在时间和空间成本上寻求一种折衷。加载因子过高虽然减少了空间开销，但同时也增加了查询成本。</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public HashMap() &#123;</div><div class="line">    this.loadFactor = DEFAULT_LOAD_FACTOR; // all other fields defaulted</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;研究完构造函数,我发现上面例子并没有对<code>table</code>进行赋值,那么第一个判断为<code>true</code>,执行<code>tab = resize()</code>。那么<code>resize()</code>又是什么呢？看看吧：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line">static final int DEFAULT_INITIAL_CAPACITY = 1 &lt;&lt; 4; // aka 16</div><div class="line">static final int MAXIMUM_CAPACITY = 1 &lt;&lt; 30;</div><div class="line">static final float DEFAULT_LOAD_FACTOR = 0.75f;</div><div class="line">final Node&lt;K,V&gt;[] resize() &#123;</div><div class="line">        Node&lt;K,V&gt;[] oldTab = table;                        // 我举的例子中,table == null,所以这里 oldTab == null</div><div class="line">        int oldCap = (oldTab == null) ? 0 : oldTab.length; // 由于oldTab == null, 所以 oldCap == 0</div><div class="line">        int oldThr = threshold;                            // 我举的例子没有对 threshold 进行初始化赋值,所以默认为0</div><div class="line">        int newCap, newThr = 0;</div><div class="line">        if (oldCap &gt; 0) &#123;</div><div class="line">            if (oldCap &gt;= MAXIMUM_CAPACITY) &#123;</div><div class="line">                threshold = Integer.MAX_VALUE;</div><div class="line">                return oldTab;</div><div class="line">            &#125;</div><div class="line">            else if ((newCap = oldCap &lt;&lt; 1) &lt; MAXIMUM_CAPACITY &amp;&amp;</div><div class="line">                     oldCap &gt;= DEFAULT_INITIAL_CAPACITY)</div><div class="line">                newThr = oldThr &lt;&lt; 1; // double threshold</div><div class="line">        &#125;</div><div class="line">        else if (oldThr &gt; 0) // initial capacity was placed in threshold</div><div class="line">            newCap = oldThr;</div><div class="line">        else &#123;               // zero initial threshold signifies using defaults</div><div class="line">            newCap = DEFAULT_INITIAL_CAPACITY;                                 // 16</div><div class="line">            newThr = (int)(DEFAULT_LOAD_FACTOR * DEFAULT_INITIAL_CAPACITY);    // (int)(0.75f * 16)</div><div class="line">        &#125;</div><div class="line">        if (newThr == 0) &#123;</div><div class="line">            float ft = (float)newCap * loadFactor;                             // (float)16 * 0.75f</div><div class="line">            newThr = (newCap &lt; MAXIMUM_CAPACITY &amp;&amp; ft &lt; (float)MAXIMUM_CAPACITY ?</div><div class="line">                      (int)ft : Integer.MAX_VALUE);</div><div class="line">        &#125;</div><div class="line">        threshold = newThr;     // (int)(0.75f * 16)</div><div class="line">        @SuppressWarnings(&#123;&quot;rawtypes&quot;,&quot;unchecked&quot;&#125;)</div><div class="line">            Node&lt;K,V&gt;[] newTab = (Node&lt;K,V&gt;[])new Node[newCap]; // 新建一个确定长度的数组</div><div class="line">        table = newTab;                                         // 用刚刚新建的数组对table赋值</div><div class="line">        if (oldTab != null) &#123;</div><div class="line">            for (int j = 0; j &lt; oldCap; ++j) &#123;</div><div class="line">                Node&lt;K,V&gt; e;</div><div class="line">                if ((e = oldTab[j]) != null) &#123;</div><div class="line">                    oldTab[j] = null;</div><div class="line">                    if (e.next == null)</div><div class="line">                        newTab[e.hash &amp; (newCap - 1)] = e;</div><div class="line">                    else if (e instanceof TreeNode)</div><div class="line">                        ((TreeNode&lt;K,V&gt;)e).split(this, newTab, j, oldCap);</div><div class="line">                    else &#123; // preserve order</div><div class="line">                        Node&lt;K,V&gt; loHead = null, loTail = null;</div><div class="line">                        Node&lt;K,V&gt; hiHead = null, hiTail = null;</div><div class="line">                        Node&lt;K,V&gt; next;</div><div class="line">                        do &#123;</div><div class="line">                            next = e.next;</div><div class="line">                            if ((e.hash &amp; oldCap) == 0) &#123;</div><div class="line">                                if (loTail == null)</div><div class="line">                                    loHead = e;</div><div class="line">                                else</div><div class="line">                                    loTail.next = e;</div><div class="line">                                loTail = e;</div><div class="line">                            &#125;</div><div class="line">                            else &#123;</div><div class="line">                                if (hiTail == null)</div><div class="line">                                    hiHead = e;</div><div class="line">                                else</div><div class="line">                                    hiTail.next = e;</div><div class="line">                                hiTail = e;</div><div class="line">                            &#125;</div><div class="line">                        &#125; while ((e = next) != null);</div><div class="line">                        if (loTail != null) &#123;</div><div class="line">                            loTail.next = null;</div><div class="line">                            newTab[j] = loHead;</div><div class="line">                        &#125;</div><div class="line">                        if (hiTail != null) &#123;</div><div class="line">                            hiTail.next = null;</div><div class="line">                            newTab[j + oldCap] = hiHead;</div><div class="line">                        &#125;</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return newTab;</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>由于我所举的例子,先实例化一个<code>HashMap</code>对象然后<code>put</code>了一个值,所以,一开始<code>table</code>是<strong>null</strong>,<code>oldCap == 0</code>,由于也没有对<code>threshold</code>进行赋值,所以初始值也是0.</li>
+<li>在我举的例子基础上,那些<code>if</code>判断都不满足条件,只能走<code>else</code>块。得到<code>newCap</code>和<code>newThr</code>的值。</li>
+<li>对<code>threshold</code>进行赋值,然后新建一个长度为<strong>16</strong>的数组,并将其赋值给<code>table</code>。</li>
+<li>由于我的例子初始化时,<code>oldTab == null</code>,所以第一次<code>put</code>时并不会走下面的代码。</li>
+<li>当我以后进行第二次甚至更多的<code>put</code>操作时,才会继续。接下来的代码看不懂,可以直接看开头第四个链接的博客。<br><strong>看完代码仔细想想,应该明白这里的<code>resize()</code>其实是用来实现数组自增扩容的。</strong></li>
+</ol>
+<blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;到了这里,数组扩容完成,开始继续执行<code>putVal()</code>里面的代码。由于是第一次<code>put</code>,直接在第二个<code>if</code>判断里通过<code>tab[i] = newNode(hash, key, value, null)</code>添加新内容。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以上分析的前提建立在实例化一个<code>HashMap</code>后第一次<code>put</code>,所以分析起来比较简单。如果是第二次及以上不断<code>put</code>,那么就会略微繁琐点。</p>
+</blockquote>
+<p><strong>此外,需要格外注意的是,</strong></p>
+<ol>
+<li><strong>由于<code>HashMap</code>是通过<code>p = tab[i = (n - 1) &amp; hash]</code>得到每对key-value,而其中的<code>i = (n - 1) &amp; hash</code>是通过<code>hash</code>值得到的位置下标,并不是常规数组那样从0开始依次排序的,所以<code>HashMap</code>是无序的！</strong></li>
+<li><strong><code>putVal()</code>里面<code>else</code>代码块里还真的看不懂是什么意思,可以去看开头第四个链接的博客。不过可以肯定的是,<code>putVal()</code>将key-value对放进<code>HashMap</code>中,无论是直接调用<code>newNode()</code>亦或是<code>else</code>代码块里的写入覆盖,该方法均不安全。如果两个线程同时对同一处的<code>HashMap</code>进行调用,那么会引发错误,所以<code>HashMap</code>是非线程安全的。</strong></li>
+</ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;目前以我的技术实力,还无法全面清晰的理解<code>HashMap</code>的每个实现原理,以上只能管中窥豹了,文章开头给出的链接写得都非常好。</p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/04/08/java中equals/" title="java中比较String是否相同为何用equals而不是==？">java中比较String是否相同为何用equals而不是==？</a></h2>
+                <p class="excerpt">
+                
+                参考自：https://www.cnblogs.com/baotong-9396/p/7182906.htmlhttp://www.cnblogs.com/panxuejun/p/5866869.html
+如题&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;作为一个写惯了js
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-04-08T06:16:00.363Z" class="post-list__meta--date date">2018-04-08</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/04/08/java中equals/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>
