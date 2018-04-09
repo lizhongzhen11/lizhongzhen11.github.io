@@ -12,18 +12,18 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="参考自：https://www.cnblogs.com/baotong-9396/p/7182906.html
-如题&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;作为一个写惯了js的人来说,初次接触java会有各种不习惯。其中有一个比较显著地不能理解的现象就是在java中比较两个String值是否相等居然用equals()而不是==。貌似在js中,比较值相等一个==就解决">
+    <meta name="description" content="参考自：https://www.cnblogs.com/baotong-9396/p/7182906.htmlhttp://www.cnblogs.com/panxuejun/p/5866869.html
+如题&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;作为一个写惯了js的人来说,初次接触java会有各种不习惯。其中有一个比较显著地不能理解的现象就是在java中比较两个">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="java中比较String是否相同为何用equals而不是==？ | Ronaldo">
-    <meta name="twitter:description" content="参考自：https://www.cnblogs.com/baotong-9396/p/7182906.html
-如题&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;作为一个写惯了js的人来说,初次接触java会有各种不习惯。其中有一个比较显著地不能理解的现象就是在java中比较两个String值是否相等居然用equals()而不是==。貌似在js中,比较值相等一个==就解决">
+    <meta name="twitter:description" content="参考自：https://www.cnblogs.com/baotong-9396/p/7182906.htmlhttp://www.cnblogs.com/panxuejun/p/5866869.html
+如题&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;作为一个写惯了js的人来说,初次接触java会有各种不习惯。其中有一个比较显著地不能理解的现象就是在java中比较两个">
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="java中比较String是否相同为何用equals而不是==？ | Ronaldo">
-    <meta property="og:description" content="参考自：https://www.cnblogs.com/baotong-9396/p/7182906.html
-如题&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;作为一个写惯了js的人来说,初次接触java会有各种不习惯。其中有一个比较显著地不能理解的现象就是在java中比较两个String值是否相等居然用equals()而不是==。貌似在js中,比较值相等一个==就解决">
+    <meta property="og:description" content="参考自：https://www.cnblogs.com/baotong-9396/p/7182906.htmlhttp://www.cnblogs.com/panxuejun/p/5866869.html
+如题&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;作为一个写惯了js的人来说,初次接触java会有各种不习惯。其中有一个比较显著地不能理解的现象就是在java中比较两个">
 
     
     <meta name="author" content="lizhongzhen">
@@ -70,7 +70,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+              <li class="navigation__item"><a href="/#blog" title="Blogを読む" class="blog-button">Blog</a></li>
             
             </ul>
           </nav>
@@ -143,7 +143,7 @@
     <div class="post-meta">
       <time datetime="2018-04-08T06:16:00.363Z" class="post-list__meta--date date">2018-04-08</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       No. <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -151,7 +151,7 @@
   </header>
 
   <section class="post">
-    <p>参考自：<a href="https://www.cnblogs.com/baotong-9396/p/7182906.html" target="_blank" rel="external">https://www.cnblogs.com/baotong-9396/p/7182906.html</a></p>
+    <p>参考自：<br><a href="https://www.cnblogs.com/baotong-9396/p/7182906.html" target="_blank" rel="external">https://www.cnblogs.com/baotong-9396/p/7182906.html</a><br><a href="http://www.cnblogs.com/panxuejun/p/5866869.html" target="_blank" rel="external">http://www.cnblogs.com/panxuejun/p/5866869.html</a></p>
 <h3 id="如题"><a href="#如题" class="headerlink" title="如题"></a>如题</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;作为一个写惯了js的人来说,初次接触java会有各种不习惯。其中有一个比较显著地不能理解的现象就是在java中比较两个String值是否相等居然用<code>equals()</code>而不是<code>==</code>。貌似在js中,比较值相等一个<code>==</code>就解决了,多么舒服。为什么java不行呢？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先,写过js的都知道,js支持<code>=</code>,<code>==</code>以及<code>===</code>三种等号,第一个代表赋值,第二个用来表示值是否相等,而第三个用来判断是否是完全相等的对象。<strong>但是！java里并没有<code>===</code>比较符</strong>。</p>
 <blockquote>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在js中,<code>===</code>可以判断两个对象是否完全相等,不仅比较值也比较了内存地址,类型等,<strong>而java中的<code>==</code>其实和js中的<code>===</code>一样</strong>。这种比较是针对两个String类型的变量的引用,也就是说如果两个String类型的变量,它们所引用同一个String对象(即指向同一块内存堆),则<code>==</code>比较的结果是<code>true</code>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;而当两个String对象通过<code>equals()</code>方法来进行比较时,其实就是对String对象所封装的字符串内容进行比较,也就是说如果两个String对象所封装的字符串内容相同(包括大小写相同),则<code>equals()</code>方法将返回<code>true</code>。(String对象继承自Object,并且对equals()方法进行了重写。)</p>
@@ -169,7 +169,24 @@
 <li>用一个变量<code>n</code>来保存第一个String对象值的长度,然后先比较这两个String对象值长度是否相等,相等继续否则返回<code>false</code>。</li>
 <li>将这两个String对象的值分别保存进两个<code>char</code>类型的数组,通过循环对比相同下标对应的字符是否相等,存在一个不等就结束并返回<code>false</code>,如果全部都一一对应相等,那么就返回<code>true</code>。</li>
 </ol>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以上主要对<code>equals()</code>的源码进行了分析,仔细观察跟<code>compareTo()</code>里面的源码很大程度上相似,感兴趣的可以去看看哦。</p>
+<h3 id="对equals做个总结"><a href="#对equals做个总结" class="headerlink" title="对equals做个总结"></a>对equals做个总结</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以上主要对<code>equals()</code>的源码进行了分析,仔细观察跟<code>compareTo()</code>里面的源码很大程度上相似,感兴趣的可以去看看哦。</p>
+<h3 id="延伸"><a href="#延伸" class="headerlink" title="延伸"></a>延伸</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String.class里面的<code>equals()</code>重写覆盖自顶级对象<code>Object</code>,<code>Object</code>里面的<code>equals()</code>源码很简单,直接用<code>==</code>判断两个对象是不是相同。</p>
+<blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>如果两个Object类型的对象使用<code>equals()</code>并返回true,说明它们是相同的,包括在内存中的存储地址,所以它们的<code>hashcode</code>也相同！！！</strong></p>
+</blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;思考一下：如果两个非Object类型的对象(例如本文中的String)使用<code>equals()</code>并返回true,那么它们的<code>hashcode</code>是否相同呢？<br>示例四：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">String s1 = new String(&quot;Hello&quot;);</div><div class="line">String s2 = new String(&quot;Hello&quot;);</div><div class="line">String s3 = &quot;Hello&quot;;</div><div class="line">System.out.println(s1.equals(s2)); // true</div><div class="line">System.out.println(s1 == s2);	   // false  </div><div class="line">System.out.println(s1.hashCode()); // 69609650</div><div class="line">System.out.println(s2.hashCode()); // 69609650</div><div class="line">System.out.println(s3.hashCode()); // 69609650</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通过上述示例可以看到,<code>s1</code>与<code>s2</code>其实是对两个不同的对象的引用,它们仅仅是值相同罢了,<strong>但是它们却拥有着相同的<code>hashcode</code>!!!</strong></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>那么,是不是<code>equals</code>相同<code>hashcode</code>一定相同呢？</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;先给出结论：</p>
+<ol>
+<li><strong>如果x.equals(y)返回“true”,那么x和y的hashCode()必须相等。</strong></li>
+<li><strong>如果x.equals(y)返回“false”,那么x和y的hashCode()有可能相等,也有可能不等。</strong></li>
+</ol>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为什么会做出上面的判断呢？不妨看看源码实现吧。依然以String.class为例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">private int hash; // Default to 0</div><div class="line">public String(String original) &#123;</div><div class="line">    this.value = original.value;</div><div class="line">    this.hash = original.hash;</div><div class="line">&#125;</div><div class="line">public int hashCode() &#123;</div><div class="line">    int h = hash;</div><div class="line">    if (h == 0 &amp;&amp; value.length &gt; 0) &#123;</div><div class="line">        char val[] = value;</div><div class="line">        for (int i = 0; i &lt; value.length; i++) &#123;</div><div class="line">            h = 31 * h + val[i];</div><div class="line">        &#125;</div><div class="line">        hash = h;</div><div class="line">    &#125;</div><div class="line">    return h;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>研读源码思考：</p>
+<blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;主要关注<code>hashCode()</code>内部实现,我们发现它最终返回的是<code>h</code>,而<code>h</code>其实就是通过<code>value</code>值循环遍历累加得到的。那么如果两个对象调用<code>equals</code>相等,不就意味着它们的值相等吗？<code>hashCode()</code>也是通过值来计算的,这样能不等吗？</p>
+</blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>那么为什么说<code>hashcode</code>相等,对象未必相同呢？</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我个人理解,虽然<code>hashCode()</code>依赖于<code>value</code>值,但是它并没有逐一去比较每个下标对应的值是否相同,仅仅是判断累加值,那么假设两个对象的<code>value</code>值不同但是累加值却相同不就造成了<code>hashcode</code>相同吗？可事实上这两对象并不相同！</p>
 
   </section>
 
@@ -182,7 +199,7 @@
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">Older Post</span>
+                <span class="read-more-item-dim">以前の記事</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/04/03/java中的main方法/" title="Java main方法">Java main方法</a></h2>
                 <p class="excerpt">
                 

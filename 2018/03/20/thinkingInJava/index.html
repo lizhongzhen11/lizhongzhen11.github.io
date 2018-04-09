@@ -115,7 +115,7 @@ Vector">
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+              <li class="navigation__item"><a href="/#blog" title="Blogを読む" class="blog-button">Blog</a></li>
             
             </ul>
           </nav>
@@ -188,7 +188,7 @@ Vector">
     <div class="post-meta">
       <time datetime="2018-03-20T05:25:01.159Z" class="post-list__meta--date date">2018-03-20</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       No. <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -229,7 +229,7 @@ Vector">
 </ul>
 </li>
 <li><a href="#16">java的I/O</a></li>
-<li><a href="#17"></a></li>
+<li><a href="#17">线程</a></li>
 </ol>
 <h2 id="二、内容"><a href="#二、内容" class="headerlink" title="二、内容"></a>二、内容</h2><h3 id="1、java基础数据类型"><a href="#1、java基础数据类型" class="headerlink" title="1、java基础数据类型"></a>1、<a id="1">java基础数据类型</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;java基础数据类型：<strong>int, float, double, boolean, short, long, byte以及char</strong>.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其中,char类型是一个单一的 16 位 Unicode 字符。char类型用单引号表示也可以是整数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">cahr a = &apos;a&apos;; // 必须限定长度为一个字节。等效于 char a = 97; 因为&apos;a&apos;在ASCII码表里对应97.</div><div class="line">char b = &apos;中文&apos;;</div><div class="line">char c = 97;</div><div class="line">System.out.println(a == c); // true</div></pre></td></tr></table></figure></p>
 <h3 id="2、假设一个值是29-7，我们把它强转成一个char，那么结果值到底是-30-还是29-呢？"><a href="#2、假设一个值是29-7，我们把它强转成一个char，那么结果值到底是-30-还是29-呢？" class="headerlink" title="2、假设一个值是29.7，我们把它强转成一个char，那么结果值到底是 30 还是29 呢？"></a>2、<a id="2">假设一个值是29.7，我们把它强转成一个char，那么结果值到底是 30 还是29 呢？</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将一个 float 或 double 值造型成整数值后，总是将小数部分“砍掉”，不作任何进位处理。所以结果是29.</p>
@@ -395,6 +395,7 @@ Vector">
 <li>RandomAccessFile(随机文件操作)：它的功能丰富,可以从文件的任意位置进行存取(输入输出)操作。</li>
 </ol>
 <p><img src="../../../../images/io.png" alt=""><br><img src="../../../../images/io2.png" alt=""></p>
+<h3 id="17、线程"><a href="#17、线程" class="headerlink" title="17、线程"></a><a id="17">17、线程</a></h3><p><strong><a href="#123">返回目录</a></strong></p>
 
   </section>
 
@@ -405,7 +406,7 @@ Vector">
     
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">Newer Post</span>
+                <span class="read-more-item-dim">新しい記事</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/03/29/快速排序和冒泡排序/" title="快速排序和冒泡排序">快速排序和冒泡排序</a></h2>
                 <p class="excerpt">
                 
@@ -420,7 +421,7 @@ Vector">
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">Older Post</span>
+                <span class="read-more-item-dim">以前の記事</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/03/16/TCP握手与挥手/" title="TCP三次握手与四次挥手">TCP三次握手与四次挥手</a></h2>
                 <p class="excerpt">
                 
