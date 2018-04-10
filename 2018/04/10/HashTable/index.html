@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>Ronaldo</title>
+    <title>管中窥豹：HashTable源码学习 | Ronaldo</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -12,15 +12,18 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="">
+    <meta name="description" content="学习自：http://www.cnblogs.com/skywang12345/p/3310887.htmlhttps://segmentfault.com/a/1190000008982905
+问题1.HashTable是不是线程安全的？为什么？&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;HashTable是线程安全的。因为其主要的方法均采用synchronized(">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Ronaldo">
-    <meta name="twitter:description" content="">
+    <meta name="twitter:title" content="管中窥豹：HashTable源码学习 | Ronaldo">
+    <meta name="twitter:description" content="学习自：http://www.cnblogs.com/skywang12345/p/3310887.htmlhttps://segmentfault.com/a/1190000008982905
+问题1.HashTable是不是线程安全的？为什么？&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;HashTable是线程安全的。因为其主要的方法均采用synchronized(">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Ronaldo">
-    <meta property="og:description" content="">
+    <meta property="og:title" content="管中窥豹：HashTable源码学习 | Ronaldo">
+    <meta property="og:description" content="学习自：http://www.cnblogs.com/skywang12345/p/3310887.htmlhttps://segmentfault.com/a/1190000008982905
+问题1.HashTable是不是线程安全的？为什么？&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;HashTable是线程安全的。因为其主要的方法均采用synchronized(">
 
     
     <meta name="author" content="lizhongzhen">
@@ -37,7 +40,7 @@
     <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://yoursite.com"/>
+    <link rel="canonical" href="http://yoursite.com/2018/04/10/HashTable/"/>
 
                  
 </head>
@@ -134,94 +137,52 @@
 
     <div class="content-wrapper">
         <div class="content-wrapper__inner">
-            <div class="main-post-list">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-04-10T08:51:02.790Z" class="post-list__meta--date date">2018-04-10</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">管中窥豹：HashTable源码学习</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="学习自："><a href="#学习自：" class="headerlink" title="学习自："></a>学习自：</h3><p><a href="http://www.cnblogs.com/skywang12345/p/3310887.html" target="_blank" rel="external">http://www.cnblogs.com/skywang12345/p/3310887.html</a><br><a href="https://segmentfault.com/a/1190000008982905" target="_blank" rel="external">https://segmentfault.com/a/1190000008982905</a></p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>1.<code>HashTable</code>是不是线程安全的？为什么？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>HashTable</code>是线程安全的。因为其主要的方法均采用<code>synchronized</code>(同步锁)修饰。<br>2.<code>HashTable</code>初始容量为何是11？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
     
-  <ol class="post-list">
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/04/09/HashMap/" title="管中窥豹：HashMap原理学习以及jdk1.8版本中源码的变更">管中窥豹：HashMap原理学习以及jdk1.8版本中源码的变更</a></h2>
+                <p class="excerpt">
+                
+                学习自https://www.cnblogs.com/skywang12345/p/3310835.htmlhttps://blog.csdn.net/unscdf117/article/details/78729674?locationNum=2&amp;amp;fps=1https://www.cnbl
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-04-09T05:26:13.599Z" class="post-list__meta--date date">2018-04-09</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/04/09/HashMap/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
   
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/01/10/阿里云服务器部署/" title="link to post.title">阿里云服务器部署Vue + webpack项目问题</a></h2>
-      <p class="excerpt">
-    
-      环境配置看很久之前的第一次建站今天在踩完阿里云环境部署相关坑后终于来到了激动人心的时刻–把degree项目部署到服务器上,然后在服务器上跑,想想就激动！以前有在服务器上放项目的经验,不过那是jsp而且是公司自己的服务器,我总想着我也要搞搞这样才能出去吹牛。这不,degree项目是使用vue开发和webpack打包的,为了避免踩坑,特地问了苍老师,苍老师说你先在本地npm run build打包好,
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-01-10T05:44:02.801Z" class="post-list__meta--date date">2018-01-10</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/01/10/阿里云服务器部署/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
+</section>
+
   
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/01/04/一次写sql经历/" title="link to post.title">小白第一次真正写复杂sql的经历</a></h2>
-      <p class="excerpt">
-    
-      哭一下
-发现自己一旦卡在某个问题较长时间上时,脑袋就容易发热,而且还晕甚至全身乏力,久而久之还会有点干呕,睡眠也不好,当然,主要想要的太多可是穷。哭哭哭哭哭哭哭。。。
-
-开发背景&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;昨天下午,本来想摸鱼悠闲地生活的,结果组长突然给我丢来一个需求：写一个sql关于用户购买行为分析。&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;n
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-01-04T03:33:03.024Z" class="post-list__meta--date date">2018-01-04</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/01/04/一次写sql经历/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2018/01/02/小知识点/" title="link to post.title">一些小知识点</a></h2>
-      <p class="excerpt">
-    
-      js正则判断 //正斜杠在javascript正则表达式中可以\/表示,例如:1234var a = &amp;apos;1/2&amp;apos;a.replace(/\//, &amp;apos;lizz&amp;apos;) // 这里的 \/\\ 即代表匹配一个正斜杠var b = &amp;apos;1/2/3&amp;apos;b.replace(/\//g, &amp;apos;lizz&amp;apos;) // 这里的 /\//g 即代表匹配
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2018-01-02T12:22:01.692Z" class="post-list__meta--date date">2018-01-02</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/01/02/小知识点/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-  </ol>
-
-
-  <nav class="pagination" role="navigation">
-    
-      <a class="older-posts pagination__newer btn btn-small btn-tertiary" href="/archives/2018/page/2/">&larr; Prev</a>
-    
-    <span class="pagination__page-number" >  3 / 3 </span>
-    
-      
-            <a class="older-posts pagination__newer btn btn-small btn-tertiary" href="/#blog">1</a>
-      
-    
-      
-            <a class="older-posts pagination__newer btn btn-small btn-tertiary" href="/page/2/">2</a>
-      
-    
-      
-            <a class="older-posts pagination__newer btn btn-small btn-tertiary" href="/page/3/">3</a>
-      
-      
-    
-  </nav>
-
- <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
-        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
-        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
-        messageStyle: "none"
-    }); 
-    
-</script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-</div>
-
 
             <footer class="footer">
     <span class="footer__copyright">
