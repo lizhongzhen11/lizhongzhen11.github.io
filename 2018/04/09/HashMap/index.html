@@ -67,7 +67,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">文字阁</a></li>
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
             
             </ul>
           </nav>
@@ -79,7 +79,7 @@
   <!-- Weibo-->
   
   <li class="navigation__item">
-    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="我的微博" target="_blank">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
       <i class='social fa fa-weibo'></i>
       <span class="label">Weibo</span>
     </a>
@@ -89,7 +89,7 @@
   <!-- Github -->
   
   <li class="navigation__item">
-    <a href="https://github.com/lizhongzhen11" title="查看我的GitHub主页" target="_blank">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
       <i class='social fa fa-github'></i>
       <span class="label">Github</span>
     </a>
@@ -140,7 +140,7 @@
     <div class="post-meta">
       <time datetime="2018-04-09T05:26:13.599Z" class="post-list__meta--date date">2018-04-09</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -182,16 +182,16 @@
 <li>1.8版本的<code>HashMap</code>采用了数组 + 链表 + 红黑树的结构来解决哈希冲突。当同一个<code>hash</code>值的链表节点数不小于<strong>8</strong>时,将不再以单链表的形式存储了,会被调整成一颗<strong>红黑树</strong>。</li>
 <li><code>HashMap</code>的数组长度一定是2的次幂。初始长度是<strong>16</strong>.</li>
 </ol>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ol>
-<li>为什么<code>HashMap</code>的初始长度是16？为什么必须是2的幂？<strong>着重看文章开头的第3个链接以及<a href="https://blog.csdn.net/super_me_jason/article/details/79726757" target="_blank" rel="external">https://blog.csdn.net/super_me_jason/article/details/79726757</a></strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们知道对于<code>HashMap</code>的<code>table</code>而言,数据分布需要均匀(最好每项都只有一个元素,这样就可以直接找到),不能太紧也不能太松,太紧会导致查询速度慢,太松则浪费空间。计算<code>hash</code>值后,怎么才能保证<code>table</code>元素分布均与呢？我们会想到取模,但是由于取模的消耗较大,<code>HashMap</code>以前是这样处理的：调用<code>indexFor</code>方法,返回的是<code>key</code>的<code>hashcode</code>跟<strong>初始容量-1</strong>做与运算。但是1.8版本后直接在<code>putVal()</code>里面通过这一段代码实现：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if ((tab = table) == null || (n = tab.length) == 0)</div><div class="line">    n = (tab = resize()).length;</div><div class="line">if ((p = tab[i = (n - 1) &amp; hash]) == null)</div><div class="line">    tab[i] = newNode(hash, key, value, null);</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>1.为什么<code>HashMap</code>的初始长度是16？为什么必须是2的幂？<strong>着重看文章开头的第3个链接以及<a href="https://blog.csdn.net/super_me_jason/article/details/79726757" target="_blank" rel="external">https://blog.csdn.net/super_me_jason/article/details/79726757</a></strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我们知道对于<code>HashMap</code>的<code>table</code>而言,数据分布需要均匀(最好每项都只有一个元素,这样就可以直接找到),不能太紧也不能太松,太紧会导致查询速度慢,太松则浪费空间。计算<code>hash</code>值后,怎么才能保证<code>table</code>元素分布均与呢？我们会想到取模,但是由于取模的消耗较大,<code>HashMap</code>以前是这样处理的：调用<code>indexFor</code>方法,返回的是<code>key</code>的<code>hashcode</code>跟<strong>初始容量-1</strong>做与运算。但是1.8版本后直接在<code>putVal()</code>里面通过这一段代码实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if ((tab = table) == null || (n = tab.length) == 0)</div><div class="line">    n = (tab = resize()).length;</div><div class="line">if ((p = tab[i = (n - 1) &amp; hash]) == null)</div><div class="line">    tab[i] = newNode(hash, key, value, null);</div></pre></td></tr></table></figure></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>hashMap</code>的数组长度一定保持2的次幂,比如16的二进制表示为 <code>10000</code>,那么<code>n-1</code>就是15,二进制为<code>01111</code>,同理扩容后的数组长度为32,二进制表示为<code>100000</code>,<code>n-1</code>为31,二进制表示为<code>011111</code>。这样会保证低位全为1,而扩容后只有一位差异,也就是多出了最左位的1,这样在通过 <code>i = (n - 1) &amp; hash</code>的时候,只要<code>hash</code>对应的最左边的那一个差异位为0,就能保证得到的新的数组索引和老数组索引一致(大大减少了之前已经散列良好的老数组的数据位置重新调换)。数组长度保持2的次幂,<code>n-1</code>的低位都为1,会使得获得的数组索引更加均匀。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>HashMap</code>的默认长度为16,是为了降低<code>hash</code>碰撞的几率。举个例子,计算”book”的<code>hashcode</code>,假设<code>HashMap</code>的长度是10:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">hashcode</div><div class="line">十进制：3029737</div><div class="line">二进制：101110001110101110 1001</div><div class="line">length - 1：               1001</div><div class="line">index：                    1001</div><div class="line">// 再换一个hashcode试试</div><div class="line">hashcode：101110001110101110 1111</div><div class="line">length - 1：                 1001</div><div class="line">index：                      1001</div></pre></td></tr></table></figure></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从结果可以看出,虽然<code>hashcod</code>e变化了,但是运算的结果都是<code>1001</code>,也就是说,当<strong>HashMap长度为10</strong>的时候,有些<code>index</code>结果的出现几率会更大而有些index结果永远不会出现(比如0111),这样就<strong>不符合hash均匀分布</strong>的原则。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;反观<strong>长度16或者其他2的幂</strong>,<code>length - 1</code>的值是所有二进制位全为1,这种情况下,<code>index</code>的结果等同于<code>hashcode</code>后几位的值只要输入的<code>hashcode</code>本身分布均匀,<code>hash</code>算法的结果就是均匀的。</p>
-<ol>
-<li>为什么<code>HashMap</code>的动态因子是0.75f？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HashMap有两个参数影响其性能：初始容量和加载因子。容量是哈希表中桶的数量,初始容量只是哈希表在创建时的容量。加载因子是哈希表在其容量自动扩容之前可以达到多满的一种度量。当哈希表中的条目数超出了加载因子与当前容量的乘积时,则要对该哈希表进行扩容、<code>rehash</code>操作(即重建内部数据结构),扩容后的哈希表将具有两倍的原容量。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通常,<strong>加载因子需要在时间和空间成本上寻求一种折衷</strong>。加载因子过高,例如为1,虽然减少了空间开销,提高了空间利用率,但同时也增加了查询时间成本；加载因子过低,例如0.5,虽然可以减少查询时间成本,但是空间利用率很低,同时提高了<code>rehash</code>操作的次数。在设置初始容量时应该考虑到映射中所需的条目数及其加载因子,以便最大限度地减少<code>rehash</code>操作次数,所以,一般在使用<code>HashMap</code>时建议根据预估值设置初始容量,减少扩容操作。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;选择<strong>0.75</strong>作为默认的加载因子,完全是时间和空间成本上寻求的一种折衷选择,至于为什么不选择0.5或0.8,笔者没有找到官方的直接说明,在<code>HashMap</code>的源码注释中也只是说是一种折中的选择。</li>
-<li>为什么<code>HashMap</code>的同一个<code>hash</code>值的链表节点数不小于8时调整为红黑树？为什么一定是8而不是其他的值？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关于这个问题,源码中有注释讲到,翻译过来：理想情况下使用随机的哈希码,容器中节点分布在<code>hash</code>桶中的频率遵循<strong>泊松分布</strong>(具体可以查看<a href="http://en.wikipedia.org/wiki/Poisson_distribution),按照泊松分布的计算公式计算出了桶中元素个数和概率的对照表,可以看到链表中元素个数为**8**时的概率已经非常小,再多的就更少了,所以原作者在选择链表元素个数时选择了8,是根据**概率统计**而选择的。" target="_blank" rel="external">http://en.wikipedia.org/wiki/Poisson_distribution),按照泊松分布的计算公式计算出了桶中元素个数和概率的对照表,可以看到链表中元素个数为**8**时的概率已经非常小,再多的就更少了,所以原作者在选择链表元素个数时选择了8,是根据**概率统计**而选择的。</a></li>
-</ol>
+<hr>
+<p>2.为什么<code>HashMap</code>的动态因子是0.75f？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HashMap有两个参数影响其性能：初始容量和加载因子。容量是哈希表中桶的数量,初始容量只是哈希表在创建时的容量。加载因子是哈希表在其容量自动扩容之前可以达到多满的一种度量。当哈希表中的条目数超出了加载因子与当前容量的乘积时,则要对该哈希表进行扩容、<code>rehash</code>操作(即重建内部数据结构),扩容后的哈希表将具有两倍的原容量。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通常,<strong>加载因子需要在时间和空间成本上寻求一种折衷</strong>。加载因子过高,例如为1,虽然减少了空间开销,提高了空间利用率,但同时也增加了查询时间成本；加载因子过低,例如0.5,虽然可以减少查询时间成本,但是空间利用率很低,同时提高了<code>rehash</code>操作的次数。在设置初始容量时应该考虑到映射中所需的条目数及其加载因子,以便最大限度地减少<code>rehash</code>操作次数,所以,一般在使用<code>HashMap</code>时建议根据预估值设置初始容量,减少扩容操作。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;选择<strong>0.75</strong>作为默认的加载因子,完全是时间和空间成本上寻求的一种折衷选择,至于为什么不选择0.5或0.8,笔者没有找到官方的直接说明,在<code>HashMap</code>的源码注释中也只是说是一种折中的选择。</p>
+<hr>
+<p>3.为什么<code>HashMap</code>的同一个<code>hash</code>值的链表节点数不小于8时调整为红黑树？为什么一定是8而不是其他的值？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关于这个问题,源码中有注释讲到,翻译过来：理想情况下使用随机的哈希码,容器中节点分布在<code>hash</code>桶中的频率遵循<strong>泊松分布</strong>(具体可以查看<a href="http://en.wikipedia.org/wiki/Poisson_distribution" target="_blank" rel="external">http://en.wikipedia.org/wiki/Poisson_distribution</a>) ,按照泊松分布的计算公式计算出了桶中元素个数和概率的对照表,可以看到链表中元素个数为<strong>8</strong>时的概率已经非常小,再多的就更少了,所以原作者在选择链表元素个数时选择了8,是根据<strong>概率统计</strong>而选择的。</p>
+<hr>
+<p>4.<code>HashMap</code>中保存了<code>key-value</code>,而<code>entrySet</code>也是保存了<code>key-value</code>对,这有什么意义呢？两个有何不同呢？<br>先看个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">HashMap&lt;String, String&gt; hashMap = new HashMap&lt;&gt;();</div><div class="line">hashMap.put(&quot;one&quot;, &quot;one&quot;);</div><div class="line">hashMap.put(&quot;two&quot;, &quot;two&quot;);</div><div class="line">hashMap.put(&quot;three&quot;, &quot;three&quot;);</div><div class="line">System.out.println(hashMap);</div><div class="line">System.out.println(hashMap.entrySet());</div><div class="line">// 打印输出</div><div class="line">&#123;one=one, two=two, three=three&#125;</div><div class="line">[one=one, two=two, three=three]</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从上例中可以看出两者确实不大一样。调用了<code>entrySet()</code>后打印输出的有点类似js里面的数组形式。看了下源码,发现<code>entrySet()</code>是<strong>Set</strong>类型的,而<strong>Set</strong>又继承自<strong>Collection</strong>,<code>HashMap</code>实现的是<strong>Map</strong>接口,<strong>Map</strong>与<strong>Collection</strong>本就是两种接口,并没有什么联系。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;看了网上的讲解以及源码发现,1.8版本的<code>HashMap</code>调用<code>entrySet()</code>后会<strong>new</strong>一个<code>EntrySet</code>内部类的实例,而调用<code>entrySet().iterator()</code>方法会<strong>new</strong>一个内部类<code>EntryIterator</code>的实例,而该类又继承自<code>HashIterator</code>内部类且只定义了一个<code>next()</code>方法。关键点就在<code>HashIterator</code>类内部。该类内部的<code>nextNode()</code>其实就是对<code>HashMap</code>底层的数据存储结构<code>Node&lt;K,V&gt;[] table</code>进行遍历,所以采用<code>entrySet().iterator()</code>遍历的话效率更高。</p>
 
   </section>
 
@@ -204,7 +204,7 @@
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">更早的文章</span>
+                <span class="read-more-item-dim">Older Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/04/08/java中equals/" title="java中比较String是否相同为何用equals而不是==？">java中比较String是否相同为何用equals而不是==？</a></h2>
                 <p class="excerpt">
                 
