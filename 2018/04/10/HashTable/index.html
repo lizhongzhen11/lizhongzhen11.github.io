@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>管中窥豹：HashTable源码学习 | Ronaldo</title>
+    <title>管中窥豹：Hashtable源码学习 | Ronaldo</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -13,17 +13,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <meta name="description" content="学习自：http://www.cnblogs.com/skywang12345/p/3310887.htmlhttps://segmentfault.com/a/1190000008982905
-问题1.HashTable是不是线程安全的？为什么？&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;HashTable是线程安全的。因为其主要的方法均采用synchronized(">
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;网上能搜到很多相关链接,加之平时在项目中几乎没怎么见到,所以看我给出的链接即可。着重看下面我提出的问题,带着问题去思考可能更好。
+问">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="管中窥豹：HashTable源码学习 | Ronaldo">
+    <meta name="twitter:title" content="管中窥豹：Hashtable源码学习 | Ronaldo">
     <meta name="twitter:description" content="学习自：http://www.cnblogs.com/skywang12345/p/3310887.htmlhttps://segmentfault.com/a/1190000008982905
-问题1.HashTable是不是线程安全的？为什么？&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;HashTable是线程安全的。因为其主要的方法均采用synchronized(">
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;网上能搜到很多相关链接,加之平时在项目中几乎没怎么见到,所以看我给出的链接即可。着重看下面我提出的问题,带着问题去思考可能更好。
+问">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="管中窥豹：HashTable源码学习 | Ronaldo">
+    <meta property="og:title" content="管中窥豹：Hashtable源码学习 | Ronaldo">
     <meta property="og:description" content="学习自：http://www.cnblogs.com/skywang12345/p/3310887.htmlhttps://segmentfault.com/a/1190000008982905
-问题1.HashTable是不是线程安全的？为什么？&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;HashTable是线程安全的。因为其主要的方法均采用synchronized(">
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;网上能搜到很多相关链接,加之平时在项目中几乎没怎么见到,所以看我给出的链接即可。着重看下面我提出的问题,带着问题去思考可能更好。
+问">
 
     
     <meta name="author" content="lizhongzhen">
@@ -147,12 +150,13 @@
       </span> 
    
     </div>
-    <h1 class="post-title">管中窥豹：HashTable源码学习</h1>
+    <h1 class="post-title">管中窥豹：Hashtable源码学习</h1>
   </header>
 
   <section class="post">
     <h3 id="学习自："><a href="#学习自：" class="headerlink" title="学习自："></a>学习自：</h3><p><a href="http://www.cnblogs.com/skywang12345/p/3310887.html" target="_blank" rel="external">http://www.cnblogs.com/skywang12345/p/3310887.html</a><br><a href="https://segmentfault.com/a/1190000008982905" target="_blank" rel="external">https://segmentfault.com/a/1190000008982905</a></p>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>1.<code>HashTable</code>是不是线程安全的？为什么？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>HashTable</code>是线程安全的。因为其主要的方法均采用<code>synchronized</code>(同步锁)修饰。<br>2.<code>HashTable</code>初始容量为何是11？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;网上能搜到很多相关链接,加之平时在项目中几乎没怎么见到,所以看我给出的链接即可。着重看下面我提出的问题,带着问题去思考可能更好。</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>1.<code>Hashtable</code>是不是线程安全的？为什么？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>Hashtable</code>是线程安全的。因为其主要的方法均采用<code>synchronized</code>(同步锁)修饰。<br>2.<code>Hashtable</code>初始容量为何是11？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>3.<code>rehash</code>中<code>int index = (e.hash &amp; 0x7FFFFFFF) % newCapacity;</code>这段怎么理解？<br>4.<code>HashMap</code>与<code>Hashtable</code>在有很多相似的功能,那么为什么还需要他们两个同时存在？</p>
 
   </section>
 
