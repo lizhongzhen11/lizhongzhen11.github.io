@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>管中窥豹：HashSet源码学习 | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="学习自：http://www.cnblogs.com/skywang12345/p/3311252.html
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;阅读HashSet的源码发现很有意思,四个`public修饰的构造函数内部全是new一个HashMap的实例,还有一个无修饰的构造函数new了一个LinkedHashMap,而LinkedHashMap又继承自Hash">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="管中窥豹：HashSet源码学习 | Ronaldo">
+    <meta name="twitter:description" content="学习自：http://www.cnblogs.com/skywang12345/p/3311252.html
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;阅读HashSet的源码发现很有意思,四个`public修饰的构造函数内部全是new一个HashMap的实例,还有一个无修饰的构造函数new了一个LinkedHashMap,而LinkedHashMap又继承自Hash">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="管中窥豹：HashSet源码学习 | Ronaldo">
+    <meta property="og:description" content="学习自：http://www.cnblogs.com/skywang12345/p/3311252.html
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;阅读HashSet的源码发现很有意思,四个`public修饰的构造函数内部全是new一个HashMap的实例,还有一个无修饰的构造函数new了一个LinkedHashMap,而LinkedHashMap又继承自Hash">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2018/04/11/HashSet/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-04-11T05:38:23.311Z" class="post-list__meta--date date">2018-04-11</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">管中窥豹：HashSet源码学习</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="学习自："><a href="#学习自：" class="headerlink" title="学习自："></a>学习自：</h3><p><a href="http://www.cnblogs.com/skywang12345/p/3311252.html" target="_blank" rel="external">http://www.cnblogs.com/skywang12345/p/3311252.html</a></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;阅读<code>HashSet</code>的源码发现很有意思,四个<code>`public</code>修饰的构造函数内部全是<code>new</code>一个<code>HashMap</code>的实例,还有一个无修饰的构造函数<code>new</code>了一个<code>LinkedHashMap</code>,而<code>LinkedHashMap</code>又继承自<code>HashMap</code>。也就是说,<code>HashSet</code>是基于<code>HashMap</code>保存数据的。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通读源码发现,内部实现的方法也比<code>HashMap</code>少了许多,而且很多方法其实就是在调用<code>HashMap</code>里的方法。</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>1.下方代码中为何初始容量是从<code>Math.max((int) (c.size()/.75f) + 1, 16)</code>中选？<code>c.size()/.75f) + 1</code>代表什么？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public HashSet(Collection&lt;? extends E&gt; c) &#123;</div><div class="line">    map = new HashMap&lt;&gt;(Math.max((int) (c.size()/.75f) + 1, 16));</div><div class="line">    addAll(c);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先,说明<code>(c.size()/.75f) + 1</code>。</p>
+<blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 因为从<code>HashMap</code>的效率(时间成本和空间成本)考虑,<code>HashMap</code>的加载因子是0.75。当<code>HashMap</code>的“阈值”(<strong>阈值 = <code>HashMap</code>总的大小 * 加载因子</strong>) &lt; “<code>HashMap</code>实际大小”时,就需要将<code>HashMap</code>的容量翻倍。所以,<code>(c.size()/.75f) + 1</code> 计算出来的正好是总的空间大小。</p>
+</blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接下来,说明为什么是 16 。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;因为<code>HashMap</code>的初始容量就是16,所以初始容量只能大于等于16且必须是2的幂。</p>
+<hr>
+<p>2.既然<code>HashSet</code>的底层数据结构是<code>HashMap</code>,那么为什么不可以用<code>put</code>方法添加<code>key-value</code>对而只能用<code>add</code>方法添加值呢？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先,<code>HashMap</code>实现了<code>Map</code>接口,<code>Map</code>接口中定义了<code>put</code>方法而没有<code>add</code>方法；其次,<code>HashSet</code>实现的是<code>Set</code>接口,<code>Set</code>接口又继承自<code>Collection</code>接口,这两接口里只定义了<code>add</code>方法而没有<code>put</code>方法。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;虽然<code>HashSet</code>内部通过一个<code>HashMap</code>类型的<code>map</code>变量来保存数据,但是由于该<code>map</code>是私有的,外部无法访问,所以我也无法通过<code>set.map.put(key, value)</code>进行操作！！！<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>HashSet</code>所提供的<code>add()</code>内部其实是通过<code>map.put()</code>实现的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public boolean add(E e) &#123;</div><div class="line">    return map.put(e, PRESENT)==null;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由<code>add()</code>方法可以得知,其实例如<code>set.add(0)</code>中的<strong>0是放进<code>HashMap</code>中的<code>key</code>里面的,而<code>value</code>则是常量<code>PRESENT</code>(<code>Object</code>的实例)</strong>。这也是为什么<code>HashSet</code>只提供了一个<code>keySet</code>集合而没有什么<code>values</code>等集合。</p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/04/10/Hashtable/" title="管中窥豹：Hashtable源码学习">管中窥豹：Hashtable源码学习</a></h2>
+                <p class="excerpt">
+                
+                学习自：http://www.cnblogs.com/skywang12345/p/3310887.htmlhttps://segmentfault.com/a/1190000008982905
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;网上能搜到很多相关链接,加之平时
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-04-10T08:51:02.790Z" class="post-list__meta--date date">2018-04-10</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/04/10/Hashtable/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>
