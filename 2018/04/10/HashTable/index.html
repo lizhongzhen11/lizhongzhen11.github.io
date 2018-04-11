@@ -156,7 +156,23 @@
   <section class="post">
     <h3 id="学习自："><a href="#学习自：" class="headerlink" title="学习自："></a>学习自：</h3><p><a href="http://www.cnblogs.com/skywang12345/p/3310887.html" target="_blank" rel="external">http://www.cnblogs.com/skywang12345/p/3310887.html</a><br><a href="https://segmentfault.com/a/1190000008982905" target="_blank" rel="external">https://segmentfault.com/a/1190000008982905</a></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;网上能搜到很多相关链接,加之平时在项目中几乎没怎么见到,所以看我给出的链接即可。着重看下面我提出的问题,带着问题去思考可能更好。</p>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>1.<code>Hashtable</code>是不是线程安全的？为什么？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>Hashtable</code>是线程安全的。因为其主要的方法均采用<code>synchronized</code>(同步锁)修饰。<br>2.<code>Hashtable</code>初始容量为何是11？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>3.<code>rehash</code>中<code>int index = (e.hash &amp; 0x7FFFFFFF) % newCapacity;</code>这段怎么理解？<br>4.<code>HashMap</code>与<code>Hashtable</code>在有很多相似的功能,那么为什么还需要他们两个同时存在？</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>1.<code>Hashtable</code>是不是线程安全的？为什么？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>Hashtable</code>是线程安全的。因为其主要的方法均采用<code>synchronized</code>(同步锁)修饰。</p>
+<hr>
+<p>2.<code>Hashtable</code>初始容量为何是11？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;参考：<a href="https://www.zhihu.com/question/29587252" target="_blank" rel="external">https://www.zhihu.com/question/29587252</a> 。<strong><code>Hashtable</code>默认大小是11是因为除(近似)质数求余的分散效果好。</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.8版本中<code>Hashtable</code>通过<code>rehash()</code>进行容量自增,里面有一段代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">int newCapacity = (oldCapacity &lt;&lt; 1) + 1;</div><div class="line">if (newCapacity - MAX_ARRAY_SIZE &gt; 0) &#123;</div><div class="line">    if (oldCapacity == MAX_ARRAY_SIZE)</div><div class="line">        // Keep running with MAX_ARRAY_SIZE buckets</div><div class="line">        return;</div><div class="line">    newCapacity = MAX_ARRAY_SIZE;</div><div class="line">&#125;</div><div class="line">Entry&lt;?,?&gt;[] newMap = new Entry&lt;?,?&gt;[newCapacity];</div><div class="line">...</div><div class="line">table = newMap;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不难看出,先将容量自增为原容量的<strong>2倍+1</strong>,然后拿新容量与<code>Integer.MAX_VALUE - 8</code>比较,超出的话直接让容量等于<code>Integer.MAX_VALUE - 8</code>。最终将新容量数组赋值给<code>table</code>。</p>
+</blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这样操作虽然不保证容量是一个质数,但起码能保证容量是一个奇数。</p>
+<hr>
+<p>3.<code>rehash</code>中<code>int index = (e.hash &amp; 0x7FFFFFFF) % newCapacity;</code>这段怎么理解？<a href="https://stackoverflow.com/questions/9380670/why-does-java-use-hash-0x7fffffff-tab-length-to-decide-the-index-of-a-key" target="_blank" rel="external">https://stackoverflow.com/questions/9380670/why-does-java-use-hash-0x7fffffff-tab-length-to-decide-the-index-of-a-key</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这一步是为了计算扩容后的索引值。<code>e.hash &amp; 0x7FFFFFFF</code>会返回一个正数,<code>% newCapacity</code>控制<code>index</code>索引在容量范围内部。</p>
+<hr>
+<p>4.<code>HashMap</code>与<code>Hashtable</code>在有很多相似的功能,那么为什么还需要他们两个同时存在？</p>
+<ol>
+<li><code>Hashtabel</code>继承自<code>Dictionary</code>,<code>HashMap</code>继承自<code>AbstractMap</code>。<code>Dictionary</code>类已经废弃。</li>
+<li><code>Hashtabel</code>是线程安全的,而<code>HashMap</code>不是。<code>HashMap</code>的<code>key</code>和<code>value</code>可以为<code>null</code>,但是<code>Hashtable</code>不行。</li>
+<li><code>Hashtabel</code>在java 1.1 时就有了,而<code>HashMap</code>是 java 1.2 才有的。在使用时一般用<code>ArrayList</code>代替<code>Vector</code>,<code>LinkedList</code>代替<code>Stack</code>,<code>HashMap</code>代替<code>HashTable</code>,即使在多线程中需要同步,也是用同步包装类。</li>
+<li>对于哈希值的使用也有所不同,<code>HashTable</code>直接使用对象的<code>hashCode</code>,而<code>HashMap</code>重新计算<code>hash</code>值。而且用与代替求模。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Hashtable中:</div><div class="line">int hash = key.hashCode();</div><div class="line">int index = (hash &amp; 0x7FFFFFFF) % tab.length;</div><div class="line">HashMap中</div><div class="line">static final int hash(Object key) &#123;</div><div class="line">    int h;</div><div class="line">    return (key == null) ? 0 : (h = key.hashCode()) ^ (h &gt;&gt;&gt; 16);</div><div class="line">&#125;</div></pre></td></tr></table></figure></li>
+</ol>
 
   </section>
 
