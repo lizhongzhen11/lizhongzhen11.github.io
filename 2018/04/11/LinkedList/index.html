@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>管中窥豹：ArrayList源码学习 | Ronaldo</title>
+    <title>管中窥豹：LinkedList源码学习 | Ronaldo</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -12,21 +12,15 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="学习自：http://www.cnblogs.com/skywang12345/p/3308556.html
-removeAll和retainAll()看这里https://lizhongzhen11.github.io/2018/03/20/thinkingInJava/#1571
-问题及注意点1.本文一开头给出的第一个链接里面关于容量自增讲的是 新的容量=“(原始容量x3)/2 + 1”,但阅">
+    <meta name="description" content="学习自：http://www.cnblogs.com/skywang12345/p/3308807.html">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="管中窥豹：ArrayList源码学习 | Ronaldo">
-    <meta name="twitter:description" content="学习自：http://www.cnblogs.com/skywang12345/p/3308556.html
-removeAll和retainAll()看这里https://lizhongzhen11.github.io/2018/03/20/thinkingInJava/#1571
-问题及注意点1.本文一开头给出的第一个链接里面关于容量自增讲的是 新的容量=“(原始容量x3)/2 + 1”,但阅">
+    <meta name="twitter:title" content="管中窥豹：LinkedList源码学习 | Ronaldo">
+    <meta name="twitter:description" content="学习自：http://www.cnblogs.com/skywang12345/p/3308807.html">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="管中窥豹：ArrayList源码学习 | Ronaldo">
-    <meta property="og:description" content="学习自：http://www.cnblogs.com/skywang12345/p/3308556.html
-removeAll和retainAll()看这里https://lizhongzhen11.github.io/2018/03/20/thinkingInJava/#1571
-问题及注意点1.本文一开头给出的第一个链接里面关于容量自增讲的是 新的容量=“(原始容量x3)/2 + 1”,但阅">
+    <meta property="og:title" content="管中窥豹：LinkedList源码学习 | Ronaldo">
+    <meta property="og:description" content="学习自：http://www.cnblogs.com/skywang12345/p/3308807.html">
 
     
     <meta name="author" content="lizhongzhen">
@@ -43,7 +37,7 @@ removeAll和retainAll()看这里https://lizhongzhen11.github.io/2018/03/20/think
     <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://yoursite.com/2018/04/11/ArrayList/"/>
+    <link rel="canonical" href="http://yoursite.com/2018/04/11/LinkedList/"/>
 
                  
 </head>
@@ -144,28 +138,17 @@ removeAll和retainAll()看这里https://lizhongzhen11.github.io/2018/03/20/think
 
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2018-04-11T08:52:40.873Z" class="post-list__meta--date date">2018-04-11</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <time datetime="2018-04-11T12:11:48.431Z" class="post-list__meta--date date">2018-04-11</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
        Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
-    <h1 class="post-title">管中窥豹：ArrayList源码学习</h1>
+    <h1 class="post-title">管中窥豹：LinkedList源码学习</h1>
   </header>
 
   <section class="post">
-    <h3 id="学习自："><a href="#学习自：" class="headerlink" title="学习自："></a>学习自：</h3><p><a href="http://www.cnblogs.com/skywang12345/p/3308556.html" target="_blank" rel="external">http://www.cnblogs.com/skywang12345/p/3308556.html</a></p>
-<p><code>removeAll</code>和<code>retainAll()</code>看这里<a href="https://lizhongzhen11.github.io/2018/03/20/thinkingInJava/#1571" target="_blank" rel="external">https://lizhongzhen11.github.io/2018/03/20/thinkingInJava/#1571</a></p>
-<h3 id="问题及注意点"><a href="#问题及注意点" class="headerlink" title="问题及注意点"></a>问题及注意点</h3><p>1.本文一开头给出的第一个链接里面关于容量自增讲的是 新的容量=“(原始容量x3)/2 + 1”,但阅读1.8版本的源码会发现,容量自增方式改变了。</p>
-<blockquote>
-<p>1.8版本通过<code>grow()</code>进行容量自增。其中<code>int newCapacity = oldCapacity + (oldCapacity &gt;&gt; 1)</code>这段代码的意思是<strong>新容量 = 旧容量的1.5倍</strong>。<br>研究1.6版本的应该知道,以前容量自增是<code>int newCapacity = (oldCapacity * 3)/2 + 1</code>即1.5倍 + 1,为何会对自增算法进行修改呢？<br>网上找了下,一个说法是自增算法改为位运算效率更高。至于为什么舍去了加1或许也是从效率上考虑的吧。<br>还有,1.6版本并没有对容量进行限制,但是1.7及以后的版本都限制了最大的容量：<code>Integer.MAX_VALUE - 8</code>,防止容量越界。</p>
-</blockquote>
-<hr>
-<p>2.初始容量为何是10？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;暂时不清楚。。。</p>
-<hr>
-<p>3.<code>ArrayList</code>是有序的,先进先出。同时,它也是非线程安全的。</p>
-<hr>
-<p>4.<code>ArrayList</code> 实现了 <code>RandomAccess</code> 接口,支持快速随机访问,实际上就是通过下标序号进行快速访问。</p>
+    <h3 id="学习自："><a href="#学习自：" class="headerlink" title="学习自："></a>学习自：</h3><p><a href="http://www.cnblogs.com/skywang12345/p/3308807.html" target="_blank" rel="external">http://www.cnblogs.com/skywang12345/p/3308807.html</a></p>
 
   </section>
 
@@ -177,14 +160,15 @@ removeAll和retainAll()看这里https://lizhongzhen11.github.io/2018/03/20/think
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">Newer Post</span>
-                <h2 class="post-list__post-title post-title"><a href="/2018/04/11/LinkedList/" title="管中窥豹：LinkedList源码学习">管中窥豹：LinkedList源码学习</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2018/04/12/failfast/" title="管中窥豹：java集合中的fail-fast机制">管中窥豹：java集合中的fail-fast机制</a></h2>
                 <p class="excerpt">
                 
-                学习自：http://www.cnblogs.com/skywang12345/p/3308807.html
+                学习自：http://www.cnblogs.com/skywang12345/p/3308762.html
 
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;java的集合里有一个叫做fail-fast机制。不论是HashMap,Hashtable,HashSet以及Arr
                 &hellip;
                 </p>
-                <div class="post-list__meta"><time datetime="2018-04-11T12:11:48.431Z" class="post-list__meta--date date">2018-04-11</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/04/11/LinkedList/">继续阅读</a></div>
+                <div class="post-list__meta"><time datetime="2018-04-12T02:53:51.243Z" class="post-list__meta--date date">2018-04-12</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/04/12/failfast/">继续阅读</a></div>
                            
             </div>
         
@@ -192,14 +176,15 @@ removeAll和retainAll()看这里https://lizhongzhen11.github.io/2018/03/20/think
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">Older Post</span>
-                <h2 class="post-list__post-title post-title"><a href="/2018/04/11/HashSet/" title="管中窥豹：HashSet源码学习">管中窥豹：HashSet源码学习</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2018/04/11/ArrayList/" title="管中窥豹：ArrayList源码学习">管中窥豹：ArrayList源码学习</a></h2>
                 <p class="excerpt">
                 
-                学习自：http://www.cnblogs.com/skywang12345/p/3311252.html
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;阅读HashSet的源码发现很有意思,四个`public修饰的构造函数内部全是new一个HashMap的实例,还有一个
+                学习自：http://www.cnblogs.com/skywang12345/p/3308556.html
+removeAll和retainAll()看这里https://lizhongzhen11.github.io/2018/03/20/thinkingInJava/#1571
+问题及注意点1
                 &hellip;
                 </p>
-                <div class="post-list__meta"><time datetime="2018-04-11T05:38:23.311Z" class="post-list__meta--date date">2018-04-11</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/04/11/HashSet/">继续阅读</a></div>
+                <div class="post-list__meta"><time datetime="2018-04-11T08:52:40.873Z" class="post-list__meta--date date">2018-04-11</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/04/11/ArrayList/">继续阅读</a></div>
                        
             </div>
         

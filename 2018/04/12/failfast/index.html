@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>管中窥豹：java集合中的fail-fast机制 | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="学习自：http://www.cnblogs.com/skywang12345/p/3308762.html
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;java的集合里有一个叫做fail-fast机制。不论是HashMap,Hashtable,HashSet以及ArrayList等都实现了该机制。而且它们的实现方法都大同小异,主要是通过modCount与expect">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="管中窥豹：java集合中的fail-fast机制 | Ronaldo">
+    <meta name="twitter:description" content="学习自：http://www.cnblogs.com/skywang12345/p/3308762.html
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;java的集合里有一个叫做fail-fast机制。不论是HashMap,Hashtable,HashSet以及ArrayList等都实现了该机制。而且它们的实现方法都大同小异,主要是通过modCount与expect">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="管中窥豹：java集合中的fail-fast机制 | Ronaldo">
+    <meta property="og:description" content="学习自：http://www.cnblogs.com/skywang12345/p/3308762.html
+
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;java的集合里有一个叫做fail-fast机制。不论是HashMap,Hashtable,HashSet以及ArrayList等都实现了该机制。而且它们的实现方法都大同小异,主要是通过modCount与expect">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2018/04/12/failfast/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-04-12T02:53:51.243Z" class="post-list__meta--date date">2018-04-12</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">管中窥豹：java集合中的fail-fast机制</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="学习自："><a href="#学习自：" class="headerlink" title="学习自："></a>学习自：</h3><p><a href="http://www.cnblogs.com/skywang12345/p/3308762.html" target="_blank" rel="external">http://www.cnblogs.com/skywang12345/p/3308762.html</a></p>
+<hr>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;java的集合里有一个叫做<code>fail-fast</code>机制。不论是<code>HashMap</code>,<code>Hashtable</code>,<code>HashSet</code>以及<code>ArrayList</code>等都实现了该机制。而且它们的实现方法都大同小异,主要是通过<code>modCount</code>与<code>expectedModCount</code>这两个变量值是否相等来判断的。<strong>而且它们都是是通过<code>iterator</code>迭代器来实现的,<code>Hashtable</code>内部的迭代器同时实现了<code>Enumeration</code>接口</strong>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;文章开头链接讲的很好,以<code>ArrayList</code>为例进行了<code>fail-fast</code>机制演练以及解决方法。这里,我以链接的博客为主记录下一些重要理解点。</p>
+<h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><p>1.<code>fail-fast</code> 机制是java集合中的一种错误机制。当多个线程对同一个集合的内容进行操作时,就可能会产生<code>fail-fast</code>事件。如果抛出异常<code>java.util.ConcurrentModificationException</code>！即,产生<code>fail-fast</code>事件！</p>
+<hr>
+<p>2.若在多线程环境下使用<code>fail-fast</code>机制的集合,建议使用<code>java.util.concurrent</code>包下的类去取代<code>java.util</code>包下的类。</p>
+<hr>
+<p>3.阅读源码可以得知,<code>fail-fast</code>机制主要依据<code>modCount</code>与<code>expectedModCount</code>是否相等来进行判断。(<code>modCount</code>来自于<code>AbstractList</code>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><code>modCount</code>是该集合被修改的次数</strong>。在迭代器里进行这样的判断主要依据是：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果只有一个线程在访问操作集合,那么该集合进行迭代遍历时,不会有什么问题。但是当有第二个甚至更多的线程也在访问操作该集合时,由于其他线程对集合进行了增删改,那么<code>modCount</code>值肯定会修改,不过由于<code>expectedModCount</code>是迭代器内部定义的变量,所以该值只等于使用<code>iterator()</code>时集合的<code>modCount</code>。那么当线程1开始迭代遍历集合,而线程2却在修改集合,那么线程1遍历集合时内部的<code>expectedModCount</code>与集合的<code>modCount</code>不相等,就会抛出<code>java.util.ConcurrentModificationException</code>异常。</p>
+<hr>
+<p>4.<code>ArrayList</code>内部有一个<code>Itr</code>类,它提供了<code>hasNext()</code>,<code>next()</code>以及<code>remove()</code>等方法。在对集合进行<code>iterator()</code>遍历时非常有用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public boolean hasNext() &#123;</div><div class="line">    return cursor != size;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>hasNext()</code>很简单,<code>cursor</code>用来当做索引且从0开始,遍历时不断自增并和集合内数据长度进行对比。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>next()</code>方法在名字上容易给人误解,以为当前得到的是下一个元素,其实不是的。看看源码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@SuppressWarnings(&quot;unchecked&quot;)</div><div class="line">public E next() &#123;</div><div class="line">    checkForComodification();</div><div class="line">    int i = cursor;</div><div class="line">    if (i &gt;= size)</div><div class="line">        throw new NoSuchElementException();</div><div class="line">    Object[] elementData = ArrayList.this.elementData;</div><div class="line">    if (i &gt;= elementData.length)</div><div class="line">        throw new ConcurrentModificationException();</div><div class="line">    cursor = i + 1;</div><div class="line">    return (E) elementData[lastRet = i];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;仔细阅读<code>next()</code>不难发现,<code>i</code>其实就是索引,最终返回的<code>elementData[lastRet = i]</code>其实就是当前索引的值,当然,<code>cursor = i + 1</code>让索引自增用来继续向后遍历。</p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/04/11/LinkedList/" title="管中窥豹：LinkedList源码学习">管中窥豹：LinkedList源码学习</a></h2>
+                <p class="excerpt">
+                
+                学习自：http://www.cnblogs.com/skywang12345/p/3308807.html
+
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-04-11T12:11:48.431Z" class="post-list__meta--date date">2018-04-11</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/04/11/LinkedList/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>
