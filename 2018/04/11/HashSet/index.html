@@ -70,7 +70,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">文字阁</a></li>
             
             </ul>
           </nav>
@@ -82,7 +82,7 @@
   <!-- Weibo-->
   
   <li class="navigation__item">
-    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="我的微博" target="_blank">
       <i class='social fa fa-weibo'></i>
       <span class="label">Weibo</span>
     </a>
@@ -92,7 +92,7 @@
   <!-- Github -->
   
   <li class="navigation__item">
-    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+    <a href="https://github.com/lizhongzhen11" title="查看我的GitHub主页" target="_blank">
       <i class='social fa fa-github'></i>
       <span class="label">Github</span>
     </a>
@@ -143,7 +143,7 @@
     <div class="post-meta">
       <time datetime="2018-04-11T05:38:23.311Z" class="post-list__meta--date date">2018-04-11</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -162,6 +162,10 @@
 <hr>
 <p>2.既然<code>HashSet</code>的底层数据结构是<code>HashMap</code>,那么为什么不可以用<code>put</code>方法添加<code>key-value</code>对而只能用<code>add</code>方法添加值呢？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先,<code>HashMap</code>实现了<code>Map</code>接口,<code>Map</code>接口中定义了<code>put</code>方法而没有<code>add</code>方法；其次,<code>HashSet</code>实现的是<code>Set</code>接口,<code>Set</code>接口又继承自<code>Collection</code>接口,这两接口里只定义了<code>add</code>方法而没有<code>put</code>方法。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;虽然<code>HashSet</code>内部通过一个<code>HashMap</code>类型的<code>map</code>变量来保存数据,但是由于该<code>map</code>是私有的,外部无法访问,所以我也无法通过<code>set.map.put(key, value)</code>进行操作！！！<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>HashSet</code>所提供的<code>add()</code>内部其实是通过<code>map.put()</code>实现的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public boolean add(E e) &#123;</div><div class="line">    return map.put(e, PRESENT)==null;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由<code>add()</code>方法可以得知,其实例如<code>set.add(0)</code>中的<strong>0是放进<code>HashMap</code>中的<code>key</code>里面的,而<code>value</code>则是常量<code>PRESENT</code>(<code>Object</code>的实例)</strong>。这也是为什么<code>HashSet</code>只提供了一个<code>keySet</code>集合而没有什么<code>values</code>等集合。</p>
+<hr>
+<p>3.<code>HashSet</code>能插入重复值吗？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不可以！前面说了,其实它插入值放在<code>HashMap</code>中的<code>key</code>里,<code>key</code>是不能重复的。</p>
+<hr>
+<p>4.<code>HashSet</code>是有序的吗？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不是！关键看<code>add()</code>方法就可以知道它插入数据的顺序了。底层其实还是调用的<code>HashMap</code>的<code>put</code>方法。<code>HashMap</code>的索引由<code>(n - 1) &amp; hash]</code>得到(长度和哈希值执行与运算),这样是无法保证数据间的顺序的。</p>
 
   </section>
 
@@ -172,7 +176,7 @@
     
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">Newer Post</span>
+                <span class="read-more-item-dim">最近的文章</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/04/11/ArrayList/" title="管中窥豹：ArrayList源码学习">管中窥豹：ArrayList源码学习</a></h2>
                 <p class="excerpt">
                 
@@ -188,7 +192,7 @@ removeAll和retainAll()看这里https://lizhongzhen11.github.io/2018/03/20/think
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">Older Post</span>
+                <span class="read-more-item-dim">更早的文章</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/04/10/HashTable/" title="管中窥豹：Hashtable源码学习">管中窥豹：Hashtable源码学习</a></h2>
                 <p class="excerpt">
                 

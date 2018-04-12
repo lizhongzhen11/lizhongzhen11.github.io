@@ -73,7 +73,7 @@ removeAll和retainAll()看这里https://lizhongzhen11.github.io/2018/03/20/think
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">文字阁</a></li>
             
             </ul>
           </nav>
@@ -85,7 +85,7 @@ removeAll和retainAll()看这里https://lizhongzhen11.github.io/2018/03/20/think
   <!-- Weibo-->
   
   <li class="navigation__item">
-    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="我的微博" target="_blank">
       <i class='social fa fa-weibo'></i>
       <span class="label">Weibo</span>
     </a>
@@ -95,7 +95,7 @@ removeAll和retainAll()看这里https://lizhongzhen11.github.io/2018/03/20/think
   <!-- Github -->
   
   <li class="navigation__item">
-    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+    <a href="https://github.com/lizhongzhen11" title="查看我的GitHub主页" target="_blank">
       <i class='social fa fa-github'></i>
       <span class="label">Github</span>
     </a>
@@ -146,7 +146,7 @@ removeAll和retainAll()看这里https://lizhongzhen11.github.io/2018/03/20/think
     <div class="post-meta">
       <time datetime="2018-04-11T08:52:40.873Z" class="post-list__meta--date date">2018-04-11</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -166,6 +166,14 @@ removeAll和retainAll()看这里https://lizhongzhen11.github.io/2018/03/20/think
 <p>3.<code>ArrayList</code>是有序的,先进先出。同时,它也是非线程安全的。</p>
 <hr>
 <p>4.<code>ArrayList</code> 实现了 <code>RandomAccess</code> 接口,支持快速随机访问,实际上就是通过下标序号进行快速访问。</p>
+<hr>
+<p>5.<code>ArrayList</code>和<code>LinkedList</code>的对比</p>
+<ul>
+<li>顺序插入速度<code>ArrayList</code>会比较快,因为<code>ArrayList</code>是基于数组实现的,数组是事先<code>new</code>好的,只要往指定位置塞一个数据就好了；<code>LinkedList</code>则不同,每次顺序插入的时候<code>LinkedList</code>将<code>new</code>一个对象出来,如果对象比较大,那么<code>new</code>的时间势必会长一点,再加上一些引用赋值的操作,所以顺序插入<code>LinkedList</code>必然慢于<code>ArrayList</code>。</li>
+<li>基于上一点,因为<code>LinkedList</code>里面不仅维护了待插入的元素,还维护了<code>Entry</code>的<strong>前置Entry和后继Entry</strong>,如果一个<code>LinkedLis</code>t中的<code>Entry</code>非常多,那么<code>LinkedList</code>将比<code>ArrayList</code>更耗费一些内存。</li>
+<li>使用各自遍历效率最高的方式,<code>ArrayList</code>的遍历效率会比<code>LinkedList</code>的遍历效率高一些。</li>
+<li>有些说法认为<code>LinkedList</code>做插入和删除更快,这种说法其实是不准确的：<br>1)<code>LinkedList</code>做插入、删除的时候,慢在寻址,快在只需要改变前后<code>Entry</code>的引用地址<br>2)<code>ArrayList</code>做插入、删除的时候,慢在数组元素的批量<code>copy</code>,快在寻址</li>
+</ul>
 
   </section>
 
@@ -176,12 +184,14 @@ removeAll和retainAll()看这里https://lizhongzhen11.github.io/2018/03/20/think
     
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">Newer Post</span>
+                <span class="read-more-item-dim">最近的文章</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/04/11/LinkedList/" title="管中窥豹：LinkedList源码学习">管中窥豹：LinkedList源码学习</a></h2>
                 <p class="excerpt">
                 
-                学习自：http://www.cnblogs.com/skywang12345/p/3308807.html
-
+                一、学习自：
+http://www.cnblogs.com/skywang12345/p/3308807.html
+https://www.cnblogs.com/ITtangtang/p/3948610.html
+https://www.cnblogs.com/xrq730/p/5005347.h
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2018-04-11T12:11:48.431Z" class="post-list__meta--date date">2018-04-11</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/04/11/LinkedList/">继续阅读</a></div>
@@ -191,7 +201,7 @@ removeAll和retainAll()看这里https://lizhongzhen11.github.io/2018/03/20/think
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">Older Post</span>
+                <span class="read-more-item-dim">更早的文章</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/04/11/HashSet/" title="管中窥豹：HashSet源码学习">管中窥豹：HashSet源码学习</a></h2>
                 <p class="excerpt">
                 
