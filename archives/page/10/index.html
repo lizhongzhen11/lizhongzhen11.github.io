@@ -67,7 +67,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">文字阁</a></li>
+              <li class="navigation__item"><a href="/#blog" title="Blogを読む" class="blog-button">Blog</a></li>
             
             </ul>
           </nav>
@@ -79,7 +79,7 @@
   <!-- Weibo-->
   
   <li class="navigation__item">
-    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="我的微博" target="_blank">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
       <i class='social fa fa-weibo'></i>
       <span class="label">Weibo</span>
     </a>
@@ -89,7 +89,7 @@
   <!-- Github -->
   
   <li class="navigation__item">
-    <a href="https://github.com/lizhongzhen11" title="查看我的GitHub主页" target="_blank">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
       <i class='social fa fa-github'></i>
       <span class="label">Github</span>
     </a>
@@ -137,6 +137,19 @@
             <div class="main-post-list">
     
   <ol class="post-list">
+  
+    
+    <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/10/20/5/" title="link to post.title">组件内this指向问题</a></h2>
+      <p class="excerpt">
+    
+      如无意外，组件内的 this 指向的是组件本身
+今天在开发过程中遇到个问题，纠结了很长时间，其实源代码从别人的 demo 复制过来的，但是到我这里就不行了，主要就是做了个全屏功能，发现不考虑 esc 点击 进入/退出 全屏是可行的，但是试了 esc 就有问题了。贴代码：12345678910111213141516171819202122232425262728293031323334353637
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2017-10-20T09:52:25.677Z" class="post-list__meta--date date">2017-10-20</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/10/20/5/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
   
     
     <li>
@@ -275,27 +288,14 @@ ES6入门：http://es6.ruanyifeng.com/#docs/intro
     </li>
   
     
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/09/26/4/" title="link to post.title">Safari不能正确解析yyyy-mm-dd</a></h2>
-      <p class="excerpt">
-    
-      
-开发PC端遇到的问题，网上找了个时间插件，在windows系统上没问题，到了苹果电脑的 safari 却显示错误，console 了半天才发现时间打印出来是 0000-00 以及 invalid date ，后来在网上看了个相关问题，具体是说 Safari不能正确解析yyyy-mm-dd，看链接 http://blog.csdn.net/code_for_free/article/details
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-09-26T05:08:28.827Z" class="post-list__meta--date date">2017-09-26</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/09/26/4/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
   </ol>
 
 
   <nav class="pagination" role="navigation">
     
-      <a class="older-posts pagination__newer btn btn-small btn-tertiary" href="/archives/page/9/">&larr; 最近</a>
+      <a class="older-posts pagination__newer btn btn-small btn-tertiary" href="/archives/page/9/">&larr; 前へ</a>
     
-    <span class="pagination__page-number" >  10 / 11 </span>
+    <span class="pagination__page-number" >  10 / 12 </span>
     
       
             <a class="older-posts pagination__newer btn btn-small btn-tertiary" href="/#blog">1</a>
@@ -340,9 +340,13 @@ ES6入门：http://es6.ruanyifeng.com/#docs/intro
       
             <a class="older-posts pagination__newer btn btn-small btn-tertiary" href="/page/11/">11</a>
       
+    
+      
+            <a class="older-posts pagination__newer btn btn-small btn-tertiary" href="/page/12/">12</a>
+      
       
     
-      <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/archives/page/11/">更早 &rarr;</a>
+      <a class="older-posts pagination__older btn btn-small btn-tertiary" href="/archives/page/11/">次へ &rarr;</a>
     
   </nav>
 
