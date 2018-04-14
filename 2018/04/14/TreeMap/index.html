@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>Ronaldo</title>
+    <title>管中窥豹：TreeMap源码学习 | Ronaldo</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -12,15 +12,18 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="">
+    <meta name="description" content="一、学习自http://www.cnblogs.com/skywang12345/p/3310928.html
+二、注意点TreeMap 是一个有序的key-value集合,它是通过红黑树实现的。(key,value都不能为null)TreeMap 实现了NavigableMap接口,意味着它支持一系列的导航方法。比如返回有序的key集合。TreeMap基于红黑树(Red-Black tree)实">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Ronaldo">
-    <meta name="twitter:description" content="">
+    <meta name="twitter:title" content="管中窥豹：TreeMap源码学习 | Ronaldo">
+    <meta name="twitter:description" content="一、学习自http://www.cnblogs.com/skywang12345/p/3310928.html
+二、注意点TreeMap 是一个有序的key-value集合,它是通过红黑树实现的。(key,value都不能为null)TreeMap 实现了NavigableMap接口,意味着它支持一系列的导航方法。比如返回有序的key集合。TreeMap基于红黑树(Red-Black tree)实">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Ronaldo">
-    <meta property="og:description" content="">
+    <meta property="og:title" content="管中窥豹：TreeMap源码学习 | Ronaldo">
+    <meta property="og:description" content="一、学习自http://www.cnblogs.com/skywang12345/p/3310928.html
+二、注意点TreeMap 是一个有序的key-value集合,它是通过红黑树实现的。(key,value都不能为null)TreeMap 实现了NavigableMap接口,意味着它支持一系列的导航方法。比如返回有序的key集合。TreeMap基于红黑树(Red-Black tree)实">
 
     
     <meta name="author" content="lizhongzhen">
@@ -37,7 +40,7 @@
     <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://yoursite.com"/>
+    <link rel="canonical" href="http://yoursite.com/2018/04/14/TreeMap/"/>
 
                  
 </head>
@@ -134,119 +137,54 @@
 
     <div class="content-wrapper">
         <div class="content-wrapper__inner">
-            <div class="main-post-list">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-04-14T07:09:14.341Z" class="post-list__meta--date date">2018-04-14</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       No. <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">管中窥豹：TreeMap源码学习</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="一、学习自"><a href="#一、学习自" class="headerlink" title="一、学习自"></a>一、学习自</h3><p><a href="http://www.cnblogs.com/skywang12345/p/3310928.html" target="_blank" rel="external">http://www.cnblogs.com/skywang12345/p/3310928.html</a></p>
+<h3 id="二、注意点"><a href="#二、注意点" class="headerlink" title="二、注意点"></a>二、注意点</h3><p><code>TreeMap</code> 是一个有序的key-value集合,它是通过<strong>红黑树</strong>实现的。(key,value都不能为<code>null</code>)<br><code>TreeMap</code> 实现了<code>NavigableMa</code>p接口,意味着它<strong>支持一系列的导航方法</strong>。比如返回有序的<code>key</code>集合。<br><code>TreeMap</code>基于<strong>红黑树(Red-Black tree)实现</strong>。该映射<strong>根据其键的自然顺序进行排序</strong>,或者根据<strong>创建映射时提供的 <code>Comparator</code> 进行排序</strong>,具体取决于使用的构造方法。<br><code>TreeMap</code>的基本操作 <code>containsKey</code>、<code>get</code>、<code>put</code> 和 <code>remove</code> 的时间复杂度是 <strong>log(n)</strong> 。<br><code>TreeMap</code>是<strong>非同步</strong>的。它的<code>iterator</code> 方法返回的迭代器是<strong>fail-fastl</strong>的。<br><code>TreeMap</code>本质上是一颗红黑树。要彻底理解<code>TreeMap</code>,建议读者先理解红黑树。</p>
+<h3 id="三、自己以一个小示例开始学习思考的过程"><a href="#三、自己以一个小示例开始学习思考的过程" class="headerlink" title="三、自己以一个小示例开始学习思考的过程"></a>三、自己以一个小示例开始学习思考的过程</h3>
+  </section>
+
+</article>
+
+<section class="read-more">
+           
     
-  <ol class="post-list">
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">以前の記事</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/04/12/LinkedHashMap/" title="管中窥豹：LinkedHashMap源码学习">管中窥豹：LinkedHashMap源码学习</a></h2>
+                <p class="excerpt">
+                
+                一、学习自https://blog.csdn.net/justloveyou_/article/details/71713781http://www.cnblogs.com/xrq730/p/5052323.htmlhttp://www.importnew.com/18706.html
+二、注意点
+
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-04-12T12:39:31.907Z" class="post-list__meta--date date">2018-04-12</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/04/12/LinkedHashMap/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
   
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/07/24/firstOne/" title="link to post.title">firstOne</a></h2>
-      <p class="excerpt">
-    
-      
-搭建hexo博客可能遇到的坑：http://www.jianshu.com/p/a2fe56d11c4f中哥怒爆CC菊花！！！黄健雄献上菊花！！！
+</section>
 
-
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-07-24T09:27:10.289Z" class="post-list__meta--date date">2017-07-24</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/07/24/firstOne/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
   
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/07/24/hello-world/" title="link to post.title">Hello World</a></h2>
-      <p class="excerpt">
-    
-      Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-07-24T08:46:04.364Z" class="post-list__meta--date date">2017-07-24</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/07/24/hello-world/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-  </ol>
-
-
-  <nav class="pagination" role="navigation">
-    
-      <a class="older-posts pagination__newer btn btn-small btn-tertiary" href="/archives/page/11/">&larr; 前へ</a>
-    
-    <span class="pagination__page-number" >  12 / 12 </span>
-    
-      
-            <a class="older-posts pagination__newer btn btn-small btn-tertiary" href="/#blog">1</a>
-      
-    
-      
-            <a class="older-posts pagination__newer btn btn-small btn-tertiary" href="/page/2/">2</a>
-      
-    
-      
-            <a class="older-posts pagination__newer btn btn-small btn-tertiary" href="/page/3/">3</a>
-      
-    
-      
-            <a class="older-posts pagination__newer btn btn-small btn-tertiary" href="/page/4/">4</a>
-      
-    
-      
-            <a class="older-posts pagination__newer btn btn-small btn-tertiary" href="/page/5/">5</a>
-      
-    
-      
-            <a class="older-posts pagination__newer btn btn-small btn-tertiary" href="/page/6/">6</a>
-      
-    
-      
-            <a class="older-posts pagination__newer btn btn-small btn-tertiary" href="/page/7/">7</a>
-      
-    
-      
-            <a class="older-posts pagination__newer btn btn-small btn-tertiary" href="/page/8/">8</a>
-      
-    
-      
-            <a class="older-posts pagination__newer btn btn-small btn-tertiary" href="/page/9/">9</a>
-      
-    
-      
-            <a class="older-posts pagination__newer btn btn-small btn-tertiary" href="/page/10/">10</a>
-      
-    
-      
-            <a class="older-posts pagination__newer btn btn-small btn-tertiary" href="/page/11/">11</a>
-      
-    
-      
-            <a class="older-posts pagination__newer btn btn-small btn-tertiary" href="/page/12/">12</a>
-      
-      
-    
-  </nav>
-
- <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
-        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
-        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
-        messageStyle: "none"
-    }); 
-    
-</script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-</script>
-</div>
-
 
             <footer class="footer">
     <span class="footer__copyright">

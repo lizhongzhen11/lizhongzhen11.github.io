@@ -140,6 +140,20 @@
   
     
     <li>
+      <h2 class="post-list__post-title post-title"><a href="/2017/10/23/js_return/" title="link to post.title">js return</a></h2>
+      <p class="excerpt">
+    
+      今天看囧克斯关于 vue 源码解读发现一段代码通过 return 巧妙地避免了不必要的深度遍历(在有广播事件到来时，如果当前 vm 的 _eventsCount 为 0，则不必向其子 vm 继续传播该事件)，当时看到return都有点忘了，基础不牢固
+
+源码123456789101112export.$broadcast = function (event) &amp;#123;    if (!this
+    &hellip;
+      </p>
+      <div class="post-list__meta"><time datetime="2017-10-23T02:29:19.325Z" class="post-list__meta--date date">2017-10-23</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/10/23/js_return/">继续阅读</a></div>
+      <hr class="post-list__divider" />
+    </li>
+  
+    
+    <li>
       <h2 class="post-list__post-title post-title"><a href="/2017/10/20/5/" title="link to post.title">组件内this指向问题</a></h2>
       <p class="excerpt">
     
@@ -266,24 +280,6 @@ vue-cli新建一个项目。项目中的各个文件代表的意思 请看 http:
     &hellip;
       </p>
       <div class="post-list__meta"><time datetime="2017-09-27T05:08:59.690Z" class="post-list__meta--date date">2017-09-27</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/09/27/Vue学习/">继续阅读</a></div>
-      <hr class="post-list__divider" />
-    </li>
-  
-    
-    <li>
-      <h2 class="post-list__post-title post-title"><a href="/2017/09/26/js/" title="link to post.title">js相关</a></h2>
-      <p class="excerpt">
-    
-      
-MDN web docs https://developer.mozilla.org/zh-CN/
-http://www.w3cplus.com/
-
-js and jQuery
-JavaScript参考教程：http://javascript.ruanyifeng.com/nodejs/module.html
-ES6入门：http://es6.ruanyifeng.com/#docs/intro
-    &hellip;
-      </p>
-      <div class="post-list__meta"><time datetime="2017-09-26T06:09:51.189Z" class="post-list__meta--date date">2017-09-26</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/09/26/js/">继续阅读</a></div>
       <hr class="post-list__divider" />
     </li>
   
