@@ -76,7 +76,7 @@ LinkedHashMap允许重复数">
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="Blogを読む" class="blog-button">Blog</a></li>
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
             
             </ul>
           </nav>
@@ -149,7 +149,7 @@ LinkedHashMap允许重复数">
     <div class="post-meta">
       <time datetime="2018-04-12T12:39:31.907Z" class="post-list__meta--date date">2018-04-12</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       No. <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -163,6 +163,7 @@ LinkedHashMap允许重复数">
 <li><code>LinkedHashMap</code>允许重复数据,<code>Key</code>重复会覆盖、<code>Value</code>允许重复</li>
 <li><code>LinkedHashMap</code>有序</li>
 <li><code>LinkedHashMap</code>非线程安全</li>
+<li>经测试遍历时使用<code>iterator()</code>略快点</li>
 </ul>
 <h3 id="三、问题"><a href="#三、问题" class="headerlink" title="三、问题"></a>三、问题</h3><p>1.<code>LinkedHashMap</code>继承自<code>HashMap</code>,内部方法与<code>HashMap</code>没多大差别啊,那发明它有什么用？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;大多数情况下,只要不涉及线程安全问题,<code>Map</code>基本都可以使用<code>HashMap</code>,不过<code>HashMap</code>有一个问题,就是<strong>迭代<code>HashMap</code>的顺序并不是<code>HashMap</code>放置的顺序,也就是无序</strong>。<code>HashMap</code>的这一缺点往往会带来困扰,因为有些场景,我们期待一个有序的<code>Map</code>。这个时候,<code>LinkedHashMap</code>就闪亮登场了,它虽然增加了时间和空间上的开销,但是<strong>通过维护一个运行于所有条目的双向链表,<code>LinkedHashMap</code>保证了元素迭代的顺序</strong>。</p>
 <hr>
@@ -178,12 +179,12 @@ LinkedHashMap允许重复数">
     
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">新しい記事</span>
+                <span class="read-more-item-dim">Newer Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/04/14/TreeMap/" title="管中窥豹：TreeMap源码学习">管中窥豹：TreeMap源码学习</a></h2>
                 <p class="excerpt">
                 
-                一、学习自http://www.cnblogs.com/skywang12345/p/3310928.html
-二、注意点TreeMap 是一个有序的key-value集合,它是通过红黑树实现的。(key,value都不能为null)TreeMap 实现了NavigableMap接口,意味着它支持一
+                一、学习自红黑树：http://www.cnblogs.com/skywang12345/p/3245399.htmlhttp://www.cnblogs.com/skywang12345/p/3310928.html
+二、注意点TreeMap 是一个有序的key-value集合,它是通过红黑树实现
                 &hellip;
                 </p>
                 <div class="post-list__meta"><time datetime="2018-04-14T07:09:14.341Z" class="post-list__meta--date date">2018-04-14</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/04/14/TreeMap/">继续阅读</a></div>
@@ -193,7 +194,7 @@ LinkedHashMap允许重复数">
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">以前の記事</span>
+                <span class="read-more-item-dim">Older Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/04/12/failfast/" title="管中窥豹：java集合中的fail-fast机制">管中窥豹：java集合中的fail-fast机制</a></h2>
                 <p class="excerpt">
                 
