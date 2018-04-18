@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>Java相关知识 | Ronaldo</title>
+    <title>管中窥豹：线程基础以及Runnable、Thread源码学习 | Ronaldo</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -12,30 +12,15 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="java
-jar包下载: http://jareye.com/
-前辈博客：http://www.cnblogs.com/skywang12345/category/455711.html
-孤傲苍狼博客：http://www.cnblogs.com/xdp-gacl/p/4261895.html
-五月的仓颉博客：http://www.cnblogs.com/xrq730/
-maven：https:/">
+    <meta name="description" content="一、学习自https://www.zhihu.com/question/25532384https://blog.csdn.net/arredando/article/details/76684764http://www.cnblogs.com/xrq730/p/4850883.htmlhttp://www.cnblogs.com/skywang12345/p/3479024.htmlhttp:/">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Java相关知识 | Ronaldo">
-    <meta name="twitter:description" content="java
-jar包下载: http://jareye.com/
-前辈博客：http://www.cnblogs.com/skywang12345/category/455711.html
-孤傲苍狼博客：http://www.cnblogs.com/xdp-gacl/p/4261895.html
-五月的仓颉博客：http://www.cnblogs.com/xrq730/
-maven：https:/">
+    <meta name="twitter:title" content="管中窥豹：线程基础以及Runnable、Thread源码学习 | Ronaldo">
+    <meta name="twitter:description" content="一、学习自https://www.zhihu.com/question/25532384https://blog.csdn.net/arredando/article/details/76684764http://www.cnblogs.com/xrq730/p/4850883.htmlhttp://www.cnblogs.com/skywang12345/p/3479024.htmlhttp:/">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Java相关知识 | Ronaldo">
-    <meta property="og:description" content="java
-jar包下载: http://jareye.com/
-前辈博客：http://www.cnblogs.com/skywang12345/category/455711.html
-孤傲苍狼博客：http://www.cnblogs.com/xdp-gacl/p/4261895.html
-五月的仓颉博客：http://www.cnblogs.com/xrq730/
-maven：https:/">
+    <meta property="og:title" content="管中窥豹：线程基础以及Runnable、Thread源码学习 | Ronaldo">
+    <meta property="og:description" content="一、学习自https://www.zhihu.com/question/25532384https://blog.csdn.net/arredando/article/details/76684764http://www.cnblogs.com/xrq730/p/4850883.htmlhttp://www.cnblogs.com/skywang12345/p/3479024.htmlhttp:/">
 
     
     <meta name="author" content="lizhongzhen">
@@ -52,7 +37,7 @@ maven：https:/">
     <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://yoursite.com/2017/10/17/Java/"/>
+    <link rel="canonical" href="http://yoursite.com/2018/04/17/线程/"/>
 
                  
 </head>
@@ -153,31 +138,22 @@ maven：https:/">
 
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2017-10-17T05:13:41.789Z" class="post-list__meta--date date">2017-10-17</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <time datetime="2018-04-17T02:29:05.167Z" class="post-list__meta--date date">2018-04-17</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
        Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
-    <h1 class="post-title">Java相关知识</h1>
+    <h1 class="post-title">管中窥豹：线程基础以及Runnable、Thread源码学习</h1>
   </header>
 
   <section class="post">
-    <h3 id="java"><a href="#java" class="headerlink" title="java"></a>java</h3><blockquote>
-<p>jar包下载: <em><a href="http://jareye.com/" target="_blank" rel="external">http://jareye.com/</a></em></p>
-<p>前辈博客：<a href="http://www.cnblogs.com/skywang12345/category/455711.html" target="_blank" rel="external">http://www.cnblogs.com/skywang12345/category/455711.html</a></p>
-<p>孤傲苍狼博客：<a href="http://www.cnblogs.com/xdp-gacl/p/4261895.html" target="_blank" rel="external">http://www.cnblogs.com/xdp-gacl/p/4261895.html</a></p>
-<p>五月的仓颉博客：<a href="http://www.cnblogs.com/xrq730/" target="_blank" rel="external">http://www.cnblogs.com/xrq730/</a></p>
-<p>maven：<a href="https://www.cnblogs.com/jingmoxukong/p/5591368.html" target="_blank" rel="external">https://www.cnblogs.com/jingmoxukong/p/5591368.html</a></p>
-<p>三分钟学会用SpringMVC搭建最小系统：<em><a href="http://www.jianshu.com/p/0ccaa4af05fc" target="_blank" rel="external">http://www.jianshu.com/p/0ccaa4af05fc</a></em></p>
-<p>Dao层、Service层、Controller层、View层：<em><a href="http://blog.csdn.net/zdwzzu2006/article/details/6053006" target="_blank" rel="external">http://blog.csdn.net/zdwzzu2006/article/details/6053006</a></em></p>
-<p>SpringMVC的常用注解：<em><a href="http://www.jianshu.com/p/0d0e45d14e6b" target="_blank" rel="external">http://www.jianshu.com/p/0d0e45d14e6b</a></em></p>
-<p>SSH与SSM对比总结：<em><a href="http://blog.csdn.net/pingdouble/article/details/52848007" target="_blank" rel="external">http://blog.csdn.net/pingdouble/article/details/52848007</a></em></p>
-<p>JVM内存管理：<em><a href="http://www.cnblogs.com/zuoxiaolong/category/508918.html" target="_blank" rel="external">http://www.cnblogs.com/zuoxiaolong/category/508918.html</a></em></p>
-<p>javaweb学习: <em><a href="http://www.cnblogs.com/xdp-gacl/tag/JavaWeb%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" target="_blank" rel="external">http://www.cnblogs.com/xdp-gacl/tag/JavaWeb%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</a></em></p>
-<p>Java的属性变量名前两个字母大小写问题: <em><a href="http://blog.csdn.net/mrzhang__/article/details/53201721" target="_blank" rel="external">http://blog.csdn.net/mrzhang__/article/details/53201721</a></em></p>
-<p>Class.getResource和ClassLoader.getResource的区别分析: <em><a href="http://swiftlet.net/archives/868" target="_blank" rel="external">http://swiftlet.net/archives/868</a></em></p>
+    <h3 id="一、学习自"><a href="#一、学习自" class="headerlink" title="一、学习自"></a>一、学习自</h3><p><a href="https://www.zhihu.com/question/25532384" target="_blank" rel="external">https://www.zhihu.com/question/25532384</a><br><a href="https://blog.csdn.net/arredando/article/details/76684764" target="_blank" rel="external">https://blog.csdn.net/arredando/article/details/76684764</a><br><a href="http://www.cnblogs.com/xrq730/p/4850883.html" target="_blank" rel="external">http://www.cnblogs.com/xrq730/p/4850883.html</a><br><a href="http://www.cnblogs.com/skywang12345/p/3479024.html" target="_blank" rel="external">http://www.cnblogs.com/skywang12345/p/3479024.html</a><br><a href="http://ifeve.com/creating-and-starting-java-threads/" target="_blank" rel="external">http://ifeve.com/creating-and-starting-java-threads/</a><br><a href="http://www.cnblogs.com/Qian123/p/5670304.html" target="_blank" rel="external">http://www.cnblogs.com/Qian123/p/5670304.html</a><br><a href="https://blog.csdn.net/ghsau/article/details/17609747" target="_blank" rel="external">https://blog.csdn.net/ghsau/article/details/17609747</a><br><a href="https://blog.csdn.net/u011480603/article/details/75332435" target="_blank" rel="external">https://blog.csdn.net/u011480603/article/details/75332435</a><br><a href="https://www.zhihu.com/question/19901763" target="_blank" rel="external">https://www.zhihu.com/question/19901763</a></p>
+<h3 id="二、相关基础概念-以自问自答形式"><a href="#二、相关基础概念-以自问自答形式" class="headerlink" title="二、相关基础概念(以自问自答形式)"></a>二、相关基础概念(以自问自答形式)</h3><p>问题1.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;初学java的人肯定经常听到<strong>多线程</strong>这个词,尤其是不懂得人听起来觉得,哇,好牛逼！<strong>多线程</strong>应该就是多个<strong>线程</strong>了,而<strong>线程</strong>是什么呢？相信很多人同时也听过<strong>进程</strong>这个词？那么<strong>进程</strong>与<strong>线程</strong>从名字上看我们就应该知道,这俩不是一个东西。但是都带了个“程”字,他俩是不是亲戚啊？</p>
+<blockquote>
+<p>关于<strong>进程</strong>与<strong>线程</strong>的讨论,可以看第一个链接,知乎上不少大神做出了专业的解释。给个段子理解下：<br><strong>进程是爹妈,管着众多的线程儿子</strong></p>
 </blockquote>
+<p>问题2.<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这时候,我们应该对<strong>进程</strong>和<strong>线程</strong>有了一些基础的理解。那么平常听到的<strong>多线程</strong>是多个线程一起同时进行吗？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;答案是否定的!<strong>一个处理器(cpu)在某一个时间点上永远都只能是一个线程！</strong>假设当前有一个cpu叫A,A中有a,b,c三个线程。多线程其实就是A在执行a线程一段时间后保存a线程执行的进度,然后去执行b或者c线程,然后又跳回来继续执行a线程,也就是说A在a,b,c三个线程中来回执行,并不是先把a线程完全执行结束才开始执行其他线程的,当然,比喻而已。</p>
 
   </section>
 
@@ -186,37 +162,18 @@ maven：https:/">
 <section class="read-more">
            
     
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">Newer Post</span>
-                <h2 class="post-list__post-title post-title"><a href="/2017/10/18/vueRouter/" title="Vue router小知识点">Vue router小知识点</a></h2>
-                <p class="excerpt">
-                
-                
-之前学习大神后台系统时发现一个问题没搞懂，仔细看了 vue-router 文档才明白
-先举个小例子：123456789101112131415161718192021222324252627282930313233343536373839&amp;lt;script src=&amp;quot;https://u
-                &hellip;
-                </p>
-                <div class="post-list__meta"><time datetime="2017-10-18T06:29:22.095Z" class="post-list__meta--date date">2017-10-18</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/10/18/vueRouter/">继续阅读</a></div>
-                           
-            </div>
         
         
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">Older Post</span>
-                <h2 class="post-list__post-title post-title"><a href="/2017/10/17/插件/" title="插件">插件</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2018/04/16/Queue/" title="管中窥豹：java队列(Queue)学习一--ArrayDeque">管中窥豹：java队列(Queue)学习一--ArrayDeque</a></h2>
                 <p class="excerpt">
                 
-                
-波浪进度指示器：https://github.com/newraina/waveLoading.js
-
-移动web端调试工具 eruda ：https://github.com/liriliri/eruda
-
-规则引擎的介绍与 Drools 的流程分析：http://www.jianshu.com
+                一、学习自https://www.cnblogs.com/CarpenterLee/p/5468803.htmlhttps://blog.csdn.net/u011240877/article/details/52860924https://www.cnblogs.com/Dylansuns/arc
                 &hellip;
                 </p>
-                <div class="post-list__meta"><time datetime="2017-10-17T01:31:38.162Z" class="post-list__meta--date date">2017-10-17</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/10/17/插件/">继续阅读</a></div>
+                <div class="post-list__meta"><time datetime="2018-04-16T02:55:09.290Z" class="post-list__meta--date date">2018-04-16</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/04/16/Queue/">继续阅读</a></div>
                        
             </div>
         

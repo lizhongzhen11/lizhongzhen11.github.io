@@ -395,7 +395,15 @@ Vector">
 <li>RandomAccessFile(随机文件操作)：它的功能丰富,可以从文件的任意位置进行存取(输入输出)操作。</li>
 </ol>
 <p><img src="../../../../images/io.png" alt=""><br><img src="../../../../images/io2.png" alt=""></p>
-<h3 id="17、线程"><a href="#17、线程" class="headerlink" title="17、线程"></a><a id="17">17、线程</a></h3><p><strong><a href="#123">返回目录</a></strong></p>
+<h3 id="17、线程"><a href="#17、线程" class="headerlink" title="17、线程"></a><a id="17">17、线程</a></h3><p><strong><a href="#123">返回目录</a></strong><br><a href="http://www.cnblogs.com/xrq730/p/4850883.html" target="_blank" rel="external">http://www.cnblogs.com/xrq730/p/4850883.html</a><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>TestThread.state</code>里面定义了6种状态,分别是：</p>
+<ol>
+<li>NEW：线程刚创建,还未启动</li>
+<li>RUNNABLE：就绪状态。当调用了<code>start()</code>方法时就进入该状态。</li>
+<li>BLOCKED：如果某一线程正在等待监视器锁,以便进入一个同步的块/方法,那么这个线程的状态就是阻塞BLOCKED</li>
+<li>WAITING：某一线程因为调用不带超时的<code>Object</code>的<code>wait()</code>方法、不带超时的<code>Thread</code>的<code>join()</code>方法、<code>LockSupport</code>的<code>park()</code>方法,就会处于等待<code>WAITING</code>状态</li>
+<li>TIMED_WAITING：某一线程因为调用带有指定正等待时间的<code>Object</code>的<code>wait()</code>方法、<code>Thread</code>的<code>join()</code>方法、<code>Thread</code>的<code>sleep()</code>方法、<code>LockSupport</code>的<code>parkNanos()</code>方法、<code>LockSupport</code>的<code>parkUntil()</code>方法，就会处于超时等待<code>TIMED_WAITING</code>状态</li>
+<li>TERMINATED：线程调用终止或者<code>run()</code>方法执行结束后,线程即处于终止状态。处于终止状态的线程不具备继续运行的能力</li>
+</ol>
 
   </section>
 
