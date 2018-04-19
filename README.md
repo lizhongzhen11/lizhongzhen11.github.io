@@ -47,7 +47,7 @@
 ### js框架
 - jq相关
 - React相关
- - dva：https://lizhongzhen11.github.io/2017/09/16/dva/
+  - dva：https://lizhongzhen11.github.io/2017/09/16/dva/
 - Vue相关
   - vue学习：https://lizhongzhen11.github.io/2017/09/27/Vue%E5%AD%A6%E4%B9%A0/
   - 组件内this指向问题：https://lizhongzhen11.github.io/2017/10/20/5/
