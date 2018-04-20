@@ -73,7 +73,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">文字阁</a></li>
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
             
               <li class="navigation__item"><a href="https://github.com/lizhongzhen11/lizhongzhen11.github.io">目录</a></li>
             
@@ -87,7 +87,7 @@
   <!-- Weibo-->
   
   <li class="navigation__item">
-    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="我的微博" target="_blank">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
       <i class='social fa fa-weibo'></i>
       <span class="label">Weibo</span>
     </a>
@@ -97,7 +97,7 @@
   <!-- Github -->
   
   <li class="navigation__item">
-    <a href="https://github.com/lizhongzhen11" title="查看我的GitHub主页" target="_blank">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
       <i class='social fa fa-github'></i>
       <span class="label">Github</span>
     </a>
@@ -148,7 +148,7 @@
     <div class="post-meta">
       <time datetime="2018-04-12T02:53:51.243Z" class="post-list__meta--date date">2018-04-12</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -165,8 +165,8 @@
 <hr>
 <p>3.阅读源码可以得知,<code>fail-fast</code>机制主要依据<code>modCount</code>与<code>expectedModCount</code>是否相等来进行判断。(<code>modCount</code>来自于<code>AbstractList</code>)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong><code>modCount</code>是该集合被修改的次数</strong>。在迭代器里进行这样的判断主要依据是：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果只有一个线程在访问操作集合,那么该集合进行迭代遍历时,不会有什么问题。但是当有第二个甚至更多的线程也在访问操作该集合时,由于其他线程对集合进行了增删改,那么<code>modCount</code>值肯定会修改,不过由于<code>expectedModCount</code>是迭代器内部定义的变量,所以该值只等于使用<code>iterator()</code>时集合的<code>modCount</code>。那么当线程1开始迭代遍历集合,而线程2却在修改集合,那么线程1遍历集合时内部的<code>expectedModCount</code>与集合的<code>modCount</code>不相等,就会抛出<code>java.util.ConcurrentModificationException</code>异常。</p>
 <hr>
-<p>4.<code>ArrayList</code>内部有一个<code>Itr</code>类,它提供了<code>hasNext()</code>,<code>next()</code>以及<code>remove()</code>等方法。在对集合进行<code>iterator()</code>遍历时非常有用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">public boolean hasNext() &#123;</div><div class="line">    return cursor != size;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>hasNext()</code>很简单,<code>cursor</code>用来当做索引且从0开始,遍历时不断自增并和集合内数据长度进行对比。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>next()</code>方法在名字上容易给人误解,以为当前得到的是下一个元素,其实不是的。看看源码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@SuppressWarnings(&quot;unchecked&quot;)</div><div class="line">public E next() &#123;</div><div class="line">    checkForComodification();</div><div class="line">    int i = cursor;</div><div class="line">    if (i &gt;= size)</div><div class="line">        throw new NoSuchElementException();</div><div class="line">    Object[] elementData = ArrayList.this.elementData;</div><div class="line">    if (i &gt;= elementData.length)</div><div class="line">        throw new ConcurrentModificationException();</div><div class="line">    cursor = i + 1;</div><div class="line">    return (E) elementData[lastRet = i];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>4.<code>ArrayList</code>内部有一个<code>Itr</code>类,它提供了<code>hasNext()</code>,<code>next()</code>以及<code>remove()</code>等方法。在对集合进行<code>iterator()</code>遍历时非常有用。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">return</span> cursor != size;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>hasNext()</code>很简单,<code>cursor</code>用来当做索引且从0开始,遍历时不断自增并和集合内数据长度进行对比。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>next()</code>方法在名字上容易给人误解,以为当前得到的是下一个元素,其实不是的。看看源码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@SuppressWarnings</span>(<span class="string">"unchecked"</span>)</div><div class="line"><span class="function"><span class="keyword">public</span> E <span class="title">next</span><span class="params">()</span> </span>&#123;</div><div class="line">    checkForComodification();</div><div class="line">    <span class="keyword">int</span> i = cursor;</div><div class="line">    <span class="keyword">if</span> (i &gt;= size)</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> NoSuchElementException();</div><div class="line">    Object[] elementData = ArrayList.<span class="keyword">this</span>.elementData;</div><div class="line">    <span class="keyword">if</span> (i &gt;= elementData.length)</div><div class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ConcurrentModificationException();</div><div class="line">    cursor = i + <span class="number">1</span>;</div><div class="line">    <span class="keyword">return</span> (E) elementData[lastRet = i];</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;仔细阅读<code>next()</code>不难发现,<code>i</code>其实就是索引,最终返回的<code>elementData[lastRet = i]</code>其实就是当前索引的值,当然,<code>cursor = i + 1</code>让索引自增用来继续向后遍历。</p>
 
   </section>
@@ -178,7 +178,7 @@
     
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">最近的文章</span>
+                <span class="read-more-item-dim">Newer Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/04/12/LinkedHashMap/" title="管中窥豹：LinkedHashMap源码学习">管中窥豹：LinkedHashMap源码学习</a></h2>
                 <p class="excerpt">
                 
@@ -194,7 +194,7 @@
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">更早的文章</span>
+                <span class="read-more-item-dim">Older Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/04/11/LinkedList/" title="管中窥豹：LinkedList源码学习">管中窥豹：LinkedList源码学习</a></h2>
                 <p class="excerpt">
                 

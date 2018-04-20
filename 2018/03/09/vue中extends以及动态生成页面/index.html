@@ -67,7 +67,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">文字阁</a></li>
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
             
               <li class="navigation__item"><a href="https://github.com/lizhongzhen11/lizhongzhen11.github.io">目录</a></li>
             
@@ -81,7 +81,7 @@
   <!-- Weibo-->
   
   <li class="navigation__item">
-    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="我的微博" target="_blank">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
       <i class='social fa fa-weibo'></i>
       <span class="label">Weibo</span>
     </a>
@@ -91,7 +91,7 @@
   <!-- Github -->
   
   <li class="navigation__item">
-    <a href="https://github.com/lizhongzhen11" title="查看我的GitHub主页" target="_blank">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
       <i class='social fa fa-github'></i>
       <span class="label">Github</span>
     </a>
@@ -142,7 +142,7 @@
     <div class="post-meta">
       <time datetime="2018-03-09T02:46:35.649Z" class="post-list__meta--date date">2018-03-09</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -152,7 +152,7 @@
   <section class="post">
     <h3 id="代码在：https-github-com-lizhongzhen11-myStudy-blob-master-vue-listDetails-vue"><a href="#代码在：https-github-com-lizhongzhen11-myStudy-blob-master-vue-listDetails-vue" class="headerlink" title="代码在：https://github.com/lizhongzhen11/myStudy/blob/master/vue/listDetails.vue"></a>代码在：<a href="https://github.com/lizhongzhen11/myStudy/blob/master/vue/listDetails.vue" target="_blank" rel="external">https://github.com/lizhongzhen11/myStudy/blob/master/vue/listDetails.vue</a></h3><h3 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;老板要求师傅以及其他同事在vue基础上封装一套页面生成模板,这样以后新来的直接往里面传传数据页面就出来了,跟以前老板自己在ext上封装的功能一样,只是以前的那套模板太丑了,弄了几年终于要更新了。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;前台页面这边一开始只是师傅一个人写,但是可能忙不过来,顺带着让我历练下给我扔过来几个页面,要求做成组件形式。其中有一个列表详情页要求调函数传参页面就自动生成。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在给我讲需求时告诉了我从<code>extends</code>入手。遂进入了开发思考过程,本篇用来记录过程及所学。</p>
 <h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先打开vue官网,查找<code>extends</code>方法,寥寥数语,没懂。但是注意到了一点：<br><strong>这和 mixins 类似，区别在于，组件自身的选项会比要扩展的源组件具有更高的优先级。</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;既然不懂,那继续百度找前辈们的讲解呗。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;先是找到了这里：<a href="https://segmentfault.com/a/1190000010095089" target="_blank" rel="external">https://segmentfault.com/a/1190000010095089</a> ,看了一下貌似不是我需要的。我连怎么用都不知道呢,更别谈区别了。之后又找到了 <a href="http://blog.csdn.net/xuanwuziyou/article/details/78018857" target="_blank" rel="external">http://blog.csdn.net/xuanwuziyou/article/details/78018857</a> 这里,大概看到了点怎么用的方式,然后动手实践吧。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">import listDetails from &apos;./components/listDetails&apos;</div><div class="line">export default&#123;</div><div class="line">    extends: listDetails,</div><div class="line">    data() &#123;</div><div class="line">        return &#123;</div><div class="line">                listDetails: []</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    ...</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> listDetails <span class="keyword">from</span> <span class="string">'./components/listDetails'</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</div><div class="line">    <span class="attr">extends</span>: listDetails,</div><div class="line">    data() &#123;</div><div class="line">        <span class="keyword">return</span> &#123;</div><div class="line">                <span class="attr">listDetails</span>: []</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    ...</div></pre></td></tr></table></figure>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一开始我没<code>import</code>,控制台直接报错,说<code>listDetails</code>未定义。后来<code>import</code>了,后台不报这个错了。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;继续看需求,要求传数据动态生成页面。也就是说,数据应该在使用了<code>extends</code>方法的页面上传入。但是,怎么传递呢？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我一开始在使用了<code>extends</code>方法的页面上定义了<code>set</code>和<code>get</code>方法,然后打算在<code>mounted()</code>里面调用方法进行传递,当然,<code>data()</code>里预先定义了用于保存所有数据的<code>listDetails</code>属性。当然,被<code>extends</code>的模板里也有对应的属性名。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;然后,我发现控制台不报错了,页面上也有东西了,但是通过<code>v-for</code>循环<code>listDetails</code>而能展示的内容却并没有展示。<strong>遂打印了<code>this</code>发现<code>listDetails</code>为<code>undefined</code>!!!</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这下我就一筹莫展了。。。也不记得想了多久,看了下老板封装的模板,貌似子组件定义的方法在父组件里都有迹可循,很多方法在父组件里只是声明但是没有内部实现。回到我的问题上,那我是不是也需要在父组件上定义同名方法让子组件继承覆盖重写？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;遂动手实践,果然,在父组件里也定义了<code>set</code>和<code>get</code>方法,页面能正常显示了。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这里的<code>extends</code>有些类似java里面的继承,方法继承覆盖重写。</p>
 <h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一开始我在纠结怎么通过<code>v-for</code>循环把每个变量名及值取到,因为后台传过来的数据一般都是<strong>属性名:属性值</strong>这种键值对形式,而<code>v-for</code>遍历后取数据一般都是<code>item</code>或者<code>item.固定的属性名</code>。可是这样就不好弄了啊。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;也纠结了一段时间,最终还是问了师傅,师傅告诉我后台接口传过来的是类似下面这种形式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    isDisplay: &apos;1&apos;,     // 控制显隐</div><div class="line">    isPrint: &apos;1&apos;,   </div><div class="line">    isNull: &apos;1&apos;,        // 是否为null</div><div class="line">    isEdit: &apos;0&apos;,        // 能否编辑</div><div class="line">    colType: &apos;string&apos;,  // 数据类型</div><div class="line">    colCode: &apos;visited&apos;, // 属性名</div><div class="line">    colName: &apos;访问编号&apos;, // 属性值</div><div class="line">    type: &apos;input&apos;</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
 <p>有专门的一张表对应上面的数据,这样的话传参就很好解决了。</p>
@@ -166,7 +166,7 @@
     
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">最近的文章</span>
+                <span class="read-more-item-dim">Newer Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/03/12/宏观上把握MyBatis框架/" title="宏观上把握MyBatis框架">宏观上把握MyBatis框架</a></h2>
                 <p class="excerpt">
                 
@@ -181,7 +181,7 @@ mybatis框架是一个持久层框架，是Apache下的顶级项目。mybatis可
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">更早的文章</span>
+                <span class="read-more-item-dim">Older Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/03/07/SpringMVC学习2之宏观把握/" title="宏观上把握SpringMVC框架">宏观上把握SpringMVC框架</a></h2>
                 <p class="excerpt">
                 

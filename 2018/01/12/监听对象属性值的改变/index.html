@@ -67,7 +67,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">文字阁</a></li>
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
             
               <li class="navigation__item"><a href="https://github.com/lizhongzhen11/lizhongzhen11.github.io">目录</a></li>
             
@@ -81,7 +81,7 @@
   <!-- Weibo-->
   
   <li class="navigation__item">
-    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="我的微博" target="_blank">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
       <i class='social fa fa-weibo'></i>
       <span class="label">Weibo</span>
     </a>
@@ -91,7 +91,7 @@
   <!-- Github -->
   
   <li class="navigation__item">
-    <a href="https://github.com/lizhongzhen11" title="查看我的GitHub主页" target="_blank">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
       <i class='social fa fa-github'></i>
       <span class="label">Github</span>
     </a>
@@ -142,7 +142,7 @@
     <div class="post-meta">
       <time datetime="2018-01-12T08:56:39.829Z" class="post-list__meta--date date">2018-01-12</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -158,10 +158,10 @@
 <h3 id="踩过的大坑"><a href="#踩过的大坑" class="headerlink" title="踩过的大坑"></a>踩过的大坑</h3><blockquote>
 <p>在完善监听数组对象值改变的过程中,一开始没大看懂,敲下来仔细看慢慢有点感觉了,但是测试发现监听到的数组里面的元素是空,类似下面这样的：<br>旧的值：,,,，新的值：,,</p>
 </blockquote>
-<p>这明显是有问题的。我用来测试的数组是<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var array = [1,2,3]</div><div class="line">array.push(4)</div></pre></td></tr></table></figure></p>
-<p>这打印出来明显是不对的。<br>然后我开始了长达两天的填坑之旅,真的有两天！<br>我在<code>obj.js</code>里面各个位置不断地使用<code>console.log()</code>来打印查找问题,发现在：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">Object.defineProperty(newPrototype, method, &#123;</div><div class="line">    value: function() &#123;</div><div class="line">        console.log(&apos;method: &apos; + method)</div><div class="line">        console.log(&apos;value&apos;)</div><div class="line">        console.log(this)</div><div class="line">        oldArray = this.slice(0)</div><div class="line">        console.log(&apos;oldArray&apos;)</div><div class="line">        console.log(oldArray)</div><div class="line">        ...</div></pre></td></tr></table></figure></p>
+<p>这明显是有问题的。我用来测试的数组是<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> array = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line">array.push(<span class="number">4</span>)</div></pre></td></tr></table></figure></p>
+<p>这打印出来明显是不对的。<br>然后我开始了长达两天的填坑之旅,真的有两天！<br>我在<code>obj.js</code>里面各个位置不断地使用<code>console.log()</code>来打印查找问题,发现在：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.defineProperty(newPrototype, method, &#123;</div><div class="line">    <span class="attr">value</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'method: '</span> + method)</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'value'</span>)</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>)</div><div class="line">        oldArray = <span class="keyword">this</span>.slice(<span class="number">0</span>)</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'oldArray'</span>)</div><div class="line">        <span class="built_in">console</span>.log(oldArray)</div><div class="line">        ...</div></pre></td></tr></table></figure></p>
 <p>上面的<code>console.log(this)</code>这里有问题,打印出来是一个长度为4的数组(谷歌浏览器控制台打印出来有点问题),但是里面所有的元素值都是<code>undefined</code>,然后打印了<code>oldArray</code>发现是一个长度为3的数组且所有元素值为<code>undefined</code>。<br><img src="../../../../images/arraythis.png" alt=""></p>
-<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>这就很尴尬了,真的,贼尴尬。<br>是我变量名写错了。。。<br>原来的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">observe(arr) &#123;</div><div class="line">   if(obj.toString.call(arr) === &apos;[object Array]&apos;) &#123;</div><div class="line">       this.overrideArray(arr)</div><div class="line">   &#125;</div><div class="line">   Object.keys(arr).forEach(function(key, index, keyArray) &#123;</div><div class="line">       var oldVal = obj[key]</div></pre></td></tr></table></figure></p>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p>这就很尴尬了,真的,贼尴尬。<br>是我变量名写错了。。。<br>原来的：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">observe(arr) &#123;</div><div class="line">   <span class="keyword">if</span>(obj.toString.call(arr) === <span class="string">'[object Array]'</span>) &#123;</div><div class="line">       <span class="keyword">this</span>.overrideArray(arr)</div><div class="line">   &#125;</div><div class="line">   <span class="built_in">Object</span>.keys(arr).forEach(<span class="function"><span class="keyword">function</span>(<span class="params">key, index, keyArray</span>) </span>&#123;</div><div class="line">       <span class="keyword">var</span> oldVal = obj[key]</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>我没仔细看,粗心大意！这里的<code>obj</code>是<code>Object.prototype</code>,对它用[key]当然是<code>undefined</code>了！！！</p>
 </blockquote>
@@ -171,7 +171,7 @@
 <blockquote>
 <p>大概找到了解释,虽然不理解其原理,但也算学习到了：<br><a href="https://segmentfault.com/q/1010000011091088" target="_blank" rel="external">https://segmentfault.com/q/1010000011091088</a></p>
 </blockquote>
-<h3 id="整合对象和数组监听又踩的坑"><a href="#整合对象和数组监听又踩的坑" class="headerlink" title="整合对象和数组监听又踩的坑"></a>整合对象和数组监听又踩的坑</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">Object.keys(ob).forEach(function(key, index, keyArray) &#123;</div><div class="line">            // 获取旧值</div><div class="line">            var oldVal = ob[key]</div><div class="line">            Object.defineProperty(ob, key, &#123;</div><div class="line">                get: function() &#123;</div><div class="line">                    return oldVal</div><div class="line">                &#125;,</div><div class="line">                set: function(newVal) &#123;</div><div class="line">                    if(obj.toString.call(newVal) === &apos;[object Object]&apos;) &#123;</div><div class="line">                        this.observe(newVal)</div><div class="line">                    &#125;</div><div class="line">                    this.$callback(oldVal, newVal)</div><div class="line">                    oldVal = newVal</div><div class="line">                &#125;.bind(this)</div><div class="line">            &#125;)</div><div class="line">            if(obj.toString.call(ob[key]) === &apos;[object Object]&apos; || obj.toString.call(ob[key]) === &apos;[object Array]&apos;) &#123;</div><div class="line">                this.observe(ob[key])</div><div class="line">            &#125;</div><div class="line">        &#125;, this) // 这个this是重点</div></pre></td></tr></table></figure>
+<h3 id="整合对象和数组监听又踩的坑"><a href="#整合对象和数组监听又踩的坑" class="headerlink" title="整合对象和数组监听又踩的坑"></a>整合对象和数组监听又踩的坑</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.keys(ob).forEach(<span class="function"><span class="keyword">function</span>(<span class="params">key, index, keyArray</span>) </span>&#123;</div><div class="line">            <span class="comment">// 获取旧值</span></div><div class="line">            <span class="keyword">var</span> oldVal = ob[key]</div><div class="line">            <span class="built_in">Object</span>.defineProperty(ob, key, &#123;</div><div class="line">                <span class="attr">get</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">                    <span class="keyword">return</span> oldVal</div><div class="line">                &#125;,</div><div class="line">                <span class="attr">set</span>: <span class="function"><span class="keyword">function</span>(<span class="params">newVal</span>) </span>&#123;</div><div class="line">                    <span class="keyword">if</span>(obj.toString.call(newVal) === <span class="string">'[object Object]'</span>) &#123;</div><div class="line">                        <span class="keyword">this</span>.observe(newVal)</div><div class="line">                    &#125;</div><div class="line">                    <span class="keyword">this</span>.$callback(oldVal, newVal)</div><div class="line">                    oldVal = newVal</div><div class="line">                &#125;.bind(<span class="keyword">this</span>)</div><div class="line">            &#125;)</div><div class="line">            <span class="keyword">if</span>(obj.toString.call(ob[key]) === <span class="string">'[object Object]'</span> || obj.toString.call(ob[key]) === <span class="string">'[object Array]'</span>) &#123;</div><div class="line">                <span class="keyword">this</span>.observe(ob[key])</div><div class="line">            &#125;</div><div class="line">        &#125;, <span class="keyword">this</span>) <span class="comment">// 这个this是重点</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这边整合又出了个问题,发现Object.keys(ob).forEach()内部的this是undefined,<br>真的很奇怪后来想到作者源代码每次都在Object.keys(ob).forEach()最后把this也传入,而我之前一直没传却也成功了以为作者多此一举。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;现在发现自己还是太年轻,以作者的水平写出来的代码我都要花三四天才能吃透,轮得到我发现优化？<br>正巧今天看了《你不知道的js》,当中有讲到this丢失默认值是undefined</p>
 </blockquote>
@@ -185,7 +185,7 @@
     
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">最近的文章</span>
+                <span class="read-more-item-dim">Newer Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/01/22/js词法作用域/" title="js词法作用域----静态作用域">js词法作用域----静态作用域</a></h2>
                 <p class="excerpt">
                 
@@ -200,7 +200,7 @@
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">更早的文章</span>
+                <span class="read-more-item-dim">Older Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/01/10/阿里云服务器部署/" title="阿里云服务器部署Vue + webpack项目问题">阿里云服务器部署Vue + webpack项目问题</a></h2>
                 <p class="excerpt">
                 

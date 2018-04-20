@@ -76,7 +76,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">文字阁</a></li>
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
             
               <li class="navigation__item"><a href="https://github.com/lizhongzhen11/lizhongzhen11.github.io">目录</a></li>
             
@@ -90,7 +90,7 @@
   <!-- Weibo-->
   
   <li class="navigation__item">
-    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="我的微博" target="_blank">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
       <i class='social fa fa-weibo'></i>
       <span class="label">Weibo</span>
     </a>
@@ -100,7 +100,7 @@
   <!-- Github -->
   
   <li class="navigation__item">
-    <a href="https://github.com/lizhongzhen11" title="查看我的GitHub主页" target="_blank">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
       <i class='social fa fa-github'></i>
       <span class="label">Github</span>
     </a>
@@ -151,7 +151,7 @@
     <div class="post-meta">
       <time datetime="2018-01-22T03:40:00.340Z" class="post-list__meta--date date">2018-01-22</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -162,7 +162,7 @@
     <h3 id="学习自《你不知道的javascript》和：https-github-com-mqyqingfeng-Blog-issues-3"><a href="#学习自《你不知道的javascript》和：https-github-com-mqyqingfeng-Blog-issues-3" class="headerlink" title="学习自《你不知道的javascript》和：https://github.com/mqyqingfeng/Blog/issues/3"></a>学习自《你不知道的javascript》和：<a href="https://github.com/mqyqingfeng/Blog/issues/3" target="_blank" rel="external">https://github.com/mqyqingfeng/Blog/issues/3</a></h3><h3 id="js采用词法作用域-lexical-scoping-也就是静态作用域！！！"><a href="#js采用词法作用域-lexical-scoping-也就是静态作用域！！！" class="headerlink" title="js采用词法作用域(lexical scoping),也就是静态作用域！！！"></a>js采用词法作用域(lexical scoping),也就是静态作用域！！！</h3><blockquote>
 <p>词法作用域是由你在写代码时将变量和块作用域写在哪里来决定的。即编写代码的时候作用域就定义好了而不是调用的时候才开始定义。</p>
 </blockquote>
-<h3 id="核心：函数的作用域在函数定义的时候就决定了-很重要"><a href="#核心：函数的作用域在函数定义的时候就决定了-很重要" class="headerlink" title="核心：函数的作用域在函数定义的时候就决定了!!!(很重要)"></a>核心：函数的作用域在函数定义的时候就决定了!!!(很重要)</h3><h2 id="一、词法作用域的浅略理解"><a href="#一、词法作用域的浅略理解" class="headerlink" title="一、词法作用域的浅略理解"></a>一、词法作用域的浅略理解</h2><p>以下例子来自《你不知道的JavaScript》<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function foo(a) &#123;</div><div class="line">    var b = a * 2;</div><div class="line">    function bar(c) &#123;</div><div class="line">        console.log(a, b, c)</div><div class="line">    &#125;</div><div class="line">    bar( b * 3 );</div><div class="line">&#125;</div><div class="line">foo(2); // 2,4,12</div></pre></td></tr></table></figure></p>
+<h3 id="核心：函数的作用域在函数定义的时候就决定了-很重要"><a href="#核心：函数的作用域在函数定义的时候就决定了-很重要" class="headerlink" title="核心：函数的作用域在函数定义的时候就决定了!!!(很重要)"></a>核心：函数的作用域在函数定义的时候就决定了!!!(很重要)</h3><h2 id="一、词法作用域的浅略理解"><a href="#一、词法作用域的浅略理解" class="headerlink" title="一、词法作用域的浅略理解"></a>一、词法作用域的浅略理解</h2><p>以下例子来自《你不知道的JavaScript》<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">a</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> b = a * <span class="number">2</span>;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params">c</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(a, b, c)</div><div class="line">    &#125;</div><div class="line">    bar( b * <span class="number">3</span> );</div><div class="line">&#125;</div><div class="line">foo(<span class="number">2</span>); <span class="comment">// 2,4,12</span></div></pre></td></tr></table></figure></p>
 <p>上面的例子有三个逐级嵌套的作用域。<br>由内到外排列分别是：<code>bar()</code>作用域 —— <code>foo()</code>作用域 —— 全局作用域<br>我们通过上面代码能看到的是：</p>
 <ul>
 <li>全局作用域里只有一个函数<code>foo</code></li>
@@ -173,7 +173,7 @@
 <blockquote>
 <p>&nbsp;&nbsp;简单来讲就是<strong>作用域查找会在找到第一个匹配的标识符时停止。</strong></p>
 </blockquote>
-<p>例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">var a = 1</div><div class="line">function foo() &#123;</div><div class="line">    var a = 2; </div><div class="line">    function bar() &#123;</div><div class="line">        var a = 3; </div><div class="line">        console.log(a)</div><div class="line">    &#125;; </div><div class="line">    return bar()</div><div class="line">&#125;</div><div class="line">foo() // 3</div></pre></td></tr></table></figure></p>
+<p>例如:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">1</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> a = <span class="number">2</span>; </div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="keyword">var</span> a = <span class="number">3</span>; </div><div class="line">        <span class="built_in">console</span>.log(a)</div><div class="line">    &#125;; </div><div class="line">    <span class="keyword">return</span> bar()</div><div class="line">&#125;</div><div class="line">foo() <span class="comment">// 3</span></div></pre></td></tr></table></figure></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;对照上面代码就很好理解了。其实这里涉及到作用域链以及闭包的知识。代码中的<code>bar()</code>外部一般情况下无法访问,但是通过<code>return</code>关键字然后调用父亲<code>foo()</code>便能访问的到。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;书中给该特性起了个名字叫<strong>遮蔽效应</strong>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;全局作用域中的<code>a</code>可以通过<code>window.a</code>访问到。其实定义在全局作用域内的变量即方法,都可以认为是<code>window</code>的属性或方法。(注意是浏览器情况下)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果我们直接在浏览器控制台输出<code>bar()</code>,将会报错<code>Uncaught ReferenceError: bar is not defined</code>。这是因为<code>bar()</code>是写在<code>foo()</code>函数内的,它的爸爸是<code>foo()</code>而不是全局对象(浏览器下是<code>window</code>)。儿子不能越俎代庖,你也可以理解为等级分明。<code>bar()</code>编写时就在<code>foo()</code>内部,所以它的爸爸或者父级作用域以及自己的作用域都定下来了,几乎不能更改。</p>
 <blockquote>
 <p>所以这里有一个非常重要的点,需要牢记的是<strong>无论函数在哪里被调用,也无论它如何被调用,它的词法作用域都只由函数被声明时所处的位置决定。</strong></p>
@@ -182,8 +182,8 @@
 <blockquote>
 <p>js有两种办法做到在运行时’修改’词法作用域,分别是<code>eval</code>和<code>with</code>。但是,<strong>欺骗词法作用域会导致性能下降。</strong></p>
 </blockquote>
-<h3 id="eval"><a href="#eval" class="headerlink" title="eval"></a>eval</h3><p>首先,<code>eval</code>接收一个字符串为参数,并将其中的内容视为好像在书写时就存在于程序中这个位置的代码。<br>还是用书上的例子:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function foo(str, a) &#123;</div><div class="line">    eval(str) // 欺骗</div><div class="line">    console.log(a,b)</div><div class="line">&#125;</div><div class="line">var b = 2</div><div class="line">foo(&quot;var b = 3;&quot;, 1) // 1,3</div></pre></td></tr></table></figure></p>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一开始我看到这样的代码也感到不可思议。<code>foo()</code>里面需要打印<code>a</code>和<code>b</code>,传过来的参数只有<code>a</code>,并没有<code>b</code>,内部也没有,只有全局作用域内有且值为<strong>2</strong>,可是打印出来居然是<strong>3</strong>,这就真的很奇怪了。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我试着把<code>eval(str)</code>注释掉,之后打印输出<strong>1,2</strong>。然后我又把<code>var b = 2</code>注释掉,报<code>Uncaught SyntaxError: Unexpected end of input</code>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;结合这段代码理解开头那句话就容易得多了。这里<code>eval</code>的功能相当于在<code>foo()</code>内部加了个<code>var b = 3</code>。(这里其实是在<code>foo()</code>作用域内<strong>动态</strong>添加局部变量)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;而在实际开发中,<code>eval()</code>通常被用来执行动态创建的代码。例如公司封装的Ext框架中就有很多地方用到,比如<strong>tools.js</strong>里面的<code>tools.GetPopupWindow</code>方法中就有<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">if (eval(classname)) &#123;</div><div class="line">    win = Ext.create(classname, config);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="eval"><a href="#eval" class="headerlink" title="eval"></a>eval</h3><p>首先,<code>eval</code>接收一个字符串为参数,并将其中的内容视为好像在书写时就存在于程序中这个位置的代码。<br>还是用书上的例子:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">str, a</span>) </span>&#123;</div><div class="line">    <span class="built_in">eval</span>(str) <span class="comment">// 欺骗</span></div><div class="line">    <span class="built_in">console</span>.log(a,b)</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> b = <span class="number">2</span></div><div class="line">foo(<span class="string">"var b = 3;"</span>, <span class="number">1</span>) <span class="comment">// 1,3</span></div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一开始我看到这样的代码也感到不可思议。<code>foo()</code>里面需要打印<code>a</code>和<code>b</code>,传过来的参数只有<code>a</code>,并没有<code>b</code>,内部也没有,只有全局作用域内有且值为<strong>2</strong>,可是打印出来居然是<strong>3</strong>,这就真的很奇怪了。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我试着把<code>eval(str)</code>注释掉,之后打印输出<strong>1,2</strong>。然后我又把<code>var b = 2</code>注释掉,报<code>Uncaught SyntaxError: Unexpected end of input</code>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;结合这段代码理解开头那句话就容易得多了。这里<code>eval</code>的功能相当于在<code>foo()</code>内部加了个<code>var b = 3</code>。(这里其实是在<code>foo()</code>作用域内<strong>动态</strong>添加局部变量)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;而在实际开发中,<code>eval()</code>通常被用来执行动态创建的代码。例如公司封装的Ext框架中就有很多地方用到,比如<strong>tools.js</strong>里面的<code>tools.GetPopupWindow</code>方法中就有<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (<span class="built_in">eval</span>(classname)) &#123;</div><div class="line">    win = Ext.create(classname, config);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>&nbsp;&nbsp;默认情况下,如果<code>eval()</code>中所执行的代码包含有一个或多个声明(无论是变量还是函数),就会对<code>eval()</code>所处的词法作用域进行修改。<br>&nbsp;&nbsp;<strong>严格模式下不能修改作用域</strong></p>
 </blockquote>
@@ -198,7 +198,7 @@
     
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">最近的文章</span>
+                <span class="read-more-item-dim">Newer Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/01/30/公司内部Ext框架/" title="公司内部Ext框架使用注意事项或者叫开发指南">公司内部Ext框架使用注意事项或者叫开发指南</a></h2>
                 <p class="excerpt">
                 
@@ -220,7 +220,7 @@ tools.Set
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">更早的文章</span>
+                <span class="read-more-item-dim">Older Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/01/12/监听对象属性值的改变/" title="学习监听对象属性值改变">学习监听对象属性值改变</a></h2>
                 <p class="excerpt">
                 

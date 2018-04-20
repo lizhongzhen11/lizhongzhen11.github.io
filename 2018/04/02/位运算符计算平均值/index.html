@@ -73,7 +73,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">文字阁</a></li>
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
             
               <li class="navigation__item"><a href="https://github.com/lizhongzhen11/lizhongzhen11.github.io">目录</a></li>
             
@@ -87,7 +87,7 @@
   <!-- Weibo-->
   
   <li class="navigation__item">
-    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="我的微博" target="_blank">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
       <i class='social fa fa-weibo'></i>
       <span class="label">Weibo</span>
     </a>
@@ -97,7 +97,7 @@
   <!-- Github -->
   
   <li class="navigation__item">
-    <a href="https://github.com/lizhongzhen11" title="查看我的GitHub主页" target="_blank">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
       <i class='social fa fa-github'></i>
       <span class="label">Github</span>
     </a>
@@ -148,7 +148,7 @@
     <div class="post-meta">
       <time datetime="2018-04-02T02:34:14.719Z" class="post-list__meta--date date">2018-04-02</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -161,7 +161,7 @@
 <p><code>&gt;&gt;&gt;</code>与<code>&gt;&gt;</code>是位运算符,只对整型有效(不能用于浮点型)。<br>当是整型的时候<code>(low+high)&gt;&gt;1</code>可以代替<code>(low+high)/2</code>。<br><code>&gt;&gt;&gt;</code>是无符号右移运算符。<strong>如果 <code>low+high</code>是正整数,这三种运算是等价的</strong>。<br> 由于有编译器优化,他们的效率应该是相同的(如果不存在编译器优化,移位运算更快)。</p>
 </blockquote>
 <p>用<code>&gt;&gt;&gt;</code>一般是有特殊的目的。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;至于<code>&gt;&gt;&gt;</code>和<code>&gt;&gt;</code>的区别,则在于有符号和无符号。比如<code>-2&gt;&gt;&gt;1</code>的结果是<code>2147483647</code>,而<code>-2&gt;&gt;1</code>的结果是<code>-1</code>。(其中<code>2147483647</code>是<code>-2</code>的补码右移一位后,左边补0的结果。)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>这里计算平均值使用<code>&gt;&gt;&gt;</code>取代<code>&gt;&gt;</code>,恐怕是因为可能出现很大的数字,这些数字单独用不会超过<code>Integer.MAX_VALUE</code>,但求和之后可能超过,这时如果使用<code>&gt;&gt;</code>或者<code>/</code>来计算,会因为溢出而算出负数结果。</strong></p>
-<p>用下面的程序可以说明问题：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">private static void testFun() &#123;</div><div class="line">    int low = Integer.MAX_VALUE;</div><div class="line">    int high = Integer.MAX_VALUE;</div><div class="line">    System.out.println(&quot;low:&quot; + low); // 先看一眼数字</div><div class="line">    int as = (low + high) / 1;</div><div class="line">    int div = (low + high) &gt;&gt; 1;</div><div class="line">    int au = (low + high) &gt;&gt;&gt; 1;</div><div class="line">    System.out.println(&quot;as:&quot; + as); // 使用 / 计算的平均值。</div><div class="line">    System.out.println(&quot;div:&quot; + div); // 使用 &gt;&gt; 计算的平均值，与/相同。</div><div class="line">    System.out.println(&quot;au:&quot; + au); // 使用 &gt;&gt;&gt; 计算的平均值。</div><div class="line">&#125;</div><div class="line">/*  执行结果：</div><div class="line">    low:2147483647</div><div class="line">    as:-1</div><div class="line">    div:-1</div><div class="line">    au:2147483647</div><div class="line">*/</div></pre></td></tr></table></figure></p>
+<p>用下面的程序可以说明问题：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">testFun</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> low = Integer.MAX_VALUE;</div><div class="line">    <span class="keyword">int</span> high = Integer.MAX_VALUE;</div><div class="line">    System.out.println(<span class="string">"low:"</span> + low); <span class="comment">// 先看一眼数字</span></div><div class="line">    <span class="keyword">int</span> as = (low + high) / <span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> div = (low + high) &gt;&gt; <span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> au = (low + high) &gt;&gt;&gt; <span class="number">1</span>;</div><div class="line">    System.out.println(<span class="string">"as:"</span> + as); <span class="comment">// 使用 / 计算的平均值。</span></div><div class="line">    System.out.println(<span class="string">"div:"</span> + div); <span class="comment">// 使用 &gt;&gt; 计算的平均值，与/相同。</span></div><div class="line">    System.out.println(<span class="string">"au:"</span> + au); <span class="comment">// 使用 &gt;&gt;&gt; 计算的平均值。</span></div><div class="line">&#125;</div><div class="line"><span class="comment">/*  执行结果：</span></div><div class="line">    low:2147483647</div><div class="line">    as:-1</div><div class="line">    div:-1</div><div class="line">    au:2147483647</div><div class="line">*/</div></pre></td></tr></table></figure></p>
 
   </section>
 
@@ -172,7 +172,7 @@
     
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">最近的文章</span>
+                <span class="read-more-item-dim">Newer Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/04/03/JAVA环境变量配置说明/" title="JAVA环境变量JAVA_HOME、CLASSPATH、PATH配置说明以及javac命令无法使用的问题">JAVA环境变量JAVA_HOME、CLASSPATH、PATH配置说明以及javac命令无法使用的问题</a></h2>
                 <p class="excerpt">
                 
@@ -187,7 +187,7 @@ current directory(当前目录)：当前在用的目录就是当前目录&amp;nb
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">更早的文章</span>
+                <span class="read-more-item-dim">Older Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/03/30/计数排序/" title="计数排序">计数排序</a></h2>
                 <p class="excerpt">
                 

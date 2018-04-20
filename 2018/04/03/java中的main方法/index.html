@@ -70,7 +70,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">文字阁</a></li>
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
             
               <li class="navigation__item"><a href="https://github.com/lizhongzhen11/lizhongzhen11.github.io">目录</a></li>
             
@@ -84,7 +84,7 @@
   <!-- Weibo-->
   
   <li class="navigation__item">
-    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="我的微博" target="_blank">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
       <i class='social fa fa-weibo'></i>
       <span class="label">Weibo</span>
     </a>
@@ -94,7 +94,7 @@
   <!-- Github -->
   
   <li class="navigation__item">
-    <a href="https://github.com/lizhongzhen11" title="查看我的GitHub主页" target="_blank">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
       <i class='social fa fa-github'></i>
       <span class="label">Github</span>
     </a>
@@ -145,7 +145,7 @@
     <div class="post-meta">
       <time datetime="2018-04-03T03:13:36.968Z" class="post-list__meta--date date">2018-04-03</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -159,7 +159,7 @@
 <blockquote>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;main的名称不能变是为了JVM能够识别程序运行的起点,main方法可以被重载,重载的main方法不会被执行。main方法作为程序初始线程的起点,任何其他线程均由该线程启动。JVM内部有两种线程,<strong>非守护线程和守护线程,main方法属于非守护线程</strong>,守护线程通常由JVM自己使用,Java程序也可以表明自己的线程是守护线程。当程序中所有的非守护线程终止时,JVM退出。也可以用<code>Runtime</code>类或者<code>System.exit()</code>来退出。</p>
 </blockquote>
-<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>String[] args</code>,是main方法中唯一可以改变的地方！args是arguments的缩写,只是一个变量默认名,习惯性写作它,但是也可以改变的,只要符合命名规则随便你写成什么。在使用集成开发工具的今天,<code>String[] args</code>更像是一种摆设了,很多初学者都不知道它的作用,其实它是程序运行传入的一个参数组。一个简单的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public class Test&#123;  </div><div class="line">    public static void main(String[] args)&#123;  </div><div class="line">        System.out.println(&quot;获取数组args[]的数据&quot;);  </div><div class="line">        for(int i=0;i&lt;args.length;i++)&#123;  </div><div class="line">            System.out.println(args[i]);  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<code>String[] args</code>,是main方法中唯一可以改变的地方！args是arguments的缩写,只是一个变量默认名,习惯性写作它,但是也可以改变的,只要符合命名规则随便你写成什么。在使用集成开发工具的今天,<code>String[] args</code>更像是一种摆设了,很多初学者都不知道它的作用,其实它是程序运行传入的一个参数组。一个简单的例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;  </div><div class="line">        System.out.println(<span class="string">"获取数组args[]的数据"</span>);  </div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;args.length;i++)&#123;  </div><div class="line">            System.out.println(args[i]);  </div><div class="line">        &#125;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以管理员身份运行CMD,因为我的Test.java是直接保存在F盘中的,输入f:跳转到目录,输入<code>Javac Test.java</code>将其编译为<code>Test.class</code>文件,然后再输入<code>java Test 1 2 3</code>,可以发现打印输出1 2 3。</p>
 <h3 id="以上讲解了main方法-但是为什么现在的web项目里没有main方法呢？"><a href="#以上讲解了main方法-但是为什么现在的web项目里没有main方法呢？" class="headerlink" title="以上讲解了main方法,但是为什么现在的web项目里没有main方法呢？"></a>以上讲解了main方法,但是为什么现在的web项目里没有main方法呢？</h3><p>抄自：<br><a href="https://blog.csdn.net/lyt_7cs1dn9/article/details/52469472" target="_blank" rel="external">https://blog.csdn.net/lyt_7cs1dn9/article/details/52469472</a><br><a href="https://ask.csdn.net/questions/369015" target="_blank" rel="external">https://ask.csdn.net/questions/369015</a><br><a href="https://www.cnblogs.com/dhl-2013/articles/3272516.html" target="_blank" rel="external">https://www.cnblogs.com/dhl-2013/articles/3272516.html</a></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先理解一下main方法：你的java程序要运行,总要有一个起点,所以我们就约定,从main方法这里开始一行一行执行,java程序跑起来,一般是通过主类的main方法启动的。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>其次,web项目是由容器启动的</strong>。也就是服务器,tomcat之类。</p>
@@ -176,7 +176,7 @@
     
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">最近的文章</span>
+                <span class="read-more-item-dim">Newer Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/04/08/java中equals/" title="java中比较String是否相同为何用equals而不是==？">java中比较String是否相同为何用equals而不是==？</a></h2>
                 <p class="excerpt">
                 
@@ -191,7 +191,7 @@
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">更早的文章</span>
+                <span class="read-more-item-dim">Older Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/04/03/JAVA环境变量配置说明/" title="JAVA环境变量JAVA_HOME、CLASSPATH、PATH配置说明以及javac命令无法使用的问题">JAVA环境变量JAVA_HOME、CLASSPATH、PATH配置说明以及javac命令无法使用的问题</a></h2>
                 <p class="excerpt">
                 

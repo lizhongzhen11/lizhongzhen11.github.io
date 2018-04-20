@@ -73,7 +73,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">文字阁</a></li>
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
             
               <li class="navigation__item"><a href="https://github.com/lizhongzhen11/lizhongzhen11.github.io">目录</a></li>
             
@@ -87,7 +87,7 @@
   <!-- Weibo-->
   
   <li class="navigation__item">
-    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="我的微博" target="_blank">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
       <i class='social fa fa-weibo'></i>
       <span class="label">Weibo</span>
     </a>
@@ -97,7 +97,7 @@
   <!-- Github -->
   
   <li class="navigation__item">
-    <a href="https://github.com/lizhongzhen11" title="查看我的GitHub主页" target="_blank">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
       <i class='social fa fa-github'></i>
       <span class="label">Github</span>
     </a>
@@ -148,7 +148,7 @@
     <div class="post-meta">
       <time datetime="2017-12-25T01:35:04.111Z" class="post-list__meta--date date">2017-12-25</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -159,7 +159,7 @@
     <blockquote>
 <p>参考:<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort</a><br><a href="https://yq.aliyun.com/articles/64376" target="_blank" rel="external">https://yq.aliyun.com/articles/64376</a></p>
 </blockquote>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>前两天,一小伙伴在吹牛群发了一个截图,问我们他的代码为什么没有起作用,代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">arr.sort(function (a, b) &#123;</div><div class="line">  return +b.value &gt; +a.value ? 1: +b.value &lt; +a.value ? -1 : 0;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>前两天,一小伙伴在吹牛群发了一个截图,问我们他的代码为什么没有起作用,代码如下:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">arr.sort(<span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> +b.value &gt; +a.value ? <span class="number">1</span>: +b.value &lt; +a.value ? <span class="number">-1</span> : <span class="number">0</span>;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 <p>讲道理,我第一看到这种连环嵌套三元运算的。毕竟才疏学浅,当时的第一想法是这个语法是错的,遂打开谷歌浏览器控制台进行测试。<br>我的测试:<br><img src="../../../../images/sort.png" alt=""></p>
 <blockquote>
 <p>代码在控制台能够正常运行,说明语法没错,嗯,我又学到了一点。但是,我一开始并没有加<code>+</code>号,结果返回的和sort()方法默认的一样,反而加了<code>+</code>就能正常排序了,这是为什么?<br>还有,为什么不直接<code>arr.sort(function(param1,param2){return +param1.value &gt; +param2.value ? 1 : -1})</code>,反而要嵌套呢?</p>
@@ -168,7 +168,7 @@
 <h3 id="MDN上对Array-prototype-sort-的讲解"><a href="#MDN上对Array-prototype-sort-的讲解" class="headerlink" title="MDN上对Array.prototype.sort()的讲解"></a>MDN上对Array.prototype.sort()的讲解</h3><blockquote>
 <p>MDN一开头就说<code>The sort() method sorts the elements of an array in place and returns the array.The sort is not necessarily stable.The default sort order is according to string Unicode code points.</code>,意思是sort()方法对数组进行排序并返回排序后的数组,但是sort方法不稳定,默认以字符串<strong>Unicode</strong>编码排序。</p>
 </blockquote>
-<p>这里我主要列举当时的疑惑或者sort()方法的不足<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var arr = [1,11,2,12,3]</div><div class="line">arr.sort() // [1,11,12,2,3]</div></pre></td></tr></table></figure></p>
+<p>这里我主要列举当时的疑惑或者sort()方法的不足<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">11</span>,<span class="number">2</span>,<span class="number">12</span>,<span class="number">3</span>]</div><div class="line">arr.sort() <span class="comment">// [1,11,12,2,3]</span></div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>注意:我们基本上刚开始接触sort()方法时都遇到过这种情况,在日常开发运用中基本上也能想到这个不足之处,但是由于一开始学的比较渣,理解的不深,今天再度学习知道,出现以上情况是由于sort()方法是按照字符串<strong>Unicode</strong>编码排序的,而上例中<code>12</code>的<strong>Unicode</strong>编码在<code>2</code>的<strong>Unicode</strong>编码之前,所以使用sort()排序后12排在了2之前。</p>
 </blockquote>
@@ -199,16 +199,16 @@
 </blockquote>
 </li>
 </ul>
-<p>所以,比较函数的形式如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function compare(a, b) &#123;</div><div class="line">  if (a is less than b by some ordering criterion) &#123;</div><div class="line">    return -1;</div><div class="line">  &#125;</div><div class="line">  if (a is greater than b by the ordering criterion) &#123;</div><div class="line">    return 1;</div><div class="line">  &#125;</div><div class="line">  // a must be equal to b</div><div class="line">  return 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>简单的升序排列例子:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function compareNumbers(a, b) &#123;</div><div class="line">  return a - b; // 不能有 Infinity 和 NaN</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>所以,比较函数的形式如下:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">compare</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (a is less than b by some ordering criterion) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (a is greater than b by the ordering criterion) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// a must be equal to b</span></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>简单的升序排列例子:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">compareNumbers</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> a - b; <span class="comment">// 不能有 Infinity 和 NaN</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>对非 ASCII 字符排序<br>当排序非 ASCII 字符的字符串（如包含类似 e, é, è, a, ä 等字符的字符串）。一些非英语语言的字符串需要使用 String.localeCompare。这个函数可以将函数排序到正确的顺序。</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var items = [&apos;réservé&apos;, &apos;premier&apos;, &apos;cliché&apos;, &apos;communiqué&apos;, &apos;café&apos;, &apos;adieu&apos;];</div><div class="line">items.sort(function (a, b) &#123;</div><div class="line">  return a.localeCompare(b);</div><div class="line">&#125;);</div><div class="line">// items is [&apos;adieu&apos;, &apos;café&apos;, &apos;cliché&apos;, &apos;communiqué&apos;, &apos;premier&apos;, &apos;réservé&apos;]</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> items = [<span class="string">'réservé'</span>, <span class="string">'premier'</span>, <span class="string">'cliché'</span>, <span class="string">'communiqué'</span>, <span class="string">'café'</span>, <span class="string">'adieu'</span>];</div><div class="line">items.sort(<span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> a.localeCompare(b);</div><div class="line">&#125;);</div><div class="line"><span class="comment">// items is ['adieu', 'café', 'cliché', 'communiqué', 'premier', 'réservé']</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>使用映射改善排序<br>compareFunction 可能需要对元素做多次映射以实现排序，尤其当 compareFunction 较为复杂，且元素较多的时候，某些 compareFunction 可能会导致很高的负载。使用 map 辅助排序将会是一个好主意。<strong>基本思想是首先将数组中的每个元素比较的实际值取出来，排序后再将数组恢复</strong>。</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">// 需要被排序的数组</div><div class="line">var list = [&apos;Delta&apos;, &apos;alpha&apos;, &apos;CHARLIE&apos;, &apos;bravo&apos;];</div><div class="line">// 对需要排序的数字和位置的临时存储</div><div class="line">var mapped = list.map(function(el, i) &#123;</div><div class="line">  return &#123; index: i, value: el.toLowerCase() &#125;;</div><div class="line">&#125;)</div><div class="line">// 按照多个值排序数组</div><div class="line">mapped.sort(function(a, b) &#123;</div><div class="line">  return +(a.value &gt; b.value) || +(a.value === b.value) - 1;</div><div class="line">&#125;);</div><div class="line">// 根据索引得到排序的结果</div><div class="line">var result = mapped.map(function(el)&#123;</div><div class="line">  return list[el.index];</div><div class="line">&#125;);</div><div class="line">// 结果: [&apos;alpha&apos;, &apos;bravo&apos;, &apos;CHARLIE&apos;, &apos;Delta&apos;]</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 需要被排序的数组</span></div><div class="line"><span class="keyword">var</span> list = [<span class="string">'Delta'</span>, <span class="string">'alpha'</span>, <span class="string">'CHARLIE'</span>, <span class="string">'bravo'</span>];</div><div class="line"><span class="comment">// 对需要排序的数字和位置的临时存储</span></div><div class="line"><span class="keyword">var</span> mapped = list.map(<span class="function"><span class="keyword">function</span>(<span class="params">el, i</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123; <span class="attr">index</span>: i, <span class="attr">value</span>: el.toLowerCase() &#125;;</div><div class="line">&#125;)</div><div class="line"><span class="comment">// 按照多个值排序数组</span></div><div class="line">mapped.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> +(a.value &gt; b.value) || +(a.value === b.value) - <span class="number">1</span>;</div><div class="line">&#125;);</div><div class="line"><span class="comment">// 根据索引得到排序的结果</span></div><div class="line"><span class="keyword">var</span> result = mapped.map(<span class="function"><span class="keyword">function</span>(<span class="params">el</span>)</span>&#123;</div><div class="line">  <span class="keyword">return</span> list[el.index];</div><div class="line">&#125;);</div><div class="line"><span class="comment">// 结果: ['alpha', 'bravo', 'CHARLIE', 'Delta']</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>解析: sort()方法内的比较函数返回的是<code>+(a.value &gt; b.value) || +(a.value === b.value) - 1</code>,why?<br>因为这里的value是小写的字符串,字符串比较是直接比较<strong>Unicode</strong>编码的,经检测,括号前的<code>+</code>可以省去。<br><strong>这里的<code>+</code>的意思其实是把比较得到的boolean值强转成数值类型,因为前文说了,sort()方法自定义的函数是根据返回值与0的比较来进行排序的。</strong></p>
 </blockquote>
@@ -216,9 +216,9 @@
 <blockquote>
 <p>这是为了应对两者值相等的情况下进行比较。当两者值相等,那么 <code>a.value === b.value</code> 返回 <code>true</code>,<code>+true</code>强转成<code>1</code>, <code>1 - 1</code>值为<code>0</code>,根据前文的定义可以得知返回值为0时不改变两者相对位置。</p>
 </blockquote>
-<p>改写下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mapped.sort(function(a, b) &#123;</div><div class="line">  return a.value &gt; b.value ? 1 : a.value &lt; b.value ? -1 : 0</div><div class="line">&#125;);</div><div class="line">[&#123;index: 1, value: &quot;alpha&quot;&#125;, &#123;index: 3, value: &quot;bravo&quot;&#125;, &#123;index: 2, value: &quot;charlie&quot;&#125;, &#123;index: 0, value: &quot;delta&quot;&#125;]</div></pre></td></tr></table></figure></p>
+<p>改写下:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mapped.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> a.value &gt; b.value ? <span class="number">1</span> : a.value &lt; b.value ? <span class="number">-1</span> : <span class="number">0</span></div><div class="line">&#125;);</div><div class="line">[&#123;<span class="attr">index</span>: <span class="number">1</span>, <span class="attr">value</span>: <span class="string">"alpha"</span>&#125;, &#123;<span class="attr">index</span>: <span class="number">3</span>, <span class="attr">value</span>: <span class="string">"bravo"</span>&#125;, &#123;<span class="attr">index</span>: <span class="number">2</span>, <span class="attr">value</span>: <span class="string">"charlie"</span>&#125;, &#123;<span class="attr">index</span>: <span class="number">0</span>, <span class="attr">value</span>: <span class="string">"delta"</span>&#125;]</div></pre></td></tr></table></figure></p>
 <p>这种方法其实是一样的。</p>
-<p>脑抽把小伙伴的代码拿过来用:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mapped.sort(function(a, b) &#123;</div><div class="line">  return +a.value &gt; +b.value ? 1 : +a.value &lt; +b.value ? -1 : 0</div><div class="line">&#125;);</div><div class="line">// [&#123;index: 0, value: &quot;delta&quot;&#125;, &#123;index: 1, value: &quot;alpha&quot;&#125;, &#123;index: 2, value: &quot;charlie&quot;&#125;, &#123;index: 3, value: &quot;bravo&quot;&#125;]</div></pre></td></tr></table></figure></p>
+<p>脑抽把小伙伴的代码拿过来用:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">mapped.sort(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> +a.value &gt; +b.value ? <span class="number">1</span> : +a.value &lt; +b.value ? <span class="number">-1</span> : <span class="number">0</span></div><div class="line">&#125;);</div><div class="line"><span class="comment">// [&#123;index: 0, value: "delta"&#125;, &#123;index: 1, value: "alpha"&#125;, &#123;index: 2, value: "charlie"&#125;, &#123;index: 3, value: "bravo"&#125;]</span></div></pre></td></tr></table></figure></p>
 <p>没变化。。。why?</p>
 <blockquote>
 <p>所以说要仔细真正的理解代码的意思。前文我说了<code>+</code>起到强转的作用, <code>+(a.value &gt; b.value)</code>是对括号内比较得到的boolean值进行强转,true 转为 1, false 转为 0.但是这里直接<code>+a.value</code>是对字符串的强转,以<code>&quot;alpha&quot;</code>为例,转为数值是<strong>NaN</strong>,JS高级编程书上说道,<strong>对NaN所有的比较运算都是false</strong>。这是JS的规则。</p>
@@ -237,7 +237,7 @@
     
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">最近的文章</span>
+                <span class="read-more-item-dim">Newer Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2017/12/26/NestableRuntimeException/" title="关于出现 org.apache.commons.lang.exception.NestableRuntimeException的解决方法">关于出现 org.apache.commons.lang.exception.NestableRuntimeException的解决方法</a></h2>
                 <p class="excerpt">
                 
@@ -254,7 +254,7 @@
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">更早的文章</span>
+                <span class="read-more-item-dim">Older Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2017/12/18/JDBC学习6/" title="JDBC学习6--DBUtils">JDBC学习6--DBUtils</a></h2>
                 <p class="excerpt">
                 

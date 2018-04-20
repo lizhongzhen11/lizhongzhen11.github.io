@@ -67,7 +67,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">文字阁</a></li>
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
             
               <li class="navigation__item"><a href="https://github.com/lizhongzhen11/lizhongzhen11.github.io">目录</a></li>
             
@@ -81,7 +81,7 @@
   <!-- Weibo-->
   
   <li class="navigation__item">
-    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="我的微博" target="_blank">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
       <i class='social fa fa-weibo'></i>
       <span class="label">Weibo</span>
     </a>
@@ -91,7 +91,7 @@
   <!-- Github -->
   
   <li class="navigation__item">
-    <a href="https://github.com/lizhongzhen11" title="查看我的GitHub主页" target="_blank">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
       <i class='social fa fa-github'></i>
       <span class="label">Github</span>
     </a>
@@ -142,7 +142,7 @@
     <div class="post-meta">
       <time datetime="2018-03-06T12:21:17.789Z" class="post-list__meta--date date">2018-03-06</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -156,7 +156,7 @@
 <p>不过思路应该是一样的,先得到开始结束时间的时间跨度,然后拿当天时间与它们对比,在时间范围内的计算与开始时间的时间跨度,除以总跨度即可得到百分比从而确定位置。不过超过了结束时间,那么整个进度条完成;没到达开始时间,整个进度条默认颜色。</p>
 </blockquote>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在chrome浏览器测试正常后,突发奇想去试试兼容性,发现firefox完全没有进度条,全重叠在一起。百度了下才知道,是时间格式的问题。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>一开始我用的是2018-03-06的形式,chrome正常,但是！firefox进行时间相减时报NaN,只支持javascript官方时间构造器格式即2018/03/06.遂改成这种形式,解决了。</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;至于改颜色,由于vue用的不多,磕磕绊绊的改好了,但也是写死的形式,没能达到师傅要求的传参改变颜色的形式。不过,接下来继续修改应该是可以达到的。</p>
-<h3 id="二、动态增删"><a href="#二、动态增删" class="headerlink" title="二、动态增删"></a>二、动态增删</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其实这里的一开始没想明白,后来想想通过<code>v-for</code>循环不就OK了吗。但是,这里有一个问题。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于该页面有两处增加/删除(分别对应父div和子div),这就造成了一个问题：当我增加一个父div时,然后增加第一个父div内部的子div,发现第二个父div里面的子div也跟着增加了。而且一个<code>select</code>改变选项时,其他所有子div内的<code>select</code>也跟着变。很明显,这是bug。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;解决方法也很巧妙,就是把父div里面需要用到的所有属性放到一个对象里面去,然后全局定义一个属性,值为数组类型的,把对象放进该数组内,然后对数组进行<code>push</code>和<code>pop</code>操作即可。<br>类似这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">condition_items: [</div><div class="line">    &#123;</div><div class="line">        unit: &apos;°C&apos;,</div><div class="line">        condition: &apos;温度&apos;,</div><div class="line">        conditions: [&apos;温度&apos;, &apos;湿度&apos;, &apos;阵雨量&apos;],</div><div class="line">        condition_index: 1</div><div class="line">    &#125;</div><div class="line">],</div></pre></td></tr></table></figure></p>
+<h3 id="二、动态增删"><a href="#二、动态增删" class="headerlink" title="二、动态增删"></a>二、动态增删</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其实这里的一开始没想明白,后来想想通过<code>v-for</code>循环不就OK了吗。但是,这里有一个问题。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于该页面有两处增加/删除(分别对应父div和子div),这就造成了一个问题：当我增加一个父div时,然后增加第一个父div内部的子div,发现第二个父div里面的子div也跟着增加了。而且一个<code>select</code>改变选项时,其他所有子div内的<code>select</code>也跟着变。很明显,这是bug。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;解决方法也很巧妙,就是把父div里面需要用到的所有属性放到一个对象里面去,然后全局定义一个属性,值为数组类型的,把对象放进该数组内,然后对数组进行<code>push</code>和<code>pop</code>操作即可。<br>类似这样的：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">condition_items: [</div><div class="line">    &#123;</div><div class="line">        <span class="attr">unit</span>: <span class="string">'°C'</span>,</div><div class="line">        <span class="attr">condition</span>: <span class="string">'温度'</span>,</div><div class="line">        <span class="attr">conditions</span>: [<span class="string">'温度'</span>, <span class="string">'湿度'</span>, <span class="string">'阵雨量'</span>],</div><div class="line">        <span class="attr">condition_index</span>: <span class="number">1</span></div><div class="line">    &#125;</div><div class="line">],</div></pre></td></tr></table></figure></p>
 
   </section>
 
@@ -167,7 +167,7 @@
     
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">最近的文章</span>
+                <span class="read-more-item-dim">Newer Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/03/07/SpringMVC学习2之宏观把握/" title="宏观上把握SpringMVC框架">宏观上把握SpringMVC框架</a></h2>
                 <p class="excerpt">
                 
@@ -182,7 +182,7 @@ springmvc的执行流程分析&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">更早的文章</span>
+                <span class="read-more-item-dim">Older Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/02/24/Eclipse中tomcat启动报错/" title="Eclipse中tomcat启动报错">Eclipse中tomcat启动报错</a></h2>
                 <p class="excerpt">
                 

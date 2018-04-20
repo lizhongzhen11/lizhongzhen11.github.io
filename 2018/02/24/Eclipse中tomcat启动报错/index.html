@@ -67,7 +67,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">文字阁</a></li>
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
             
               <li class="navigation__item"><a href="https://github.com/lizhongzhen11/lizhongzhen11.github.io">目录</a></li>
             
@@ -81,7 +81,7 @@
   <!-- Weibo-->
   
   <li class="navigation__item">
-    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="我的微博" target="_blank">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
       <i class='social fa fa-weibo'></i>
       <span class="label">Weibo</span>
     </a>
@@ -91,7 +91,7 @@
   <!-- Github -->
   
   <li class="navigation__item">
-    <a href="https://github.com/lizhongzhen11" title="查看我的GitHub主页" target="_blank">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
       <i class='social fa fa-github'></i>
       <span class="label">Github</span>
     </a>
@@ -142,7 +142,7 @@
     <div class="post-meta">
       <time datetime="2018-02-24T05:05:32.135Z" class="post-list__meta--date date">2018-02-24</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -151,6 +151,7 @@
 
   <section class="post">
     <h3 id="Caused-by-java-lang-ClassNotFoundException-org-springframework-web-context-support-XmlWebApplicati"><a href="#Caused-by-java-lang-ClassNotFoundException-org-springframework-web-context-support-XmlWebApplicati" class="headerlink" title="Caused by: java.lang.ClassNotFoundException: org.springframework.web.context.support.XmlWebApplicati"></a>Caused by: java.lang.ClassNotFoundException: org.springframework.web.context.support.XmlWebApplicati</h3><p>背景：<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于公司年后将gitlab进行了服务器迁移,所以所有的项目也要跟着迁移。当我尝试着将本地项目提交时报错,我想到以前的gitlab不能用了,那么地址也就不对了,所以就从新的gitlab上把项目拉下来切换分支,由于这个智障操作,导致我半天白忙活了。。。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其实gitlab迁移后只需要把本地<strong>.git</strong>文件夹下的<strong>config</strong>内部的<code>url</code>改掉就能正常提交代码了,但是我开始并不知道。。。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;从新地址的gitlab上把项目拉下来发现不能运行,检查了下发现<strong>.settings</strong>文件夹里面的内容是最原始的版本的,老大让我用之前本地的项目代码,so,新拉下来的项目只好删了。。。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;继续用本地之前的项目代码提交时也遇到了问题,不过百度解决了。但是,启动项目时却启动不了,报<code>Caused by: java.lang.ClassNotFoundException: org.springframework.web.context.support.XmlWebApplicati</code>,鼓捣了一上午,网上也是各种解决方法层出不穷,都没能搞定。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;实在没辙了,启动另一个springMVC项目试试看就去吃饭了,吃完饭发现另一个项目能跑,遂停止,继续试试不能跑的项目,然后。。。TMD居然能跑了！！！<br>操操操操操操,这是我此时的心情！！！逗我呢！！！</p>
+<h3 id="更新于2018-04-19"><a href="#更新于2018-04-19" class="headerlink" title="更新于2018-04-19"></a>更新于2018-04-19</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将雀巢水老项目拷给新同事,结果他启动不了。我心想不可能啊,然后我在本地启动再次遇到这个问题。纠结了半天难道项目代码错了？<strong>可是新同事没过多久启动成功了,我就fuck了！</strong>项目肯定没问题,后来仔细看报错,想到曾经貌似遇到过这个问题,遂翻看这篇笔记,然后照着启动别的项目后重新启动雀巢水,我艹了,OK了,真的操了！！！<br><strong>个人初步怀疑是tomcat内部缓存的问题,但是我对这个不是很懂,看来有必要去了解一番了！</strong></p>
 
   </section>
 
@@ -161,7 +162,7 @@
     
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">最近的文章</span>
+                <span class="read-more-item-dim">Newer Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/03/06/vue进度条及动态添加/" title="vue进度条及动态添加">vue进度条及动态添加</a></h2>
                 <p class="excerpt">
                 
@@ -175,7 +176,7 @@
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">更早的文章</span>
+                <span class="read-more-item-dim">Older Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/02/09/js函数作用域和块作用域/" title="js函数作用域和块作用域">js函数作用域和块作用域</a></h2>
                 <p class="excerpt">
                 

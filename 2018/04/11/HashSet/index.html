@@ -70,7 +70,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">文字阁</a></li>
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
             
               <li class="navigation__item"><a href="https://github.com/lizhongzhen11/lizhongzhen11.github.io">目录</a></li>
             
@@ -84,7 +84,7 @@
   <!-- Weibo-->
   
   <li class="navigation__item">
-    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="我的微博" target="_blank">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
       <i class='social fa fa-weibo'></i>
       <span class="label">Weibo</span>
     </a>
@@ -94,7 +94,7 @@
   <!-- Github -->
   
   <li class="navigation__item">
-    <a href="https://github.com/lizhongzhen11" title="查看我的GitHub主页" target="_blank">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
       <i class='social fa fa-github'></i>
       <span class="label">Github</span>
     </a>
@@ -145,7 +145,7 @@
     <div class="post-meta">
       <time datetime="2018-04-11T05:38:23.311Z" class="post-list__meta--date date">2018-04-11</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -155,7 +155,7 @@
   <section class="post">
     <h3 id="学习自："><a href="#学习自：" class="headerlink" title="学习自："></a>学习自：</h3><p><a href="http://www.cnblogs.com/skywang12345/p/3311252.html" target="_blank" rel="external">http://www.cnblogs.com/skywang12345/p/3311252.html</a></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;阅读<code>HashSet</code>的源码发现很有意思,四个<code>`public</code>修饰的构造函数内部全是<code>new</code>一个<code>HashMap</code>的实例,还有一个无修饰的构造函数<code>new</code>了一个<code>LinkedHashMap</code>,而<code>LinkedHashMap</code>又继承自<code>HashMap</code>。也就是说,<code>HashSet</code>是基于<code>HashMap</code>保存数据的。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;通读源码发现,内部实现的方法也比<code>HashMap</code>少了许多,而且很多方法其实就是在调用<code>HashMap</code>里的方法。</p>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>1.下方代码中为何初始容量是从<code>Math.max((int) (c.size()/.75f) + 1, 16)</code>中选？<code>c.size()/.75f) + 1</code>代表什么？<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public HashSet(Collection&lt;? extends E&gt; c) &#123;</div><div class="line">    map = new HashMap&lt;&gt;(Math.max((int) (c.size()/.75f) + 1, 16));</div><div class="line">    addAll(c);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>1.下方代码中为何初始容量是从<code>Math.max((int) (c.size()/.75f) + 1, 16)</code>中选？<code>c.size()/.75f) + 1</code>代表什么？<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashSet</span><span class="params">(Collection&lt;? extends E&gt; c)</span> </span>&#123;</div><div class="line">    map = <span class="keyword">new</span> HashMap&lt;&gt;(Math.max((<span class="keyword">int</span>) (c.size()/.<span class="number">75f</span>) + <span class="number">1</span>, <span class="number">16</span>));</div><div class="line">    addAll(c);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先,说明<code>(c.size()/.75f) + 1</code>。</p>
 <blockquote>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 因为从<code>HashMap</code>的效率(时间成本和空间成本)考虑,<code>HashMap</code>的加载因子是0.75。当<code>HashMap</code>的“阈值”(<strong>阈值 = <code>HashMap</code>总的大小 * 加载因子</strong>) &lt; “<code>HashMap</code>实际大小”时,就需要将<code>HashMap</code>的容量翻倍。所以,<code>(c.size()/.75f) + 1</code> 计算出来的正好是总的空间大小。</p>
@@ -178,7 +178,7 @@
     
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">最近的文章</span>
+                <span class="read-more-item-dim">Newer Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/04/11/ArrayList/" title="管中窥豹：ArrayList源码学习">管中窥豹：ArrayList源码学习</a></h2>
                 <p class="excerpt">
                 
@@ -194,7 +194,7 @@ removeAll和retainAll()看这里https://lizhongzhen11.github.io/2018/03/20/think
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">更早的文章</span>
+                <span class="read-more-item-dim">Older Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/04/10/HashTable/" title="管中窥豹：Hashtable源码学习">管中窥豹：Hashtable源码学习</a></h2>
                 <p class="excerpt">
                 
