@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>java覆盖方法初始化 | Ronaldo</title>
+    <title>管中窥豹：synchronized | Ronaldo</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -12,15 +12,15 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="当实现或继承一个方法并且覆盖它本身的方法时，如果覆盖的是init()方法，记得初始化，否则会出现空指针异常！！！例子：12345678910111213141516public abstract class MyGenericServlet implements Servlet, ServletConfig &amp;#123;    private ServletConfig servletConfig">
+    <meta name="description" content="一、学习自：http://www.cnblogs.com/xrq730/p/4851350.htmlhttp://www.cnblogs.com/xrq730/p/4851530.htmlhttp://www.cnblogs.com/xrq730/p/4853578.htmlhttp://www.cnblogs.com/xrq730/p/4853578.htmlhttp://www.cnblogs">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="java覆盖方法初始化 | Ronaldo">
-    <meta name="twitter:description" content="当实现或继承一个方法并且覆盖它本身的方法时，如果覆盖的是init()方法，记得初始化，否则会出现空指针异常！！！例子：12345678910111213141516public abstract class MyGenericServlet implements Servlet, ServletConfig &amp;#123;    private ServletConfig servletConfig">
+    <meta name="twitter:title" content="管中窥豹：synchronized | Ronaldo">
+    <meta name="twitter:description" content="一、学习自：http://www.cnblogs.com/xrq730/p/4851350.htmlhttp://www.cnblogs.com/xrq730/p/4851530.htmlhttp://www.cnblogs.com/xrq730/p/4853578.htmlhttp://www.cnblogs.com/xrq730/p/4853578.htmlhttp://www.cnblogs">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="java覆盖方法初始化 | Ronaldo">
-    <meta property="og:description" content="当实现或继承一个方法并且覆盖它本身的方法时，如果覆盖的是init()方法，记得初始化，否则会出现空指针异常！！！例子：12345678910111213141516public abstract class MyGenericServlet implements Servlet, ServletConfig &amp;#123;    private ServletConfig servletConfig">
+    <meta property="og:title" content="管中窥豹：synchronized | Ronaldo">
+    <meta property="og:description" content="一、学习自：http://www.cnblogs.com/xrq730/p/4851350.htmlhttp://www.cnblogs.com/xrq730/p/4851530.htmlhttp://www.cnblogs.com/xrq730/p/4853578.htmlhttp://www.cnblogs.com/xrq730/p/4853578.htmlhttp://www.cnblogs">
 
     
     <meta name="author" content="lizhongzhen">
@@ -37,7 +37,7 @@
     <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://yoursite.com/2017/11/06/java覆盖方法初始化/"/>
+    <link rel="canonical" href="http://yoursite.com/2018/04/23/synchronized/"/>
 
                  
 </head>
@@ -140,17 +140,34 @@
 
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2017-11-06T12:03:14.915Z" class="post-list__meta--date date">2017-11-06</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <time datetime="2018-04-23T09:17:36.018Z" class="post-list__meta--date date">2018-04-23</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
        No. <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
-    <h1 class="post-title">java覆盖方法初始化</h1>
+    <h1 class="post-title">管中窥豹：synchronized</h1>
   </header>
 
   <section class="post">
-    <p><strong>当实现或继承一个方法并且覆盖它本身的方法时，如果覆盖的是init()方法，记得初始化，否则会出现空指针异常！！！</strong><br>例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">public abstract class MyGenericServlet implements Servlet, ServletConfig &#123;</div><div class="line">    private ServletConfig servletConfig;</div><div class="line">    @Override</div><div class="line">	public void init(ServletConfig servletConfig) throws ServletException &#123;</div><div class="line">		// TODO Auto-generated method stub</div><div class="line">		this.servletConfig = servletConfig;</div><div class="line">	&#125;</div><div class="line">    ......</div><div class="line">&#125;</div><div class="line">- - -</div><div class="line">public class LoginServlet extends MyGenericServlet &#123;</div><div class="line">    public void init() throws ServletException &#123;</div><div class="line">        System.out.println(&quot;初始化&quot;);</div><div class="line">        init(); // 记得初始化</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+    <h3 id="一、学习自："><a href="#一、学习自：" class="headerlink" title="一、学习自："></a>一、学习自：</h3><p><a href="http://www.cnblogs.com/xrq730/p/4851350.html" target="_blank" rel="external">http://www.cnblogs.com/xrq730/p/4851350.html</a><br><a href="http://www.cnblogs.com/xrq730/p/4851530.html" target="_blank" rel="external">http://www.cnblogs.com/xrq730/p/4851530.html</a><br><a href="http://www.cnblogs.com/xrq730/p/4853578.html" target="_blank" rel="external">http://www.cnblogs.com/xrq730/p/4853578.html</a><br><a href="http://www.cnblogs.com/xrq730/p/4853578.html" target="_blank" rel="external">http://www.cnblogs.com/xrq730/p/4853578.html</a><br><a href="http://www.cnblogs.com/xrq730/p/4853713.html" target="_blank" rel="external">http://www.cnblogs.com/xrq730/p/4853713.html</a><br><a href="http://www.cnblogs.com/skywang12345/p/3479202.html" target="_blank" rel="external">http://www.cnblogs.com/skywang12345/p/3479202.html</a></p>
+<h3 id="二、基础知识点"><a href="#二、基础知识点" class="headerlink" title="二、基础知识点"></a>二、基础知识点</h3><blockquote>
+<p>在java中，每一个对象有且仅有一个同步锁。这也意味着，同步锁是依赖于对象而存在。</p>
+</blockquote>
+<ol>
+<li><p>当我们调用某对象的<code>synchronized</code>方法时,就获取了该对象的同步锁。例如,<code>synchronized(obj)</code>就获取了“obj这个对象”的同步锁。</p>
+</li>
+<li><p>不同线程对同步锁的访问是互斥的。也就是说,某时间点,对象的同步锁只能被一个线程获取到！通过同步锁,我们就能在多线程中,实现对“对象/方法”的互斥访问。 例如,现在有两个线程A和线程B,它们都会访问“对象obj的同步锁”。假设,在某一时刻,线程A获取到“obj的同步锁”并在执行一些操作；而此时,线程B也企图获取“obj的同步锁” —— 线程B会获取失败,它必须等待,直到线程A释放了“该对象的同步锁”之后线程B才能获取到“obj的同步锁”从而才可以运行。</p>
+</li>
+<li><p>当一个线程访问“某对象”的<strong>“<code>synchronized</code>方法”</strong>或者<strong>“<code>synchronized</code>代码块”</strong>时,其他线程对“该对象”的<strong>所有“<code>synchronized</code>方法”或者“<code>synchronized</code>代码块”的访问将被阻塞</strong>。</p>
+</li>
+<li><p>当一个线程访问“某对象”的<strong>“<code>synchronized</code>方法”</strong>或者<strong>“<code>synchronized</code>代码块”</strong>时,其他线程仍然可以访问“该对象”的<strong>非同步代码块</strong>。</p>
+</li>
+<li><p>如果多个线程访问的是多个对象(不出现同时访问一个对象的情况下),那么Java虚拟机就会创建多个锁,不会受到”等待释放锁”这一行为的制约。</p>
+</li>
+<li><p><code>synchronized</code>锁重入：<strong>当一个线程得到一个对象锁后,再次请求此对象锁时可以再次得到该对象的锁的。</strong></p>
+</li>
+</ol>
 
   </section>
 
@@ -159,32 +176,18 @@
 <section class="read-more">
            
     
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">新しい記事</span>
-                <h2 class="post-list__post-title post-title"><a href="/2017/11/06/HttpServlet/" title="java HttpServlet">java HttpServlet</a></h2>
-                <p class="excerpt">
-                
-                
-是一个 Servlet，继承自 GenericServlet。针对 HTTP 协议所定制。
-在 service() 方法中直接把 ServletRequest 和 ServletResponse 转为 HttpServletRequest 和 HttpServletResponse 并调用了重载的
-                &hellip;
-                </p>
-                <div class="post-list__meta"><time datetime="2017-11-06T12:48:50.853Z" class="post-list__meta--date date">2017-11-06</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/11/06/HttpServlet/">继续阅读</a></div>
-                           
-            </div>
         
         
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">以前の記事</span>
-                <h2 class="post-list__post-title post-title"><a href="/2017/11/02/jsnull和undefined/" title="js null和undefined">js null和undefined</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2018/04/17/线程/" title="管中窥豹：线程基础以及Runnable、Thread源码学习">管中窥豹：线程基础以及Runnable、Thread源码学习</a></h2>
                 <p class="excerpt">
                 
-                今天学习闭包时突然发现，手动释放内存是让变量 = null,而不是undefined,突然就有了为什么不用undefined这种想法。这就需要我将null和undefined好好理解一番了。主要参考阮一峰先生的文章：http://www.ruanyifeng.com/blog/2014/03/und
+                一、学习自https://www.zhihu.com/question/25532384https://www.zhihu.com/question/19901763http://ifeve.com/benefits/http://www.cnblogs.com/xrq730/category/73
                 &hellip;
                 </p>
-                <div class="post-list__meta"><time datetime="2017-11-02T09:57:18.093Z" class="post-list__meta--date date">2017-11-02</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/11/02/jsnull和undefined/">继续阅读</a></div>
+                <div class="post-list__meta"><time datetime="2018-04-17T02:29:05.167Z" class="post-list__meta--date date">2018-04-17</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/04/17/线程/">继续阅读</a></div>
                        
             </div>
         

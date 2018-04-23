@@ -83,6 +83,7 @@
 - 管中窥豹：TreeMap源码学习：https://lizhongzhen11.github.io/2018/04/14/TreeMap/
 - 管中窥豹：java队列(Queue)学习一--ArrayDeque：https://lizhongzhen11.github.io/2018/04/16/Queue/
 - 管中窥豹：线程基础以及Runnable、Thread源码学习：https://lizhongzhen11.github.io/2018/04/17/%E7%BA%BF%E7%A8%8B/
+- 管中窥豹：synchronized：
 
 ### java框架
 - spring相关
