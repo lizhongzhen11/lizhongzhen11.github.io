@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>vue爬坑成长汇总 | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="目录
+1.阻止事件点击
+2.v-bind:src时图片加载问题
+3.props传值问题
+
+1.阻止事件点击例子：1234&amp;lt;Col span=&quot;22&quot; @click.native=&quot;getHouseInfo(houseItem)&quot;&amp;gt;    &amp;#123;&amp;#123;houseItem&amp;#125;&amp;#125;    &amp;lt;img :src=&quot;getSrc(houseItem)&quot; @clic">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="vue爬坑成长汇总 | Ronaldo">
+    <meta name="twitter:description" content="目录
+1.阻止事件点击
+2.v-bind:src时图片加载问题
+3.props传值问题
+
+1.阻止事件点击例子：1234&amp;lt;Col span=&quot;22&quot; @click.native=&quot;getHouseInfo(houseItem)&quot;&amp;gt;    &amp;#123;&amp;#123;houseItem&amp;#125;&amp;#125;    &amp;lt;img :src=&quot;getSrc(houseItem)&quot; @clic">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="vue爬坑成长汇总 | Ronaldo">
+    <meta property="og:description" content="目录
+1.阻止事件点击
+2.v-bind:src时图片加载问题
+3.props传值问题
+
+1.阻止事件点击例子：1234&amp;lt;Col span=&quot;22&quot; @click.native=&quot;getHouseInfo(houseItem)&quot;&amp;gt;    &amp;#123;&amp;#123;houseItem&amp;#125;&amp;#125;    &amp;lt;img :src=&quot;getSrc(houseItem)&quot; @clic">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2018/04/26/vueGrow/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Blogを読む" class="blog-button">Blog</a></li>
+            
+              <li class="navigation__item"><a href="https://github.com/lizhongzhen11/lizhongzhen11.github.io">目录</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-04-26T11:04:34.387Z" class="post-list__meta--date date">2018-04-26</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       No. <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">vue爬坑成长汇总</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a><a id="1">目录</a></h3><ul>
+<li><a href="#11">1.阻止事件点击</a></li>
+<li><a href="#12">2.v-bind:src时图片加载问题</a></li>
+<li><a href="#13">3.props传值问题</a></li>
+</ul>
+<p><strong><a id="11">1.阻止事件点击</a></strong><br>例子：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Col</span> <span class="attr">span</span>=<span class="string">"22"</span> @<span class="attr">click.native</span>=<span class="string">"getHouseInfo(houseItem)"</span>&gt;</span></div><div class="line">    &#123;&#123;houseItem&#125;&#125;</div><div class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">:src</span>=<span class="string">"getSrc(houseItem)"</span> @<span class="attr">click.stop</span>=<span class="string">""</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">Col</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>这里的<code>click.stop</code>即可阻止事件执行。</p>
+<p><strong><a id="12">2.v-bind:src时图片加载问题</a></strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">:src</span>=<span class="string">"getSrc(houseItem)"</span> @<span class="attr">click.stop</span>=<span class="string">""</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">getSrc (houseItem) &#123;</div><div class="line">    <span class="keyword">if</span> (houseItem.selfUse === <span class="literal">true</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">require</span>(<span class="string">'@/images/officeSource/ziyong.png'</span>)</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (houseItem.isHired === <span class="literal">true</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">require</span>(<span class="string">'@/images/officeSource/yizu.png'</span>)</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="built_in">require</span>(<span class="string">'@/images/officeSource/weiyong.png'</span>)</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一开始百思不得其解为什么<code>:src</code>动态加载不了图片呢,关键还没有报错,后来在知乎看到了答案,需要加<code>require</code>。这个跟<code>webpack</code>有关,需要详细了解下。网上有人解释道：<strong>图片的动态引入需要当做一个模块来进行打包 不然webpack会默认为字符串的。</strong></p>
+<p><strong><a id="13">3.props传值问题</a></strong><br>直接看示例：<br><a href="https://github.com/lizhongzhen11/myStudy/blob/master/vue/props.vue" target="_blank" rel="external">https://github.com/lizhongzhen11/myStudy/blob/master/vue/props.vue</a><br><a href="https://github.com/lizhongzhen11/myStudy/blob/master/vue/components/childProps.vue" target="_blank" rel="external">https://github.com/lizhongzhen11/myStudy/blob/master/vue/components/childProps.vue</a></p>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">以前の記事</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/04/23/synchronized/" title="管中窥豹：synchronized">管中窥豹：synchronized</a></h2>
+                <p class="excerpt">
+                
+                一、学习自：http://www.cnblogs.com/xrq730/p/4851350.htmlhttp://www.cnblogs.com/xrq730/p/4851530.htmlhttp://www.cnblogs.com/xrq730/p/4853578.htmlhttp://www.c
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-04-23T09:17:36.018Z" class="post-list__meta--date date">2018-04-23</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/04/23/synchronized/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>
