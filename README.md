@@ -55,7 +55,7 @@
   - element ui脚手架配置：https://lizhongzhen11.github.io/2017/10/26/elementUi/
   - vue进度条及动态添加：https://lizhongzhen11.github.io/2018/03/06/vue%E8%BF%9B%E5%BA%A6%E6%9D%A1%E5%8F%8A%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0/
   - vue中extends用法以及动态生成页面：https://lizhongzhen11.github.io/2018/03/09/vue%E4%B8%ADextends%E4%BB%A5%E5%8F%8A%E5%8A%A8%E6%80%81%E7%94%9F%E6%88%90%E9%A1%B5%E9%9D%A2/
-  - vue爬坑成长汇总：
+  - vue爬坑成长汇总：https://lizhongzhen11.github.io/2018/04/26/vueGrow/
 
 ### html以及css
 - 响应式布局解析：https://lizhongzhen11.github.io/2017/10/30/%E5%93%8D%E5%BA%94%E5%BC%8F%E5%B8%83%E5%B1%80%E8%A7%A3%E6%9E%90/
