@@ -17,8 +17,9 @@
 2.v-bind:src时图片加载问题
 3.props传值问题
 4. .native原生事件
+5. vue-router 懒加载
 
-1.阻止事件点击例子：1234&amp;lt;Col span=&quot;22&quot; @click.native=&quot;getHouseInfo(houseItem)&quot;&amp;gt;    &amp;#123;&amp;#123;houseItem&amp;#125;&amp;#125;    &amp;lt;img :src=&quot;getSrc(ho">
+1.阻止事件点击例子：1234&amp;lt;Col span=&quot;22&quot; @click.native=&quot;getHouseInfo(houseItem)&quot;&amp;gt;    &amp;#123;&amp;#123;houseItem&amp;#125;&amp;#125;    &amp;lt;i">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="vue爬坑成长汇总 | Ronaldo">
@@ -27,8 +28,9 @@
 2.v-bind:src时图片加载问题
 3.props传值问题
 4. .native原生事件
+5. vue-router 懒加载
 
-1.阻止事件点击例子：1234&amp;lt;Col span=&quot;22&quot; @click.native=&quot;getHouseInfo(houseItem)&quot;&amp;gt;    &amp;#123;&amp;#123;houseItem&amp;#125;&amp;#125;    &amp;lt;img :src=&quot;getSrc(ho">
+1.阻止事件点击例子：1234&amp;lt;Col span=&quot;22&quot; @click.native=&quot;getHouseInfo(houseItem)&quot;&amp;gt;    &amp;#123;&amp;#123;houseItem&amp;#125;&amp;#125;    &amp;lt;i">
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="vue爬坑成长汇总 | Ronaldo">
@@ -37,8 +39,9 @@
 2.v-bind:src时图片加载问题
 3.props传值问题
 4. .native原生事件
+5. vue-router 懒加载
 
-1.阻止事件点击例子：1234&amp;lt;Col span=&quot;22&quot; @click.native=&quot;getHouseInfo(houseItem)&quot;&amp;gt;    &amp;#123;&amp;#123;houseItem&amp;#125;&amp;#125;    &amp;lt;img :src=&quot;getSrc(ho">
+1.阻止事件点击例子：1234&amp;lt;Col span=&quot;22&quot; @click.native=&quot;getHouseInfo(houseItem)&quot;&amp;gt;    &amp;#123;&amp;#123;houseItem&amp;#125;&amp;#125;    &amp;lt;i">
 
     
     <meta name="author" content="lizhongzhen">
@@ -85,7 +88,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">文字阁</a></li>
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
             
               <li class="navigation__item"><a href="https://github.com/lizhongzhen11/lizhongzhen11.github.io">目录</a></li>
             
@@ -99,7 +102,7 @@
   <!-- Weibo-->
   
   <li class="navigation__item">
-    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="我的微博" target="_blank">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
       <i class='social fa fa-weibo'></i>
       <span class="label">Weibo</span>
     </a>
@@ -109,7 +112,7 @@
   <!-- Github -->
   
   <li class="navigation__item">
-    <a href="https://github.com/lizhongzhen11" title="查看我的GitHub主页" target="_blank">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
       <i class='social fa fa-github'></i>
       <span class="label">Github</span>
     </a>
@@ -160,7 +163,7 @@
     <div class="post-meta">
       <time datetime="2018-04-26T11:04:34.387Z" class="post-list__meta--date date">2018-04-26</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -173,6 +176,7 @@
 <li><a href="#12">2.v-bind:src时图片加载问题</a></li>
 <li><a href="#13">3.props传值问题</a></li>
 <li><a href="#14">4. .native原生事件</a></li>
+<li><a href="#15">5. vue-router 懒加载</a></li>
 </ul>
 <p><strong><a id="11">1.阻止事件点击</a></strong><br>例子：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Col</span> <span class="attr">span</span>=<span class="string">"22"</span> @<span class="attr">click.native</span>=<span class="string">"getHouseInfo(houseItem)"</span>&gt;</span></div><div class="line">    &#123;&#123;houseItem&#125;&#125;</div><div class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">:src</span>=<span class="string">"getSrc(houseItem)"</span> @<span class="attr">click.stop</span>=<span class="string">""</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">Col</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>这里的<code>click.stop</code>即可阻止事件执行。</p>
@@ -181,6 +185,13 @@
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一开始百思不得其解为什么<code>:src</code>动态加载不了图片呢,关键还没有报错,后来在知乎看到了答案,需要加<code>require</code>。这个跟<code>webpack</code>有关,需要详细了解下。网上有人解释道：<strong>图片的动态引入需要当做一个模块来进行打包 不然webpack会默认为字符串的。</strong></p>
 <p><strong><a id="13">3.props传值问题</a></strong><br>直接看示例：<br><a href="https://github.com/lizhongzhen11/myStudy/blob/master/vue/props.vue" target="_blank" rel="external">https://github.com/lizhongzhen11/myStudy/blob/master/vue/props.vue</a><br><a href="https://github.com/lizhongzhen11/myStudy/blob/master/vue/components/childProps.vue" target="_blank" rel="external">https://github.com/lizhongzhen11/myStudy/blob/master/vue/components/childProps.vue</a></p>
 <p><strong><a id="14">4. .native原生事件</a></strong><br><a href="https://segmentfault.com/q/1010000007896386/a-1020000007896602" target="_blank" rel="external">https://segmentfault.com/q/1010000007896386/a-1020000007896602</a></p>
+<p><strong><a id="15">5. vue-router 懒加载</a></strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;最近开发后台管理系统项目,环境是苍老师搭的。抽空看了下苍老师搭的环境配置,发现他写的路由和通过<code>vue-cli</code>构建后默认的路由不一样！<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先,他在<code>router</code>文件夹下有两个<code>js</code>,一个是默认的<code>index.js</code>,还有一个是他定义的<code>router.js</code>,以前没大注意,在他的环境中路由都是写在<code>router.js</code>里面的,但是一个经过<code>vue-cli</code>构建的项目,默认路由是下面这种写法：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></div><div class="line"><span class="keyword">import</span> Router <span class="keyword">from</span> <span class="string">'vue-router'</span></div><div class="line"><span class="keyword">import</span> Hello <span class="keyword">from</span> <span class="string">'@/views/hello'</span></div><div class="line">Vue.use(Router)</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Router(&#123;</div><div class="line">  <span class="attr">routes</span>: [</div><div class="line">    &#123;</div><div class="line">      <span class="attr">path</span>: <span class="string">'/'</span>,</div><div class="line">      <span class="attr">name</span>: <span class="string">'hello'</span>,</div><div class="line">      <span class="attr">component</span>: Hello</div><div class="line">    &#125;</div><div class="line">  ]</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;但是,苍老师搭建的环境不是这样写的。苍老师环境中的<code>index.js</code>：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></div><div class="line"><span class="keyword">import</span> Router <span class="keyword">from</span> <span class="string">'vue-router'</span></div><div class="line"><span class="keyword">import</span> routes <span class="keyword">from</span> <span class="string">'./router'</span></div><div class="line">Vue.use(Router)</div><div class="line"><span class="keyword">const</span> RouterConfig = &#123;</div><div class="line">  routes</div><div class="line">&#125;</div><div class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> Router(RouterConfig)</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> router</div></pre></td></tr></table></figure></p>
+<p><code>router.js</code>:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> hello = &#123;</div><div class="line">  <span class="attr">path</span>: <span class="string">'/hello'</span>,</div><div class="line">  <span class="attr">name</span>: <span class="string">'hello'</span>,</div><div class="line">  <span class="comment">// meta 字段就是路由元信息字段 https://router.vuejs.org/zh-cn/advanced/meta.html</span></div><div class="line">  meta: &#123;</div><div class="line">    <span class="attr">title</span>: <span class="string">'你好'</span></div><div class="line">  &#125;,</div><div class="line">  <span class="comment">// 路由懒加载，看 https://router.vuejs.org/zh-cn/advanced/lazy-loading.html</span></div><div class="line">  component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="string">'@/components/HelloWorld.vue'</span>)</div><div class="line">&#125;</div><div class="line"><span class="keyword">export</span> <span class="keyword">const</span> routes = [</div><div class="line">  hello</div><div class="line">]</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> routes</div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;他主要用到了路由懒加载,看<a href="https://router.vuejs.org/zh-cn/advanced/lazy-loading.html" target="_blank" rel="external">https://router.vuejs.org/zh-cn/advanced/lazy-loading.html</a> 。为什么采用这种方式呢？</p>
+<blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当采用默认的路由方式,那么组件会先全部在<code>index.js</code>头部<code>import</code>进来才会去加载,页面少就算了,如果页面多,那么加载速度明显会变慢；而采用懒加载方式,当跳转到某页面时才会去加载它对应的组件,这样会大大提高加载速度。</p>
+</blockquote>
 
   </section>
 
@@ -193,7 +204,7 @@
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">更早的文章</span>
+                <span class="read-more-item-dim">Older Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/04/23/synchronized/" title="管中窥豹：synchronized">管中窥豹：synchronized</a></h2>
                 <p class="excerpt">
                 
