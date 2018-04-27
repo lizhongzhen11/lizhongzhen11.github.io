@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>一些小知识点 | Ronaldo</title>
+    <title>前端知识点--前端个人成长旅途 | Ronaldo</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -12,15 +12,30 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="js正则判断 //正斜杠在javascript正则表达式中可以\/表示,例如:1234var a = &amp;apos;1/2&amp;apos;a.replace(/\//, &amp;apos;lizz&amp;apos;) // 这里的 \/\\ 即代表匹配一个正斜杠var b = &amp;apos;1/2/3&amp;apos;b.replace(/\//g, &amp;apos;lizz&amp;apos;) // 这里的 /\//g 即代表匹配">
+    <meta name="description" content="目录
+js正则判断 /
+js splice()方法
+css3 pointer-events
+
+1. js正则判断 / /正斜杠在javascript正则表达式中可以\/表示,例如:1234var a = &#39;1/2&#39;a.replace(/\//, &#39;lizz&#39;) // 这里的 \/\\ 即代表匹配一个正斜杠var b = &#39;1/2/3&#39;b.replace(/\//g, &#39;lizz&#39;) // 这里的">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="一些小知识点 | Ronaldo">
-    <meta name="twitter:description" content="js正则判断 //正斜杠在javascript正则表达式中可以\/表示,例如:1234var a = &amp;apos;1/2&amp;apos;a.replace(/\//, &amp;apos;lizz&amp;apos;) // 这里的 \/\\ 即代表匹配一个正斜杠var b = &amp;apos;1/2/3&amp;apos;b.replace(/\//g, &amp;apos;lizz&amp;apos;) // 这里的 /\//g 即代表匹配">
+    <meta name="twitter:title" content="前端知识点--前端个人成长旅途 | Ronaldo">
+    <meta name="twitter:description" content="目录
+js正则判断 /
+js splice()方法
+css3 pointer-events
+
+1. js正则判断 / /正斜杠在javascript正则表达式中可以\/表示,例如:1234var a = &#39;1/2&#39;a.replace(/\//, &#39;lizz&#39;) // 这里的 \/\\ 即代表匹配一个正斜杠var b = &#39;1/2/3&#39;b.replace(/\//g, &#39;lizz&#39;) // 这里的">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="一些小知识点 | Ronaldo">
-    <meta property="og:description" content="js正则判断 //正斜杠在javascript正则表达式中可以\/表示,例如:1234var a = &amp;apos;1/2&amp;apos;a.replace(/\//, &amp;apos;lizz&amp;apos;) // 这里的 \/\\ 即代表匹配一个正斜杠var b = &amp;apos;1/2/3&amp;apos;b.replace(/\//g, &amp;apos;lizz&amp;apos;) // 这里的 /\//g 即代表匹配">
+    <meta property="og:title" content="前端知识点--前端个人成长旅途 | Ronaldo">
+    <meta property="og:description" content="目录
+js正则判断 /
+js splice()方法
+css3 pointer-events
+
+1. js正则判断 / /正斜杠在javascript正则表达式中可以\/表示,例如:1234var a = &#39;1/2&#39;a.replace(/\//, &#39;lizz&#39;) // 这里的 \/\\ 即代表匹配一个正斜杠var b = &#39;1/2/3&#39;b.replace(/\//g, &#39;lizz&#39;) // 这里的">
 
     
     <meta name="author" content="lizhongzhen">
@@ -67,7 +82,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">文字阁</a></li>
             
               <li class="navigation__item"><a href="https://github.com/lizhongzhen11/lizhongzhen11.github.io">目录</a></li>
             
@@ -81,7 +96,7 @@
   <!-- Weibo-->
   
   <li class="navigation__item">
-    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="我的微博" target="_blank">
       <i class='social fa fa-weibo'></i>
       <span class="label">Weibo</span>
     </a>
@@ -91,7 +106,7 @@
   <!-- Github -->
   
   <li class="navigation__item">
-    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+    <a href="https://github.com/lizhongzhen11" title="查看我的GitHub主页" target="_blank">
       <i class='social fa fa-github'></i>
       <span class="label">Github</span>
     </a>
@@ -142,20 +157,28 @@
     <div class="post-meta">
       <time datetime="2018-01-02T12:22:01.692Z" class="post-list__meta--date date">2018-01-02</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
-    <h1 class="post-title">一些小知识点</h1>
+    <h1 class="post-title">前端知识点--前端个人成长旅途</h1>
   </header>
 
   <section class="post">
-    <h3 id="js正则判断"><a href="#js正则判断" class="headerlink" title="js正则判断 /"></a>js正则判断 /</h3><p><strong>/正斜杠在javascript正则表达式中可以\/表示</strong>,例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var a = &apos;1/2&apos;</div><div class="line">a.replace(/\//, &apos;lizz&apos;) // 这里的 \/\\ 即代表匹配一个正斜杠</div><div class="line">var b = &apos;1/2/3&apos;</div><div class="line">b.replace(/\//g, &apos;lizz&apos;) // 这里的 /\//g 即代表匹配所有的正斜杠</div></pre></td></tr></table></figure></p>
-<p><strong>还有一个比较重要的而且是基础的点,replace()方法的默认语法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">stringObject.replace(regexp/substr,replacement)</div></pre></td></tr></table></figure></p>
-<h3 id="js-splice-方法"><a href="#js-splice-方法" class="headerlink" title="js splice()方法"></a>js splice()方法</h3><p>以前,我一直以为<code>splice(数组长度)</code>即可删除数组,因为以前几乎没用过这个方法,毕竟用vue之前直接<code>数组=[]</code>就可以了,但是vue不能这样做,因为如果直接使用<code>=</code>给数组赋值,vue是无法监听数组变化的,也就无法做到响应式,所以vue提供了变异数组方法。而我恰好需要删除数组重新赋值,结果采坑了。。。<br><img src="../../../../images/splice.png" alt=""><br>这是基础不牢的后果啊！</p>
+    <h3 id="目录"><a href="#目录" class="headerlink" title="目录"></a><a id="1">目录</a></h3><ul>
+<li><a href="#11">js正则判断 /</a></li>
+<li><a href="#12">js splice()方法</a></li>
+<li><a href="#13">css3 pointer-events</a></li>
+</ul>
+<h3 id="1-js正则判断"><a href="#1-js正则判断" class="headerlink" title="1. js正则判断 / "></a><a id="11">1. js正则判断 / </a></h3><p><strong>/正斜杠在javascript正则表达式中可以\/表示</strong>,例如:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="string">'1/2'</span></div><div class="line">a.replace(<span class="regexp">/\//</span>, <span class="string">'lizz'</span>) <span class="comment">// 这里的 \/\\ 即代表匹配一个正斜杠</span></div><div class="line"><span class="keyword">var</span> b = <span class="string">'1/2/3'</span></div><div class="line">b.replace(<span class="regexp">/\//g</span>, <span class="string">'lizz'</span>) <span class="comment">// 这里的 /\//g 即代表匹配所有的正斜杠</span></div></pre></td></tr></table></figure></p>
+<p><strong>还有一个比较重要的而且是基础的点,replace()方法的默认语法</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">stringObject.replace(regexp/substr,replacement)</div></pre></td></tr></table></figure></p>
+<h3 id="2-js-splice-方法"><a href="#2-js-splice-方法" class="headerlink" title="2. js splice()方法"></a><a id="12">2. js splice()方法</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以前,我一直以为<code>splice(数组长度)</code>即可删除数组,因为以前几乎没用过这个方法,毕竟用vue之前直接<code>数组=[]</code>就可以了,但是vue不能这样做,因为如果直接使用<code>=</code>给数组赋值,vue是无法监听数组变化的,也就无法做到响应式,所以vue提供了变异数组方法。而我恰好需要删除数组重新赋值,结果采坑了。。。<br><img src="../../../../images/splice.png" alt=""><br>这是基础不牢的后果啊！</p>
 <blockquote>
 <p>splice方法必须至少要两个参数,一个是开始删除位置,第二个是删除个数！切记！！！</p>
 </blockquote>
+<h3 id="3-css3-pointer-events"><a href="#3-css3-pointer-events" class="headerlink" title="3. css3 pointer-events"></a><a id="13">3. css3 pointer-events</a></h3><p><a href="#1">回到目录</a></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开发<code>vue</code>项目时遇到个问题,一个<code>div</code>内部有文字和一个<code>img</code>,我给这个<code>div</code>添加了<code>click</code>事件让它变色,然后内部图片是不能变色的,一开始用了<code>@click.stop</code>解决问题了,但是又发现了新问题：<strong>点击图片部分的话外部<code>div</code>不变色,这样明显效果不好,网上百度了下发现css3里面提供了 <code>pointer-events</code>属性,完美解决。</strong><br>想了解的话看：<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/pointer-events" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/CSS/pointer-events</a><br><a href="https://segmentfault.com/a/1190000003848737" target="_blank" rel="external">https://segmentfault.com/a/1190000003848737</a></p>
+<p>案例：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Col</span> <span class="attr">span</span>=<span class="string">"22"</span> @<span class="attr">click.native</span>=<span class="string">"getHouseInfo(houseItem)"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">style</span>=<span class="string">"pointer-events: none;"</span> @<span class="attr">click.stop</span>=<span class="string">""</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">Col</span>&gt;</span></div></pre></td></tr></table></figure></p>
 
   </section>
 
@@ -166,7 +189,7 @@
     
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">Newer Post</span>
+                <span class="read-more-item-dim">最近的文章</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/01/04/一次写sql经历/" title="小白第一次真正写复杂sql的经历">小白第一次真正写复杂sql的经历</a></h2>
                 <p class="excerpt">
                 
@@ -183,7 +206,7 @@
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">Older Post</span>
+                <span class="read-more-item-dim">更早的文章</span>
                 <h2 class="post-list__post-title post-title"><a href="/2017/12/28/degree项目开发记录/" title="degree项目开发记录">degree项目开发记录</a></h2>
                 <p class="excerpt">
                 

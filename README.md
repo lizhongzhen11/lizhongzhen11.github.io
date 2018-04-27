@@ -1,9 +1,10 @@
 ## 博客目录
 
 ### 自己项目
-- degree项目开发记录：https://lizhongzhen11.github.io/2017/12/28/degree%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/
-- 公司内部Ext框架使用注意事项或者叫开发指南：https://lizhongzhen11.github.io/2018/01/30/%E5%85%AC%E5%8F%B8%E5%86%85%E9%83%A8Ext%E6%A1%86%E6%9E%B6/
-- Thinking in Java 学习笔记：https://lizhongzhen11.github.io/2018/03/20/thinkingInJava/
+ - degree项目开发记录：https://lizhongzhen11.github.io/2017/12/28/degree%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/
+ - 公司内部Ext框架使用注意事项或者叫开发指南：https://lizhongzhen11.github.io/2018/01/30/%E5%85%AC%E5%8F%B8%E5%86%85%E9%83%A8Ext%E6%A1%86%E6%9E%B6/
+ - Thinking in Java 学习笔记：https://lizhongzhen11.github.io/2018/03/20/thinkingInJava/
+ - 前端知识点--前端个人成长旅途：https://lizhongzhen11.github.io/2018/01/02/%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/
 
 ### 网上链接收藏：
 - https://lizhongzhen11.github.io/2017/07/31/%E7%BD%91%E4%B8%8A%E9%93%BE%E6%8E%A5%E6%94%B6%E8%97%8F/
@@ -39,7 +40,6 @@
 - 作用域及作用域链：https://lizhongzhen11.github.io/2017/11/02/js%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/
 - img知识发现：https://lizhongzhen11.github.io/2017/11/08/jsImg%E5%8F%91%E7%8E%B0/
 - Array.prototype.sort()：https://lizhongzhen11.github.io/2017/12/25/Array.prototype.sort()/
-- 一些小知识点：https://lizhongzhen11.github.io/2018/01/02/%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/
 - 学习监听对象属性值改变：https://lizhongzhen11.github.io/2018/01/12/%E7%9B%91%E5%90%AC%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E5%80%BC%E7%9A%84%E6%94%B9%E5%8F%98/
 - js词法作用域----静态作用域：https://lizhongzhen11.github.io/2018/01/22/js%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F/
 - 函数作用域和块作用域：https://lizhongzhen11.github.io/2018/02/09/js%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%9D%97%E4%BD%9C%E7%94%A8%E5%9F%9F/
