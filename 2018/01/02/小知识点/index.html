@@ -16,8 +16,9 @@
 js正则判断 /
 js splice()方法
 css3 pointer-events
+eslint 配置
 
-1. js正则判断 / /正斜杠在javascript正则表达式中可以\/表示,例如:1234var a = &#39;1/2&#39;a.replace(/\//, &#39;lizz&#39;) // 这里的 \/\\ 即代表匹配一个正斜杠var b = &#39;1/2/3&#39;b.replace(/\//g, &#39;lizz&#39;) // 这里的">
+1. js正则判断 / /正斜杠在javascript正则表达式中可以\/表示,例如:1234var a = &#39;1/2&#39;a.replace(/\//, &#39;lizz&#39;) // 这里的 \/\\ 即代表匹配一个正斜杠var b = &#39;1/2/3&#39;b.replace(/\//g, &#39;lizz">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="前端知识点--前端个人成长旅途 | Ronaldo">
@@ -25,8 +26,9 @@ css3 pointer-events
 js正则判断 /
 js splice()方法
 css3 pointer-events
+eslint 配置
 
-1. js正则判断 / /正斜杠在javascript正则表达式中可以\/表示,例如:1234var a = &#39;1/2&#39;a.replace(/\//, &#39;lizz&#39;) // 这里的 \/\\ 即代表匹配一个正斜杠var b = &#39;1/2/3&#39;b.replace(/\//g, &#39;lizz&#39;) // 这里的">
+1. js正则判断 / /正斜杠在javascript正则表达式中可以\/表示,例如:1234var a = &#39;1/2&#39;a.replace(/\//, &#39;lizz&#39;) // 这里的 \/\\ 即代表匹配一个正斜杠var b = &#39;1/2/3&#39;b.replace(/\//g, &#39;lizz">
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="前端知识点--前端个人成长旅途 | Ronaldo">
@@ -34,8 +36,9 @@ css3 pointer-events
 js正则判断 /
 js splice()方法
 css3 pointer-events
+eslint 配置
 
-1. js正则判断 / /正斜杠在javascript正则表达式中可以\/表示,例如:1234var a = &#39;1/2&#39;a.replace(/\//, &#39;lizz&#39;) // 这里的 \/\\ 即代表匹配一个正斜杠var b = &#39;1/2/3&#39;b.replace(/\//g, &#39;lizz&#39;) // 这里的">
+1. js正则判断 / /正斜杠在javascript正则表达式中可以\/表示,例如:1234var a = &#39;1/2&#39;a.replace(/\//, &#39;lizz&#39;) // 这里的 \/\\ 即代表匹配一个正斜杠var b = &#39;1/2/3&#39;b.replace(/\//g, &#39;lizz">
 
     
     <meta name="author" content="lizhongzhen">
@@ -169,6 +172,7 @@ css3 pointer-events
 <li><a href="#11">js正则判断 /</a></li>
 <li><a href="#12">js splice()方法</a></li>
 <li><a href="#13">css3 pointer-events</a></li>
+<li><a href="#14">eslint 配置</a></li>
 </ul>
 <h3 id="1-js正则判断"><a href="#1-js正则判断" class="headerlink" title="1. js正则判断 / "></a><a id="11">1. js正则判断 / </a></h3><p><strong>/正斜杠在javascript正则表达式中可以\/表示</strong>,例如:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="string">'1/2'</span></div><div class="line">a.replace(<span class="regexp">/\//</span>, <span class="string">'lizz'</span>) <span class="comment">// 这里的 \/\\ 即代表匹配一个正斜杠</span></div><div class="line"><span class="keyword">var</span> b = <span class="string">'1/2/3'</span></div><div class="line">b.replace(<span class="regexp">/\//g</span>, <span class="string">'lizz'</span>) <span class="comment">// 这里的 /\//g 即代表匹配所有的正斜杠</span></div></pre></td></tr></table></figure></p>
 <p><strong>还有一个比较重要的而且是基础的点,replace()方法的默认语法</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">stringObject.replace(regexp/substr,replacement)</div></pre></td></tr></table></figure></p>
@@ -179,6 +183,8 @@ css3 pointer-events
 <h3 id="3-css3-pointer-events"><a href="#3-css3-pointer-events" class="headerlink" title="3. css3 pointer-events"></a><a id="13">3. css3 pointer-events</a></h3><p><a href="#1">回到目录</a></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开发<code>vue</code>项目时遇到个问题,一个<code>div</code>内部有文字和一个<code>img</code>,我给这个<code>div</code>添加了<code>click</code>事件让它变色,然后内部图片是不能变色的,一开始用了<code>@click.stop</code>解决问题了,但是又发现了新问题：<strong>点击图片部分的话外部<code>div</code>不变色,这样明显效果不好,网上百度了下发现css3里面提供了 <code>pointer-events</code>属性,完美解决。</strong><br>想了解的话看：<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/pointer-events" target="_blank" rel="external">https://developer.mozilla.org/zh-CN/docs/Web/CSS/pointer-events</a><br><a href="https://segmentfault.com/a/1190000003848737" target="_blank" rel="external">https://segmentfault.com/a/1190000003848737</a></p>
 <p>案例：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Col</span> <span class="attr">span</span>=<span class="string">"22"</span> @<span class="attr">click.native</span>=<span class="string">"getHouseInfo(houseItem)"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">style</span>=<span class="string">"pointer-events: none;"</span> @<span class="attr">click.stop</span>=<span class="string">""</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">Col</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h3 id="4-eslint-配置"><a href="#4-eslint-配置" class="headerlink" title="4. eslint 配置"></a><a id="14">4. eslint 配置</a></h3><p><a href="#1">回到目录</a></p>
+<p>看：<br><a href="https://segmentfault.com/a/1190000008742240" target="_blank" rel="external">https://segmentfault.com/a/1190000008742240</a><br><a href="https://eslint.org/docs/user-guide/configuring" target="_blank" rel="external">https://eslint.org/docs/user-guide/configuring</a></p>
 
   </section>
 
