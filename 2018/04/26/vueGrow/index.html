@@ -19,8 +19,9 @@
 4. .native原生事件
 5. vue-router 懒加载
 6. vue项目里使用阿里的 iconfont
+7. vue 父组件调用子组件方法并接收参数 $emit
 
-1.阻止事件点击例子：1234&amp;lt;Col span=&quot;22&quot; @click.native=&quot;getHouseInfo(houseItem)&quot;&amp;gt;    &amp;#123;&amp;#123;houseI">
+1.阻止事件点击例子：1234&amp;lt;Col span=&quot;22&quot; @click.native=&quot;getHouseInfo(houseIte">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="vue爬坑成长汇总 | Ronaldo">
@@ -31,8 +32,9 @@
 4. .native原生事件
 5. vue-router 懒加载
 6. vue项目里使用阿里的 iconfont
+7. vue 父组件调用子组件方法并接收参数 $emit
 
-1.阻止事件点击例子：1234&amp;lt;Col span=&quot;22&quot; @click.native=&quot;getHouseInfo(houseItem)&quot;&amp;gt;    &amp;#123;&amp;#123;houseI">
+1.阻止事件点击例子：1234&amp;lt;Col span=&quot;22&quot; @click.native=&quot;getHouseInfo(houseIte">
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="vue爬坑成长汇总 | Ronaldo">
@@ -43,8 +45,9 @@
 4. .native原生事件
 5. vue-router 懒加载
 6. vue项目里使用阿里的 iconfont
+7. vue 父组件调用子组件方法并接收参数 $emit
 
-1.阻止事件点击例子：1234&amp;lt;Col span=&quot;22&quot; @click.native=&quot;getHouseInfo(houseItem)&quot;&amp;gt;    &amp;#123;&amp;#123;houseI">
+1.阻止事件点击例子：1234&amp;lt;Col span=&quot;22&quot; @click.native=&quot;getHouseInfo(houseIte">
 
     
     <meta name="author" content="lizhongzhen">
@@ -91,7 +94,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="Blogを読む" class="blog-button">Blog</a></li>
+              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">文字阁</a></li>
             
               <li class="navigation__item"><a href="https://github.com/lizhongzhen11/lizhongzhen11.github.io">目录</a></li>
             
@@ -105,7 +108,7 @@
   <!-- Weibo-->
   
   <li class="navigation__item">
-    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="我的微博" target="_blank">
       <i class='social fa fa-weibo'></i>
       <span class="label">Weibo</span>
     </a>
@@ -115,7 +118,7 @@
   <!-- Github -->
   
   <li class="navigation__item">
-    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+    <a href="https://github.com/lizhongzhen11" title="查看我的GitHub主页" target="_blank">
       <i class='social fa fa-github'></i>
       <span class="label">Github</span>
     </a>
@@ -166,7 +169,7 @@
     <div class="post-meta">
       <time datetime="2018-04-26T11:04:34.387Z" class="post-list__meta--date date">2018-04-26</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       No. <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -181,6 +184,7 @@
 <li><a href="#14">4. .native原生事件</a></li>
 <li><a href="#15">5. vue-router 懒加载</a></li>
 <li><a href="#16">6. vue项目里使用阿里的 iconfont</a></li>
+<li><a href="#17">7. vue 父组件调用子组件方法并接收参数 $emit</a></li>
 </ul>
 <p><strong><a id="11">1.阻止事件点击</a></strong><br>例子：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Col</span> <span class="attr">span</span>=<span class="string">"22"</span> @<span class="attr">click.native</span>=<span class="string">"getHouseInfo(houseItem)"</span>&gt;</span></div><div class="line">    &#123;&#123;houseItem&#125;&#125;</div><div class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">:src</span>=<span class="string">"getSrc(houseItem)"</span> @<span class="attr">click.stop</span>=<span class="string">""</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">Col</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>这里的<code>click.stop</code>即可阻止事件执行。</p>
@@ -199,6 +203,11 @@
 </blockquote>
 <p><strong><a id="16">6. vue项目里使用阿里的 iconfont</a></strong><br><a href="#1">回到目录</a></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在开发过程中需要用到<strong>iconfont</strong>,由于在上一个项目中用到过,所以有点印象。但是！！！那个项目的环境全是苍老师配置的,这个项目我想自己配置锻炼下,结果就悲催了。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一开始,进展很顺利,看 <strong><a href="https://www.cnblogs.com/chinabin1993/p/8184296.html" target="_blank" rel="external">https://www.cnblogs.com/chinabin1993/p/8184296.html</a></strong> 即可。可惜,当走到最后一步<code>import ./iconfont/iconfont.css</code>时,报错了,说找不到<strong><code>./iconfont/iconfont.svg?t=1524893607035 in...</code></strong>？？？那个链接上也有展示,不过他说把<code>css-loader</code>装一下就好了。不过我是用的<code>vue-cli</code>搭建的,这个<code>css-loader</code>貌似一开始就装好了。这样我就很郁闷了！！！<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>我百度了起码2小时,愣是找不到原因,后来索性重新把下载下来的<code>iconfont</code>文件全部再拷贝进去,成功了！！！卧槽他大爷！！！为什么？因为我一开始是一个文件一个文件的拷贝进去的,我当时想某些文件可能没用,但是拷贝途中有可能遗漏了某个文件,操蛋啊,自作孽啊。。。</strong></p>
+<p><strong><a id="17">7. vue 父组件调用子组件方法并接收参数 $emit</a></strong><br><a href="#1">回到目录</a><br>直接看示例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// sealapply.vue</span></div><div class="line"><span class="keyword">import</span> shamData <span class="keyword">from</span> <span class="string">'@/views/mis/shamData'</span></div><div class="line"><span class="keyword">import</span> SearchRow <span class="keyword">from</span> <span class="string">'.././components/searchRow'</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'sealapply'</span>,</div><div class="line">  <span class="attr">components</span>: &#123;</div><div class="line">    SearchRow</div><div class="line">  &#125;,</div><div class="line">  data () &#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      <span class="attr">sealApplyDetailBtn</span>: [],</div><div class="line">      <span class="attr">name</span>: <span class="string">'sealapplylist'</span>,</div><div class="line">      <span class="attr">saveName</span>: <span class="string">''</span></div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  mounted () &#123;</div><div class="line">    <span class="keyword">this</span>.sealApplyDetailBtn = shamData.sealApplyDetailBtn</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">methods</span>: &#123;</div><div class="line">    go () &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="number">110</span>)</div><div class="line">      <span class="keyword">this</span>.saveName = <span class="keyword">this</span>.name</div><div class="line">      <span class="keyword">this</span>.name = <span class="string">'sealapplylistDetail'</span></div><div class="line">    &#125;,</div><div class="line">    back (name) &#123;</div><div class="line">      <span class="built_in">console</span>.log(name)</div><div class="line">      <span class="keyword">this</span>.name = name</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>父组件html<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!--sealapply.vue--&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">SearchRow</span> <span class="attr">:officeSourceBtn</span>=<span class="string">"sealApplyDetailBtn"</span> <span class="attr">:name</span>=<span class="string">"saveName"</span> @<span class="attr">back</span>=<span class="string">"back"</span>&gt;</span><span class="tag">&lt;/<span class="name">SearchRow</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>子组件<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'searchRow'</span>,</div><div class="line">  <span class="attr">props</span>: [<span class="string">'searchRowInfo'</span>, <span class="string">'officeSourceBtn'</span>, <span class="string">'name'</span>],</div><div class="line">  <span class="attr">methods</span>: &#123;</div><div class="line">    back () &#123;</div><div class="line">      <span class="built_in">console</span>.log(<span class="string">'back'</span>)</div><div class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</div><div class="line">      <span class="keyword">let</span> name = <span class="keyword">this</span>.name</div><div class="line">      <span class="keyword">this</span>.$emit(<span class="string">'back'</span>, name)</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+<p>子组件html<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Button</span> <span class="attr">type</span>=<span class="string">"primary"</span> <span class="attr">class</span>=<span class="string">"searchBtn"</span> <span class="attr">v-if</span>=<span class="string">"btn.type === 'back'"</span> @<span class="attr">click</span>=<span class="string">"back"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">i</span> <span class="attr">style</span>=<span class="string">"font-size: 14px;"</span> <span class="attr">class</span>=<span class="string">"iconfont icon-backicon1 ivu-icon"</span>&gt;</span><span class="tag">&lt;/<span class="name">i</span>&gt;</span></div><div class="line">    title</div><div class="line"><span class="tag">&lt;/<span class="name">Button</span>&gt;</span></div></pre></td></tr></table></figure></p>
 
   </section>
 
@@ -211,7 +220,7 @@
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">以前の記事</span>
+                <span class="read-more-item-dim">更早的文章</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/04/23/synchronized/" title="管中窥豹：synchronized">管中窥豹：synchronized</a></h2>
                 <p class="excerpt">
                 
