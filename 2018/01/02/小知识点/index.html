@@ -200,6 +200,8 @@ webpack 跨域代理
 <p>图：<br><img src="../../../../images/after.png" alt=""></p>
 <h3 id="6-webpack-跨域代理"><a href="#6-webpack-跨域代理" class="headerlink" title="6. webpack 跨域代理"></a><a id="16">6. webpack 跨域代理</a></h3><p><a href="#1">回到目录</a></p>
 <p>看 <a href="http://vuejs-templates.github.io/webpack/proxy.html" target="_blank" rel="external">http://vuejs-templates.github.io/webpack/proxy.html</a></p>
+<h3 id="7-使用URLSearchParams处理axios发送的数据"><a href="#7-使用URLSearchParams处理axios发送的数据" class="headerlink" title="7. 使用URLSearchParams处理axios发送的数据"></a><a id="17">7. 使用URLSearchParams处理axios发送的数据</a></h3><p><a href="#1">回到目录</a></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开发项目过程中,发现苍老师用<code>URLSearchParams</code>保存数据然后才调后台接口,当时不是很理解为什么要这样做,为何不直接调接口？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;然后百度了才大概了解,奉上链接：<a href="https://www.cnblogs.com/coolle/p/7027950.html" target="_blank" rel="external">https://www.cnblogs.com/coolle/p/7027950.html</a><br><strong>其实根本原因是,老板要求我们传<code>form</code>表单格式的数据给他,而<code>axios</code>默认的数据格式是<code>json</code>,它的<code>Content-Type</code>与用jq直接调<code>ajax</code>的不一样。</strong></p>
 
   </section>
 
