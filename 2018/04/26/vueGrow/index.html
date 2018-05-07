@@ -22,8 +22,7 @@
 7. vue 父组件调用子组件方法并接收参数 $emit
 8. vue watch 监听(父子组件在同一个页面里,数据变化时组件没有重新渲染情况下可用)
 9. vue mixins
-
-1.阻止事件点">
+10. ivie">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="vue爬坑成长汇总 | Ronaldo">
@@ -37,8 +36,7 @@
 7. vue 父组件调用子组件方法并接收参数 $emit
 8. vue watch 监听(父子组件在同一个页面里,数据变化时组件没有重新渲染情况下可用)
 9. vue mixins
-
-1.阻止事件点">
+10. ivie">
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="vue爬坑成长汇总 | Ronaldo">
@@ -52,8 +50,7 @@
 7. vue 父组件调用子组件方法并接收参数 $emit
 8. vue watch 监听(父子组件在同一个页面里,数据变化时组件没有重新渲染情况下可用)
 9. vue mixins
-
-1.阻止事件点">
+10. ivie">
 
     
     <meta name="author" content="lizhongzhen">
@@ -193,6 +190,7 @@
 <li><a href="#17">7. vue 父组件调用子组件方法并接收参数 $emit</a></li>
 <li><a href="#18">8. vue watch 监听(父子组件在同一个页面里,数据变化时组件没有重新渲染情况下可用)</a></li>
 <li><a href="#19">9. vue mixins</a></li>
+<li><a href="#20">10. iview form表单验证number类型</a></li>
 </ul>
 <p><strong><a id="11">1.阻止事件点击</a></strong><br>例子：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Col</span> <span class="attr">span</span>=<span class="string">"22"</span> @<span class="attr">click.native</span>=<span class="string">"getHouseInfo(houseItem)"</span>&gt;</span></div><div class="line">    &#123;&#123;houseItem&#125;&#125;</div><div class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">:src</span>=<span class="string">"getSrc(houseItem)"</span> @<span class="attr">click.stop</span>=<span class="string">""</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">Col</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>这里的<code>click.stop</code>即可阻止事件执行。</p>
@@ -223,6 +221,8 @@
 <p>子组件js:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> &#123; whitespace &#125; <span class="keyword">from</span> <span class="string">'../../../template/listdetail'</span>;</div><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'sealapplydetail'</span>,</div><div class="line">  <span class="attr">props</span>: [<span class="string">'sealApplyData'</span>, <span class="string">'rowIndex'</span>],</div><div class="line">  <span class="attr">components</span>: &#123;</div><div class="line">    whitespace</div><div class="line">  &#125;,</div><div class="line">  data () &#123;</div><div class="line">    <span class="keyword">return</span> &#123;</div><div class="line">      <span class="attr">form</span>: &#123;&#125;</div><div class="line">    &#125;;</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">watch</span>: &#123;</div><div class="line">    <span class="attr">sealApplyData</span>: <span class="function"><span class="keyword">function</span> (<span class="params">val</span>) </span>&#123;</div><div class="line">      <span class="comment">// console.log(val)</span></div><div class="line">      <span class="comment">// 第一种写法</span></div><div class="line">      <span class="keyword">this</span>.form = <span class="keyword">this</span>._props.sealApplyData;</div><div class="line">      <span class="comment">// 第二种写法</span></div><div class="line">      <span class="keyword">this</span>.form = val</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">  mounted () &#123;</div><div class="line">    <span class="built_in">console</span>.dir(<span class="keyword">this</span>)</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">methods</span>: &#123;</div><div class="line">    backList () &#123;</div><div class="line">      <span class="keyword">this</span>.$emit(<span class="string">'backList'</span>)</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <p><strong><a id="19">9. vue mixins</a></strong><br><a href="#1">回到目录</a></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;项目中有多个相似的页面及操作方法,所以可以使用<code>mixins</code>简化开发。但是在使用中没有仔细阅读文档,踩了个小坑。<code>mixins</code>有点类似java中的覆盖。如果组件中存在与<code>mixins</code>同名的属性或方法,那么会使用组件中定义的属性和方法覆盖<code>mixins</code>里面定义的。<br><a href="https://cn.vuejs.org/v2/guide/mixins.html" target="_blank" rel="external">https://cn.vuejs.org/v2/guide/mixins.html</a></p>
+<p><strong><a id="20">10. iview form表单验证number类型</a></strong><br><a href="#1">回到目录</a></p>
+<p>看 <a href="https://segmentfault.com/q/1010000010333755?sort=created" target="_blank" rel="external">https://segmentfault.com/q/1010000010333755?sort=created</a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123; <span class="attr">type</span>: <span class="string">'number'</span>, <span class="attr">message</span>: <span class="string">'请输入数字格式'</span>, <span class="attr">trigger</span>: <span class="string">'blur'</span>, transform(value) &#123; <span class="keyword">return</span> <span class="built_in">Number</span>(value); &#125;&#125;</div></pre></td></tr></table></figure></p>
 
   </section>
 
