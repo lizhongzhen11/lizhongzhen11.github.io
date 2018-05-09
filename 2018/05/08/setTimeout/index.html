@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="z">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    
+    <title>js中 setTimeout 等定时器执行顺序问题 | Ronaldo</title>
+    <meta name="renderer" content="webkit">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="description" content="for循环中使用定时器打印输出问题例1:123456for (var i = 0; i &amp;lt; 5; i++) &amp;#123;  setTimeout(function () &amp;#123;    console.log(i)  &amp;#125;, 1000)&amp;#125;// 不断打印 5
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;一开始我认为上述示例跟作用域有关,事实上是">
+
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="js中 setTimeout 等定时器执行顺序问题 | Ronaldo">
+    <meta name="twitter:description" content="for循环中使用定时器打印输出问题例1:123456for (var i = 0; i &amp;lt; 5; i++) &amp;#123;  setTimeout(function () &amp;#123;    console.log(i)  &amp;#125;, 1000)&amp;#125;// 不断打印 5
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;一开始我认为上述示例跟作用域有关,事实上是">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="js中 setTimeout 等定时器执行顺序问题 | Ronaldo">
+    <meta property="og:description" content="for循环中使用定时器打印输出问题例1:123456for (var i = 0; i &amp;lt; 5; i++) &amp;#123;  setTimeout(function () &amp;#123;    console.log(i)  &amp;#125;, 1000)&amp;#125;// 不断打印 5
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;一开始我认为上述示例跟作用域有关,事实上是">
+
+    
+    <meta name="author" content="lizhongzhen">
+    
+    <link rel="stylesheet" href="/css/vno.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+    
+    <link rel="icon" href="/images/logo.jpg">
+    
+
+    <meta name="generator" content="hexo"/>
+    
+    <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
+    
+
+    <link rel="canonical" href="http://yoursite.com/2018/05/08/setTimeout/"/>
+
+                 
+</head>
+
+<body class="home-template no-js">
+    <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <span class="mobile btn-mobile-menu">
+        <i class="fa fa-list btn-mobile-menu__icon"></i>
+        <i class="fa fa-angle-up btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+<header class="panel-cover panel-cover--collapsed" style="background-image: url(/images/Daniel.jpg)">
+  <div class="panel-main">
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        <a href="/" title="前往 Ronaldo 的主页"><img src="/images/logo.jpg" width="80" alt="Ronaldo logo" class="panel-cover__logo logo" /></a>
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage for Ronaldo">Ronaldo</a></h1>
+        
+        <hr class="panel-cover__divider" />
+        <p class="panel-cover__description"></p>
+        <hr class="panel-cover__divider panel-cover__divider--secondary" />
+
+        <div class="navigation-wrapper">
+          <div>
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+            
+              <li class="navigation__item"><a href="https://github.com/lizhongzhen11/lizhongzhen11.github.io">目录</a></li>
+            
+            </ul>
+          </nav>
+          </div>
+          <div>
+          <nav class="cover-navigation navigation--social">
+  <ul class="navigation">
+
+  <!-- Weibo-->
+  
+  <li class="navigation__item">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
+      <i class='social fa fa-weibo'></i>
+      <span class="label">Weibo</span>
+    </a>
+  </li> 
+
+
+  <!-- Github -->
+  
+  <li class="navigation__item">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
+      <i class='social fa fa-github'></i>
+      <span class="label">Github</span>
+    </a>
+  </li>
+
+
+<!-- Stack Overflow -->
+        
+
+  <!-- Google Plus -->
+  
+
+<!-- Facebook -->
+
+  
+<!-- Twitter -->
+
+  
+
+  <li class="navigation__item">
+    <a href="/atom.xml" title="RSS" target="_blank">
+      <i class='social fa fa-rss'></i>
+      <span class="label">RSS</span>
+    </a>
+  </li>
+
+
+
+  </ul>
+</nav>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay cover-purple"></div>
+  </div> 
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner">
+            <article class="post-container post-container--single">
+
+  <header class="post-header">
+    <div class="post-meta">
+      <time datetime="2018-05-08T11:56:20.590Z" class="post-list__meta--date date">2018-05-08</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <span class="page-pv">
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+      </span> 
+   
+    </div>
+    <h1 class="post-title">js中 setTimeout 等定时器执行顺序问题</h1>
+  </header>
+
+  <section class="post">
+    <h3 id="for循环中使用定时器打印输出问题"><a href="#for循环中使用定时器打印输出问题" class="headerlink" title="for循环中使用定时器打印输出问题"></a>for循环中使用定时器打印输出问题</h3><p>例1:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">  setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(i)</div><div class="line">  &#125;, <span class="number">1000</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// 不断打印 5</span></div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一开始我认为上述示例跟作用域有关,事实上是我理解偏差了。因为强行用作用域来解释我没法接受,直到百度到了下面这篇文章, <a href="https://blog.csdn.net/aitangyong/article/details/46800615" target="_blank" rel="external">https://blog.csdn.net/aitangyong/article/details/46800615</a> ,我才恍然大悟。这里继续贴上来：</p>
+<blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JavaScript是<strong>单线程</strong>执行的，无法同时执行多段代码。<strong>当某一段代码正在执行的时候，所有后续的任务都必须等待，形成一个队列</strong>。一旦当前任务执行完毕，再从队列中取出下一个任务，这也常被称为 <strong>“阻塞式执行”</strong>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所以一次鼠标点击，或是计时器到达时间点，或是Ajax请求完成触发了回调函数，这些事件处理程序或回调函数<strong>都不会立即运行</strong>，而是<strong>立即排队</strong>，一旦线程有空闲就执行。假如当前 JavaScript线程正在执行一段很耗时的代码，此时发生了一次鼠标点击，那么事件处理程序就被阻塞，用户也无法立即看到反馈，事件处理程序会被放入任务队列，直到前面的代码结束以后才会开始执行。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果代码中设定了一个 setTimeout，那么<strong>浏览器便会在合适的时间，将代码插入任务队列，如果这个时间设为 0，就代表立即插入队列，但不是立即执行，仍然要等待前面代码执行完毕</strong>。所以 setTimeout 并不能保证执行的时间，是否及时执行取决于 JavaScript 线程是拥挤还是空闲。</p>
+</blockquote>
+<p><strong>是不是跟作用域没关系呢？改写下就知道了</strong><br>例2:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">  setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(i)</div><div class="line">  &#125;, <span class="number">1000</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// 0 1 2 3 4</span></div></pre></td></tr></table></figure></p>
+<p><strong>为什么会这样呢？貌似用上面那个解释行不通啊？</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这里是真的需要用作用域知识来解释了。<code>let</code>是<code>es6</code>语法,js默认是没有块作用域的,但是！<strong>上述<code>for</code>循环内使用了<code>let</code>声明变量<code>i</code>,无形之中将<code>for</code>循环及其<code>{}</code>内部的代码构造成了一个块作用域</strong>,如果有后端比如<code>java</code>基础的人应该知道,此时必须先将该块作用域内的代码全部执行完才能执行下一段代码。这里可以将<code>i = 0</code>看成<strong>i0</strong>块,接下来的<code>i = 1</code>看做<strong>i1</strong>块,以此类推,或许比较好理解。(PS: 这种理解在原理上应该是不对的,只能算是根据结论去找类比。。。)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当然,还可以继续改写,原理差不多。<br>例3:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">  setTimeout((<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(i)</div><div class="line">  &#125;)(), <span class="number">1000</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// 0 1 2 3 4</span></div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上例用到了立即执行函数,立即执行函数相当于构建了一个函数作用域,具有隔离作用域效果,可以参考：<a href="http://lipeng1667.github.io/2016/12/20/IIFE-in-js/" target="_blank" rel="external">http://lipeng1667.github.io/2016/12/20/IIFE-in-js/</a> 。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;说实话,一开始我不是很懂立即执行函数的原理,只知道<code>()</code>会立即调用函数,但其实我并不理解上例中<code>for</code>循环内为什么立即执行函数能正确打印输出？明明它在<code>setTimeout</code>内部啊,即使立即执行函数构建了函数作用域,但应该仅限于它内部啊,对于外部来说,不应该还是<code>for</code>循环完后才开始调用<code>setTimeout</code>吗？？？</p>
+<blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;直到看了这里对js执行上下文栈的分析才大概了解点：<a href="https://github.com/mqyqingfeng/Blog/issues/4" target="_blank" rel="external">https://github.com/mqyqingfeng/Blog/issues/4</a> ,比较重要的理解点：<strong>JavaScript 引擎并非一行一行地分析和执行程序，而是一段一段地分析执行。</strong>以及<strong>当执行到一个函数的时候，就会进行准备工作，这里的“准备工作”，让我们用个更专业一点的说法，就叫做”执行上下文(execution context)”。</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我的理解是当js引擎检测上例代码时,先执行<code>for</code>循环内的<code>var i = 0</code>,然后去循环体内部查看是否有需要执行的代码。如果仅仅是<code>setTimeout</code>的话,由于浏览器对定时器有至少<strong>400ms</strong>的延迟,再加上定时器并不需要立即执行所以可以跳过(相当于异步操作了);但是如果定时器内部有立即执行函数,那么会立即构建一个函数作用域,使得线程进入该作用域内执行完毕才能出来。</p>
+</blockquote>
+
+  </section>
+
+</article>
+
+<section class="read-more">
+           
+    
+        
+        
+               
+            <div class="read-more-item">
+                <span class="read-more-item-dim">Older Post</span>
+                <h2 class="post-list__post-title post-title"><a href="/2018/04/26/vueGrow/" title="vue爬坑成长汇总">vue爬坑成长汇总</a></h2>
+                <p class="excerpt">
+                
+                目录
+1.阻止事件点击
+2.v-bind:src时图片加载问题
+3.props传值问题
+4. .native原生事件
+5. vue-router 懒加载
+6. vue项目里使用阿里的 iconfont
+7. vue 父组件调用子组件方法并接收参数 $emit
+8. vue watch 监听(父子组件
+                &hellip;
+                </p>
+                <div class="post-list__meta"><time datetime="2018-04-26T11:04:34.387Z" class="post-list__meta--date date">2018-04-26</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/04/26/vueGrow/">继续阅读</a></div>
+                       
+            </div>
+        
+     
+   
+   
+  
+</section>
+
+  
+
+            <footer class="footer">
+    <span class="footer__copyright">
+        &copy; 2018 lizhongzhen - 本站点采用 <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
+       
+    </span>
+    <span class="footer__copyright">
+             - 基于 <a href="http://hexo.io">Hexo</a> 搭建，使用 <a href="https://github.com/monniya/hexo-theme-new-vno ">new-vno</a> 主题，由<a href="https://monniya.com ">@Monniya</a> 修改自 <a href="https://github.com/lenbo-ma/hexo-theme-vno" target="_blank">Vno</a>, 原创出自<a href="http://github.com/onevcat/vno" target="_blank">onevcat</a>
+         </span>
+       
+    
+    
+</footer>
+
+
+        </div>
+    </div>
+
+     
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-78918255-1', 'auto');
+	ga('send', 'pageview');
+</script>
+
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?9cdad07c755fa23f6aced510c6760e87";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+    
+</body>
+</html>
