@@ -22,8 +22,7 @@
 7. 使用URLSearchParams处理axios发送的数据
 8. chrome修改滚动条样式
 9. 偶然得知getComputedStyle
-
-1. js正则判断 / /正斜杠">
+10. 浏览器缩放导致背景图没有占">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="前端知识点--前端个人成长旅途 | Ronaldo">
@@ -37,8 +36,7 @@
 7. 使用URLSearchParams处理axios发送的数据
 8. chrome修改滚动条样式
 9. 偶然得知getComputedStyle
-
-1. js正则判断 / /正斜杠">
+10. 浏览器缩放导致背景图没有占">
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="前端知识点--前端个人成长旅途 | Ronaldo">
@@ -52,8 +50,7 @@
 7. 使用URLSearchParams处理axios发送的数据
 8. chrome修改滚动条样式
 9. 偶然得知getComputedStyle
-
-1. js正则判断 / /正斜杠">
+10. 浏览器缩放导致背景图没有占">
 
     
     <meta name="author" content="lizhongzhen">
@@ -193,6 +190,7 @@
 <li><a href="#17">7. 使用URLSearchParams处理axios发送的数据</a></li>
 <li><a href="#18">8. chrome修改滚动条样式</a></li>
 <li><a href="#19">9. 偶然得知getComputedStyle</a></li>
+<li><a href="#20">10. 浏览器缩放导致背景图没有占满页面</a></li>
 </ul>
 <h3 id="1-js正则判断"><a href="#1-js正则判断" class="headerlink" title="1. js正则判断 / "></a><a id="11">1. js正则判断 / </a></h3><p><strong>/正斜杠在javascript正则表达式中可以\/表示</strong>,例如:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="string">'1/2'</span></div><div class="line">a.replace(<span class="regexp">/\//</span>, <span class="string">'lizz'</span>) <span class="comment">// 这里的 \/\\ 即代表匹配一个正斜杠</span></div><div class="line"><span class="keyword">var</span> b = <span class="string">'1/2/3'</span></div><div class="line">b.replace(<span class="regexp">/\//g</span>, <span class="string">'lizz'</span>) <span class="comment">// 这里的 /\//g 即代表匹配所有的正斜杠</span></div></pre></td></tr></table></figure></p>
 <p><strong>还有一个比较重要的而且是基础的点,replace()方法的默认语法</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">stringObject.replace(regexp/substr,replacement)</div></pre></td></tr></table></figure></p>
@@ -216,6 +214,8 @@
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开发项目过程中,发现苍老师用<code>URLSearchParams</code>保存数据然后才调后台接口,当时不是很理解为什么要这样做,为何不直接调接口？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;然后百度了才大概了解,奉上链接：<br><a href="https://www.cnblogs.com/coolle/p/7027950.html" target="_blank" rel="external">https://www.cnblogs.com/coolle/p/7027950.html</a><br><a href="https://www.cnblogs.com/qdcnbj/p/8143155.html" target="_blank" rel="external">https://www.cnblogs.com/qdcnbj/p/8143155.html</a><br><strong>其实根本原因是,老板要求我们传<code>form</code>表单格式的数据给他,而<code>axios</code>默认的数据格式是<code>json</code>,它的<code>Content-Type</code>与用jq直接调<code>ajax</code>的不一样。</strong></p>
 <h3 id="8-chrome修改滚动条样式"><a href="#8-chrome修改滚动条样式" class="headerlink" title="8. chrome修改滚动条样式"></a><a id="18">8. chrome修改滚动条样式</a></h3><p><a href="#1">回到目录</a><br><a href="https://www.lyblog.net/detail/314.html" target="_blank" rel="external">https://www.lyblog.net/detail/314.html</a></p>
 <h3 id="9-偶然得知getComputedStyle"><a href="#9-偶然得知getComputedStyle" class="headerlink" title="9. 偶然得知getComputedStyle"></a><a id="19">9. 偶然得知getComputedStyle</a></h3><p><a href="#1">回到目录</a><br><a href="http://www.zhangxinxu.com/wordpress/2012/05/getcomputedstyle-js-getpropertyvalue-currentstyle/" target="_blank" rel="external">http://www.zhangxinxu.com/wordpress/2012/05/getcomputedstyle-js-getpropertyvalue-currentstyle/</a></p>
+<h3 id="10-浏览器缩放导致背景图没有占满页面"><a href="#10-浏览器缩放导致背景图没有占满页面" class="headerlink" title="10. 浏览器缩放导致背景图没有占满页面"></a><a id="20">10. 浏览器缩放导致背景图没有占满页面</a></h3><p><a href="#1">回到目录</a></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以前没注意过浏览器缩放导致的样式问题,加上基本上都在用现成的ui库,所以很少遇到这个问题,这次遇到了还是有点懵逼的,好在加一个css样式即可,附上参考链接： <a href="https://www.cnblogs.com/dee0912/p/3983662.html" target="_blank" rel="external">https://www.cnblogs.com/dee0912/p/3983662.html</a><br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">background: url('.././images/login/bj.jpg') no-repeat fixed center;</div><div class="line">background-size: cover;</div><div class="line">-webkit-background-size: cover;/* 兼容Webkit内核浏览器如Chrome和Safari */</div><div class="line">-o-background-size: cover;/* 兼容Opera */</div></pre></td></tr></table></figure></p>
 
   </section>
 

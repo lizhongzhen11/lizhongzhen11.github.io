@@ -43,6 +43,7 @@
 - 学习监听对象属性值改变：https://lizhongzhen11.github.io/2018/01/12/%E7%9B%91%E5%90%AC%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7%E5%80%BC%E7%9A%84%E6%94%B9%E5%8F%98/
 - js词法作用域----静态作用域：https://lizhongzhen11.github.io/2018/01/22/js%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F/
 - 函数作用域和块作用域：https://lizhongzhen11.github.io/2018/02/09/js%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%9D%97%E4%BD%9C%E7%94%A8%E5%9F%9F/
+- for循环中setTimeout执行以及promise与setTimeout执行顺序：https://lizhongzhen11.github.io/2018/05/08/setTimeout/
 
 ### js框架
 - jq相关
