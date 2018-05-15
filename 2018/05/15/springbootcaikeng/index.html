@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>Java相关知识 | Ronaldo</title>
+    <title>spring boot 踩坑 | Ronaldo</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -12,30 +12,18 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="java
-jar包下载: http://jareye.com/
-前辈博客：http://www.cnblogs.com/skywang12345/category/455711.html
-孤傲苍狼博客：http://www.cnblogs.com/xdp-gacl/p/4261895.html
-五月的仓颉博客：http://www.cnblogs.com/xrq730/
-maven：https:/">
+    <meta name="description" content="入门学习自： http://www.ityouknow.com/springboot/2016/01/06/springboot(%E4%B8%80)-%E5%85%A5%E9%97%A8%E7%AF%87.html踩坑
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;照着链接里的入门教程第一篇单元测试那里就出bug了,java.lang.IllegalStateExcep">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Java相关知识 | Ronaldo">
-    <meta name="twitter:description" content="java
-jar包下载: http://jareye.com/
-前辈博客：http://www.cnblogs.com/skywang12345/category/455711.html
-孤傲苍狼博客：http://www.cnblogs.com/xdp-gacl/p/4261895.html
-五月的仓颉博客：http://www.cnblogs.com/xrq730/
-maven：https:/">
+    <meta name="twitter:title" content="spring boot 踩坑 | Ronaldo">
+    <meta name="twitter:description" content="入门学习自： http://www.ityouknow.com/springboot/2016/01/06/springboot(%E4%B8%80)-%E5%85%A5%E9%97%A8%E7%AF%87.html踩坑
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;照着链接里的入门教程第一篇单元测试那里就出bug了,java.lang.IllegalStateExcep">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Java相关知识 | Ronaldo">
-    <meta property="og:description" content="java
-jar包下载: http://jareye.com/
-前辈博客：http://www.cnblogs.com/skywang12345/category/455711.html
-孤傲苍狼博客：http://www.cnblogs.com/xdp-gacl/p/4261895.html
-五月的仓颉博客：http://www.cnblogs.com/xrq730/
-maven：https:/">
+    <meta property="og:title" content="spring boot 踩坑 | Ronaldo">
+    <meta property="og:description" content="入门学习自： http://www.ityouknow.com/springboot/2016/01/06/springboot(%E4%B8%80)-%E5%85%A5%E9%97%A8%E7%AF%87.html踩坑
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;照着链接里的入门教程第一篇单元测试那里就出bug了,java.lang.IllegalStateExcep">
 
     
     <meta name="author" content="lizhongzhen">
@@ -52,7 +40,7 @@ maven：https:/">
     <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://yoursite.com/2017/10/17/Java/"/>
+    <link rel="canonical" href="http://yoursite.com/2018/05/15/springbootcaikeng/"/>
 
                  
 </head>
@@ -155,32 +143,19 @@ maven：https:/">
 
   <header class="post-header">
     <div class="post-meta">
-      <time datetime="2017-10-17T05:13:41.789Z" class="post-list__meta--date date">2017-10-17</time> &#8226; <span class="post-meta__tags tags">于  </span>
+      <time datetime="2018-05-15T05:07:56.441Z" class="post-list__meta--date date">2018-05-15</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
        Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
-    <h1 class="post-title">Java相关知识</h1>
+    <h1 class="post-title">spring boot 踩坑</h1>
   </header>
 
   <section class="post">
-    <h3 id="java"><a href="#java" class="headerlink" title="java"></a>java</h3><blockquote>
-<p>jar包下载: <em><a href="http://jareye.com/" target="_blank" rel="external">http://jareye.com/</a></em></p>
-<p>前辈博客：<a href="http://www.cnblogs.com/skywang12345/category/455711.html" target="_blank" rel="external">http://www.cnblogs.com/skywang12345/category/455711.html</a></p>
-<p>孤傲苍狼博客：<a href="http://www.cnblogs.com/xdp-gacl/p/4261895.html" target="_blank" rel="external">http://www.cnblogs.com/xdp-gacl/p/4261895.html</a></p>
-<p>五月的仓颉博客：<a href="http://www.cnblogs.com/xrq730/" target="_blank" rel="external">http://www.cnblogs.com/xrq730/</a></p>
-<p>maven：<a href="https://www.cnblogs.com/jingmoxukong/p/5591368.html" target="_blank" rel="external">https://www.cnblogs.com/jingmoxukong/p/5591368.html</a></p>
-<p>三分钟学会用SpringMVC搭建最小系统：<em><a href="http://www.jianshu.com/p/0ccaa4af05fc" target="_blank" rel="external">http://www.jianshu.com/p/0ccaa4af05fc</a></em></p>
-<p>Dao层、Service层、Controller层、View层：<em><a href="http://blog.csdn.net/zdwzzu2006/article/details/6053006" target="_blank" rel="external">http://blog.csdn.net/zdwzzu2006/article/details/6053006</a></em></p>
-<p>SpringMVC的常用注解：<em><a href="http://www.jianshu.com/p/0d0e45d14e6b" target="_blank" rel="external">http://www.jianshu.com/p/0d0e45d14e6b</a></em></p>
-<p>SSH与SSM对比总结：<em><a href="http://blog.csdn.net/pingdouble/article/details/52848007" target="_blank" rel="external">http://blog.csdn.net/pingdouble/article/details/52848007</a></em></p>
-<p>JVM内存管理：<em><a href="http://www.cnblogs.com/zuoxiaolong/category/508918.html" target="_blank" rel="external">http://www.cnblogs.com/zuoxiaolong/category/508918.html</a></em></p>
-<p>javaweb学习: <em><a href="http://www.cnblogs.com/xdp-gacl/tag/JavaWeb%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/" target="_blank" rel="external">http://www.cnblogs.com/xdp-gacl/tag/JavaWeb%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/</a></em></p>
-<p>Java的属性变量名前两个字母大小写问题: <em><a href="http://blog.csdn.net/mrzhang__/article/details/53201721" target="_blank" rel="external">http://blog.csdn.net/mrzhang__/article/details/53201721</a></em></p>
-<p>Class.getResource和ClassLoader.getResource的区别分析: <em><a href="http://swiftlet.net/archives/868" target="_blank" rel="external">http://swiftlet.net/archives/868</a></em></p>
-<p>spring boot: <em><a href="http://www.ityouknow.com/springboot/2016/01/06/springboot(%E4%B8%80)-%E5%85%A5%E9%97%A8%E7%AF%87.html" target="_blank" rel="external">http://www.ityouknow.com/springboot/2016/01/06/springboot(%E4%B8%80)-%E5%85%A5%E9%97%A8%E7%AF%87.html</a></em></p>
-</blockquote>
+    <h3 id="入门学习自：-http-www-ityouknow-com-springboot-2016-01-06-springboot-E4-B8-80-E5-85-A5-E9-97-A8-E7-AF-87-html"><a href="#入门学习自：-http-www-ityouknow-com-springboot-2016-01-06-springboot-E4-B8-80-E5-85-A5-E9-97-A8-E7-AF-87-html" class="headerlink" title="入门学习自： http://www.ityouknow.com/springboot/2016/01/06/springboot(%E4%B8%80)-%E5%85%A5%E9%97%A8%E7%AF%87.html"></a>入门学习自： <a href="http://www.ityouknow.com/springboot/2016/01/06/springboot(%E4%B8%80)-%E5%85%A5%E9%97%A8%E7%AF%87.html" target="_blank" rel="external">http://www.ityouknow.com/springboot/2016/01/06/springboot(%E4%B8%80)-%E5%85%A5%E9%97%A8%E7%AF%87.html</a></h3><h3 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h3><ol>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;照着链接里的入门教程第一篇单元测试那里就出bug了,<code>java.lang.IllegalStateException: Unable to find a @SpringBootConfiguration, you need to use @ContextConfiguration or @SpringBootTest(classes=...) with your test</code>,百度了才知道,原来是我<strong>main</strong>和<strong>test</strong>分支的包名不一样导致的。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;我将spring boot的<strong>main</strong>分支下的默认包名改成了<strong>com.lizz</strong>,而<strong>test</strong>分支下的包名也需要相应改变。</li>
+</ol>
 
   </section>
 
@@ -189,37 +164,19 @@ maven：https:/">
 <section class="read-more">
            
     
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">Newer Post</span>
-                <h2 class="post-list__post-title post-title"><a href="/2017/10/18/vueRouter/" title="Vue router小知识点">Vue router小知识点</a></h2>
-                <p class="excerpt">
-                
-                
-之前学习大神后台系统时发现一个问题没搞懂，仔细看了 vue-router 文档才明白
-先举个小例子：123456789101112131415161718192021222324252627282930313233343536373839&amp;lt;script src=&amp;quot;https://u
-                &hellip;
-                </p>
-                <div class="post-list__meta"><time datetime="2017-10-18T06:29:22.095Z" class="post-list__meta--date date">2017-10-18</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/10/18/vueRouter/">继续阅读</a></div>
-                           
-            </div>
         
         
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">Older Post</span>
-                <h2 class="post-list__post-title post-title"><a href="/2017/10/17/插件/" title="插件">插件</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2018/05/08/setTimeout/" title="js中 setTimeout 等定时器执行顺序问题">js中 setTimeout 等定时器执行顺序问题</a></h2>
                 <p class="excerpt">
                 
-                
-波浪进度指示器：https://github.com/newraina/waveLoading.js
-
-移动web端调试工具 eruda ：https://github.com/liriliri/eruda
-
-规则引擎的介绍与 Drools 的流程分析：http://www.jianshu.com
+                for循环中使用定时器打印输出问题例1:123456for (var i = 0; i &amp;lt; 5; i++) &amp;#123;  setTimeout(function () &amp;#123;    console.log(i)  &amp;#125;, 1000)&amp;#125;// 不断打印 5
+&amp;nbsp;&amp;
                 &hellip;
                 </p>
-                <div class="post-list__meta"><time datetime="2017-10-17T01:31:38.162Z" class="post-list__meta--date date">2017-10-17</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/10/17/插件/">继续阅读</a></div>
+                <div class="post-list__meta"><time datetime="2018-05-08T11:56:20.590Z" class="post-list__meta--date date">2018-05-08</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2018/05/08/setTimeout/">继续阅读</a></div>
                        
             </div>
         

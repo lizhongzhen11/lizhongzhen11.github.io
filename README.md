@@ -118,6 +118,7 @@
   - 宏观上把握SpringMVC框架：https://lizhongzhen11.github.io/2018/03/07/SpringMVC%E5%AD%A6%E4%B9%A02%E4%B9%8B%E5%AE%8F%E8%A7%82%E6%8A%8A%E6%8F%A1/
 - mybatis相关
   - 宏观上把握MyBatis框架：https://lizhongzhen11.github.io/2018/03/12/%E5%AE%8F%E8%A7%82%E4%B8%8A%E6%8A%8A%E6%8F%A1MyBatis%E6%A1%86%E6%9E%B6/
+  - spring boot 踩坑:
 
 ### 数据库
 - win10系统安装sql server爬坑之旅：https://lizhongzhen11.github.io/2017/12/07/sqlserver%E5%AE%89%E8%A3%85/
