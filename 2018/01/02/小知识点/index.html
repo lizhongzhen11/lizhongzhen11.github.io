@@ -97,7 +97,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+              <li class="navigation__item"><a href="/#blog" title="Blogを読む" class="blog-button">Blog</a></li>
             
               <li class="navigation__item"><a href="https://github.com/lizhongzhen11/lizhongzhen11.github.io">目录</a></li>
             
@@ -172,7 +172,7 @@
     <div class="post-meta">
       <time datetime="2018-01-02T12:22:01.692Z" class="post-list__meta--date date">2018-01-02</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       No. <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -192,6 +192,7 @@
 <li><a href="#19">9. 偶然得知getComputedStyle</a></li>
 <li><a href="#20">10. 浏览器缩放导致背景图没有占满页面</a></li>
 <li><a href="#21">11. js 中位运算测试</a></li>
+<li><a href="#22">12. Promise使用</a></li>
 </ul>
 <h3 id="1-js正则判断"><a href="#1-js正则判断" class="headerlink" title="1. js正则判断 / "></a><a id="11">1. js正则判断 / </a></h3><p><strong>/正斜杠在javascript正则表达式中可以\/表示</strong>,例如:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="string">'1/2'</span></div><div class="line">a.replace(<span class="regexp">/\//</span>, <span class="string">'lizz'</span>) <span class="comment">// 这里的 \/\\ 即代表匹配一个正斜杠</span></div><div class="line"><span class="keyword">var</span> b = <span class="string">'1/2/3'</span></div><div class="line">b.replace(<span class="regexp">/\//g</span>, <span class="string">'lizz'</span>) <span class="comment">// 这里的 /\//g 即代表匹配所有的正斜杠</span></div></pre></td></tr></table></figure></p>
 <p><strong>还有一个比较重要的而且是基础的点,replace()方法的默认语法</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">stringObject.replace(regexp/substr,replacement)</div></pre></td></tr></table></figure></p>
@@ -218,6 +219,17 @@
 <h3 id="10-浏览器缩放导致背景图没有占满页面"><a href="#10-浏览器缩放导致背景图没有占满页面" class="headerlink" title="10. 浏览器缩放导致背景图没有占满页面"></a><a id="20">10. 浏览器缩放导致背景图没有占满页面</a></h3><p><a href="#1">回到目录</a></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以前没注意过浏览器缩放导致的样式问题,加上基本上都在用现成的ui库,所以很少遇到这个问题,这次遇到了还是有点懵逼的,好在加一个css样式即可,附上参考链接： <a href="https://www.cnblogs.com/dee0912/p/3983662.html" target="_blank" rel="external">https://www.cnblogs.com/dee0912/p/3983662.html</a><br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">background: url('.././images/login/bj.jpg') no-repeat fixed center;</div><div class="line">background-size: cover;</div><div class="line">-webkit-background-size: cover;/* 兼容Webkit内核浏览器如Chrome和Safari */</div><div class="line">-o-background-size: cover;/* 兼容Opera */</div></pre></td></tr></table></figure></p>
 <h3 id="11-js-中位运算测试"><a href="#11-js-中位运算测试" class="headerlink" title="11. js 中位运算测试"></a><a id="21">11. js 中位运算测试</a></h3><p><a href="#1">回到目录</a><br><a href="https://zhuanlan.zhihu.com/p/28105425" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/28105425</a></p>
+<h3 id="12-Promise使用"><a href="#12-Promise使用" class="headerlink" title="12. Promise使用"></a><a id="22">12. Promise使用</a></h3><p><a href="#1">回到目录</a><br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank" rel="external">https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise</a><br><a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014345008539155e93fc16046d4bb7854943814c4f9dc2000" target="_blank" rel="external">https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/0014345008539155e93fc16046d4bb7854943814c4f9dc2000</a><br><a href="http://es6.ruanyifeng.com/#docs/promise" target="_blank" rel="external">http://es6.ruanyifeng.com/#docs/promise</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span>(<span class="literal">true</span>) &#123;</div><div class="line">    resolve() <span class="comment">// 还可以传参</span></div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    reject()</div><div class="line">  &#125;</div><div class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">r</span>) </span>&#123; <span class="comment">// 如果有传参的话就加上参数,没有的话可以不加</span></div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'200 ok'</span>)</div><div class="line">&#125;).catch(<span class="function"><span class="keyword">function</span>(<span class="params">r</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'error'</span>)</div><div class="line">&#125;)</div><div class="line"><span class="comment">// 例二：</span></div><div class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">	resolve(<span class="string">'a'</span>)</div><div class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'第一次then, '</span> + data)</div><div class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">'第二次then, '</span> + data)</div><div class="line">&#125;)</div><div class="line"><span class="comment">// 第一次then, a</span></div><div class="line"><span class="comment">// 第二次then, undefined</span></div></pre></td></tr></table></figure>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;例二中为何第二次<code>then</code>里面打印输出是<code>undefined</code>呢？</p>
+<blockquote>
+<p>因为第一次<code>then</code>执行完并没有返回值！第二次<code>then</code>中函数内部的形参<code>data</code>并不是第一次<code>then</code>中的那个。</p>
+</blockquote>
+<p>改写下：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 例三：</span></div><div class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">	resolve(<span class="string">'a'</span>)</div><div class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">	setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">'第一次then, '</span> + data)</div><div class="line">	&#125;, <span class="number">2000</span>, data)</div><div class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">	setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>) </span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(<span class="string">'第二次then, '</span> + data)</div><div class="line">	&#125;, <span class="number">1000</span>, data)</div><div class="line">&#125;)</div><div class="line"><span class="comment">// 第二次then, undefined</span></div><div class="line"><span class="comment">// 第一次then, a</span></div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;这里为什么先打印第二次<code>then</code>里面的代码而不是第一次呢？</p>
+<blockquote>
+<p>答案是定时器时间的原因。定时器是一种异步方法,第一次<code>then</code>中过了两秒才把定时器内的代码放进队列前端,但是第二次<code>then</code>中只用了一秒就把代码放到队列前了,那么这时候第二次<code>then</code>中的函数无法接收到第一个<code>then</code>中函数的返回值,所以参数是<code>undefined</code>。</p>
+</blockquote>
 
   </section>
 
@@ -228,7 +240,7 @@
     
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">Newer Post</span>
+                <span class="read-more-item-dim">新しい記事</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/01/04/一次写sql经历/" title="小白第一次真正写复杂sql的经历">小白第一次真正写复杂sql的经历</a></h2>
                 <p class="excerpt">
                 
@@ -245,7 +257,7 @@
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">Older Post</span>
+                <span class="read-more-item-dim">以前の記事</span>
                 <h2 class="post-list__post-title post-title"><a href="/2017/12/28/degree项目开发记录/" title="degree项目开发记录">degree项目开发记录</a></h2>
                 <p class="excerpt">
                 
