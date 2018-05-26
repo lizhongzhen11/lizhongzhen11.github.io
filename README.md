@@ -59,6 +59,7 @@
 - js词法作用域----静态作用域：https://lizhongzhen11.github.io/2018/01/22/js%E8%AF%8D%E6%B3%95%E4%BD%9C%E7%94%A8%E5%9F%9F/
 - 函数作用域和块作用域：https://lizhongzhen11.github.io/2018/02/09/js%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%9D%97%E4%BD%9C%E7%94%A8%E5%9F%9F/
 - for循环中setTimeout执行以及promise与setTimeout执行顺序：https://lizhongzhen11.github.io/2018/05/08/setTimeout/
+- js event loop 学习：https://lizhongzhen11.github.io/2018/05/24/jsEventLoop/
 
 ### js框架
 - jq相关

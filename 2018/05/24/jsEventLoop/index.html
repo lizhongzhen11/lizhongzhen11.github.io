@@ -67,7 +67,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+              <li class="navigation__item"><a href="/#blog" title="Blogを読む" class="blog-button">Blog</a></li>
             
               <li class="navigation__item"><a href="https://github.com/lizhongzhen11/lizhongzhen11.github.io">目录</a></li>
             
@@ -142,7 +142,7 @@
     <div class="post-meta">
       <time datetime="2018-05-24T09:34:35.022Z" class="post-list__meta--date date">2018-05-24</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       No. <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -181,6 +181,7 @@
 <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当主线程执行某异步任务时,发出调用但是没有立即得到返回值,主线程也不会干等着,这时候异步任务会在一旁默默等待返回值,一旦有返回值便会把回调函数放入对应的任务队列(<strong>PS:一个事件循环可能会有多个任务队列,相同任务源的任务会放进同一个任务队列,不同任务源放入不同任务队列。可以看HTML5规范：<a href="https://www.w3.org/TR/html5/webappapis.html#event-loops" target="_blank" rel="external">https://www.w3.org/TR/html5/webappapis.html#event-loops</a></strong>)。</li>
 <li><strong>所以<code>event loop</code>机制最大的作用就是把异步任务的回调函数放入主线程执行。</strong> </li>
 </ul>
+<p>整个运行机制可以看下图,或者本文开头的第三个链接<br><img src="../../../../images/eventloop2.png" alt=""></p>
 </li>
 <li><p>注意点：</p>
 </li>
@@ -203,7 +204,7 @@
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">Older Post</span>
+                <span class="read-more-item-dim">以前の記事</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/05/17/vueObserver/" title="vue observer 源码学习">vue observer 源码学习</a></h2>
                 <p class="excerpt">
                 
