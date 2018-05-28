@@ -67,7 +67,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="访问博客" class="blog-button">文字阁</a></li>
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
             
               <li class="navigation__item"><a href="https://github.com/lizhongzhen11/lizhongzhen11.github.io">目录</a></li>
             
@@ -81,7 +81,7 @@
   <!-- Weibo-->
   
   <li class="navigation__item">
-    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="我的微博" target="_blank">
+    <a href="http://weibo.com/3298783260/profile?rightmod=1&amp;wvr=6&amp;mod=personinfo" title="Weibo" target="_blank">
       <i class='social fa fa-weibo'></i>
       <span class="label">Weibo</span>
     </a>
@@ -91,7 +91,7 @@
   <!-- Github -->
   
   <li class="navigation__item">
-    <a href="https://github.com/lizhongzhen11" title="查看我的GitHub主页" target="_blank">
+    <a href="https://github.com/lizhongzhen11" title="GitHub" target="_blank">
       <i class='social fa fa-github'></i>
       <span class="label">Github</span>
     </a>
@@ -142,7 +142,7 @@
     <div class="post-meta">
       <time datetime="2018-05-24T09:34:35.022Z" class="post-list__meta--date date">2018-05-24</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       阅读 <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -175,7 +175,7 @@
 <li>3.2 什么是同步异步？<ul>
 <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;同步任务其实就是主线程循规蹈矩按顺序依次执行并能立即得到执行结果的任务。所有同步任务在主线程上形成一个<strong>执行栈</strong>,栈就像一个竖直容器,顶部开口,任务一个一个的放进去,再一个一个的取出来执行,那么最先放进去的堆在最下面,也在最后被取出执行。关于执行栈可以看：<a href="https://www.cnblogs.com/MasterYao/p/5563725.html" target="_blank" rel="external">https://www.cnblogs.com/MasterYao/p/5563725.html</a></li>
 <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;异步任务其实可以理解为<strong>发出调用但是无法立即得到结果,需要进行其他操作才能得到预期结果。</strong></li>
-<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当主线程执行某异步任务时,发出调用但是没有立即得到返回值,主线程也不会干等着,这时候异步任务会在一旁默默等待返回值,一旦有返回值便会把回调函数放入对应的任务队列(<strong>PS:一个事件循环可能会有多个任务队列,相同任务源的任务会放进同一个任务队列,不同任务源放入不同任务队列。可以看HTML5规范：<a href="https://www.w3.org/TR/html5/webappapis.html#event-loops" target="_blank" rel="external">https://www.w3.org/TR/html5/webappapis.html#event-loops</a></strong>)。</li>
+<li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;当主线程执行某异步任务时,发出调用但是没有立即得到返回值,主线程也不会干等着,这时候异步任务会在“一旁”(下面会讲具体在哪)默默等待返回值,一旦有返回值便会把回调函数放入对应的任务队列(<strong>PS:一个事件循环可能会有多个任务队列,相同任务源的任务会放进同一个任务队列,不同任务源放入不同任务队列。可以看HTML5规范：<a href="https://www.w3.org/TR/html5/webappapis.html#event-loops" target="_blank" rel="external">https://www.w3.org/TR/html5/webappapis.html#event-loops</a></strong>)。</li>
 </ul>
 </li>
 <li><strong>所以<code>event loop</code>机制最大的作用就是把异步任务的回调函数放入主线程执行。</strong> </li>
@@ -193,7 +193,7 @@
 </ol>
 <p>(3). <strong>疑问(强烈推荐本文第三个链接)：<a href="https://juejin.im/post/5a6547d0f265da3e283a1df7#heading-4" target="_blank" rel="external">https://juejin.im/post/5a6547d0f265da3e283a1df7#heading-4</a></strong></p>
 <ul>
-<li>5.1 之前说到,主线程调用异步方法后不会停下来等待异步任务,主线程会先去执行其他异步任务调用,那么这时候异步任务去哪了？异步任务这时候不需要线程运行它吗？很多文章说挂起,然后有结果了放入任务队列等调用,但是,它怎么接收返回值并被放进任务队列的呢？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;很多文章几乎都没有提过这个过程,直到我在<strong>segmentfault</strong>提问之后,才有大牛给了我本文第三个链接,再次感谢id为<strong>178096413</strong>的前辈。<ul>
+<li>5.1 之前说到,主线程调用异步方法后不会停下来等待异步任务,主线程会先去执行其他异步任务调用,那么这时候刚刚被调用的异步任务去哪了？异步任务这时候不需要线程运行它吗？很多文章说挂起,然后有结果了放入任务队列等调用,但是,它怎么接收返回值并被放进任务队列的呢？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;很多文章几乎都没有提过这个过程,直到我在<strong>segmentfault</strong>提问之后,才有大牛给了我本文第三个链接,再次感谢id为<strong>178096413</strong>的前辈。<ul>
 <li>我看了文章才知道,<strong>浏览器是多进程的</strong>,自己太菜了。</li>
 <li>前端最需要关注的是浏览器的<strong>渲染进程,渲染进程是多线程的！</strong>页面的渲染,JS的执行,事件的循环,都在这个进程内进行。</li>
 <li>渲染进程包含的线程(部分重要举例)：<ul>
@@ -206,7 +206,7 @@
 </li>
 <li>定时触发器线程</li>
 <li>异步http请求线程<ul>
-<li><strong>在<code>XMLHttpRequest</code>在连接后是通过浏览器新开一个线程请求</strong></li>
+<li><strong>在<code>XMLHttpRequest</code>连接后时通过浏览器新开一个线程请求</strong></li>
 <li><strong>将检测到状态变更时，如果设置有回调函数，异步线程就产生状态变更事件，将这个回调再放入事件队列中。再由JavaScript引擎执行。</strong></li>
 </ul>
 </li>
@@ -222,7 +222,40 @@
 <li>5.2 事件队列或任务队列中的任务是什么？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>可以简要的理解为异步任务的回调。</strong></li>
 <li>5.3 <code>event loop</code>是基于主线程执行的吗？<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>事件循环机制是基于事件触发线程的。事件触发线程管理着一个任务队列,只要异步任务有了运行结果,就在任务队列之中放置一个事件。</strong></li>
 </ul>
-<p>(4). 总结<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;总算初步对<code>event loop</code>有了较为清晰的认识,但还不够,接下来可能会对事件循环进行深入理解：<code>macrotask</code>与<code>microtask</code>。 </p>
+<p>(4). <strong>初步总结</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;总算初步对<code>event loop</code>有了较为清晰的认识,但还不够,接下来需要对事件循环进行深入理解：<code>macrotask</code>与<code>microtask</code>。 </p>
+<p>(5). <strong>事件循环进阶：macrotask与microtask(这里基本上都是抄自第三个与第六个链接的,讲的很好,抄下来便于自己查看)</strong><br>很经典的例子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="built_in">console</span>.log(<span class="number">4</span>)&#125;,<span class="number">0</span>);</div><div class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve</span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="number">1</span>)</div><div class="line">    <span class="keyword">for</span>( <span class="keyword">var</span> i=<span class="number">0</span> ; i&lt;<span class="number">10000</span> ; i++ )&#123;</div><div class="line">        i==<span class="number">9999</span> &amp;&amp; resolve()</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>)</div><div class="line">&#125;).then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="number">5</span>)</div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log(<span class="number">3</span>);</div><div class="line"><span class="comment">// 1 2 3 5 4</span></div></pre></td></tr></table></figure></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;为什么呢？因为<code>Promise</code>里有了一个一个新的概念：<code>microtask</code></p>
+<blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;进一步，JS中分为两种任务类型：<code>macrotask</code>和<code>microtask</code>，在ECMAScript中，<code>microtask</code>称为<strong>jobs</strong>，<code>macrotask</code>可称为<strong>task</strong></p>
+</blockquote>
+<ul>
+<li><code>macrotask</code>（又称之为宏任务），可以理解是每次执行栈执行的代码就是一个宏任务（包括每次从事件队列中获取一个事件回调并放到执行栈中执行）<ul>
+<li>每一个task会从头到尾将这个任务执行完毕，不会执行其它</li>
+<li>浏览器为了能够使得JS内部<strong>task</strong>与DOM任务能够有序的执行，会在一个<strong>task</strong>执行结束后，在下一个 <strong>task</strong> 执行开始前，对页面进行重新渲染（task-&gt;渲染-&gt;task-&gt;…）</li>
+</ul>
+</li>
+<li><code>microtask</code>（又称为微任务），可以理解是在当前 task 执行结束后立即执行的任务<ul>
+<li>也就是说，在当前task任务后，下一个task之前，在渲染之前</li>
+<li>所以它的响应速度相比<code>setTimeout</code>（<code>setTimeout</code>是task）会更快，因为无需等渲染</li>
+<li>也就是说，在某一个<code>macrotask</code>执行完后，就会将在它执行期间产生的所有<code>microtask</code>都执行完毕（在渲染前）</li>
+</ul>
+</li>
+</ul>
+<p>分别很么样的场景会形成<code>macrotask</code>和<code>microtask</code>呢？</p>
+<blockquote>
+<p><code>macrotask</code>：主代码块，<code>setTimeout</code>，<code>setInterval</code>等（可以看到，事件队列中的每一个事件都是一个macrotask）<br><code>microtask</code>：<code>Promise</code>，<code>process.nextTick</code>等<br>补充：在node环境下，<code>process.nextTick</code>的优先级高于<code>Promise</code>，也就是可以简单理解为：在宏任务结束后会先执行微任务队列中的<code>nextTickQueue</code>部分，然后才会执行微任务中的<code>Promise</code>部分。</p>
+</blockquote>
+<p>再根据线程来理解下：<br><code>macrotask</code>中的事件都是放在一个事件队列中的，而这个队列由事件触发线程维护<br><code>microtask</code>中的所有微任务都是添加到微任务队列（<code>Job Queues</code>）中，等待当前<code>macrotask</code>执行完毕后执行，而这个队列由JS引擎线程维护</p>
+<p><strong>所以，总结下运行机制：</strong></p>
+<ul>
+<li>执行一个宏任务（栈中没有就从事件队列中获取）</li>
+<li>执行过程中如果遇到微任务，就将它添加到微任务的任务队列中</li>
+<li>宏任务执行完毕后，立即执行当前微任务队列中的所有微任务（依次执行）</li>
+<li>当前宏任务执行完毕，开始检查渲染，然后GUI线程接管渲染</li>
+<li><p>渲染完毕后，JS线程继续接管，开始下一个宏任务（从事件队列中获取）</p>
+<p><img src="../../../../images/jsruntime.png" alt=""></p>
+</li>
+</ul>
 
   </section>
 
@@ -235,7 +268,7 @@
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">更早的文章</span>
+                <span class="read-more-item-dim">Older Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/05/17/vueObserver/" title="vue observer 源码学习">vue observer 源码学习</a></h2>
                 <p class="excerpt">
                 
