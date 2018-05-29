@@ -97,7 +97,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+              <li class="navigation__item"><a href="/#blog" title="Blogを読む" class="blog-button">Blog</a></li>
             
               <li class="navigation__item"><a href="https://github.com/lizhongzhen11/lizhongzhen11.github.io">目录</a></li>
             
@@ -172,7 +172,7 @@
     <div class="post-meta">
       <time datetime="2018-04-26T11:04:34.387Z" class="post-list__meta--date date">2018-04-26</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       No. <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -198,6 +198,7 @@
 <li><a href="#25">15. iview form表单时间验证,类型不同会报错</a></li>
 <li><a href="#26">16. vue $el一次小踩坑</a></li>
 <li><a href="#27">17. vue 升级后 nextTick 源码变化</a></li>
+<li><a href="#28">18. 浅析Vue 中的patch和diff(上)</a></li>
 </ul>
 <p><strong><a id="11">1.阻止事件点击</a></strong><br>例子：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Col</span> <span class="attr">span</span>=<span class="string">"22"</span> @<span class="attr">click.native</span>=<span class="string">"getHouseInfo(houseItem)"</span>&gt;</span></div><div class="line">    &#123;&#123;houseItem&#125;&#125;</div><div class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">:src</span>=<span class="string">"getSrc(houseItem)"</span> @<span class="attr">click.stop</span>=<span class="string">""</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">Col</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>这里的<code>click.stop</code>即可阻止事件执行。</p>
@@ -246,6 +247,11 @@
 <p><strong><a id="26">16. vue $el一次小踩坑</a></strong><br><a href="#1">回到目录</a></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一开始在<code>iview Form</code>组件内部插入了一个<code>Card</code>组件,并设置了<code>ref</code>属性,然后通过点击事件打印<code>this.$refs.workflow.$el.className</code>有输出,但是后来因为需求变更,将<code>Card</code>组件移出到与<code>Form</code>组件同一级别后,发现原先的方法报错,<code>console</code>后发现<code>this.$refs.workflow.$el</code>报错,没有<code>$el</code>属性,然后直接打印<code>this.$refs.workflow.className</code>就能得到值了。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;简直<code>amazing</code>!明明<code>ref</code>属性是加在<code>Card</code>组件上的,为何改变<code>Card</code>组件位置取值方法就要改变呢？</p>
 <p><strong><a id="27">17. vue 升级后 nextTick 源码变化</a></strong><br><a href="#1">回到目录</a><br>看 <a href="https://juejin.im/post/5a1af88f5188254a701ec230" target="_blank" rel="external">https://juejin.im/post/5a1af88f5188254a701ec230</a></p>
+<p><strong><a id="28">18. 浅析Vue 中的patch和diff(上)</a></strong><br><a href="#1">回到目录</a><br><a href="https://github.com/kaola-fed/blog/issues/259" target="_blank" rel="external">https://github.com/kaola-fed/blog/issues/259</a><br><a href="https://github.com/kaola-fed/blog/issues/263" target="_blank" rel="external">https://github.com/kaola-fed/blog/issues/263</a></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;接触vue有一段时间了,以前一开始认为只要数据改变vue就会重新渲染页面,但是后来听同事说数据改变,vue并不会立即重新渲染,想想也是,数据一变就立即重新渲染,那么性能注定是极差的！但是我一直不大懂vue是怎么进行重新渲染的,直到最近接触了<code>macrotask</code>,<code>microtask</code>,<code>event loop</code>以及<code>nextTick</code>源码解析等知识,才大致了解。</p>
+<blockquote>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;原来数据都会放在<code>watcher</code>里面监听,当数据变化时,更新<code>watcher</code>数组里面的数据,然后统一放到<code>nextTick</code>去更新。<code>nextTick</code>内默认使用<code>microtask</code>,但是在某些情况下会强制使用<code>macrotask</code>。</p>
+</blockquote>
 
   </section>
 
@@ -256,7 +262,7 @@
     
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">Newer Post</span>
+                <span class="read-more-item-dim">新しい記事</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/05/08/setTimeout/" title="js中 setTimeout 等定时器执行顺序问题">js中 setTimeout 等定时器执行顺序问题</a></h2>
                 <p class="excerpt">
                 
@@ -271,7 +277,7 @@
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">Older Post</span>
+                <span class="read-more-item-dim">以前の記事</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/04/23/synchronized/" title="管中窥豹：synchronized">管中窥豹：synchronized</a></h2>
                 <p class="excerpt">
                 
