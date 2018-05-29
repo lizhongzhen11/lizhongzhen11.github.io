@@ -37,7 +37,6 @@
 - 函数与构造函数的区别：https://lizhongzhen11.github.io/2017/10/12/%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/
 - Object.defineProperty：https://lizhongzhen11.github.io/2017/10/30/defineProperty/
 - jsonp学习：https://lizhongzhen11.github.io/2017/10/27/jsonp/
-- 理解同步、异步和事件循环：https://lizhongzhen11.github.io/2017/10/27/js%E5%90%8C%E6%AD%A5%E5%BC%82%E6%AD%A5/
 - 字符串转数字：https://lizhongzhen11.github.io/2017/10/26/js%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%95%B0%E5%AD%97/
 - 原型链：https://lizhongzhen11.github.io/2017/10/25/js%E5%8E%9F%E5%9E%8B%E9%93%BE/
 - 字典操作：https://lizhongzhen11.github.io/2017/10/25/js%E5%AD%97%E5%85%B8/
