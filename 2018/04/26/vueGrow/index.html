@@ -197,6 +197,7 @@
 <li><a href="#24">14. vue 防止跳转到不存在的页面</a></li>
 <li><a href="#25">15. iview form表单时间验证,类型不同会报错</a></li>
 <li><a href="#26">16. vue $el一次小踩坑</a></li>
+<li><a href="#27">17. vue 升级后 nextTick 源码变化</a></li>
 </ul>
 <p><strong><a id="11">1.阻止事件点击</a></strong><br>例子：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Col</span> <span class="attr">span</span>=<span class="string">"22"</span> @<span class="attr">click.native</span>=<span class="string">"getHouseInfo(houseItem)"</span>&gt;</span></div><div class="line">    &#123;&#123;houseItem&#125;&#125;</div><div class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">:src</span>=<span class="string">"getSrc(houseItem)"</span> @<span class="attr">click.stop</span>=<span class="string">""</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">Col</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>这里的<code>click.stop</code>即可阻止事件执行。</p>
@@ -244,6 +245,7 @@
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开发九龙湖项目时,发现后台一开始传过来的是<code>new Date()</code>类型,而页面上需要展示<code>yyyy-MM-dd HH:mm:ss</code>,所以所性后台直接做了转换,传给前台需要的格式。但是利用<code>iview</code>的<code>form</code>表单验证发现了问题,第一次修改保存是ok的,但是第二次修改同一条数据,发现控制台报<strong>value.getTime is not a function</strong>,这就很奇怪了,后来不断<code>console.log()</code>发现第一次输出是<code>new Date()</code>类型,但是第二次输出是<code>yyyy-MM-dd HH:mm:ss</code>的字符串类型,两次类型不一致了,解决方法就是保持类型一致。<br>可以看：<a href="https://segmentfault.com/q/1010000012129675" target="_blank" rel="external">https://segmentfault.com/q/1010000012129675</a><br>以及：<a href="https://github.com/ElemeFE/element/issues/8020" target="_blank" rel="external">https://github.com/ElemeFE/element/issues/8020</a></p>
 <p><strong><a id="26">16. vue $el一次小踩坑</a></strong><br><a href="#1">回到目录</a></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一开始在<code>iview Form</code>组件内部插入了一个<code>Card</code>组件,并设置了<code>ref</code>属性,然后通过点击事件打印<code>this.$refs.workflow.$el.className</code>有输出,但是后来因为需求变更,将<code>Card</code>组件移出到与<code>Form</code>组件同一级别后,发现原先的方法报错,<code>console</code>后发现<code>this.$refs.workflow.$el</code>报错,没有<code>$el</code>属性,然后直接打印<code>this.$refs.workflow.className</code>就能得到值了。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;简直<code>amazing</code>!明明<code>ref</code>属性是加在<code>Card</code>组件上的,为何改变<code>Card</code>组件位置取值方法就要改变呢？</p>
+<p><strong><a id="27">17. vue 升级后 nextTick 源码变化</a></strong><br><a href="#1">回到目录</a><br>看 <a href="https://juejin.im/post/5a1af88f5188254a701ec230" target="_blank" rel="external">https://juejin.im/post/5a1af88f5188254a701ec230</a></p>
 
   </section>
 
