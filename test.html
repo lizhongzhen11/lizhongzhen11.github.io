@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>Hello World | Ronaldo</title>
+    <title>Ronaldo</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -12,18 +12,39 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+    <meta name="description" content="test
+    
+        .outer {
+            width: 100%;
+            height: 100px;
+            background-color: rebeccapurple;
+        }
+        .inner {
+            width: 100%;">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Hello World | Ronaldo">
-    <meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+    <meta name="twitter:title" content="Ronaldo">
+    <meta name="twitter:description" content="test
+    
+        .outer {
+            width: 100%;
+            height: 100px;
+            background-color: rebeccapurple;
+        }
+        .inner {
+            width: 100%;">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Hello World | Ronaldo">
-    <meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+    <meta property="og:title" content="Ronaldo">
+    <meta property="og:description" content="test
+    
+        .outer {
+            width: 100%;
+            height: 100px;
+            background-color: rebeccapurple;
+        }
+        .inner {
+            width: 100%;">
 
     
     <meta name="author" content="lizhongzhen">
@@ -40,7 +61,7 @@ Quick">
     <link rel="alternate" type="application/rss+xml" title="Ronaldo" href="/atom.xml">
     
 
-    <link rel="canonical" href="http://yoursite.com/2017/07/24/hello-world/"/>
+    <link rel="canonical" href="http://yoursite.com/test.html"/>
 
                  
 </head>
@@ -142,59 +163,64 @@ Quick">
             <article class="post-container post-container--single">
 
   <header class="post-header">
-    <div class="post-meta">
-      <time datetime="2017-07-24T08:46:04.364Z" class="post-list__meta--date date">2017-07-24</time> &#8226; <span class="post-meta__tags tags">于  </span>
-      <span class="page-pv">
-       No. <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
-      </span> 
-   
-    </div>
-    <h1 class="post-title">Hello World</h1>
+    <h1 class="post-title"></h1>
   </header>
 
   <section class="post">
-    <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+    <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>test</title>
+    <style>
+        .outer {
+            width: 100%;
+            height: 100px;
+            background-color: rebeccapurple;
+        }
+        .inner {
+            width: 100%;
+            height: 50px;
+            background-color: rosybrown;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer" data-random="1">
+        <div class="inner"></div>
+    </div>
+</body>
+<script>
+    var outer = document.querySelector('.outer');
+    var inner = document.querySelector('.inner');
+    new MutationObserver(function(mutationRecord, mutationObserver) {
+        console.log(mutationRecord);
+        console.log(mutationObserver);
+        console.log('mutate');
+    }).observe(outer, {
+        attributes: true,
+        attributeOldValue: true
+    });
+    function onClick() {
+        console.log('click');
+        setTimeout(function() {
+            console.log('timeout');
+        }, 0);
+        Promise.resolve().then(function() {
+            console.log('promise');
+        });
+        outer.setAttribute('data-random', Math.random());
+    }
+    inner.addEventListener('click', onClick);
+    outer.addEventListener('click', onClick);
+    inner.click();
+</script>
+</html>
 
   </section>
-
 </article>
 
-<section class="read-more">
-           
-    
-               
-            <div class="read-more-item">
-                <span class="read-more-item-dim">新しい記事</span>
-                <h2 class="post-list__post-title post-title"><a href="/2017/07/24/firstOne/" title="firstOne">firstOne</a></h2>
-                <p class="excerpt">
-                
-                
-搭建hexo博客可能遇到的坑：http://www.jianshu.com/p/a2fe56d11c4f中哥怒爆CC菊花！！！黄健雄献上菊花！！！
 
-
-                &hellip;
-                </p>
-                <div class="post-list__meta"><time datetime="2017-07-24T09:27:10.289Z" class="post-list__meta--date date">2017-07-24</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/07/24/firstOne/">继续阅读</a></div>
-                           
-            </div>
-        
-        
-        
-     
-   
-   
-  
-</section>
-
-  
 
             <footer class="footer">
     <span class="footer__copyright">

@@ -67,7 +67,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
+              <li class="navigation__item"><a href="/#blog" title="Blogを読む" class="blog-button">Blog</a></li>
             
               <li class="navigation__item"><a href="https://github.com/lizhongzhen11/lizhongzhen11.github.io">目录</a></li>
             
@@ -142,7 +142,7 @@
     <div class="post-meta">
       <time datetime="2018-05-24T09:34:35.022Z" class="post-list__meta--date date">2018-05-24</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       No. <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -243,7 +243,7 @@
 </ul>
 <p>分别很么样的场景会形成<code>macrotask</code>和<code>microtask</code>呢？</p>
 <blockquote>
-<p><code>macrotask</code>：主代码块，<code>setTimeout</code>，<code>setInterval</code>等（可以看到，事件队列中的每一个事件都是一个macrotask）<br><code>microtask</code>：<code>Promise</code>，<code>process.nextTick</code>等<br>补充：在node环境下，<code>process.nextTick</code>的优先级高于<code>Promise</code>，也就是可以简单理解为：在宏任务结束后会先执行微任务队列中的<code>nextTickQueue</code>部分，然后才会执行微任务中的<code>Promise</code>部分。</p>
+<p><code>macrotask</code>：主代码块，<code>setTimeout</code>，<code>setInterval</code>,<code>MessageChannel</code>等（可以看到，事件队列中的每一个事件都是一个macrotask）<br><code>microtask</code>：<code>Promise</code>，<code>process.nextTick</code>,<code>MutationObserver</code>等<br>补充：在node环境下，<code>process.nextTick</code>的优先级高于<code>Promise</code>，也就是可以简单理解为：在宏任务结束后会先执行微任务队列中的<code>nextTickQueue</code>部分，然后才会执行微任务中的<code>Promise</code>部分。</p>
 </blockquote>
 <p>再根据线程来理解下：<br><code>macrotask</code>中的事件都是放在一个事件队列中的，而这个队列由事件触发线程维护<br><code>microtask</code>中的所有微任务都是添加到微任务队列（<code>Job Queues</code>）中，等待当前<code>macrotask</code>执行完毕后执行，而这个队列由JS引擎线程维护</p>
 <p><strong>所以，总结下运行机制：</strong></p>
@@ -268,7 +268,7 @@
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">Older Post</span>
+                <span class="read-more-item-dim">以前の記事</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/05/17/vueObserver/" title="vue observer 源码学习">vue observer 源码学习</a></h2>
                 <p class="excerpt">
                 
