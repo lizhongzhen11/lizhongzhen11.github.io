@@ -97,7 +97,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="Blogを読む" class="blog-button">Blog</a></li>
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
             
               <li class="navigation__item"><a href="https://github.com/lizhongzhen11/lizhongzhen11.github.io">目录</a></li>
             
@@ -172,7 +172,7 @@
     <div class="post-meta">
       <time datetime="2018-04-26T11:04:34.387Z" class="post-list__meta--date date">2018-04-26</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       No. <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -201,6 +201,7 @@
 <li><a href="#28">18. 浅析Vue 中的patch和diff(上)</a></li>
 <li><a href="#29">19. Vue2.0 v-for 中 :key 到底有什么用？</a></li>
 <li><a href="#30">20. iview Modal组件中使用Form组件,验证不通过但是却会关闭Modal</a></li>
+<li><a href="#31">21. Tabpane布局切换发现包含时间的属性只在第一次渲染,之后切换Tabpane时间不变</a></li>
 </ul>
 <p><strong><a id="11">1.阻止事件点击</a></strong><br>例子：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">Col</span> <span class="attr">span</span>=<span class="string">"22"</span> @<span class="attr">click.native</span>=<span class="string">"getHouseInfo(houseItem)"</span>&gt;</span></div><div class="line">    &#123;&#123;houseItem&#125;&#125;</div><div class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">:src</span>=<span class="string">"getSrc(houseItem)"</span> @<span class="attr">click.stop</span>=<span class="string">""</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">Col</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <p>这里的<code>click.stop</code>即可阻止事件执行。</p>
@@ -257,6 +258,8 @@
 <p><strong><a id="29">19. Vue2.0 v-for 中 :key 到底有什么用？</a></strong><br><a href="#1">回到目录</a><br><a href="https://www.zhihu.com/question/61064119" target="_blank" rel="external">https://www.zhihu.com/question/61064119</a></p>
 <p><strong><a id="30">20. iview Modal组件中使用Form组件,验证不通过但是却会关闭Modal</a></strong><br><a href="#1">回到目录</a></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;开发时发现,在<code>Modal</code>组件中使用<code>Form</code>组件时,给<code>Form</code>组件内加上验证,点击确认按钮时虽然验证生效了但是<code>Modal</code>依然关闭了,这样使用效果并不好,应该是验证不通过时<code>Modal</code>不会关闭让用户继续填写才对,填写完应该可以再度点击确认按钮才对。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;后来在<code>iview</code>官方发现<code>Modal</code>组件提供了<code>loading</code>属性,当设置为<code>true</code>时,点击确认按钮不会关闭<code>Modal</code>,但是,之后也不能点击确认按钮了。这样依然不行,没有达到我的期望。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;之后在 <a href="https://github.com/iview/iview/issues/3079" target="_blank" rel="external">https://github.com/iview/iview/issues/3079</a> 中也看到相似问题,那位朋友采用了<code>setTimeout</code>来解决,我也尝试了一下,可以解决。但是当快速点击确认按钮时依然会关闭<code>Modal</code>,这样依然不完美。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不过,想到最近有看过<code>macrotask</code>等相关知识,加之<strong>vue</strong>源码中用到了<code>MessageChannel</code>,所以我也就尝试一下,果然解决了,但是有兼容性问题。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">onOk () &#123;</div><div class="line">  <span class="keyword">let</span> me = <span class="keyword">this</span></div><div class="line">  me.$refs[<span class="string">'subform'</span>].validate(<span class="function">(<span class="params">valid</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">if</span> (valid) &#123;</div><div class="line">      me.entlotModel = <span class="literal">false</span></div><div class="line">          me.detailData.push(me.subform)</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">      me.modalLoading = <span class="literal">false</span></div><div class="line">      me.$Message.error(<span class="string">'请检查填写内容'</span>)</div><div class="line">      <span class="comment">// iview modal组件用于表单验证时有点bug,点击确定按钮即使不通过验证也会关闭modal</span></div><div class="line">      <span class="comment">// 这种有点反人类,一开始用setTimeout来解决,但是当快速点击时依然会关闭modal</span></div><div class="line">      <span class="comment">// 遂想到了用macrotask来解决,现在如果不通过验证即使快速点击确定也不会关闭modal</span></div><div class="line">      <span class="keyword">const</span> channel = <span class="keyword">new</span> MessageChannel()</div><div class="line">      <span class="keyword">const</span> port = channel.port2</div><div class="line">      channel.port1.onmessage = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        me.modalLoading = <span class="literal">true</span></div><div class="line">      &#125;</div><div class="line">      port.postMessage(<span class="number">1</span>)</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
+<p><strong><a id="31">21. Tabpane布局切换发现包含时间的属性只在第一次渲染,之后切换Tabpane时间不变</a></strong><br><a href="#1">回到目录</a></p>
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;首先说一下，这个问题是苍老师发现并解决的，我从来都不知道存在这个bug，一点都不细心啊！<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;由于后台管理系统里有太多列表页，而列表页也有相对应的详情页，为了简化开发任务，同时减少页面重绘优化性能，所以采取了<code>iview</code>的<code>Tabs</code>组件，列表详情页成为列表页的子组件，改变<code>name</code>值即可切换，同时具有很高的通用性。这样做确实带来了很多方便，但同时也有一些小问题。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;比如这次苍老师发现的，第一次进入详情页，时间没什么问题，回到列表页后在该页面驻足一段时间后，发现计算机时间已经过了好几分钟，但是列表详情页的时间居然是第一次进入详情页的时间，也就是说再度进入页面时间没有更新。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其实仔细想想也能理解，因为此时列表详情页是列表页的子组件了，子组件先于父组件渲染的，它们在同一个路由，当切换到列表详情页后并不会再度渲染，所以时间当然不变化了。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;怪自己不细心，写完一个页面看数据都有了能对接了就认为ok了，没有关注数据是否合适的问题。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;不过苍老师解决的方法也很巧妙，利用了函数式编程的思想，即将拥有时间属性的属性写成函数，然后每次切换<code>Tabpane</code>时调用函数就相当于执行一次<code>new Date()</code>，真的巧妙。因为如果我来解决，我可能会通过遍历找拥有时间的属性然后重新赋值，那样太麻烦了。<br>附上例子：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">dataInit: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">trandate</span>: <span class="keyword">new</span> <span class="built_in">Date</span>(),</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// methods:</span></div><div class="line">initForm () &#123;</div><div class="line">  <span class="keyword">let</span> me = <span class="keyword">this</span>;</div><div class="line">  <span class="comment">// TODO 目前通过深拷贝解决引用数据类型导致的问题 引用了 lodash</span></div><div class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> me.dataInit === <span class="string">'function'</span>) &#123;</div><div class="line">    me.form = _.clone(me.dataInit());</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    me.form = _.clone(me.dataInit);</div><div class="line">  &#125;</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
 
   </section>
 
@@ -267,7 +270,7 @@
     
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">新しい記事</span>
+                <span class="read-more-item-dim">Newer Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/05/08/setTimeout/" title="js中 setTimeout 等定时器执行顺序问题">js中 setTimeout 等定时器执行顺序问题</a></h2>
                 <p class="excerpt">
                 
@@ -282,7 +285,7 @@
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">以前の記事</span>
+                <span class="read-more-item-dim">Older Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/04/23/synchronized/" title="管中窥豹：synchronized">管中窥豹：synchronized</a></h2>
                 <p class="excerpt">
                 

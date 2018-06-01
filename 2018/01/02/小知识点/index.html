@@ -97,7 +97,7 @@
           <div>
           <nav class="cover-navigation cover-navigation--primary">
             <ul class="navigation">
-              <li class="navigation__item"><a href="/#blog" title="Blogを読む" class="blog-button">Blog</a></li>
+              <li class="navigation__item"><a href="/#blog" title="Visit the blog" class="blog-button">Blog</a></li>
             
               <li class="navigation__item"><a href="https://github.com/lizhongzhen11/lizhongzhen11.github.io">目录</a></li>
             
@@ -172,7 +172,7 @@
     <div class="post-meta">
       <time datetime="2018-01-02T12:22:01.692Z" class="post-list__meta--date date">2018-01-02</time> &#8226; <span class="post-meta__tags tags">于  </span>
       <span class="page-pv">
-       No. <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
+       Read <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span>
       </span> 
    
     </div>
@@ -250,7 +250,7 @@
 <p>js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> outer = <span class="built_in">document</span>.querySelector(<span class="string">'.outer'</span>);</div><div class="line"><span class="keyword">var</span> inner = <span class="built_in">document</span>.querySelector(<span class="string">'.inner'</span>);</div><div class="line"><span class="keyword">new</span> MutationObserver(<span class="function"><span class="keyword">function</span>(<span class="params">mutationRecord, mutationObserver</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(mutationRecord);</div><div class="line">  <span class="built_in">console</span>.log(mutationObserver);</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'mutate'</span>);</div><div class="line">&#125;).observe(outer, &#123;</div><div class="line">  <span class="attr">attributes</span>: <span class="literal">true</span>,</div><div class="line">  <span class="attr">attributeOldValue</span>: <span class="literal">true</span> <span class="comment">// attributes与attributeOldValue设置为true后，会将发生变化的属性值记录在oldValue里面</span></div><div class="line">&#125;);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">onClick</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'click'</span>);</div><div class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'timeout'</span>);</div><div class="line">  &#125;, <span class="number">0</span>);</div><div class="line">  <span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'promise'</span>);</div><div class="line">  &#125;);</div><div class="line">  outer.setAttribute(<span class="string">'data-random'</span>, <span class="built_in">Math</span>.random());</div><div class="line">&#125;</div><div class="line">inner.addEventListener(<span class="string">'click'</span>, onClick);</div><div class="line">outer.addEventListener(<span class="string">'click'</span>, onClick);</div><div class="line">inner.click();</div></pre></td></tr></table></figure></p>
 <h3 id="18-DOM-Living-Standard"><a href="#18-DOM-Living-Standard" class="headerlink" title="18. DOM Living Standard "></a><a id="28">18. DOM Living Standard </a></h3><p><a href="#1">回到目录</a><br><a href="https://dom.spec.whatwg.org/" target="_blank" rel="external">https://dom.spec.whatwg.org/</a></p>
 <h3 id="19-从输入网址到网页完全展示发生了什么以及浏览器工作原理详解"><a href="#19-从输入网址到网页完全展示发生了什么以及浏览器工作原理详解" class="headerlink" title="19. 从输入网址到网页完全展示发生了什么以及浏览器工作原理详解 "></a><a id="29">19. 从输入网址到网页完全展示发生了什么以及浏览器工作原理详解 </a></h3><p><a href="#1">回到目录</a><br><a href="http://www.cnblogs.com/iovec/p/7904416.html" target="_blank" rel="external">http://www.cnblogs.com/iovec/p/7904416.html</a><br><a href="https://github.com/zwwill/blog/issues/2" target="_blank" rel="external">https://github.com/zwwill/blog/issues/2</a><br><a href="https://blog.csdn.net/u010794365/article/details/77982768" target="_blank" rel="external">https://blog.csdn.net/u010794365/article/details/77982768</a></p>
-<h3 id="20-前端优化点"><a href="#20-前端优化点" class="headerlink" title="20. 前端优化点 "></a><a id="30">20. 前端优化点 </a></h3><p><a href="#1">回到目录</a><br><a href="https://github.com/zwwill/blog/issues/1" target="_blank" rel="external">https://github.com/zwwill/blog/issues/1</a><br><a href="https://juejin.im/post/5a4ed917f265da3e317df515" target="_blank" rel="external">https://juejin.im/post/5a4ed917f265da3e317df515</a><br><a href="https://segmentfault.com/a/1190000008015671" target="_blank" rel="external">https://segmentfault.com/a/1190000008015671</a></p>
+<h3 id="20-前端优化点"><a href="#20-前端优化点" class="headerlink" title="20. 前端优化点 "></a><a id="30">20. 前端优化点 </a></h3><p><a href="#1">回到目录</a><br><a href="https://www.cnblogs.com/lhb25/p/how-browsers-work.html" target="_blank" rel="external">https://www.cnblogs.com/lhb25/p/how-browsers-work.html</a><br><a href="https://github.com/zwwill/blog/issues/1" target="_blank" rel="external">https://github.com/zwwill/blog/issues/1</a><br><a href="https://juejin.im/post/5a4ed917f265da3e317df515" target="_blank" rel="external">https://juejin.im/post/5a4ed917f265da3e317df515</a><br><a href="https://segmentfault.com/a/1190000008015671" target="_blank" rel="external">https://segmentfault.com/a/1190000008015671</a></p>
 <ol>
 <li><p><code>rel=dns-prefetch</code>:<br><a href="https://varvy.com/rel/dns-prefetch.html" target="_blank" rel="external">https://varvy.com/rel/dns-prefetch.html</a><br><a href="https://segmentfault.com/a/1190000003944417" target="_blank" rel="external">https://segmentfault.com/a/1190000003944417</a><br>当页面上使用不同域名下的资源时,可以加速页面加载。</p>
 </li>
@@ -267,7 +267,7 @@
     
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">新しい記事</span>
+                <span class="read-more-item-dim">Newer Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2018/01/04/一次写sql经历/" title="小白第一次真正写复杂sql的经历">小白第一次真正写复杂sql的经历</a></h2>
                 <p class="excerpt">
                 
@@ -284,7 +284,7 @@
         
                
             <div class="read-more-item">
-                <span class="read-more-item-dim">以前の記事</span>
+                <span class="read-more-item-dim">Older Post</span>
                 <h2 class="post-list__post-title post-title"><a href="/2017/12/28/degree项目开发记录/" title="degree项目开发记录">degree项目开发记录</a></h2>
                 <p class="excerpt">
                 
