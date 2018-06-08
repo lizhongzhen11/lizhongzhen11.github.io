@@ -33,8 +33,6 @@
 - apply和call：https://lizhongzhen11.github.io/2017/10/24/js_apply_call/
 - return：https://lizhongzhen11.github.io/2017/10/23/js_return/
 - if条件判断问题：https://lizhongzhen11.github.io/2017/10/19/Js_If/
-- setTimeout和setInterval以及H5新增定时器requestAnimationFrame：https://lizhongzhen11.github.io/2017/10/16/setTimeout_setInterval/
-- Object.defineProperty：https://lizhongzhen11.github.io/2017/10/30/defineProperty/
 - jsonp学习：https://lizhongzhen11.github.io/2017/10/27/jsonp/
 - 字符串转数字：https://lizhongzhen11.github.io/2017/10/26/js%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%95%B0%E5%AD%97/
 - 原型链：https://lizhongzhen11.github.io/2017/10/25/js%E5%8E%9F%E5%9E%8B%E9%93%BE/
@@ -43,12 +41,7 @@
 - 浅拷贝和深拷贝：https://lizhongzhen11.github.io/2017/11/02/js%E6%B5%85%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B7%B1%E6%8B%B7%E8%B4%9D/
 - 闭包：https://lizhongzhen11.github.io/2017/11/02/%E9%97%AD%E5%8C%85/
 - Object.getOwnPropertyDescriptor()和Object.getOwnPropertyDescriptors()还有Object.getPrototypeOf()：https://lizhongzhen11.github.io/2017/10/31/Object.getOwnPropertyDescriptor/
-- Object.keys()：https://lizhongzhen11.github.io/2017/10/31/Object.keys()/
-- Object.entries()：https://lizhongzhen11.github.io/2017/10/31/Object.entries/
 - Web开发中的“黑话”：https://lizhongzhen11.github.io/2017/10/31/web%E9%BB%91%E8%AF%9D/
-- Object.create()：https://lizhongzhen11.github.io/2017/10/31/Object.create/
-- Object.assign()：https://lizhongzhen11.github.io/2017/10/31/Object.assign/
-- 封装函数根据对象和属性名(传过来是字符串)获取内部属性值：https://lizhongzhen11.github.io/2017/11/09/JSObject%E5%8F%96%E5%B1%9E%E6%80%A7/
 - null和undefined：https://lizhongzhen11.github.io/2017/11/02/jsnull%E5%92%8Cundefined/
 - 作用域及作用域链：https://lizhongzhen11.github.io/2017/11/02/js%E4%BD%9C%E7%94%A8%E5%9F%9F%E9%93%BE/
 - img知识发现：https://lizhongzhen11.github.io/2017/11/08/jsImg%E5%8F%91%E7%8E%B0/
@@ -66,7 +59,6 @@
   - dva：https://lizhongzhen11.github.io/2017/09/16/dva/
 - Vue相关
   - vue学习：https://lizhongzhen11.github.io/2017/09/27/Vue%E5%AD%A6%E4%B9%A0/
-  - 组件内this指向问题：https://lizhongzhen11.github.io/2017/10/20/5/
   - Vue router小知识点：https://lizhongzhen11.github.io/2017/10/18/vueRouter/
   - element ui脚手架配置：https://lizhongzhen11.github.io/2017/10/26/elementUi/
   - vue进度条及动态添加：https://lizhongzhen11.github.io/2018/03/06/vue%E8%BF%9B%E5%BA%A6%E6%9D%A1%E5%8F%8A%E5%8A%A8%E6%80%81%E6%B7%BB%E5%8A%A0/
@@ -124,7 +116,6 @@
   - Spring4.0学习17--整合Hibernate：https://lizhongzhen11.github.io/2017/12/01/Spring%E5%AD%A6%E4%B9%A017/
 - springmvc相关
   - springMVC项目搭建：https://lizhongzhen11.github.io/2017/09/14/springMVC/
-  - web程序结构：https://lizhongzhen11.github.io/2017/09/19/web/
   - Servlet：https://lizhongzhen11.github.io/2017/09/19/Servlet/
   - 重定向问题：https://lizhongzhen11.github.io/2017/11/01/java%E9%87%8D%E5%AE%9A%E5%90%91/
   - JSP初学一：https://lizhongzhen11.github.io/2017/11/07/JSP%E5%88%9D%E5%AD%A6/
@@ -164,7 +155,7 @@
 - 计数排序：https://lizhongzhen11.github.io/2018/03/30/%E8%AE%A1%E6%95%B0%E6%8E%92%E5%BA%8F/
 
 ### 设计模式
-- MVC 设计模式学习：https://lizhongzhen11.github.io/2017/11/09/JavaWEB_MVC%20%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/
+
 
 ### 备注
 **$ hexo clean && hexo g && hexo d**

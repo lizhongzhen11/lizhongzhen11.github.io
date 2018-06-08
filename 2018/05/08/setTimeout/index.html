@@ -12,18 +12,15 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <meta name="description" content="for循环中使用定时器打印输出问题例1:123456for (var i = 0; i &amp;lt; 5; i++) &amp;#123;  setTimeout(function () &amp;#123;    console.log(i)  &amp;#125;, 1000)&amp;#125;// 不断打印 5
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;一开始我认为上述示例跟作用域有关,事实上是">
+    <meta name="description" content="requestAnimationFrame介绍请看 http://www.w3cplus.com/javascript/requestAnimationFrame.htmlsetTimeout和setInterval介绍请看 http://www.w3cplus.com/javascript/JavaScript-setTimeout-and-setInterval.htmlfor循环中使用定时器">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="js中 setTimeout 等定时器执行顺序问题 | Ronaldo">
-    <meta name="twitter:description" content="for循环中使用定时器打印输出问题例1:123456for (var i = 0; i &amp;lt; 5; i++) &amp;#123;  setTimeout(function () &amp;#123;    console.log(i)  &amp;#125;, 1000)&amp;#125;// 不断打印 5
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;一开始我认为上述示例跟作用域有关,事实上是">
+    <meta name="twitter:description" content="requestAnimationFrame介绍请看 http://www.w3cplus.com/javascript/requestAnimationFrame.htmlsetTimeout和setInterval介绍请看 http://www.w3cplus.com/javascript/JavaScript-setTimeout-and-setInterval.htmlfor循环中使用定时器">
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="js中 setTimeout 等定时器执行顺序问题 | Ronaldo">
-    <meta property="og:description" content="for循环中使用定时器打印输出问题例1:123456for (var i = 0; i &amp;lt; 5; i++) &amp;#123;  setTimeout(function () &amp;#123;    console.log(i)  &amp;#125;, 1000)&amp;#125;// 不断打印 5
-&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;一开始我认为上述示例跟作用域有关,事实上是">
+    <meta property="og:description" content="requestAnimationFrame介绍请看 http://www.w3cplus.com/javascript/requestAnimationFrame.htmlsetTimeout和setInterval介绍请看 http://www.w3cplus.com/javascript/JavaScript-setTimeout-and-setInterval.htmlfor循环中使用定时器">
 
     
     <meta name="author" content="lizhongzhen">
@@ -153,7 +150,7 @@
   </header>
 
   <section class="post">
-    <h3 id="for循环中使用定时器打印输出问题"><a href="#for循环中使用定时器打印输出问题" class="headerlink" title="for循环中使用定时器打印输出问题"></a>for循环中使用定时器打印输出问题</h3><p>例1:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">  setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(i)</div><div class="line">  &#125;, <span class="number">1000</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// 不断打印 5</span></div></pre></td></tr></table></figure></p>
+    <h3 id="requestAnimationFrame介绍请看-http-www-w3cplus-com-javascript-requestAnimationFrame-html"><a href="#requestAnimationFrame介绍请看-http-www-w3cplus-com-javascript-requestAnimationFrame-html" class="headerlink" title="requestAnimationFrame介绍请看 http://www.w3cplus.com/javascript/requestAnimationFrame.html"></a>requestAnimationFrame介绍请看 <a href="http://www.w3cplus.com/javascript/requestAnimationFrame.html" target="_blank" rel="external">http://www.w3cplus.com/javascript/requestAnimationFrame.html</a></h3><h3 id="setTimeout和setInterval介绍请看-http-www-w3cplus-com-javascript-JavaScript-setTimeout-and-setInterval-html"><a href="#setTimeout和setInterval介绍请看-http-www-w3cplus-com-javascript-JavaScript-setTimeout-and-setInterval-html" class="headerlink" title="setTimeout和setInterval介绍请看 http://www.w3cplus.com/javascript/JavaScript-setTimeout-and-setInterval.html"></a>setTimeout和setInterval介绍请看 <a href="http://www.w3cplus.com/javascript/JavaScript-setTimeout-and-setInterval.html" target="_blank" rel="external">http://www.w3cplus.com/javascript/JavaScript-setTimeout-and-setInterval.html</a></h3><h3 id="for循环中使用定时器打印输出问题"><a href="#for循环中使用定时器打印输出问题" class="headerlink" title="for循环中使用定时器打印输出问题"></a>for循环中使用定时器打印输出问题</h3><p>例1:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</div><div class="line">  setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(i)</div><div class="line">  &#125;, <span class="number">1000</span>)</div><div class="line">&#125;</div><div class="line"><span class="comment">// 不断打印 5</span></div></pre></td></tr></table></figure></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;一开始我认为上述示例跟作用域有关,事实上是我理解偏差了。因为强行用作用域来解释我没法接受,直到百度到了下面这篇文章, <a href="https://blog.csdn.net/aitangyong/article/details/46800615" target="_blank" rel="external">https://blog.csdn.net/aitangyong/article/details/46800615</a> ,我才恍然大悟。这里继续贴上来：</p>
 <blockquote>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;JavaScript是<strong>单线程</strong>执行的，无法同时执行多段代码。<strong>当某一段代码正在执行的时候，所有后续的任务都必须等待，形成一个队列</strong>。一旦当前任务执行完毕，再从队列中取出下一个任务，这也常被称为 <strong>“阻塞式执行”</strong>。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;所以一次鼠标点击，或是计时器到达时间点，或是Ajax请求完成触发了回调函数，这些事件处理程序或回调函数<strong>都不会立即运行</strong>，而是<strong>立即排队</strong>，一旦线程有空闲就执行。假如当前 JavaScript线程正在执行一段很耗时的代码，此时发生了一次鼠标点击，那么事件处理程序就被阻塞，用户也无法立即看到反馈，事件处理程序会被放入任务队列，直到前面的代码结束以后才会开始执行。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;如果代码中设定了一个 setTimeout，那么<strong>浏览器便会在合适的时间，将代码插入任务队列，如果这个时间设为 0，就代表立即插入队列，但不是立即执行，仍然要等待前面代码执行完毕</strong>。所以 setTimeout 并不能保证执行的时间，是否及时执行取决于 JavaScript 线程是拥挤还是空闲。</p>

@@ -204,8 +204,9 @@
 <li><a href="#31">21. 如何实现一个异步模块加载器–以requireJS为例 </a></li>
 <li><a href="#32">22. 父div设置了opacity后，子元素不想被隐藏的解决方法 </a></li>
 <li><a href="#33">23. 通过js style.left赋值时不要加分号 </a></li>
+<li><a href="#34">24. 正则可视化工具 </a></li>
 </ul>
-<h3 id="1-js正则判断"><a href="#1-js正则判断" class="headerlink" title="1. js正则判断 / "></a><a id="11">1. js正则判断 / </a></h3><p><strong>/正斜杠在javascript正则表达式中可以\/表示</strong>,例如:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="string">'1/2'</span></div><div class="line">a.replace(<span class="regexp">/\//</span>, <span class="string">'lizz'</span>) <span class="comment">// 这里的 \/\\ 即代表匹配一个正斜杠</span></div><div class="line"><span class="keyword">var</span> b = <span class="string">'1/2/3'</span></div><div class="line">b.replace(<span class="regexp">/\//g</span>, <span class="string">'lizz'</span>) <span class="comment">// 这里的 /\//g 即代表匹配所有的正斜杠</span></div></pre></td></tr></table></figure></p>
+<h3 id="1-js正则判断"><a href="#1-js正则判断" class="headerlink" title="1. js正则判断 / "></a><a id="11">1. js正则判断 / </a></h3><p><strong>/正斜杠在javascript正则表达式中可以\/表示</strong>,例如:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="string">'1/2'</span></div><div class="line">a.replace(<span class="regexp">/\//</span>, <span class="string">'lizz'</span>) <span class="comment">// 这里的 /\// 即代表匹配一个正斜杠</span></div><div class="line"><span class="keyword">var</span> b = <span class="string">'1/2/3'</span></div><div class="line">b.replace(<span class="regexp">/\//g</span>, <span class="string">'lizz'</span>) <span class="comment">// 这里的 /\//g 即代表匹配所有的正斜杠</span></div></pre></td></tr></table></figure></p>
 <p><strong>还有一个比较重要的而且是基础的点,replace()方法的默认语法</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">stringObject.replace(regexp/substr,replacement)</div></pre></td></tr></table></figure></p>
 <h3 id="2-js-splice-方法"><a href="#2-js-splice-方法" class="headerlink" title="2. js splice()方法"></a><a id="12">2. js splice()方法</a></h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;以前,我一直以为<code>splice(数组长度)</code>即可删除数组,因为以前几乎没用过这个方法,毕竟用vue之前直接<code>数组=[]</code>就可以了,但是vue不能这样做,因为如果直接使用<code>=</code>给数组赋值,vue是无法监听数组变化的,也就无法做到响应式,所以vue提供了变异数组方法。而我恰好需要删除数组重新赋值,结果采坑了。。。<br><img src="../../../../images/splice.png" alt=""><br>这是基础不牢的后果啊！</p>
 <blockquote>
@@ -265,6 +266,7 @@
 <p><strong>父div不用<code>opacity</code>属性，采用<code>background-color: rgba(255, 255, 255, 0.8)</code>类似的值即可。</strong></p>
 <h3 id="23-通过js-style-left赋值时不要加分号"><a href="#23-通过js-style-left赋值时不要加分号" class="headerlink" title="23. 通过js style.left赋值时不要加分号 "></a><a id="33">23. 通过js style.left赋值时不要加分号 </a></h3><p><a href="#1">回到目录</a></p>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;昨天用原生js写轮播图时遇到个问题,发现比如<code>style.left = &#39;100px;&#39;</code>一点效果都没有，我自己思考了起码5个小时，甚至去找<strong>DOM</strong>规范了，都不知道为什么，明明网上一大堆这样的写法。直到把代码拷给我同事，他没过一会就发现了问题症结所在：<strong><code>style.left = &#39;100px&#39;</code>,其中，引号内的<code>100px</code>后不需要加分号！！！</strong><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;内部<code>style</code>样式写习惯了，换到js里面就没改过来。。。</p>
+<h3 id="24-正则可视化工具"><a href="#24-正则可视化工具" class="headerlink" title="24. 正则可视化工具 "></a><a id="34">24. 正则可视化工具 </a></h3><p><a href="#1">回到目录</a><br><a href="https://regexper.com/" target="_blank" rel="external">https://regexper.com/</a></p>
 
   </section>
 

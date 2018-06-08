@@ -178,14 +178,15 @@
                
             <div class="read-more-item">
                 <span class="read-more-item-dim">Newer Post</span>
-                <h2 class="post-list__post-title post-title"><a href="/2017/10/20/5/" title="组件内this指向问题">组件内this指向问题</a></h2>
+                <h2 class="post-list__post-title post-title"><a href="/2017/10/23/js_return/" title="js return">js return</a></h2>
                 <p class="excerpt">
                 
-                如无意外，组件内的 this 指向的是组件本身
-今天在开发过程中遇到个问题，纠结了很长时间，其实源代码从别人的 demo 复制过来的，但是到我这里就不行了，主要就是做了个全屏功能，发现不考虑 esc 点击 进入/退出 全屏是可行的，但是试了 esc 就有问题了。贴代码：123456789101112
+                今天看囧克斯关于 vue 源码解读发现一段代码通过 return 巧妙地避免了不必要的深度遍历(在有广播事件到来时，如果当前 vm 的 _eventsCount 为 0，则不必向其子 vm 继续传播该事件)，当时看到return都有点忘了，基础不牢固
+
+源码123456789101112export
                 &hellip;
                 </p>
-                <div class="post-list__meta"><time datetime="2017-10-20T09:52:25.677Z" class="post-list__meta--date date">2017-10-20</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/10/20/5/">继续阅读</a></div>
+                <div class="post-list__meta"><time datetime="2017-10-23T02:29:19.325Z" class="post-list__meta--date date">2017-10-23</time> &#8226; <span class="post-list__meta--tags tags">于 </span><a class="btn-border-small" href="/2017/10/23/js_return/">继续阅读</a></div>
                            
             </div>
         
