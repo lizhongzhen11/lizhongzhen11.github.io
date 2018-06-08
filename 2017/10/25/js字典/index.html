@@ -17,7 +17,7 @@
 
 数组用法
 
-123456var test = new Array()test[0] = &amp;quot;a&amp;quot;test[1] = &amp;quot;b&amp;quot;for (var i = 0; i &amp;lt; test.l">
+123456var test = new Array()test[0] = &quot;a&quot;test[1] = &quot;b&quot;for (var i = 0; i &amp;lt; test.length; i++) &amp;#123;">
 
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="js字典操作 | Ronaldo">
@@ -26,7 +26,7 @@
 
 数组用法
 
-123456var test = new Array()test[0] = &amp;quot;a&amp;quot;test[1] = &amp;quot;b&amp;quot;for (var i = 0; i &amp;lt; test.l">
+123456var test = new Array()test[0] = &quot;a&quot;test[1] = &quot;b&quot;for (var i = 0; i &amp;lt; test.length; i++) &amp;#123;">
 
     <meta property="og:type" content="article">
     <meta property="og:title" content="js字典操作 | Ronaldo">
@@ -35,7 +35,7 @@
 
 数组用法
 
-123456var test = new Array()test[0] = &amp;quot;a&amp;quot;test[1] = &amp;quot;b&amp;quot;for (var i = 0; i &amp;lt; test.l">
+123456var test = new Array()test[0] = &quot;a&quot;test[1] = &quot;b&quot;for (var i = 0; i &amp;lt; test.length; i++) &amp;#123;">
 
     
     <meta name="author" content="lizhongzhen">
@@ -170,19 +170,19 @@
 <blockquote>
 <p>数组用法</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var test = new Array()</div><div class="line">test[0] = &quot;a&quot;</div><div class="line">test[1] = &quot;b&quot;</div><div class="line">for (var i = 0; i &lt; test.length; i++) &#123;</div><div class="line">    console.log(test[i])</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> test = <span class="keyword">new</span> <span class="built_in">Array</span>()</div><div class="line">test[<span class="number">0</span>] = <span class="string">"a"</span></div><div class="line">test[<span class="number">1</span>] = <span class="string">"b"</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; test.length; i++) &#123;</div><div class="line">    <span class="built_in">console</span>.log(test[i])</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>关联数组（类似字典）用法</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var dictionary = new Array()</div><div class="line">dictionary[&apos;d1&apos;] = &apos;a&apos;</div><div class="line">dictionary[&apos;d2&apos;] = &apos;b&apos;</div><div class="line">for (var i in dictionary) &#123;</div><div class="line">    console.log(i + &quot;:&quot; + dictionary[i])</div><div class="line">&#125;</div><div class="line">// d1:a</div><div class="line">// d2:b</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> dictionary = <span class="keyword">new</span> <span class="built_in">Array</span>()</div><div class="line">dictionary[<span class="string">'d1'</span>] = <span class="string">'a'</span></div><div class="line">dictionary[<span class="string">'d2'</span>] = <span class="string">'b'</span></div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> dictionary) &#123;</div><div class="line">    <span class="built_in">console</span>.log(i + <span class="string">":"</span> + dictionary[i])</div><div class="line">&#125;</div><div class="line"><span class="comment">// d1:a</span></div><div class="line"><span class="comment">// d2:b</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>这里的 i 即为字典的每个键值。</p>
 </blockquote>
-<p><strong>此外，dictionary是一个字典对象，而它的每个键值就是一个属性。也就是说 d1 是 dictionary 的一个属性。但是这样子创建出来的 dictionary 是不会像普通数组那样有 <code>length</code> 属性的</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">dictionary.d1 // &apos;a&apos;</div><div class="line">dictionary.length // 0</div></pre></td></tr></table></figure></p>
+<p><strong>此外，dictionary是一个字典对象，而它的每个键值就是一个属性。也就是说 d1 是 dictionary 的一个属性。但是这样子创建出来的 dictionary 是不会像普通数组那样有 <code>length</code> 属性的</strong><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">dictionary.d1 <span class="comment">// 'a'</span></div><div class="line">dictionary.length <span class="comment">// 0</span></div></pre></td></tr></table></figure></p>
 <blockquote>
 <p>再来看一下字典和数组的简化声明方式</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var arr = [1, 2, 3] // 数组</div><div class="line">var arr_dic = &#123;&apos;d1&apos;: &apos;a&apos;, &apos;d2&apos;: &apos;b&apos;&#125; // 字典</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] <span class="comment">// 数组</span></div><div class="line"><span class="keyword">var</span> arr_dic = &#123;<span class="string">'d1'</span>: <span class="string">'a'</span>, <span class="string">'d2'</span>: <span class="string">'b'</span>&#125; <span class="comment">// 字典</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>在上例中，d1和d2既是键值，也是作为字典对象的属性</p>
 </blockquote>
@@ -190,7 +190,7 @@
 <blockquote>
 <p>下面再来看看如何对一个对象的属性进行遍历。(for…in)</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function Computer(brand, price) &#123;</div><div class="line">    this.brand = brand</div><div class="line">    this.price = price</div><div class="line">&#125;</div><div class="line">var myComputer = new Computer(&apos;hp&apos;, 5000)</div><div class="line">for (var key in myComputer) &#123;</div><div class="line">    console.log(&quot;myComputer[&quot; + key + &quot;] = &quot; + myComputer[key])</div><div class="line">&#125;</div><div class="line">// myComputer[brand] = hp</div><div class="line">// myComputer[price] = 5000</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Computer</span>(<span class="params">brand, price</span>) </span>&#123;</div><div class="line">    <span class="keyword">this</span>.brand = brand</div><div class="line">    <span class="keyword">this</span>.price = price</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> myComputer = <span class="keyword">new</span> Computer(<span class="string">'hp'</span>, <span class="number">5000</span>)</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> myComputer) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">"myComputer["</span> + key + <span class="string">"] = "</span> + myComputer[key])</div><div class="line">&#125;</div><div class="line"><span class="comment">// myComputer[brand] = hp</span></div><div class="line"><span class="comment">// myComputer[price] = 5000</span></div></pre></td></tr></table></figure>
 <blockquote>
 <p>上面的这种用法可以用来查看一个对象都有哪些属性。当你已经知道Computer对象有一个brand属性时，就可以用 </p>
 </blockquote>
@@ -210,7 +210,7 @@
 <hr>
 <p>由于 for in 循环会枚举原型链上的所有属性，唯一过滤这些属性的方式是使用<code>hasOwnProperty</code> 函数，因此会比普通的 for 循环慢上好多倍。<br><strong>为了达到遍历数组的最佳性能，推荐使用经典的 for 循环。</strong></p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var list = [1, 2, 3, 4, 5, ...... 100000000]; </div><div class="line">for(var i = 0, l = list.length; i &lt; l; i++) &#123; </div><div class="line">    console.log(list[i]); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> list = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, ...... <span class="number">100000000</span>]; </div><div class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>, l = list.length; i &lt; l; i++) &#123; </div><div class="line">    <span class="built_in">console</span>.log(list[i]); </div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <blockquote>
 <p>上面代码有一个处理，就是通过 l = list.length 来缓存数组的长度。 </p>
 <hr>

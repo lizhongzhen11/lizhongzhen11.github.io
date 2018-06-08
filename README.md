@@ -34,7 +34,6 @@
 - return：https://lizhongzhen11.github.io/2017/10/23/js_return/
 - if条件判断问题：https://lizhongzhen11.github.io/2017/10/19/Js_If/
 - setTimeout和setInterval以及H5新增定时器requestAnimationFrame：https://lizhongzhen11.github.io/2017/10/16/setTimeout_setInterval/
-- 函数与构造函数的区别：https://lizhongzhen11.github.io/2017/10/12/%E5%87%BD%E6%95%B0%E4%B8%8E%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/
 - Object.defineProperty：https://lizhongzhen11.github.io/2017/10/30/defineProperty/
 - jsonp学习：https://lizhongzhen11.github.io/2017/10/27/jsonp/
 - 字符串转数字：https://lizhongzhen11.github.io/2017/10/26/js%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%95%B0%E5%AD%97/
@@ -59,6 +58,7 @@
 - 函数作用域和块作用域：https://lizhongzhen11.github.io/2018/02/09/js%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8%E5%9F%9F%E5%92%8C%E5%9D%97%E4%BD%9C%E7%94%A8%E5%9F%9F/
 - for循环中setTimeout执行以及promise与setTimeout执行顺序：https://lizhongzhen11.github.io/2018/05/08/setTimeout/
 - js event loop 学习：https://lizhongzhen11.github.io/2018/05/24/jsEventLoop/
+- 手动实现一个最low逼的require.js：
 
 ### js框架
 - jq相关
