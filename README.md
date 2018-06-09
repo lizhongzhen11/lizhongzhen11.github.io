@@ -16,7 +16,7 @@
 ## 博客目录
 
 ### 自己项目
- - degree项目开发记录：https://lizhongzhen11.github.io/2017/12/28/degree%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/
+ - <a href="https://lizhongzhen11.github.io/2017/12/28/degree%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E8%AE%B0%E5%BD%95/">degree项目开发记录</a>
  - 公司内部Ext框架使用注意事项或者叫开发指南：https://lizhongzhen11.github.io/2018/01/30/%E5%85%AC%E5%8F%B8%E5%86%85%E9%83%A8Ext%E6%A1%86%E6%9E%B6/
  - Thinking in Java 学习笔记：https://lizhongzhen11.github.io/2018/03/20/thinkingInJava/
  - 前端知识点--前端个人成长旅途：https://lizhongzhen11.github.io/2018/01/02/%E5%B0%8F%E7%9F%A5%E8%AF%86%E7%82%B9/
