@@ -4,7 +4,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     
-    <title>js中 setTimeout 等定时器执行顺序问题 | Ronaldo</title>
+    <title>js中 setTimeout 等定时器执行顺序问题 + async | Ronaldo</title>
     <meta name="renderer" content="webkit">
     <meta name="HandheldFriendly" content="True">
     <meta name="MobileOptimized" content="320">
@@ -15,11 +15,11 @@
     <meta name="description" content="requestAnimationFrame介绍请看 http://www.w3cplus.com/javascript/requestAnimationFrame.htmlsetTimeout和setInterval介绍请看 http://www.w3cplus.com/javascript/JavaScript-setTimeout-and-setInterval.htmlfor循环中使用定时器">
 
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="js中 setTimeout 等定时器执行顺序问题 | Ronaldo">
+    <meta name="twitter:title" content="js中 setTimeout 等定时器执行顺序问题 + async | Ronaldo">
     <meta name="twitter:description" content="requestAnimationFrame介绍请看 http://www.w3cplus.com/javascript/requestAnimationFrame.htmlsetTimeout和setInterval介绍请看 http://www.w3cplus.com/javascript/JavaScript-setTimeout-and-setInterval.htmlfor循环中使用定时器">
 
     <meta property="og:type" content="article">
-    <meta property="og:title" content="js中 setTimeout 等定时器执行顺序问题 | Ronaldo">
+    <meta property="og:title" content="js中 setTimeout 等定时器执行顺序问题 + async | Ronaldo">
     <meta property="og:description" content="requestAnimationFrame介绍请看 http://www.w3cplus.com/javascript/requestAnimationFrame.htmlsetTimeout和setInterval介绍请看 http://www.w3cplus.com/javascript/JavaScript-setTimeout-and-setInterval.htmlfor循环中使用定时器">
 
     
@@ -146,7 +146,7 @@
       </span> 
    
     </div>
-    <h1 class="post-title">js中 setTimeout 等定时器执行顺序问题</h1>
+    <h1 class="post-title">js中 setTimeout 等定时器执行顺序问题 + async</h1>
   </header>
 
   <section class="post">
@@ -163,6 +163,7 @@
 </blockquote>
 <h3 id="扩展-Promise的队列与setTimeout的队列有何关联"><a href="#扩展-Promise的队列与setTimeout的队列有何关联" class="headerlink" title="扩展 Promise的队列与setTimeout的队列有何关联"></a>扩展 Promise的队列与setTimeout的队列有何关联</h3><p><a href="https://www.zhihu.com/question/36972010" target="_blank" rel="external">https://www.zhihu.com/question/36972010</a></p>
 <h3 id="个人总结"><a href="#个人总结" class="headerlink" title="个人总结"></a>个人总结</h3><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;个人理解,如果没有<code>let</code>或者立即执行函数等构建块作用域,那么<code>setTimeout</code>会等循环结束后调用,但是如果循环内构建了块作用域,那么<code>setTimeout</code>会立即调用。</p>
+<h3 id="后续更新"><a href="#后续更新" class="headerlink" title="后续更新"></a>后续更新</h3><p>promise、async和await之执行顺序的那点事：<a href="https://segmentfault.com/a/1190000015057278" target="_blank" rel="external">https://segmentfault.com/a/1190000015057278</a></p>
 
   </section>
 
