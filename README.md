@@ -31,8 +31,6 @@
 - <a href="https://lizhongzhen11.github.io/2017/10/12/%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E5%92%8C%E4%BA%8B%E4%BB%B6%E6%8D%95%E8%8E%B7/">JS 事件冒泡和事件捕获 事件委托</a>
 - <a href="https://lizhongzhen11.github.io/2017/10/24/js%E9%81%8D%E5%8E%86%E6%96%B9%E6%B3%95/">map、forEach、filter、reduce、some、every</a>
 - <a href="https://lizhongzhen11.github.io/2017/10/24/js_apply_call/">apply和call</a>
-- <a href="https://lizhongzhen11.github.io/2017/10/19/Js_If/">if条件判断问题</a>
-- <a href="https://lizhongzhen11.github.io/2017/10/27/jsonp/">jsonp学习</a>
 - <a href="https://lizhongzhen11.github.io/2017/10/26/js%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%95%B0%E5%AD%97/">字符串转数字</a>
 - <a href="https://lizhongzhen11.github.io/2017/10/25/js%E5%8E%9F%E5%9E%8B%E9%93%BE/">原型链</a>
 - <a href="https://lizhongzhen11.github.io/2017/10/25/js%E5%AD%97%E5%85%B8/">字典操作</a>
